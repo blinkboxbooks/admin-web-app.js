@@ -6,6 +6,7 @@ angular.module('adminPanelApp')
 			restrict: 'E',
 			templateUrl: 'views/templates/dynamic_table.html',
 			scope: {},
+			replace: true,
 			controller: function(){},
 			link: function(){}
 		};
