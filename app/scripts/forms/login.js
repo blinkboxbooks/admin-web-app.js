@@ -12,12 +12,12 @@ angular.module('adminPanelApp')
 					email: '',
 					password: '',
 					remember: false
-				}
+				};
 				$scope.handlers = {
 					submit: function(){
 						console.log('SUBMIT:', $scope.login);
 					}
-				}
+				};
 			},
 			link: function(){}
 		};

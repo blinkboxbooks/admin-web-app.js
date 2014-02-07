@@ -15,7 +15,7 @@ describe('Directive: Dynamic Table', function () {
 		scope = $rootScope.$new();
 
 		// Compile a piece of HTML containing the directive
-		element = $compile("<dynamic-table></dynamic-table>")(scope);
+		element = $compile('<dynamic-table></dynamic-table>')(scope);
 
 		// Compile
 		scope.$apply();

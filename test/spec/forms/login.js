@@ -17,7 +17,7 @@ describe('Form: Login', function () {
 	// so they are available to all tests in this describe block
 	beforeEach(inject(function($compile, $rootScope){
 		// Compile a piece of HTML containing the directive
-		element = $compile("<login-form></login-form>")($rootScope);
+		element = $compile('<login-form></login-form>')($rootScope);
 
 		// Compile
 		$rootScope.$apply();
