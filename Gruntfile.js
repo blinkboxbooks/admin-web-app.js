@@ -332,7 +332,19 @@ module.exports = function (grunt) {
         configFile: 'karma.conf.js',
         singleRun: true
       }
-    }
+    },
+		ngconstant: {
+			build: [
+				{
+					dest: '<%= yeoman.app %>/scripts/config/constants.js',
+					name: 'Constants',
+					constants: {
+						EVENTS: grunt.file.readJSON('app/scripts/config/events.json'),
+						ROUTES: grunt.file.readJSON('app/scripts/config/routes.json')
+					}
+				}
+			]
+		}
   });
 
 
@@ -343,6 +355,7 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
+			'ngconstant',
       'bower-install',
       'concurrent:server',
       'connect:livereload',
@@ -357,14 +370,16 @@ module.exports = function (grunt) {
 
   grunt.registerTask('test', [
     'clean:server',
-    'concurrent:test',
+		'ngconstant',
+		'concurrent:test',
     'connect:test',
     'karma'
   ]);
 
   grunt.registerTask('build', [
     'clean:dist',
-    'bower-install',
+		'ngconstant',
+		'bower-install',
     'useminPrepare',
     'concurrent:dist',
     'concat',

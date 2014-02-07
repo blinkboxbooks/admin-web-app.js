@@ -17,7 +17,7 @@ angular.module('adminPanelApp')
 				$scope.alert = {
 					type: '',
 					text: ''
-				}
+				};
 			},
 			link: function($scope){
 				$scope.handlers = {
@@ -27,10 +27,10 @@ angular.module('adminPanelApp')
 
 						if ($scope.loginForm.$valid) {
 							Authentication.login({
-								grant_type: 'password',
-								username: $scope.login.email,
-								password: $scope.login.password,
-								remember_me: $scope.login.remember
+								'grant_type': 'password',
+								'username': $scope.login.email,
+								'password': $scope.login.password,
+								'remember_me': $scope.login.remember
 							}).then($scope.handlers.success, $scope.handlers.error);
 						}
 					},

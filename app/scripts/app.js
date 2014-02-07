@@ -4,7 +4,8 @@ angular.module('adminPanelApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute'
+  'ngRoute',
+	'Constants'
 ])
   .config(function ($routeProvider) {
     $routeProvider
