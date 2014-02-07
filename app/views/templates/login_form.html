@@ -2,20 +2,23 @@
 	<div class="form-group">
 		<label class="col-lg-2 col-sm-2 control-label">Email</label>
 		<div class="col-lg-10">
-			<input type="email" class="form-control" ng-model="login.email" placeholder="Email" required>
+			<input type="email" name="email" class="form-control" ng-model="login.email" placeholder="Email" required>
+			<span class="error" ng-show="loginForm.submitted && loginForm.email.$error.required">Email required!</span>
+			<span class="error" ng-show="loginForm.submitted && loginForm.email.$error.email">Email is invalid!</span>
 		</div>
 	</div>
 	<div class="form-group">
 		<label class="col-lg-2 col-sm-2 control-label">Password</label>
 		<div class="col-lg-10">
-			<input type="password" class="form-control" ng-model="login.password" placeholder="Password" required>
+			<input type="password" name="password" class="form-control" ng-model="login.password" placeholder="Password" required>
+			<span class="error" ng-show="loginForm.submitted && loginForm.password.$error.required">Password required!</span>
 		</div>
 	</div>
 	<div class="form-group">
 		<div class="col-lg-offset-2 col-lg-10">
 			<div class="checkbox">
 				<label>
-					<input type="checkbox" ng-model="login.remember"> Remember me
+					<input type="checkbox" name="remember" ng-model="login.remember"> Remember me
 				</label>
 			</div>
 		</div>

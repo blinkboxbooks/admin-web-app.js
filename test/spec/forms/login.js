@@ -49,22 +49,31 @@ describe('Form: Login', function () {
 		scope.login = $.extend({}, mockLogin);
 		scope.$apply();
 		expect(scope.loginForm.$valid).toBeTruthy();
+		expect(element.find('[type="email"]')).toHaveClass('ng-valid');
+		expect(element.find('[type="password"]')).toHaveClass('ng-valid');
 
 		// Missing email field
 		scope.login.email = '';
 		scope.$apply();
 		expect(scope.loginForm.$valid).toBeFalsy();
+		expect(scope.loginForm.email.$error.required).toBeTruthy();
+		expect(element.find('[type="email"]')).toHaveClass('ng-invalid');
 
 		// Invalid email field
 		scope.login.email = 'not_an_email';
 		scope.$apply();
 		expect(scope.loginForm.$valid).toBeFalsy();
+		expect(scope.loginForm.email.$error.email).toBeTruthy();
+		expect(element.find('[type="email"]')).toHaveClass('ng-invalid');
 
 		// Missing password field
 		scope.login.email = mockLogin.email;
 		scope.login.password = '';
 		scope.$apply();
 		expect(scope.loginForm.$valid).toBeFalsy();
+		expect(scope.loginForm.password.$error.required).toBeTruthy();
+		expect(element.find('[type="password"]')).toHaveClass('ng-invalid');
+
 	});
 
 });

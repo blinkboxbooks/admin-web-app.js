@@ -13,16 +13,18 @@ angular.module('adminPanelApp')
 					password: '',
 					remember: false
 				};
+			},
+			link: function($scope){
 				$scope.handlers = {
 					submit: function(){
+						$scope.loginForm.submitted = true;
 						if ($scope.loginForm.$valid) {
 							console.log('SUBMIT:', $scope.login);
 						} else {
-							console.log('FORM INVALID:', $scope.login);
+							console.log('FORM INVALID');
 						}
 					}
 				};
-			},
-			link: function(){}
+			}
 		};
 	});
