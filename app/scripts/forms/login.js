@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('adminPanelApp')
-	.directive('loginForm', function($rootScope, Authentication, EVENTS) {
+	.directive('loginForm', function($rootScope, Authentication) {
 		return {
 			restrict: 'E',
 			templateUrl: 'views/templates/login_form.html',
@@ -35,6 +35,7 @@ angular.module('adminPanelApp')
 						}
 					},
 					error: function(response){
+						$scope.loginForm.submitted = false;
 						$scope.alert.type = 'danger';
 						$scope.alert.text = response.data.error_description || 'Unknown error.';
 					},
@@ -42,8 +43,6 @@ angular.module('adminPanelApp')
 						$scope.loginForm.submitted = false;
 						$scope.alert.type = 'success';
 						$scope.alert.text = 'Login successful';
-
-						$rootScope.$broadcast(EVENTS.USER_UPDATED, response.data);
 					}
 				};
 			}
