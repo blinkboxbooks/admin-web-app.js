@@ -35,12 +35,36 @@ describe('Form: Login', function () {
 	});
 
 	it('Updating scope will update the form inputs.', function() {
-		scope.login = mockLogin;
+		// mockLogin data is cloned to avoid its pollution
+		scope.login = $.extend({}, mockLogin);
 		scope.$apply();
 
 		expect(element.find('[type="email"]').val()).toBe(scope.login.email);
 		expect(element.find('[type="password"]').val()).toBe(scope.login.password);
 		expect(element.find('[type="checkbox"]').prop('checked')).toBe(scope.login.remember);
+	});
+
+	it('Form is validated.', function() {
+		// mockLogin data is cloned to avoid its pollution
+		scope.login = $.extend({}, mockLogin);
+		scope.$apply();
+		expect(scope.loginForm.$valid).toBeTruthy();
+
+		// Missing email field
+		scope.login.email = '';
+		scope.$apply();
+		expect(scope.loginForm.$valid).toBeFalsy();
+
+		// Invalid email field
+		scope.login.email = 'not_an_email';
+		scope.$apply();
+		expect(scope.loginForm.$valid).toBeFalsy();
+
+		// Missing password field
+		scope.login.email = mockLogin.email;
+		scope.login.password = '';
+		scope.$apply();
+		expect(scope.loginForm.$valid).toBeFalsy();
 	});
 
 });

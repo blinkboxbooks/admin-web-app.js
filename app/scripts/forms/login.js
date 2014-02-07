@@ -15,7 +15,11 @@ angular.module('adminPanelApp')
 				};
 				$scope.handlers = {
 					submit: function(){
-						console.log('SUBMIT:', $scope.login);
+						if ($scope.loginForm.$valid) {
+							console.log('SUBMIT:', $scope.login);
+						} else {
+							console.log('FORM INVALID:', $scope.login);
+						}
 					}
 				};
 			},
