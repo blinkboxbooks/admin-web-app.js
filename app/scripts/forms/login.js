@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('adminPanelApp')
-	.directive('loginForm', function() {
+	.directive('loginForm', function(Authentication) {
 		return {
 			restrict: 'E',
 			templateUrl: 'views/templates/login_form.html',
@@ -13,16 +13,36 @@ angular.module('adminPanelApp')
 					password: '',
 					remember: false
 				};
+
+				$scope.alert = {
+					type: '',
+					text: ''
+				}
 			},
 			link: function($scope){
 				$scope.handlers = {
 					submit: function(){
 						$scope.loginForm.submitted = true;
+						$scope.alert.text = '';
+
 						if ($scope.loginForm.$valid) {
-							console.log('SUBMIT:', $scope.login);
-						} else {
-							console.log('FORM INVALID');
+							Authentication.login({
+								grant_type: 'password',
+								username: $scope.login.email,
+								password: $scope.login.password,
+								remember_me: $scope.login.remember
+							}).then($scope.handlers.success, $scope.handlers.error);
 						}
+					},
+					error: function(response){
+						$scope.alert.type = 'danger';
+						$scope.alert.text = response.data.error_description || 'Unknown error.';
+					},
+					success: function(response){
+						$scope.loginForm.submitted = false;
+						$scope.alert.type = 'success';
+						$scope.alert.text = 'Login successful';
+						console.log(response);
 					}
 				};
 			}
