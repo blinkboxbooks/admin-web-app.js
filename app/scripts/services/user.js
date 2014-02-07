@@ -35,9 +35,6 @@ angular.module('adminPanelApp')
 				}).then(function(response){
 						User.set(response.data);
 					});
-			},
-			is_logged_in: function(){
-				return !!user;
 			}
 		};
 
