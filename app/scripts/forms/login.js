@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('adminPanelApp')
-	.directive('loginForm', function(Authentication) {
+	.directive('loginForm', function($rootScope, Authentication, EVENTS) {
 		return {
 			restrict: 'E',
 			templateUrl: 'views/templates/login_form.html',
@@ -42,7 +42,8 @@ angular.module('adminPanelApp')
 						$scope.loginForm.submitted = false;
 						$scope.alert.type = 'success';
 						$scope.alert.text = 'Login successful';
-						console.log(response);
+
+						$rootScope.$broadcast(EVENTS.USER_UPDATED, response.data);
 					}
 				};
 			}
