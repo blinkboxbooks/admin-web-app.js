@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7bf29323-493d-4615-bf1d-41576575fb0e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/.jshintrc" afterPath="$PROJECT_DIR$/test/.jshintrc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/scripts/config/authentication.js" afterPath="$PROJECT_DIR$/app/scripts/config/authentication.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/spec/services/authentication.js" afterPath="$PROJECT_DIR$/test/spec/services/authentication.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/spec/directives/dynamic_table.js" afterPath="$PROJECT_DIR$/test/spec/directives/dynamic_table.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/scripts/forms/login.js" afterPath="$PROJECT_DIR$/app/scripts/forms/login.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/spec/forms/login.js" afterPath="$PROJECT_DIR$/test/spec/forms/login.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/spec/controllers/main.js" afterPath="$PROJECT_DIR$/test/spec/controllers/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/spec/mocks/responses.js" afterPath="$PROJECT_DIR$/test/spec/mocks/responses.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/spec/services/user.js" afterPath="$PROJECT_DIR$/test/spec/services/user.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="admin-panel.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -22,7 +15,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/admin-panel$Karma.coverage" NAME="Karma Coverage Results" MODIFIED="1392032753701" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="KarmaJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/admin-panel$Karma.coverage" NAME="Karma Coverage Results" MODIFIED="1392034411066" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="KarmaJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -35,98 +28,7 @@
     <favorites_list name="admin-panel" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="helpers.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/spec/helpers.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="0" selection-start="131" selection-end="131" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="210">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/spec/controllers/main.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="44" selection-start="195" selection-end="195" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="465">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dynamic_table.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/spec/directives/dynamic_table.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="44" selection-start="199" selection-end="199" vertical-scroll-proportion="0.0" vertical-offset="18" max-vertical-offset="615">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="login.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/spec/forms/login.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="44" selection-start="338" selection-end="351" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2040">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="authentication.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/spec/services/authentication.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="49" selection-start="64" selection-end="64" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1320">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="responses.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/test/spec/mocks/responses.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="6" selection-start="655" selection-end="655" vertical-scroll-proportion="0.39698493" vertical-offset="183" max-vertical-offset="780">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="login.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/scripts/forms/login.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="28" selection-start="1081" selection-end="1081" vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="840">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="authentication.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/scripts/config/authentication.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="44" selection-start="1374" selection-end="1374" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="630">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".jshintrc" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/.jshintrc">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="14" selection-start="638" selection-end="638" vertical-scroll-proportion="-19.25" vertical-offset="33" max-vertical-offset="645">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="constants.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/scripts/config/constants.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="25" selection-start="16" selection-end="25" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="345">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -179,8 +81,6 @@
         <option value="$PROJECT_DIR$/test/spec/config/authentication.js" />
         <option value="$PROJECT_DIR$/.jshintrc" />
         <option value="$PROJECT_DIR$/.jshintignore" />
-        <option value="$PROJECT_DIR$/test/spec/services/user.js" />
-        <option value="$PROJECT_DIR$/test/spec/forms/login.js" />
         <option value="$PROJECT_DIR$/test/spec/directives/dynamic_table.js" />
         <option value="$PROJECT_DIR$/test/spec/controllers/main.js" />
         <option value="$PROJECT_DIR$/app/scripts/forms/login.js" />
@@ -188,6 +88,9 @@
         <option value="$PROJECT_DIR$/test/.jshintrc" />
         <option value="$PROJECT_DIR$/test/spec/services/authentication.js" />
         <option value="$PROJECT_DIR$/test/spec/mocks/responses.js" />
+        <option value="$PROJECT_DIR$/test/spec/forms/login.js" />
+        <option value="$PROJECT_DIR$/test/spec/services/user.js" />
+        <option value="$PROJECT_DIR$/../../Integration/web-app/client-web-app/dist/index.html" />
       </list>
     </option>
   </component>
@@ -294,50 +197,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="services" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin-panel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin-panel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="spec" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mocks" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin-panel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin-panel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="spec" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="forms" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -383,82 +242,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="controllers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin-panel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin-panel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin-panel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin-panel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin-panel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin-panel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="forms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin-panel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin-panel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -551,7 +334,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="48" y="22" width="1872" height="1058" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -564,7 +347,7 @@
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3295082" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25519127" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25519127" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32919255" sideWeight="0.49972987" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -766,8 +549,8 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="47" column="6" selection-start="1513" selection-end="1513" vertical-scroll-proportion="-20.192308" vertical-offset="165" max-vertical-offset="1275">
           <folding>
-            <marker date="1392032153000" expanded="true" signature="-1:-1" placeholder="{&quot;app/views/templates/*.html&quot;: 'ng-html2js'...}" />
-            <marker date="1392032153000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1392034358000" expanded="true" signature="-1:-1" placeholder="{&quot;app/views/templates/*.html&quot;: 'ng-html2js'...}" />
+            <marker date="1392034358000" expanded="true" signature="-1:-1" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -797,7 +580,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="20" selection-start="94" selection-end="94" vertical-scroll-proportion="-3.125" vertical-offset="0" max-vertical-offset="465">
           <folding>
-            <marker date="1392032153000" expanded="true" signature="-1:-1" placeholder="{&quot;node&quot;: true...}" />
+            <marker date="1392034358000" expanded="true" signature="-1:-1" placeholder="{&quot;node&quot;: true...}" />
           </folding>
         </state>
       </provider>
@@ -816,9 +599,51 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/test/spec/helpers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="0" selection-start="131" selection-end="131" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="210">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/forms/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="20" selection-start="1098" selection-end="1098" vertical-scroll-proportion="0.66129035" vertical-offset="220" max-vertical-offset="840">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/.jshintrc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="14" selection-start="638" selection-end="638" vertical-scroll-proportion="0.77516776" vertical-offset="33" max-vertical-offset="645">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/spec/controllers/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="44" selection-start="195" selection-end="195" vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="465">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/spec/directives/dynamic_table.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="0" selection-start="157" selection-end="157" vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="615">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/spec/services/authentication.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="42" selection-start="292" selection-end="305" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1320">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test/spec/services/user.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="46" selection-start="218" selection-end="218" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="990">
+        <state line="8" column="56" selection-start="228" selection-end="228" vertical-scroll-proportion="0.19354838" vertical-offset="0" max-vertical-offset="990">
           <folding />
         </state>
       </provider>
@@ -832,64 +657,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/spec/forms/login.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="44" selection-start="338" selection-end="351" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2040">
+        <state line="6" column="57" selection-start="134" selection-end="149" vertical-scroll-proportion="0.098846786" vertical-offset="30" max-vertical-offset="2040">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/spec/helpers.js">
+    <entry file="file://$PROJECT_DIR$/../../Integration/web-app/client-web-app/dist/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="131" selection-end="131" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="210">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/spec/directives/dynamic_table.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="44" selection-start="199" selection-end="199" vertical-scroll-proportion="0.0" vertical-offset="18" max-vertical-offset="615">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/forms/login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="28" selection-start="1081" selection-end="1081" vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="840">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/config/authentication.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="44" selection-start="1374" selection-end="1374" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="630">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/spec/controllers/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="44" selection-start="195" selection-end="195" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="465">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/.jshintrc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="14" selection-start="638" selection-end="638" vertical-scroll-proportion="-19.25" vertical-offset="33" max-vertical-offset="645">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/spec/services/authentication.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="49" selection-start="64" selection-end="64" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1320">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/spec/mocks/responses.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="6" selection-start="655" selection-end="655" vertical-scroll-proportion="0.39698493" vertical-offset="183" max-vertical-offset="780">
-          <folding />
+        <state line="50" column="10" selection-start="2260" selection-end="2260" vertical-scroll-proportion="0.6174957" vertical-offset="390" max-vertical-offset="2115">
+          <folding>
+            <marker date="1392040807000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1392040807000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1392040807000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1392040807000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1392040807000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1392040807000" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
