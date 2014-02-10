@@ -6,10 +6,10 @@ describe('Service: User', function () {
 	// load module
 	beforeEach(function(){
 		module('adminPanelApp', 'templates', 'mockedResponses');
-		inject(function(_$httpBackend_){
+		inject(function(_$httpBackend_, _UserData_){
 			$httpBackend = _$httpBackend_;
 
-			$httpBackend.expectGET('/api/auth/users').respond(400);
+			$httpBackend.expectGET('/api/auth/users').respond(200, _UserData_);
 		});
 	});
 

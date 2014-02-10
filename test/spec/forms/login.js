@@ -4,43 +4,29 @@ describe('Form: Login', function () {
 
 	// load module
 	beforeEach(function(){
-		module('adminPanelApp');
-		module('templates');
-		inject(function(_$httpBackend_){
+		module('adminPanelApp', 'templates', 'mockedResponses');
+		inject(function(_$httpBackend_, _ROUTES_){
 			// Save a reference to $httpBackend
 			$httpBackend = _$httpBackend_;
 
 			// user is not initially logged in
-			_$httpBackend_.expectGET('/api/auth/users').respond(401);
+			_$httpBackend_.expectGET(_ROUTES_.USER).respond(401);
 			_$httpBackend_.flush();
 		});
 	});
 
 	var element, scope, $httpBackend, ROUTES,
-		mockLogin = {
-			email: 'test@test.com',
-			password: '123123',
-			remember: true
-		}, mockInvalidResponse = {
-			error: "invalid_grant",
-			error_description: "The username and/or password is incorrect."
-		}, mockValidResponse = {
-				access_token: 'aaa.bbb-aaa-bbb-ccc',
-				expires_in: 1800,
-				refresh_token: 'abcabc',
-				token_type: 'bearer',
-				user_first_name: 'FN',
-				user_id: 'urn:blinkbox:zuul:user:xxx',
-				user_last_name: 'LN',
-				user_uri: 'https://auth.blinkboxbooks.com.internal:8080/users/xxx',
-				user_username: 'aaa@bbb.com'
-		};
+		LoginData, AuthInvalid, AuthValid;
 
 	// Store references to the element and it's scope
 	// so they are available to all tests in this describe block
-	beforeEach(inject(function($compile, $rootScope, _ROUTES_){
-		// Save a reference to ROUTES
+	beforeEach(inject(function($compile, $rootScope, _ROUTES_, _LoginData_, _AuthInvalid_, _AuthValid_){
+		// Save a references
 		ROUTES = _ROUTES_;
+		LoginData = _LoginData_;
+		AuthInvalid = _AuthInvalid_;
+		AuthValid = _AuthValid_;
+
 		// Compile a piece of HTML containing the directive
 		element = $compile('<login-form></login-form>')($rootScope);
 
@@ -60,8 +46,8 @@ describe('Form: Login', function () {
 	});
 
 	it('Updating scope will update the form inputs.', function() {
-		// mockLogin data is cloned to avoid its pollution
-		scope.login = $.extend({}, mockLogin);
+		// LoginData data is cloned to avoid its pollution
+		scope.login = $.extend({}, LoginData);
 		scope.$apply();
 
 		expect(element.find('[type="email"]').val()).toBe(scope.login.email);
@@ -70,8 +56,8 @@ describe('Form: Login', function () {
 	});
 
 	it('Form is validated.', function() {
-		// mockLogin data is cloned to avoid its pollution
-		scope.login = $.extend({}, mockLogin);
+		// LoginData data is cloned to avoid its pollution
+		scope.login = $.extend({}, LoginData);
 		scope.$apply();
 		expect(scope.loginForm.$valid).toBeTruthy();
 		expect(element.find('[type="email"]')).toHaveClass('ng-valid');
@@ -92,7 +78,7 @@ describe('Form: Login', function () {
 		expect(element.find('[type="email"]')).toHaveClass('ng-invalid');
 
 		// Missing password field
-		scope.login.email = mockLogin.email;
+		scope.login.email = LoginData.email;
 		scope.login.password = '';
 		scope.$apply();
 		expect(scope.loginForm.$valid).toBeFalsy();
@@ -104,7 +90,7 @@ describe('Form: Login', function () {
 
 	it('Form valid and invalid submit works as expected', function(){
 		// set up form with valid credentials
-		scope.login = mockLogin;
+		scope.login = LoginData;
 		scope.$apply();
 
 		// prepare invalid response
@@ -113,14 +99,14 @@ describe('Form: Login', function () {
 			'username': scope.login.email,
 			'password': scope.login.password,
 			'remember_me': scope.login.remember
-		})).respond(400, mockInvalidResponse);
+		})).respond(400, AuthInvalid.res);
 
 		// mock submit form
 		scope.handlers.submit();
 		$httpBackend.flush(1);
 
 		// expect error message
-		expect(scope.alert.text).toBe(mockInvalidResponse.error_description);
+		expect(scope.alert.text).toBe(AuthInvalid.res.error_description);
 		expect(scope.alert.type).toBe('danger');
 
 		// prepare valid response
@@ -129,7 +115,7 @@ describe('Form: Login', function () {
 			'username': scope.login.email,
 			'password': scope.login.password,
 			'remember_me': scope.login.remember
-		})).respond(200, mockValidResponse);
+		})).respond(200, AuthValid.res);
 
 		// mock submit form
 		scope.handlers.submit();

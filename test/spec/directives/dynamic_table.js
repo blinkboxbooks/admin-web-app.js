@@ -6,8 +6,8 @@ describe('Directive: Dynamic Table', function () {
 	beforeEach(function(){
 		module('adminPanelApp');
 		module('templates');
-		inject(function(_$httpBackend_){
-			_$httpBackend_.expectGET('/api/auth/users').respond(401);
+		inject(function(_$httpBackend_, _ROUTES_){
+			_$httpBackend_.expectGET(_ROUTES_.USER).respond(401);
 		});
 	});
 

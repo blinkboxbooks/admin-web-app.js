@@ -39,7 +39,7 @@ angular.module('adminPanelApp')
 						$scope.alert.type = 'danger';
 						$scope.alert.text = response.data.error_description || 'Unknown error.';
 					},
-					success: function(response){
+					success: function(){
 						$scope.loginForm.submitted = false;
 						$scope.alert.type = 'success';
 						$scope.alert.text = 'Login successful';

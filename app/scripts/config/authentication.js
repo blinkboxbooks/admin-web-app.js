@@ -31,7 +31,7 @@ angular.module('adminPanelApp')
 			};
 		}]);
 	})
-	.run(function ($rootScope, $location, User, EVENTS, PATHS) {
+	.run(function ($rootScope, $location, User) {
 		// try and get the current user
 		User.refresh();
 	});

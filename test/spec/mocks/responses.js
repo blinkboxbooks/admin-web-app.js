@@ -28,15 +28,20 @@ angular.module('mockedResponses', [])
 			grant_type: 'password'
 		},
 		res: {
-			error: "invalid_grant",
-			error_description: "The username and/or password is incorrect."
+			error: 'invalid_grant',
+			error_description: 'The username and/or password is incorrect.'
 		}
 	})
 	.value('UserData', {
 		user_allow_marketing_communications: true,
-		user_first_name: "FN",
-		user_id: "urn:blinkbox:zuul:user:xxx",
-		user_last_name: "LN",
-		user_uri: "https://auth.blinkboxbooks.com.internal:8080/users/xxx",
-		user_username: "xxx@xxx.com"
+		user_first_name: 'FN',
+		user_id: 'urn:blinkbox:zuul:user:xxx',
+		user_last_name: 'LN',
+		user_uri: 'https://auth.blinkboxbooks.com.internal:8080/users/xxx',
+		user_username: 'xxx@xxx.com'
+	})
+	.value('LoginData', {
+		email: 'test@test.com',
+		password: '123123',
+		remember: true
 	});

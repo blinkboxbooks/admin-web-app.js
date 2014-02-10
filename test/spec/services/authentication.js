@@ -1,15 +1,14 @@
 'use strict';
 
 describe('Service: Authentication', function () {
-	var $httpBackend;
-
 	// load module
 	beforeEach(function(){
 		module('adminPanelApp', 'templates', 'mockedResponses');
-		inject(function(_$httpBackend_){
+		inject(function(_$httpBackend_, _ROUTES_){
 			$httpBackend = _$httpBackend_;
+			ROUTES = _ROUTES_;
 
-			$httpBackend.expectGET('/api/auth/users').respond(401);
+			$httpBackend.expectGET(_ROUTES_.USER).respond(401);
 			$httpBackend.flush();
 		});
 	});
@@ -18,9 +17,8 @@ describe('Service: Authentication', function () {
 		AuthValid, AuthInvalid;
 
 	// Load the service to test
-	beforeEach(inject(function(_Authentication_, _User_, _ROUTES_, _AuthValid_, _AuthInvalid_){
+	beforeEach(inject(function(_Authentication_, _User_, _AuthValid_, _AuthInvalid_){
 		Authentication = _Authentication_;
-		ROUTES  = _ROUTES_;
 		User = _User_;
 		AuthValid = _AuthValid_;
 		AuthInvalid = _AuthInvalid_;
