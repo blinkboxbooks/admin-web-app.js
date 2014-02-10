@@ -5,8 +5,7 @@ describe('Service: Authentication', function () {
 
 	// load module
 	beforeEach(function(){
-		module('adminPanelApp');
-		module('templates');
+		module('adminPanelApp', 'templates', 'mockedResponses');
 		inject(function(_$httpBackend_){
 			$httpBackend = _$httpBackend_;
 
@@ -16,43 +15,15 @@ describe('Service: Authentication', function () {
 	});
 
 	var Authentication, User, $httpBackend, ROUTES,
-		valid = {
-			req: {
-				username: 'aaa@bbb.com',
-				password: 123123,
-				remember_me: false,
-				grant_type: 'password'
-			},
-			res: {
-				access_token: 'aaa.bbb-aaa-bbb-ccc',
-				expires_in: 1800,
-				refresh_token: 'abcabc',
-				token_type: 'bearer',
-				user_first_name: 'FN',
-				user_id: 'urn:blinkbox:zuul:user:xxx',
-				user_last_name: 'LN',
-				user_uri: 'https://auth.blinkboxbooks.com.internal:8080/users/xxx',
-				user_username: 'aaa@bbb.com'
-			}
-		},
-		invalid = {
-			req: {
-				username: 'invalid@aaa.com',
-				password: 123123,
-				remember_me: false,
-				grant_type: 'password'
-			},
-			res: {
-				error: "invalid_grant",
-				error_description: "The username and/or password is incorrect."
-			}
-		};
+		AuthValid, AuthInvalid;
 
 	// Load the service to test
-	beforeEach(inject(function(_Authentication_, _User_, _ROUTES_){
+	beforeEach(inject(function(_Authentication_, _User_, _ROUTES_, _AuthValid_, _AuthInvalid_){
 		Authentication = _Authentication_;
 		ROUTES  = _ROUTES_;
 		User = _User_;
+		AuthValid = _AuthValid_;
+		AuthInvalid = _AuthInvalid_;
 	}));
 
 	it('Authentication should be injected.', function () {
@@ -61,10 +32,10 @@ describe('Service: Authentication', function () {
 
 	it('User attempts login with valid credentials.', function () {
 		// prepare http response for login attempt.
-		$httpBackend.expectPOST(ROUTES.AUTHENTICATION, $.param(valid.req)).respond(200, valid.res);
+		$httpBackend.expectPOST(ROUTES.AUTHENTICATION, $.param(AuthValid.req)).respond(200, AuthValid.res);
 
 		// perform login
-		Authentication.login(valid.req);
+		Authentication.login(AuthValid.req);
 		expect(User.get()).toBeNull();
 
 		// respond to login
@@ -73,19 +44,19 @@ describe('Service: Authentication', function () {
 		// we should have user data
 		var user = User.get();
 		expect(user).not.toBeNull();
-		expect(user.first_name).toEqual(valid.res.user_first_name);
-		expect(user.last_name).toEqual(valid.res.user_last_name);
-		expect(user.id).toEqual(valid.res.user_id);
-		expect(user.username).toEqual(valid.res.user_username);
-		expect(user.first_name).toEqual(valid.res.user_first_name);
+		expect(user.first_name).toEqual(AuthValid.res.user_first_name);
+		expect(user.last_name).toEqual(AuthValid.res.user_last_name);
+		expect(user.id).toEqual(AuthValid.res.user_id);
+		expect(user.username).toEqual(AuthValid.res.user_username);
+		expect(user.first_name).toEqual(AuthValid.res.user_first_name);
 	});
 
 	it('User attempts login with invalid credentials.', function () {
 		// prepare http response for login attempt.
-		$httpBackend.expectPOST(ROUTES.AUTHENTICATION, $.param(invalid.req)).respond(400);
+		$httpBackend.expectPOST(ROUTES.AUTHENTICATION, $.param(AuthInvalid.req)).respond(400, AuthInvalid.res);
 
 		// perform login
-		Authentication.login(invalid.req);
+		Authentication.login(AuthInvalid.req);
 		expect(User.get()).toBeNull();
 
 		// respond to login
@@ -100,7 +71,7 @@ describe('Service: Authentication', function () {
 		$httpBackend.expectGET(ROUTES.SIGNOUT).respond(200);
 
 		// set user information to pretend someone is logged in
-		User.set(valid.res);
+		User.set(AuthValid.res);
 		expect(User.get()).not.toBeNull();
 
 		// perform signout request

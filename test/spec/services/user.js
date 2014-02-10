@@ -5,27 +5,20 @@ describe('Service: User', function () {
 
 	// load module
 	beforeEach(function(){
-		module('adminPanelApp');
-		module('templates');
+		module('adminPanelApp', 'templates', 'mockedResponses');
 		inject(function(_$httpBackend_){
 			$httpBackend = _$httpBackend_;
 
-			$httpBackend.expectGET('/api/auth/users').respond(200, mockUser);
+			$httpBackend.expectGET('/api/auth/users').respond(400);
 		});
 	});
 
-	var User, mockUser = {
-		user_allow_marketing_communications: true,
-		user_first_name: "FN",
-		user_id: "urn:blinkbox:zuul:user:xxx",
-		user_last_name: "LN",
-		user_uri: "https://auth.blinkboxbooks.com.internal:8080/users/xxx",
-		user_username: "xxx@xxx.com"
-	};
+	var User, UserData;
 
 	// Load the service to test
-	beforeEach(inject(function(_User_){
+	beforeEach(inject(function(_User_, _UserData_){
 		User = _User_;
+		UserData = _UserData_;
 	}));
 
 	it('Service should be injected.', function () {
@@ -40,25 +33,25 @@ describe('Service: User', function () {
 
 		var user = User.get();
 		expect(user).not.toBeNull();
-		expect(user.first_name).toEqual(mockUser.user_first_name);
-		expect(user.last_name).toEqual(mockUser.user_last_name);
-		expect(user.id).toEqual(mockUser.user_id);
-		expect(user.username).toEqual(mockUser.user_username);
-		expect(user.first_name).toEqual(mockUser.user_first_name);
+		expect(user.first_name).toEqual(UserData.user_first_name);
+		expect(user.last_name).toEqual(UserData.user_last_name);
+		expect(user.id).toEqual(UserData.user_id);
+		expect(user.username).toEqual(UserData.user_username);
+		expect(user.first_name).toEqual(UserData.user_first_name);
 	});
 
 	it('Set user', function(){
 		expect(User.get()).toBeNull();
 
 		// set method to mock object
-		User.set(mockUser);
+		User.set(UserData);
 		var user = User.get();
 		expect(user).not.toBeNull();
-		expect(user.first_name).toEqual(mockUser.user_first_name);
-		expect(user.last_name).toEqual(mockUser.user_last_name);
-		expect(user.id).toEqual(mockUser.user_id);
-		expect(user.username).toEqual(mockUser.user_username);
-		expect(user.first_name).toEqual(mockUser.user_first_name);
+		expect(user.first_name).toEqual(UserData.user_first_name);
+		expect(user.last_name).toEqual(UserData.user_last_name);
+		expect(user.id).toEqual(UserData.user_id);
+		expect(user.username).toEqual(UserData.user_username);
+		expect(user.first_name).toEqual(UserData.user_first_name);
 
 		// set to null
 		User.set();
