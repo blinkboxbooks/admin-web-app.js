@@ -42,7 +42,10 @@ describe('Service: Authentication', function () {
 				remember_me: false,
 				grant_type: 'password'
 			},
-			res: null
+			res: {
+				error: "invalid_grant",
+				error_description: "The username and/or password is incorrect."
+			}
 		};
 
 	// Load the service to test

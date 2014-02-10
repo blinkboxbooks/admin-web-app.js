@@ -34,7 +34,8 @@ module.exports = function(config) {
 
 		// generate js files from html templates
 		preprocessors: {
-			'app/views/templates/*.html': 'ng-html2js'
+			'app/views/templates/*.html': 'ng-html2js',
+			'app/scripts/**/*.js': 'coverage'
 		},
 
 		ngHtml2JsPreprocessor: {
@@ -46,6 +47,8 @@ module.exports = function(config) {
 			// setting this option will create only a single module that contains templates from all the files, so you can load them all with module('templates')
 			moduleName: 'templates'
 		},
+
+		reporters: ['progress', 'coverage'],
 
     // list of files / patterns to exclude
     exclude: [],
