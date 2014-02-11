@@ -1,5 +1,6 @@
 'use strict';
 
+// Create the main app module.
 angular.module('adminPanelApp', [
   'ngCookies',
   'ngResource',
@@ -8,6 +9,7 @@ angular.module('adminPanelApp', [
 	'Constants'
 ])
   .config(function ($routeProvider) {
+		// Define all the routes of the website.
     $routeProvider
 			.when('/', {
 				templateUrl: 'views/main.html',

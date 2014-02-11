@@ -20,6 +20,7 @@ angular.module('adminPanelApp')
 				};
 			},
 			link: function($scope){
+				// Function that handle various events (form submit, error/success responses)
 				$scope.handlers = {
 					submit: function(){
 						$scope.loginForm.submitted = true;

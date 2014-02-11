@@ -5,6 +5,7 @@ angular.module('adminPanelApp')
 
 		var user = null;
 
+		// Format the user data to be used within the app.
 		var _format = function(data){
 			return data ? {
 				first_name: data.user_first_name,
@@ -23,6 +24,7 @@ angular.module('adminPanelApp')
 				$rootScope.$broadcast(EVENTS.USER_UPDATED, user);
 			},
 			refresh: function() {
+				// Performs a request to update the user details.
 				return $http({
 					method: 'GET',
 					url: ROUTES.USER,

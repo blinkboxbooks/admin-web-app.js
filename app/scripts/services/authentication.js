@@ -13,6 +13,7 @@ angular.module('adminPanelApp')
 						'X-Requested-With': 'XMLHttpRequest'
 					}
 				}).then(function(response){
+					// On successful authentication, set the user data and go to the location specified by the redirectTo param (defaults to the home page).
 					User.set(response.data);
 
 					var param = $location.search();
@@ -24,10 +25,9 @@ angular.module('adminPanelApp')
 					method: 'GET',
 					url: ROUTES.SIGNOUT
 				}).then(function(){
-					// set user to undefined
+					// Set user to undefined, erasing all data. Then go to the login page.
 					User.set();
 
-					// go back to login page
 					$location.url(PATHS.LOGIN);
 				});
 			}
