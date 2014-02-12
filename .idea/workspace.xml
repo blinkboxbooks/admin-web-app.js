@@ -2,7 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7bf29323-493d-4615-bf1d-41576575fb0e" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/scripts/config/authentication.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/spec/services/authentication.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/scripts/config/config.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/scripts/config/events.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/scripts/config/paths.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/spec/mocks/responses.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/scripts/config/routes.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/scripts/services/user.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/spec/services/user.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.jshintrc" afterPath="$PROJECT_DIR$/.jshintrc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/.jshintrc" afterPath="$PROJECT_DIR$/test/.jshintrc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gruntfile.js" afterPath="$PROJECT_DIR$/Gruntfile.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/scripts/app.js" afterPath="$PROJECT_DIR$/app/scripts/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/scripts/services/authentication.js" afterPath="$PROJECT_DIR$/app/scripts/services/authentication.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/spec/directives/dynamic_table.js" afterPath="$PROJECT_DIR$/test/spec/directives/dynamic_table.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/partials/header.html" afterPath="$PROJECT_DIR$/app/views/partials/header.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/index.html" afterPath="$PROJECT_DIR$/app/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/karma.conf.js" afterPath="$PROJECT_DIR$/karma.conf.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/scripts/forms/login.js" afterPath="$PROJECT_DIR$/app/scripts/forms/login.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/spec/forms/login.js" afterPath="$PROJECT_DIR$/test/spec/forms/login.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/templates/login_form.html" afterPath="$PROJECT_DIR$/app/views/templates/login_form.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/spec/controllers/main.js" afterPath="$PROJECT_DIR$/test/spec/controllers/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/lib/template/html/css/style.css" afterPath="$PROJECT_DIR$/app/lib/template/html/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="admin-panel.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -13,6 +39,9 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/admin-panel$Karma.coverage" NAME="Karma Coverage Results" MODIFIED="1392034411066" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="KarmaJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
@@ -25,91 +54,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/index.html">
+      <file leaf-file-name="table-editable.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/lib/template/html/js/editable-table/table-editable.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="54" column="4" selection-start="2752" selection-end="2752" vertical-scroll-proportion="0.6124161" vertical-offset="445" max-vertical-offset="1095">
+            <state line="79" column="45" selection-start="3635" selection-end="3635" vertical-scroll-proportion="-13.615385" vertical-offset="831" max-vertical-offset="2130">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="login_form.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/templates/login_form.html">
+      <file leaf-file-name="dynamic_table.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/templates/dynamic_table.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="102" selection-start="906" selection-end="906" vertical-scroll-proportion="-8.125" vertical-offset="0" max-vertical-offset="540">
+            <state line="424" column="0" selection-start="10995" selection-end="10995" vertical-scroll-proportion="-15.0" vertical-offset="6000" max-vertical-offset="6450">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="login.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/scripts/forms/login.js">
+      <file leaf-file-name="dynamic_table.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/scripts/directives/dynamic_table.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="39" selection-start="566" selection-end="566" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="karma.conf.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/karma.conf.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="25" selection-start="1109" selection-end="1130" vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="1275">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.scss" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/styles/main.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="17" selection-start="171" selection-end="171" vertical-scroll-proportion="-2.142857" vertical-offset="0" max-vertical-offset="195">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_common.scss" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/styles/_common.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="1" selection-start="50" selection-end="50" vertical-scroll-proportion="-3.75" vertical-offset="0" max-vertical-offset="180">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="runner.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/runner.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="225">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="helpers.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/spec/helpers.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="41" selection-start="130" selection-end="130" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="210">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_util.scss" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/styles/_util.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="15" selection-start="242" selection-end="242" vertical-scroll-proportion="-11.25" vertical-offset="0" max-vertical-offset="375">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="login.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/spec/forms/login.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="75" column="0" selection-start="2656" selection-end="2656" vertical-scroll-proportion="0.0" vertical-offset="265" max-vertical-offset="1275">
+            <state line="8" column="20" selection-start="202" selection-end="202" vertical-scroll-proportion="0.1875" vertical-offset="0" max-vertical-offset="640">
               <folding />
             </state>
           </provider>
@@ -131,34 +97,53 @@
         <option value="$PROJECT_DIR$/component.json" />
         <option value="$PROJECT_DIR$/bower.json" />
         <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/app/views/partials/footer.html" />
         <option value="$PROJECT_DIR$/app/styles/_header.scss" />
         <option value="$PROJECT_DIR$/app/styles/_footer.scss" />
-        <option value="$PROJECT_DIR$/app/views/partials/header.html" />
         <option value="$PROJECT_DIR$/app/styles/main.scss" />
         <option value="$PROJECT_DIR$/app/views/templates/dinamic_table.html" />
-        <option value="$PROJECT_DIR$/app/views/templates/dynamic_table.html" />
         <option value="$PROJECT_DIR$/app/views/main.html" />
         <option value="$PROJECT_DIR$/app/scripts/directives/dynamic-table.js" />
-        <option value="$PROJECT_DIR$/test/spec/controllers/main.js" />
         <option value="$PROJECT_DIR$/test/spec/directives/dynamic-table.js" />
-        <option value="$PROJECT_DIR$/app/scripts/app.js" />
         <option value="$PROJECT_DIR$/app/views/login.html" />
-        <option value="$PROJECT_DIR$/app/scripts/services/authentication.js" />
-        <option value="$PROJECT_DIR$/.jshintrc" />
         <option value="$PROJECT_DIR$/app/scripts/controllers/main.js" />
         <option value="$PROJECT_DIR$/app/scripts/controllers/login.js" />
-        <option value="$PROJECT_DIR$/karma.conf.js" />
-        <option value="$PROJECT_DIR$/Gruntfile.js" />
         <option value="$PROJECT_DIR$/app/styles/_common.scss" />
-        <option value="$PROJECT_DIR$/app/views/templates/login_form.html" />
         <option value="$PROJECT_DIR$/app/styles/_util.scss" />
-        <option value="$PROJECT_DIR$/app/scripts/forms/login.js" />
-        <option value="$PROJECT_DIR$/test/spec/directives/dynamic_table.js" />
+        <option value="$PROJECT_DIR$/app/lib/template/html/css/style.css" />
+        <option value="$PROJECT_DIR$/app/views/templates/login_form.html" />
+        <option value="$PROJECT_DIR$/app/scripts/config/routes.json" />
+        <option value="$PROJECT_DIR$/app/scripts/config/constants.js" />
+        <option value="$PROJECT_DIR$/app/scripts/config/paths.json" />
+        <option value="$PROJECT_DIR$/app/scripts/config/events.json" />
+        <option value="$PROJECT_DIR$/app/scripts/config/user.js" />
+        <option value="$PROJECT_DIR$/app/views/partials/header.html" />
         <option value="$PROJECT_DIR$/test/spec/helpers.js" />
+        <option value="$PROJECT_DIR$/karma.conf.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/test/spec/config/authentication_config.js" />
+        <option value="$PROJECT_DIR$/test/spec/config/authentication.js" />
+        <option value="$PROJECT_DIR$/.jshintrc" />
+        <option value="$PROJECT_DIR$/.jshintignore" />
+        <option value="$PROJECT_DIR$/test/spec/controllers/main.js" />
+        <option value="$PROJECT_DIR$/test/.jshintrc" />
+        <option value="$PROJECT_DIR$/test/spec/services/authentication.js" />
+        <option value="$PROJECT_DIR$/test/spec/mocks/responses.js" />
         <option value="$PROJECT_DIR$/test/spec/forms/login.js" />
+        <option value="$PROJECT_DIR$/test/spec/services/user.js" />
+        <option value="$PROJECT_DIR$/../../Integration/web-app/client-web-app/dist/index.html" />
+        <option value="$PROJECT_DIR$/app/scripts/app.js" />
+        <option value="$PROJECT_DIR$/app/scripts/services/user.js" />
+        <option value="$PROJECT_DIR$/app/scripts/services/authentication.js" />
+        <option value="$PROJECT_DIR$/app/scripts/forms/login.js" />
+        <option value="$PROJECT_DIR$/app/scripts/config/authentication.js" />
+        <option value="$PROJECT_DIR$/app/scripts/config/config.js" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/Gruntfile.js" />
+        <option value="$PROJECT_DIR$/test/spec/directives/dynamic_table.js" />
         <option value="$PROJECT_DIR$/app/index.html" />
+        <option value="$PROJECT_DIR$/app/views/templates/dynamic_table.html" />
+        <option value="$PROJECT_DIR$/app/scripts/directives/dynamic_table.js" />
       </list>
     </option>
   </component>
@@ -166,7 +151,7 @@
     <data>$PROJECT_DIR$/node_modules/karma</data>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="46" />
+    <option name="x" value="47" />
     <option name="y" value="22" />
     <option name="width" value="1873" />
     <option name="height" value="1058" />
@@ -182,7 +167,7 @@
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectReloadState">
-    <option name="STATE" value="1" />
+    <option name="STATE" value="2" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
@@ -197,7 +182,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -213,38 +197,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="admin-panel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin-panel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin-panel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin-panel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin-panel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="spec" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -302,72 +254,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin-panel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin-panel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="styles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin-panel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin-panel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin-panel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin-panel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="forms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="recentsLimit" value="5" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../web-app/server-web-app" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../web-app/client-web-app" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
     <property name="LayoutCode.rearrangeEntriesHTML" value="false" />
@@ -376,15 +271,12 @@
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
   </component>
-  <component name="RunManager" selected="Karma.Karma">
-    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
-      <option name="VMOptions" />
-      <option name="arguments" />
-      <option name="filePath" />
-      <option name="scope" value="ALL" />
-      <option name="testName" />
-      <method />
-    </configuration>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/scripts/config" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Node.js.Server">
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <option name="VMOptions" />
       <option name="arguments" />
@@ -395,15 +287,23 @@
       <option name="showConsoleOnStdOut" value="false" />
       <method />
     </configuration>
+    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
+      <option name="VMOptions" />
+      <option name="arguments" />
+      <option name="filePath" />
+      <option name="scope" value="ALL" />
+      <option name="testName" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
+      <envs />
+      <method />
+    </configuration>
     <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
       <setting name="configLocationType" value="CONFIG_FILE" />
       <setting name="settingsFile" value="" />
       <setting name="serverType" value="INTERNAL" />
       <setting name="preferredDebugBrowser" value="CHROME" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
-      <envs />
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
@@ -415,7 +315,9 @@
     </configuration>
     <configuration default="false" name="Karma" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="$PROJECT_DIR$/karma.conf.js">
       <envs />
+      <RunnerSettings RunnerId="KarmaCoverageProgramRunner" />
       <RunnerSettings RunnerId="KarmaJavaScriptTestRunnerRun" />
+      <ConfigurationWrapper RunnerId="KarmaCoverageProgramRunner" />
       <ConfigurationWrapper RunnerId="KarmaJavaScriptTestRunnerRun" />
       <method />
     </configuration>
@@ -440,27 +342,28 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="46" y="22" width="1873" height="1058" extended-state="6" />
-    <editor active="true" />
+    <frame x="47" y="22" width="1873" height="1058" extended-state="6" />
+    <editor active="false" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32919255" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2526998" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32919255" sideWeight="0.5002701" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32919255" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17531404" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25505188" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3084886" sideWeight="0.49972987" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="UnknownFeatures">
@@ -483,181 +386,9 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test/spec/controllers/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="136" selection-end="136" vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="375">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/spec/directives/dynamic_table.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="49" selection-start="868" selection-end="868" vertical-scroll-proportion="0.0" vertical-offset="405" max-vertical-offset="540">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="15" selection-start="1380" selection-end="1426" vertical-scroll-proportion="0.0" vertical-offset="630" max-vertical-offset="855">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/karma.conf.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="25" selection-start="1077" selection-end="1098" vertical-scroll-proportion="0.0" vertical-offset="570" max-vertical-offset="1275">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="8" max-vertical-offset="105" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Gruntfile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="145" column="53" selection-start="3629" selection-end="3629" vertical-scroll-proportion="0.0" vertical-offset="1827" max-vertical-offset="5865">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/styles/main.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="17" selection-start="171" selection-end="171" vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="195">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="84" selection-start="763" selection-end="763" vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="930">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.travis.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="620" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bower.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="2" selection-start="4" selection-end="13" vertical-scroll-proportion="0.12583892" vertical-offset="0" max-vertical-offset="596" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.bowerrc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="620" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="214" column="29" selection-start="10083" selection-end="10083" vertical-scroll-proportion="-10.307693" vertical-offset="2942" max-vertical-offset="6495" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="620" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="13" selection-start="13" selection-end="13" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="620" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/partials/footer.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="33" selection-start="33" selection-end="33" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="596" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/styles/_header.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="0" selection-end="33" vertical-scroll-proportion="-3.125" vertical-offset="0" max-vertical-offset="165" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/styles/_footer.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="7" selection-start="29" selection-end="29" vertical-scroll-proportion="-1.875" vertical-offset="0" max-vertical-offset="165" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/partials/header.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="24" selection-start="72" selection-end="72" vertical-scroll-proportion="0.025167786" vertical-offset="0" max-vertical-offset="596" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/lib/template/html/js/dynamic_table/dynamic_table_init.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1035">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/lib/template/html/dynamic_table.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="412" column="25" selection-start="17243" selection-end="36816" vertical-scroll-proportion="0.0" vertical-offset="6180" max-vertical-offset="23595">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="15" selection-start="15" selection-end="15" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="598" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/templates/dynamic_table.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="7" selection-start="7" selection-end="7" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="598">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="15" selection-start="1380" selection-end="1426" vertical-scroll-proportion="0.0" vertical-offset="630" max-vertical-offset="855">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/spec/controllers/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="136" selection-end="136" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="375">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/lib/template/html/buttons.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="25" selection-start="602" selection-end="607" vertical-scroll-proportion="-11.25" vertical-offset="0" max-vertical-offset="15555">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/lib/template/html/css/table-responsive.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1485">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/lib/template/html/css/style-responsive.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4275">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/lib/template/html/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1422" column="6" selection-start="29355" selection-end="29361" vertical-scroll-proportion="0.3327616" vertical-offset="21136" max-vertical-offset="83190">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/lib/template/html/css/bootstrap-reset.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-3.9678457" vertical-offset="2468" max-vertical-offset="6015">
           <folding />
         </state>
       </provider>
@@ -669,27 +400,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="26" selection-start="333" selection-end="333" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="22" selection-start="210" selection-end="210" vertical-scroll-proportion="-5.0" vertical-offset="0" max-vertical-offset="285">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/services/authentication.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="26" selection-start="58" selection-end="72" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="360">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/bower_components/angular-scenario/angular-scenario.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="30670" column="23" selection-start="1007002" selection-end="1007016" vertical-scroll-proportion="0.0" vertical-offset="461363" max-vertical-offset="488055">
@@ -697,9 +407,210 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/dist/views/templates/login_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="607">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/styles/_common.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="1" selection-start="50" selection-end="50" vertical-scroll-proportion="-3.75" vertical-offset="0" max-vertical-offset="180" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/runner.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="622" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/styles/_util.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="15" selection-start="242" selection-end="242" vertical-scroll-proportion="-11.25" vertical-offset="0" max-vertical-offset="375">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/styles/main.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="17" selection-start="171" selection-end="171" vertical-scroll-proportion="-4.375" vertical-offset="0" max-vertical-offset="195" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/bower_components/sass-bootstrap/lib/_alerts.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1095" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/lib/template/html/css/bootstrap-reset.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="349" column="1" selection-start="5940" selection-end="5940" vertical-scroll-proportion="0.0" vertical-offset="5029" max-vertical-offset="6015">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/lib/template/html/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4818" column="1" selection-start="96791" selection-end="96791" vertical-scroll-proportion="0.0" vertical-offset="72068" max-vertical-offset="83190">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="22" selection-start="210" selection-end="210" vertical-scroll-proportion="-5.0" vertical-offset="0" max-vertical-offset="285" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/templates/login_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="51" selection-start="1515" selection-end="1538" vertical-scroll-proportion="-16.875" vertical-offset="45" max-vertical-offset="585">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="15" selection-start="15" selection-end="15" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="598" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/partials/header.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="5" selection-start="48" selection-end="99" vertical-scroll-proportion="-0.625" vertical-offset="0" max-vertical-offset="225" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coverage/coverage-Chrome 32.0.1700 (Mac OS X 10.9.1)-20140210_094747.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="607">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/karma.conf.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="47" column="6" selection-start="1513" selection-end="1513" vertical-scroll-proportion="-20.192308" vertical-offset="165" max-vertical-offset="1275">
+          <folding>
+            <marker date="1392199045000" expanded="true" signature="-1:-1" placeholder="{&quot;app/views/templates/*.html&quot;: 'ng-html2js'...}" />
+            <marker date="1392199045000" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.bowerrc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="0" selection-start="44" selection-end="44" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="135">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="0" selection-start="56" selection-end="56" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="165">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="15" selection-start="1380" selection-end="1426" vertical-scroll-proportion="1.057047" vertical-offset="0" max-vertical-offset="855">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/.jshintrc">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="14" selection-start="401" selection-end="401" vertical-scroll-proportion="-13.75" vertical-offset="0" max-vertical-offset="465">
+        <state line="5" column="20" selection-start="94" selection-end="94" vertical-scroll-proportion="-3.125" vertical-offset="0" max-vertical-offset="465">
+          <folding>
+            <marker date="1392199045000" expanded="true" signature="-1:-1" placeholder="{&quot;node&quot;: true...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.jshintignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="31" selection-start="31" selection-end="31" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="620">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/spec/helpers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="0" selection-start="131" selection-end="131" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="210">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/.jshintrc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="14" selection-start="638" selection-end="638" vertical-scroll-proportion="0.77516776" vertical-offset="33" max-vertical-offset="645">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/spec/controllers/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="44" selection-start="195" selection-end="195" vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="465">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/spec/services/user.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="56" selection-start="228" selection-end="228" vertical-scroll-proportion="0.19354838" vertical-offset="0" max-vertical-offset="990">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/spec/forms/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="57" selection-start="134" selection-end="149" vertical-scroll-proportion="0.098846786" vertical-offset="30" max-vertical-offset="2040">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../Integration/web-app/client-web-app/dist/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="50" column="10" selection-start="2260" selection-end="2260" vertical-scroll-proportion="0.6174957" vertical-offset="390" max-vertical-offset="2115">
+          <folding>
+            <marker date="1392116889000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1392116889000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1392116889000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1392116889000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1392116889000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1392116889000" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/spec/services/authentication.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="79" column="19" selection-start="2375" selection-end="2378" vertical-scroll-proportion="0.0" vertical-offset="713" max-vertical-offset="1320">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="30" selection-start="45" selection-end="45" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="465">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/services/user.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="46" selection-start="619" selection-end="619" vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="750">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/services/authentication.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="21" selection-start="899" selection-end="899" vertical-scroll-proportion="0.0" vertical-offset="18" max-vertical-offset="615">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/forms/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="74" selection-start="501" selection-end="501" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="855">
           <folding />
         </state>
       </provider>
@@ -718,100 +629,116 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/directives/dynamic_table.js">
+    <entry file="file://$PROJECT_DIR$/app/scripts/config/config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="20" selection-start="116" selection-end="116" vertical-scroll-proportion="0.12096774" vertical-offset="0" max-vertical-offset="620">
+        <state line="22" column="22" selection-start="620" selection-end="620" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="450">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/config/constants.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="25" selection-start="16" selection-end="25" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/config/authentication.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="0" selection-start="564" selection-end="564" vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="615">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="0" selection-start="788" selection-end="788" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="660">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Gruntfile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="270" column="23" selection-start="6811" selection-end="6811" vertical-scroll-proportion="-17.423077" vertical-offset="3597" max-vertical-offset="5880">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dist/views/templates/login_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="607">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/styles/main.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="17" selection-start="171" selection-end="171" vertical-scroll-proportion="-2.142857" vertical-offset="0" max-vertical-offset="195">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/styles/_common.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="1" selection-start="50" selection-end="50" vertical-scroll-proportion="-3.75" vertical-offset="0" max-vertical-offset="180">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/karma.conf.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="25" selection-start="1109" selection-end="1130" vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="1275">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/templates/login_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="102" selection-start="906" selection-end="906" vertical-scroll-proportion="-8.125" vertical-offset="0" max-vertical-offset="540">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/forms/login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="39" selection-start="566" selection-end="566" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/runner.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="622">
+        <state line="52" column="30" selection-start="1396" selection-end="1396" vertical-scroll-proportion="0.0" vertical-offset="345" max-vertical-offset="6120">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/spec/directives/dynamic_table.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="9" selection-start="0" selection-end="14" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540">
+        <state line="44" column="55" selection-start="1338" selection-end="1338" vertical-scroll-proportion="0.0" vertical-offset="155" max-vertical-offset="795">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/styles/_util.scss">
+    <entry file="file://$PROJECT_DIR$/app/lib/template/html/js/flot-chart/flot.chart.init.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="15" selection-start="242" selection-end="242" vertical-scroll-proportion="-11.25" vertical-offset="0" max-vertical-offset="375">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6840">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/spec/helpers.js">
+    <entry file="file://$PROJECT_DIR$/app/lib/template/html/basic_table.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="41" selection-start="130" selection-end="130" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="210">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="14970">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/spec/forms/login.js">
+    <entry file="file://$PROJECT_DIR$/app/lib/template/html/c3_chart.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="0" selection-start="2656" selection-end="2656" vertical-scroll-proportion="0.0" vertical-offset="265" max-vertical-offset="1275">
+        <state line="744" column="23" selection-start="29819" selection-end="29826" vertical-scroll-proportion="-18.875" vertical-offset="10707" max-vertical-offset="11310">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/lib/template/html/js/scripts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5610">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/lib/template/html/editable_table.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="426" column="110" selection-start="18250" selection-end="18270" vertical-scroll-proportion="-3.84" vertical-offset="6198" max-vertical-offset="14550">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="4" selection-start="2752" selection-end="2752" vertical-scroll-proportion="0.6124161" vertical-offset="445" max-vertical-offset="1095">
+        <state line="54" column="62" selection-start="2751" selection-end="2751" vertical-scroll-proportion="-11.291667" vertical-offset="539" max-vertical-offset="1155">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/lib/template/html/assets/data-tables/DT_bootstrap.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2250">
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/templates/dynamic_table.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="424" column="0" selection-start="10995" selection-end="10995" vertical-scroll-proportion="-15.0" vertical-offset="6000" max-vertical-offset="6450">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/lib/template/html/js/editable-table/table-editable.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="79" column="45" selection-start="3635" selection-end="3635" vertical-scroll-proportion="-13.615385" vertical-offset="831" max-vertical-offset="2130">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/directives/dynamic_table.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="20" selection-start="202" selection-end="202" vertical-scroll-proportion="0.1875" vertical-offset="0" max-vertical-offset="640">
           <folding />
         </state>
       </provider>

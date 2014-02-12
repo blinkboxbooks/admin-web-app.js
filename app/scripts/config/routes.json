@@ -1,0 +1,5 @@
+{
+	"AUTHENTICATION": "/api/auth/oauth2/token",
+	"SIGNOUT": "/api/local/signout",
+	"USER": "/api/auth/users"
+}
