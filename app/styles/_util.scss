@@ -8,3 +8,13 @@
   color: #000;
   padding: 0.2em 0;
 }
+
+.form-control{
+  &.ng-dirty.ng-invalid{
+    border-color: #B94A48 !important;
+  }
+}
+
+.error{
+  padding:5px; color:#B94A48 !important;
+}
