@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('adminPanelApp')
-	.directive('dynamicTable', function() {
+	.directive('dynamicTable', function($timeout) {
 		return {
 			restrict: 'E',
 			templateUrl: 'views/templates/dynamic_table.html',
@@ -13,8 +13,17 @@ angular.module('adminPanelApp')
 					'first_name': 'first_name',
 					'last_name': 'last_name',
 					'username': 'username'
-				}]
+				}];
+				$timeout(function(){},2000);
 			},
-			link: function(){}
+			link: function(scope, element){
+				// Enable the datatable plugin on your directive.
+				element.DataTable();
+				scope.$watchCollection('users', function(){
+					element.fnClearTable();
+					element.fnAddData([]);
+				});
+
+			}
 		};
 	});

@@ -1,19 +1,27 @@
-<table class="display table table-bordered table-striped" id="dynamic-table">
+<table class="display table table-bordered table-striped">
 	<thead>
 		<tr>
-			<th ng-repeat="label in labels" ng-bind="label"></th>
+			<th>Name</th>
+			<th>Position</th>
+			<th>Office</th>
+			<th>Age</th>
+			<th>Start date</th>
+			<th>Salary</th>
 		</tr>
 	</thead>
-	<tbody>
-		<tr ng-repeat="user in users">
-			<td>{{user.first_name}}</td>
-			<td>{{user.last_name}}</td>
-			<td>{{user.username}}</td>
-		</tr>
-		</tbody>
+
 	<tfoot>
 		<tr>
-			<th ng-repeat="label in labels" ng-bind="label"></th>
+			<th>Name</th>
+			<th>Position</th>
+			<th>Office</th>
+			<th>Age</th>
+			<th>Start date</th>
+			<th>Salary</th>
 		</tr>
 	</tfoot>
+
+	<tbody>
+
+	</tbody>
 </table>
