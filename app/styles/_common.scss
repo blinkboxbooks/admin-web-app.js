@@ -5,3 +5,10 @@
 #main{
   min-height:800px;
 }
+
+/* Update to datatables layout requires some styling changes */
+.dataTables_length {
+  float: left;
+  margin-top: -5px;
+  margin-bottom: 15px;
+}

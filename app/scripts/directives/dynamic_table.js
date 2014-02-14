@@ -14,12 +14,15 @@ angular.module('adminPanelApp')
 					'username': 'username'
 				}];
 				$scope.settings = {
-					'iDisplayLength': 15 // number of rows to display per page
+					// number of rows to display per page
+					'iDisplayLength': 15,
+					// controlling the generated table html
+					'sDom': '<\'row-fluid1\'<\'span6\'lp>\r>t<\'row-fluid\'<\'span6\'i>>'
 				};
 			},
 			link: function(scope, element){
 				// Enable the datatable plugin on your directive.
-				element.DataTable(scope.settings);
+				element.dataTable(scope.settings);
 
 				// sync table with scope collection
 				scope.$watchCollection('users', function(old, value){
