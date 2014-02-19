@@ -2,9 +2,14 @@
 
 describe('Directive: Dynamic Table', function () {
 
-	// load the controller's module
-	beforeEach(module('adminPanelApp'));
-	beforeEach(module('templates'));
+	// load module
+	beforeEach(function(){
+		module('adminPanelApp');
+		module('templates');
+		inject(function(_$httpBackend_, _ROUTES_){
+			_$httpBackend_.expectGET(_ROUTES_.USER).respond(401);
+		});
+	});
 
 	var element, scope;
 
