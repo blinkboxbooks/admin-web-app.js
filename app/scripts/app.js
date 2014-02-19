@@ -22,4 +22,7 @@ angular.module('adminPanelApp', [
 			.otherwise({
         redirectTo: '/'
       });
-  });
+  })
+	.run(function($rootScope){
+		$rootScope.version = '@@adminVersion';
+	});
