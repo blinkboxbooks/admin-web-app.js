@@ -41,9 +41,9 @@ angular.module('adminPanelApp')
 				// Enable the datatable plugin on your directive.
 				table.dataTable({
 					// number of rows to display per page
-					'iDisplayLength': 15,
+					'iDisplayLength': 30,
 					// the option to control the number of items per page
-					'aLengthMenu': [[15, 30, 60, 100, -1], [15, 30, 60, 100, 'All']],
+					'aLengthMenu': [[30, 60, 100, -1], [30, 60, 100, 'All']],
 					// controlling the generated table html
 					'sDom': '<\'row-fluid\'<\'span6\'l<\'pagination\'p>>\r>t<\'row-fluid pagination\'<\'span6\'i>>',
 					'fnDrawCallback': function(){
