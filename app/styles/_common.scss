@@ -12,13 +12,12 @@
 }
 
 /* Update to datatables layout requires some styling changes */
-.dataTables_length {
-  float: left;
-  margin-top: -5px;
-  margin-bottom: 15px;
-}
-
 .dataTables_wrapper{
+  .dataTables_length {
+    float: left;
+    margin: 0 0 15px 0;
+    padding: 15px 0;
+  }
   .pagination{display:none;}
   &.paged{
     .pagination{display:block;}
