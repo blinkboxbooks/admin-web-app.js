@@ -10,7 +10,9 @@ angular.module('adminPanelApp')
 			controller: function($scope){
 				$scope.users = [];
 				$scope.search = {
-					value: ''
+					value: '',
+					types: ['Email', 'Name'],
+					type: 'Email'
 				}
 				$scope.alert = {
 					type: '',
@@ -46,13 +48,37 @@ angular.module('adminPanelApp')
 
 				// perform search for users on submit
 				scope.submit = function(){
+					// reset alert message
+					scope.alert.type = '';
+					scope.alert.text = '';
+
+					// perform search
 					if(scope.search.value){
-						Admin.search({
-							username: scope.search.value
-						}).then(function(response){
+
+						// prepare parameters for API
+						var param = {};
+						switch(scope.search.type){
+							case 'Name':
+								var names = scope.search.value.split(/\s+/, 2);
+								if(names.length == 2){
+									param.first_name = names[0];
+									param.last_name = names[1];
+								} else {
+									scope.alert.type = 'danger';
+									scope.alert.text = 'You must search for the first name and the last name of the user (both are required and must be separated by a space)';
+									return;
+								}
+								break;
+							default:
+								param.username = scope.search.value
+						}
+
+						// perform call
+						Admin.search(param).then(function(response){
 							if(response.data.items){
 								scope.alert.type = 'success';
 
+								// populate table with results
 								scope.users = [];
 								for(var i = 0, l = response.data.items.length; i < l; i++){
 									var item = response.data.items[i],
@@ -68,7 +94,7 @@ angular.module('adminPanelApp')
 
 								if(!response.data.items.length){
 									scope.alert.type = 'info';
-									scope.alert.text = 'No users found with the username: ' + scope.search.value;
+									scope.alert.text = 'No users found for: ' + scope.search.value;
 								}
 							} else {
 								scope.alert.type = 'danger';
