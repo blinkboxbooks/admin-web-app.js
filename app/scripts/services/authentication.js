@@ -68,9 +68,7 @@ angular.module('adminPanelApp')
 						});
 						defer.reject(err);
 					});
-				}, function(err){
-					defer.reject(err);
-				});
+				}, defer.reject);
 				return defer.promise;
 			},
 			logout: function() {
