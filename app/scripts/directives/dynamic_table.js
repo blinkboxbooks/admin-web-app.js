@@ -11,7 +11,7 @@ angular.module('adminPanelApp')
 				$scope.users = [];
 				$scope.search = {
 					value: '',
-					types: ['Email', 'Name'],
+					types: ['Email', 'Name', 'ID'],
 					type: 'Email'
 				}
 				$scope.alert = {
@@ -58,6 +58,9 @@ angular.module('adminPanelApp')
 						// prepare parameters for API
 						var param = {};
 						switch(scope.search.type){
+							case 'ID':
+								param.user_id = scope.search.value;
+								break;
 							case 'Name':
 								var names = scope.search.value.split(/\s+/, 2);
 								if(names.length == 2){
