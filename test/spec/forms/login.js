@@ -16,16 +16,17 @@ describe('Form: Login', function () {
 	});
 
 	var element, scope, $httpBackend, ROUTES,
-		LoginData, AuthInvalid, AuthValid;
+		LoginData, AuthInvalid, AuthValid, Session;
 
 	// Store references to the element and it's scope
 	// so they are available to all tests in this describe block
-	beforeEach(inject(function($compile, $rootScope, _ROUTES_, _LoginData_, _AuthInvalid_, _AuthValid_){
+	beforeEach(inject(function($compile, $rootScope, _ROUTES_, _LoginData_, _AuthInvalid_, _AuthValid_, _Session_){
 		// Save a references
 		ROUTES = _ROUTES_;
 		LoginData = _LoginData_;
 		AuthInvalid = _AuthInvalid_;
 		AuthValid = _AuthValid_;
+		Session = _Session_;
 
 		// Compile a piece of HTML containing the directive
 		element = $compile('<login-form></login-form>')($rootScope);
@@ -103,7 +104,7 @@ describe('Form: Login', function () {
 
 		// mock submit form
 		scope.handlers.submit();
-		$httpBackend.flush(1);
+		$httpBackend.flush();
 
 		// expect error message
 		expect(scope.alert.text).toBe(AuthInvalid.res.error_description);
@@ -116,10 +117,11 @@ describe('Form: Login', function () {
 			'password': scope.login.password,
 			'remember_me': scope.login.remember
 		})).respond(200, AuthValid.res);
+		$httpBackend.expectGET(ROUTES.SESSION).respond(200, Session.valid);
 
 		// mock submit form
 		scope.handlers.submit();
-		$httpBackend.flush(1);
+		$httpBackend.flush();
 
 		// expect success message
 		expect(scope.alert.text).not.toBeUndefined();
