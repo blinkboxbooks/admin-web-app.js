@@ -6,7 +6,7 @@ describe('Service: Admin', function () {
 	// load module
 	beforeEach(function(){
 		module('adminPanelApp', 'templates', 'mockedResponses');
-		inject(function(_$httpBackend_, _ROUTES_){
+		inject(function(_$httpBackend_, _ROUTES_, _UserData_){
 			$httpBackend = _$httpBackend_;
 			ROUTES = _ROUTES_;
 			$httpBackend.expectGET(_ROUTES_.USER).respond(200, _UserData_);
@@ -21,7 +21,7 @@ describe('Service: Admin', function () {
 		AdminUsers = _AdminUsers_;
 	}));
 
-	rit('Service should be injected.', function () {
+	it('Service should be injected.', function () {
 		expect(Admin).not.toBeUndefined();
 	});
 
@@ -34,8 +34,8 @@ describe('Service: Admin', function () {
 
 		Admin.search({
 			username: mockUsername
-		}).then(function(data){
-				users = data;
+		}).then(function(response){
+				users = response.data;
 			});
 
 		expect(users).toBeNull();
@@ -46,14 +46,16 @@ describe('Service: Admin', function () {
 	});
 
 	it('Get users by first name', function(){
-		$httpBackend.expectGET(ROUTES.ADMIN_USERS + '?username=' + mockUsername).respond(200, AdminUsers);
+		var mockFirstName = 'first_name';
+
+		$httpBackend.expectGET(ROUTES.ADMIN_USERS + '?first_name=' + mockFirstName).respond(200, AdminUsers);
 
 		var users = null;
 
 		Admin.search({
-			first_name: 'first_name'
-		}).then(function(data){
-				users = data;
+			first_name: mockFirstName
+		}).then(function(response){
+				users = response.data;
 			});
 
 		expect(users).toBeNull();
@@ -64,14 +66,16 @@ describe('Service: Admin', function () {
 	});
 
 	it('Get users by last name', function(){
-		$httpBackend.expectGET(ROUTES.ADMIN_USERS + '?username=' + mockUsername).respond(200, AdminUsers);
+		var mockLastName = 'last_name';
+
+		$httpBackend.expectGET(ROUTES.ADMIN_USERS + '?last_name=' + mockLastName).respond(200, AdminUsers);
 
 		var users = null;
 
 		Admin.search({
-			last_name: 'last_name'
-		}).then(function(data){
-				users = data;
+			last_name: mockLastName
+		}).then(function(response){
+				users = response.data;
 			});
 
 		expect(users).toBeNull();
