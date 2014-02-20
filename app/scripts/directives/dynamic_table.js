@@ -38,7 +38,7 @@ angular.module('adminPanelApp')
 					var users = [];
 					for(var i = 0, l = value.length; i < l; i++){
 						var user = value[i];
-						users.push([user.first_name, user.last_name, user.username]);
+						users.push([user.id, user.first_name, user.last_name, user.username]);
 					}
 
 					table.fnAddData(users);
@@ -50,23 +50,23 @@ angular.module('adminPanelApp')
 						Admin.search({
 							username: scope.search.value
 						}).then(function(response){
-								console.log(response);
 							if(response.data.items){
 								scope.alert.type = 'success';
 
 								scope.users = [];
 								for(var i = 0, l = response.data.items.length; i < l; i++){
-									var item = response.data.items[i];
+									var item = response.data.items[i],
+										id = item.user_id.split(':');
+
 									scope.users.push({
+										id: id[id.length - 1],
 										first_name: item.user_first_name,
 										last_name: item.user_last_name,
 										username: item.user_username
 									});
 								}
 
-								if(response.data.items.length){
-									scope.alert.text = 'Found ' + response.data.items.length + 'user' + (response.data.items.length > 1 ? 's' : '');
-								} else {
+								if(!response.data.items.length){
 									scope.alert.type = 'info';
 									scope.alert.text = 'No users found with the username: ' + scope.search.value;
 								}
