@@ -43,7 +43,7 @@ angular.module('adminPanelApp')
 					// number of rows to display per page
 					'iDisplayLength': 15,
 					// the option to control the number of items per page
-					"aLengthMenu": [[15, 30, 60, 100, -1], [15, 30, 60, 100, "All"]],
+					'aLengthMenu': [[15, 30, 60, 100, -1], [15, 30, 60, 100, 'All']],
 					// controlling the generated table html
 					'sDom': '<\'row-fluid\'<\'span6\'l<\'pagination\'p>>\r>t<\'row-fluid pagination\'<\'span6\'i>>',
 					'fnDrawCallback': function(){

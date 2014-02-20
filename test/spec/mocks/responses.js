@@ -46,15 +46,15 @@ angular.module('mockedResponses', [])
 		remember: true
 	})
 	.value('AdminUsers', {
-		"items": [
+		'items': [
 			{
-				"user_id": "urn:blinkbox:zuul:user:1136",
-				"user_uri": "/users/1136",
-				"user_username": "vilmosi@blinkbox.com",
-				"user_first_name": "Vilmos",
-				"user_last_name": "Ioo",
-				"user_allow_marketing_communications": true,
-				"user_previous_usernames": []
+				'user_id': 'urn:blinkbox:zuul:user:1136',
+				'user_uri': '/users/1136',
+				'user_username': 'vilmosi@blinkbox.com',
+				'user_first_name': 'Vilmos',
+				'user_last_name': 'Ioo',
+				'user_allow_marketing_communications': true,
+				'user_previous_usernames': []
 			}
 		]
 	});

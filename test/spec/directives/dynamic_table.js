@@ -76,5 +76,5 @@ describe('Directive: Dynamic Table', function () {
 		scope.$apply();
 
 		expect(element.find('form input').val()).toBe(mockSearchValue);
-	})
+	});
 });
