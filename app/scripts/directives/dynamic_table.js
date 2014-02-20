@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('adminPanelApp')
-	.directive('dynamicTable', function($timeout) {
+	.directive('dynamicTable', function(Admin) {
 		return {
 			restrict: 'E',
 			templateUrl: 'views/templates/dynamic_table.html',
@@ -11,6 +11,10 @@ angular.module('adminPanelApp')
 				$scope.users = [];
 				$scope.search = {
 					value: ''
+				}
+				$scope.alert = {
+					type: '',
+					message: ''
 				}
 			},
 			link: function(scope, element){
@@ -40,6 +44,42 @@ angular.module('adminPanelApp')
 					table.fnAddData(users);
 				});
 
+				// perform search for users on submit
+				scope.submit = function(){
+					if(scope.search.value){
+						Admin.search({
+							username: scope.search.value
+						}).then(function(response){
+								console.log(response);
+							if(response.data.items){
+								scope.alert.type = 'success';
+
+								scope.users = [];
+								for(var i = 0, l = response.data.items.length; i < l; i++){
+									var item = response.data.items[i];
+									scope.users.push({
+										first_name: item.user_first_name,
+										last_name: item.user_last_name,
+										username: item.user_username
+									});
+								}
+
+								if(response.data.items.length){
+									scope.alert.text = 'Found ' + response.data.items.length + 'user' + (response.data.items.length > 1 ? 's' : '');
+								} else {
+									scope.alert.type = 'info';
+									scope.alert.text = 'No users found with the username: ' + scope.search.value;
+								}
+							} else {
+								scope.alert.type = 'danger';
+								scope.alert.text = 'Unknown error occurred. Please try again';
+							}
+						}, function(response){
+							scope.alert.type = 'danger';
+							scope.alert.text = response.data.error_description || 'Unknown error.';
+						});
+					}
+				}
 			}
 		};
 	});

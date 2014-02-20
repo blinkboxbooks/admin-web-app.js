@@ -30,8 +30,8 @@ describe('Directive: Dynamic Table', function () {
 
 	it('Replaces the element with the appropriate content', function() {
 		// Check that the compiled element contains the templated content
-		expect(element.find('#search')).toMatch('form');
-		expect(element.find('#search input')).toMatch('input');
+		expect(element.find('form')).toMatch('form');
+		expect(element.find('form input')).toMatch('input');
 		expect(element.find('table')).toMatch('table');
 		expect(element.find('thead')).toMatch('thead');
 		expect(element.find('tbody')).toMatch('tbody');
@@ -75,6 +75,6 @@ describe('Directive: Dynamic Table', function () {
 		scope.search.value = mockSearchValue;
 		scope.$apply();
 
-		expect(element.find('#search input').val()).toBe(mockSearchValue);
+		expect(element.find('form input').val()).toBe(mockSearchValue);
 	})
 });

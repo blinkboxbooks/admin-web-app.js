@@ -2,5 +2,5 @@
 	"AUTHENTICATION": "/api/auth/oauth2/token",
 	"SIGNOUT": "/api/local/signout",
 	"USER": "/api/auth/users",
-	"ADMIN_USERS": "/api/admin/users"
+	"ADMIN_USERS": "/api/auth/admin/users"
 }

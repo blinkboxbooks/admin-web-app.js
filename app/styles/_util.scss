@@ -18,3 +18,20 @@
 .error{
   padding:5px; color:#B94A48 !important;
 }
+
+.ng-enter, .ng-leave.ng-leave-active {
+  @include transition(0.2s linear all);
+  opacity: 0;
+}
+
+.ng-enter.ng-enter-active, .ng-leave {
+  opacity: 1;
+}
+
+.ng-hide-add, .ng-hide-remove {
+  @include transition(0.2s linear all);
+  display:block!important;
+}
+
+.alert.ng-hide-add, .alert.ng-hide-remove.ng-hide-remove-active { opacity:1; }
+.alert.ng-hide-add.ng-hide-add-active, .alert.ng-hide-remove { opacity:0; }
