@@ -124,14 +124,6 @@ module.exports = function (grunt) {
       server: '.tmp'
     },
 
-    // Automatically inject Bower components into the app
-    'bower-install': {
-      app: {
-        html: '<%= yeoman.app %>/index.html',
-        ignorePath: '<%= yeoman.app %>/'
-      }
-    },
-
     // Compiles Sass to CSS and generates necessary files if requested
     compass: {
       options: {
@@ -245,13 +237,6 @@ module.exports = function (grunt) {
       }
     },
 
-    // Replace Google CDN references
-    cdnify: {
-      dist: {
-        html: ['<%= yeoman.dist %>/*.html']
-      }
-    },
-
     // Copies remaining files to places other tasks can use
     copy: {
       dist: {
@@ -299,33 +284,24 @@ module.exports = function (grunt) {
         'svgmin'
       ]
     },
-
-    // By default, your `index.html`'s <!-- Usemin block --> will take care of
-    // minification. These next options are pre-configured if you do not wish
-    // to use the Usemin blocks.
-    // cssmin: {
-    //   dist: {
-    //     files: {
-    //       '<%= yeoman.dist %>/styles/main.css': [
-    //         '.tmp/styles/{,*/}*.css',
-    //         '<%= yeoman.app %>/styles/{,*/}*.css'
-    //       ]
-    //     }
-    //   }
-    // },
-    // uglify: {
-    //   dist: {
-    //     files: {
-    //       '<%= yeoman.dist %>/scripts/scripts.js': [
-    //         '<%= yeoman.dist %>/scripts/scripts.js'
-    //       ]
-    //     }
-    //   }
-    // },
-    // concat: {
-    //   dist: {}
-    // },
-
+		replace: {
+			dist: {
+				options: {
+					variables: {
+						'adminVersion': '<%= grunt.config.get("adminVersion") %>'
+					}
+				},
+				prefix: '@@',
+				files: [
+					{
+						expand: true,
+						flatten: true,
+						src: ['<%= yeoman.dist %>/scripts/**/*.js'],
+						dest: '<%= yeoman.dist %>/scripts'
+					}
+				]
+			}
+		},
     // Test settings
     karma: {
       unit: {
@@ -357,7 +333,6 @@ module.exports = function (grunt) {
     grunt.task.run([
       'clean:server',
 			'ngconstant',
-      'bower-install',
       'concurrent:server',
       'connect:livereload',
       'watch'
@@ -378,25 +353,37 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('build', [
-    'clean:dist',
+		'jshint',
+		'test',
+		'clean:dist',
 		'ngconstant',
-		'bower-install',
     'useminPrepare',
     'concurrent:dist',
     'concat',
     'ngmin',
     'copy:dist',
-    'cdnify',
     'cssmin',
     'uglify',
     'rev',
     'usemin',
-    'htmlmin'
+    'htmlmin',
+		'replace'
   ]);
 
-  grunt.registerTask('default', [
-    'newer:jshint',
-    'test',
-    'build'
-  ]);
+	grunt.registerTask('ci-build', [
+		'build'
+	]);
+
+	grunt.registerTask('ci-init', function() {
+		var pkg = grunt.file.readJSON('package.json');
+		var fullVersion = pkg.version+'-'+process.env.BUILD_NUMBER; // append Jenkins build number
+		var buildNumber = parseInt(process.env.BUILD_NUMBER, 10);   // use build number to avoid conflicting test ports when multiple jobs are running
+
+		grunt.config.set('adminVersion', fullVersion);
+		grunt.config.set('testPort', 7000+buildNumber);         // port used by Karma test framework
+		grunt.config.set('testRunnerPort', 8000+buildNumber);   // port used by Karma test runner which launches PhantomJS
+		grunt.config.set('testConnectPort', 9000+buildNumber);  // port used by the nodejs test server
+	});
+
+  grunt.registerTask('default', 'build');
 };
