@@ -8,38 +8,28 @@ angular.module('adminPanelApp')
 			scope: {},
 			replace: true,
 			controller: function($scope){
-				$scope.users = [{
-					'first_name': 'AAA',
-					'last_name': 'BBB',
-					'username': 'username'
-				}];
-
-				$timeout(function(){
-					for(var i=0; i< 100; i++){
-						$scope.users.push({
-							'first_name': 'AAA',
-							'last_name': 'BBB',
-							'username': 'username'
-						});
-					}
-				}, 7000);
+				$scope.users = [];
+				$scope.search = {
+					value: ''
+				}
 			},
 			link: function(scope, element){
+				var table = element.find('table');
 				// Enable the datatable plugin on your directive.
-				element.dataTable({
+				table.dataTable({
 					// number of rows to display per page
 					'iDisplayLength': 15,
 					// controlling the generated table html
 					'sDom': '<\'row-fluid pagination\'<\'span6\'lp>\r>t<\'row-fluid pagination\'<\'span6\'i>>',
 					'fnDrawCallback': function(){
 						// add paged class to table wrapper if we have more than one page
-						element.parent().toggleClass('paged', this.fnPagingInfo().iTotalPages > 1);
+						table.parent().toggleClass('paged', this.fnPagingInfo().iTotalPages > 1);
 					}
 				});
 
 				// sync table with scope collection
 				scope.$watchCollection('users', function(old, value){
-					element.fnClearTable();
+					table.fnClearTable();
 
 					var users = [];
 					for(var i = 0, l = value.length; i < l; i++){
@@ -47,7 +37,7 @@ angular.module('adminPanelApp')
 						users.push([user.first_name, user.last_name, user.username]);
 					}
 
-					element.fnAddData(users);
+					table.fnAddData(users);
 				});
 
 			}

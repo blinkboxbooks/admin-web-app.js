@@ -30,9 +30,12 @@ describe('Directive: Dynamic Table', function () {
 
 	it('Replaces the element with the appropriate content', function() {
 		// Check that the compiled element contains the templated content
-		expect(element.find('thead').length).toBe(1);
-		expect(element.find('tbody').length).toBe(1);
-		expect(element.find('tfoot').length).toBe(1);
+		expect(element.find('#search')).toMatch('form');
+		expect(element.find('#search input')).toMatch('input');
+		expect(element.find('table')).toMatch('table');
+		expect(element.find('thead')).toMatch('thead');
+		expect(element.find('tbody')).toMatch('tbody');
+		expect(element.find('tfoot')).toMatch('tfoot');
 	});
 
 	it('Should inject users into the dynamic table.', function(){
@@ -62,4 +65,16 @@ describe('Directive: Dynamic Table', function () {
 		expect(td[2].innerHTML).toBe(DataTableUsers.single.username);
 
 	});
+
+	it('should update search input based on scope value', function(){
+		expect(scope.search).toBeDefined();
+
+		expect(scope.search.value).toBeFalsy();
+
+		var mockSearchValue = 'search';
+		scope.search.value = mockSearchValue;
+		scope.$apply();
+
+		expect(element.find('#search input').val()).toBe(mockSearchValue);
+	})
 });
