@@ -8,16 +8,33 @@ angular.module('adminPanelApp')
 			scope: {},
 			replace: true,
 			controller: function($scope){
+				var emailRegEx = /[-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+\.[a-zA-Z]{2,4}/,
+					nameRegEx = /\w\s+\w/,
+					idRegEx = /\d+/;
+
 				$scope.users = [];
 				$scope.search = {
 					value: '',
-					types: ['Email', 'Name', 'ID'],
-					type: 'Email'
-				}
+					types: {
+						Email: 'email',
+						Name: 'name',
+						ID: 'id'
+					},
+					type: function(){
+						if($scope.search.value.match(emailRegEx)){
+							return $scope.search.types.Email;
+						} else if($scope.search.value.match(nameRegEx)){
+							return $scope.search.types.Name;
+						} else if($scope.search.value.match(idRegEx)){
+							return $scope.search.types.ID;
+						}
+						return null;
+					}
+				};
 				$scope.alert = {
 					type: '',
 					message: ''
-				}
+				};
 			},
 			link: function(scope, element){
 				var table = element.find('table');
@@ -57,13 +74,13 @@ angular.module('adminPanelApp')
 
 						// prepare parameters for API
 						var param = {};
-						switch(scope.search.type){
-							case 'ID':
+						switch(scope.search.type()){
+							case scope.search.types.ID:
 								param.user_id = scope.search.value;
 								break;
-							case 'Name':
+							case scope.search.types.Name:
 								var names = scope.search.value.split(/\s+/, 2);
-								if(names.length == 2){
+								if(names.length === 2){
 									param.first_name = names[0];
 									param.last_name = names[1];
 								} else {
@@ -73,7 +90,7 @@ angular.module('adminPanelApp')
 								}
 								break;
 							default:
-								param.username = scope.search.value
+								param.username = scope.search.value;
 						}
 
 						// perform call
@@ -108,7 +125,7 @@ angular.module('adminPanelApp')
 							scope.alert.text = response.data.error_description || 'Unknown error.';
 						});
 					}
-				}
+				};
 			}
 		};
 	});
