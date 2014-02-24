@@ -6,6 +6,7 @@ angular.module('adminPanelApp', [
   'ngResource',
   'ngSanitize',
   'ngRoute',
+	'ngAnimate',
 	'Constants'
 ])
   .config(function ($routeProvider) {
