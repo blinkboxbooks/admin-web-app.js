@@ -72,4 +72,20 @@ angular.module('mockedResponses', [])
 				'user_previous_usernames': []
 			}
 		]
+	})
+	.value('DataTableUsers', {
+		group: [
+			{
+				'id': '1',
+				'first_name': 'AAA',
+				'last_name': 'BBB',
+				'username': 'aaa@aaa.com'
+			}
+		],
+		single: {
+			'id': '2',
+			'first_name': 'AAA1',
+			'last_name': 'BBB1',
+			'username': 'aaa1@aaa.com'
+		}
 	});

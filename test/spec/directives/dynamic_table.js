@@ -4,7 +4,7 @@ describe('Directive: Dynamic Table', function () {
 
 	// load module
 	beforeEach(function(){
-		module('adminPanelApp', 'templates', 'mockData');
+		module('adminPanelApp', 'templates', 'mockedResponses');
 		inject(function(_$httpBackend_, _ROUTES_){
 			_$httpBackend_.expectGET(_ROUTES_.USER).respond(401);
 		});
@@ -47,9 +47,10 @@ describe('Directive: Dynamic Table', function () {
 		element.find('tbody tr').each(function(index, tr){
 			var td = $(tr).find('td');
 
-			expect(td[0].innerHTML).toBe(scope.users[index].first_name);
-			expect(td[1].innerHTML).toBe(scope.users[index].last_name);
-			expect(td[2].innerHTML).toBe(scope.users[index].username);
+			expect(td[0].innerHTML).toBe(scope.users[index].id);
+			expect(td[1].innerHTML).toBe(scope.users[index].first_name);
+			expect(td[2].innerHTML).toBe(scope.users[index].last_name);
+			expect(td[3].innerHTML).toBe(scope.users[index].username);
 
 		});
 
@@ -60,9 +61,10 @@ describe('Directive: Dynamic Table', function () {
 
 		// Expect new user to be in the table
 		var td = element.find('tbody tr').last().find('td');
-		expect(td[0].innerHTML).toBe(DataTableUsers.single.first_name);
-		expect(td[1].innerHTML).toBe(DataTableUsers.single.last_name);
-		expect(td[2].innerHTML).toBe(DataTableUsers.single.username);
+		expect(td[0].innerHTML).toBe(DataTableUsers.single.id);
+		expect(td[1].innerHTML).toBe(DataTableUsers.single.first_name);
+		expect(td[2].innerHTML).toBe(DataTableUsers.single.last_name);
+		expect(td[3].innerHTML).toBe(DataTableUsers.single.username);
 
 	});
 
