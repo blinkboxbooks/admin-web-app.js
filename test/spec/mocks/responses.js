@@ -60,4 +60,32 @@ angular.module('mockedResponses', [])
 			'token_elevation_expires_in': 588
 		}
 	})
-;
+	.value('AdminUsers', {
+		'items': [
+			{
+				'user_id': 'urn:blinkbox:zuul:user:1136',
+				'user_uri': '/users/1136',
+				'user_username': 'vilmosi@blinkbox.com',
+				'user_first_name': 'Vilmos',
+				'user_last_name': 'Ioo',
+				'user_allow_marketing_communications': true,
+				'user_previous_usernames': []
+			}
+		]
+	})
+	.value('DataTableUsers', {
+		group: [
+			{
+				'id': '1',
+				'first_name': 'AAA',
+				'last_name': 'BBB',
+				'username': 'aaa@aaa.com'
+			}
+		],
+		single: {
+			'id': '2',
+			'first_name': 'AAA1',
+			'last_name': 'BBB1',
+			'username': 'aaa1@aaa.com'
+		}
+	});
