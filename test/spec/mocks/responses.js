@@ -44,4 +44,20 @@ angular.module('mockedResponses', [])
 		email: 'test@test.com',
 		password: '123123',
 		remember: true
-	});
+	})
+	.value('Session', {
+		valid: {
+			'token_status': 'VALID',
+			'token_elevation': 'CRITICAL',
+			'token_elevation_expires_in': 588,
+			'user_roles': [
+				'csr'
+			]
+		},
+		invalid: {
+			'token_status': 'VALID',
+			'token_elevation': 'CRITICAL',
+			'token_elevation_expires_in': 588
+		}
+	})
+;
