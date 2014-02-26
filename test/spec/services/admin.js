@@ -85,4 +85,21 @@ describe('Service: Admin', function () {
 		expect(users).toEqual(AdminUsers);
 	});
 
+	it('should get user information', function(){
+		$httpBackend.expectGET(ROUTES.ADMIN_USERS + '/1').respond(200, AdminUsers.items[0]);
+
+		var user;
+
+		Admin.get(1).then(function(response){
+			user = response.data;
+		});
+
+		expect(user).toBeUndefined();
+
+		$httpBackend.flush();
+
+		expect(user).toBe(AdminUsers.items[0]);
+
+	});
+
 });
