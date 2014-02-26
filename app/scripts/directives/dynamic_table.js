@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('adminPanelApp')
-	.directive('dynamicTable', function(Admin) {
+	.directive('dynamicTable', function($rootScope, Admin, PATHS) {
 		return {
 			restrict: 'E',
 			templateUrl: 'views/templates/dynamic_table.html',
@@ -59,7 +59,7 @@ angular.module('adminPanelApp')
 					var users = [];
 					for(var i = 0, l = value.length; i < l; i++){
 						var user = value[i];
-						users.push([user.id, user.first_name, user.last_name, user.username]);
+						users.push([user.id, user.first_name, user.last_name, user.username, '<a href="'+$rootScope.PATHS.USER+'/'+user.id+'">Edit</a>']);
 					}
 
 					table.fnAddData(users);
