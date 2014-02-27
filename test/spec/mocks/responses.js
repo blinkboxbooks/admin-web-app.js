@@ -132,6 +132,12 @@ angular.module('mockedResponses', [])
 			{
 				'field': 'username',
 				'label': 'Username'
+			},
+			{
+				'field': function(d){
+					return '/' + d.id;
+				},
+				'label': 'Dinamicly generated'
 			}
 		]
 	});

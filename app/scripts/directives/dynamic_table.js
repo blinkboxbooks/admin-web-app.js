@@ -33,10 +33,12 @@ angular.module('adminPanelApp')
 						for(var i = 0, l = value.length; i < l; i++){
 							var item = value[i], row = [];
 							for(var j = 0, k = scope.config.structure.length; j < k; j++){
-								row.push(item[scope.config.structure[j].field]);
+								row.push(
+									$.isFunction(scope.config.structure[j].field) ?
+										scope.config.structure[j].field(item) :
+										item[scope.config.structure[j].field]
+								);
 							}
-							// todo add edit link
-							// <a href="'+$rootScope.PATHS.USER+'/'+user.id+'">Edit</a>
 							rows.push(row);
 						}
 

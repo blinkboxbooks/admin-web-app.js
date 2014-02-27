@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('adminPanelApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', function ($rootScope, $scope) {
 		// Prepare dynamic table
 		$scope.config = {
 			data: [],
@@ -21,6 +21,12 @@ angular.module('adminPanelApp')
 				{
 					'field': 'username',
 					'label': 'Username'
+				},
+				{
+					'field': function(d){
+						return '<a href="'+$rootScope.PATHS.USER+'/'+d.id+'">Edit</a>';
+					},
+					'label': 'Actions'
 				}
 			]
 		};

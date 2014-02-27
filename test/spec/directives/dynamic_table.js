@@ -70,8 +70,12 @@ describe('Directive: Dynamic Table', function () {
 				row = scope.config.data[index];
 
 			expect(td.length).toBe(scope.config.structure.length);
-			for(i = 0, l = scope.config.structure.length; i < l; i++){
-				expect(td[i].innerHTML).toBe(row[scope.config.structure[i].field]);
+			for(i = 0, l = td.length; i < l; i++){
+				expect(td[i].innerHTML).toBe(
+					$.isFunction(scope.config.structure[i].field) ?
+						scope.config.structure[i].field(row) :
+						row[scope.config.structure[i].field]
+				);
 			}
 		});
 
@@ -80,11 +84,15 @@ describe('Directive: Dynamic Table', function () {
 
 		expect(element.find('tbody tr').length).toBe(scope.config.data.length);
 		// Expect new user to be in the table
-		var td = element.find('tbody tr').last().find('td');
+		var td = element.find('tbody tr').last().find('td'), row, value;
 
 		expect(td.length).toBe(scope.config.structure.length);
 		for(i = 0, l = scope.config.structure.length; i < l; i++){
-			expect(td[i].innerHTML).toBe(DataTableUsers.single[scope.config.structure[i].field]);
+			row = scope.config.structure[i];
+			value = $.isFunction(row.field) ?
+				row.field(DataTableUsers.single) :
+				DataTableUsers.single[row.field];
+			expect(td[i].innerHTML).toBe(value);
 		}
 	});
 });
