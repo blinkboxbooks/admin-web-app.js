@@ -15,6 +15,61 @@ angular.module('adminPanelApp')
 			username: ''
 		};
 
+		// Configuration of the dynamic table
+		$scope.config = {
+			transactions: {
+				data: [ // todo remove static data
+					{
+						date: '2014',
+						isbn: '123456789',
+						title: 'The Book Thief',
+						price: '£4.00'
+					}
+				],
+				structure: [
+					{
+						'field': 'date',
+						'label': 'Date'
+					},
+					{
+						'field': 'isbn',
+						'label': 'ISBN'
+					},
+					{
+						'field': 'title',
+						'label': 'Book Title'
+					},
+					{
+						'field': 'price',
+						'label': 'Price'
+					}
+				]
+			},
+			email: {
+				data: [ // todo remove static data
+					{
+						date: '2014',
+						original_email: 'bbb@ccc.com',
+						new_email: 'aaa@bbb.com'
+					}
+				],
+				structure: [
+					{
+						'field': 'date',
+						'label': 'Date'
+					},
+					{
+						'field': 'original_email',
+						'label': 'Original Email'
+					},
+					{
+						'field': 'new_email',
+						'label': 'New Email'
+					}
+				]
+			}
+		}
+
 		// Get the user
 		Admin.get($routeParams.id).then(function(response){
 			var id = response.data.user_id.split(':');
