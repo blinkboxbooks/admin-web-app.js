@@ -20,7 +20,7 @@ angular.module('adminPanelApp', [
 				templateUrl: 'views/login.html',
 				controller: 'LoginCtrl'
 			})
-			.when('/user:id', {
+			.when('/user/:id', {
 				templateUrl: 'views/user.html',
 				controller: 'UserCtrl'
 			})
