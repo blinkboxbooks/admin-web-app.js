@@ -40,6 +40,7 @@ describe('Controller: UserCtrl', function () {
 		expect(scope.user.id).not.toBe(-1);
 		expect(scope.user.username).toBe(response.user_username);
 
+		// expect purchase history to be retrieved
 		expect(scope.config.transactions.data.length).toBe(PurchaseHistoryData.purchases.length);
 		$.each(scope.config.transactions.data, function(index, purchase){
 			expect(purchase).toEqual({
@@ -49,6 +50,17 @@ describe('Controller: UserCtrl', function () {
 				price: PurchaseHistoryData.purchases[index].payments.map(function(payment){
 					return '£' + payment.money.amount;
 				}).join(', ')
+			});
+		});
+
+		// expect previous email to be saved
+		expect(scope.config.email.data.length).toBe(response.user_previous_usernames.length);
+		$.each(scope.config.email.data, function(index, email){
+			var expected = response.user_previous_usernames[index];
+			expect(email).toEqual({
+				date: expected.user_username_changed_at,
+				original_email: expected.user_username,
+				new_email: index > 0 ? response.user_previous_usernames[index - 1].user_username : response.user_username
 			});
 		});
 	});
