@@ -3,5 +3,6 @@
 	"SIGNOUT": "/api/local/signout",
 	"USER": "/api/auth/users",
 	"SESSION": "/api/auth/session",
-	"ADMIN_USERS": "/api/auth/admin/users"
+	"ADMIN_USERS": "/api/auth/admin/users",
+	"PURCHASE_HISTORY": "/purchases"
 }

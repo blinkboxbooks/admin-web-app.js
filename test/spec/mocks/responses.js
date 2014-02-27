@@ -63,18 +63,18 @@ angular.module('mockedResponses', [])
 	.value('AdminUsers', {
 		'items': [
 			{
-				"user_id": "urn:blinkbox:zuul:user:814",
-				"user_uri": "https://auth.blinkboxbooks.com/users/814",
-				"user_username": "john.doe@example.org",
-				"user_first_name": "John",
-				"user_last_name": "Doe",
-				"user_allow_marketing_communications": true,
-				"user_previous_usernames": [{
-					"user_username": "john.doe.old@example.org",
-					"user_username_changed_at": "2014-01-22T09:34:42Z"
+				'user_id': 'urn:blinkbox:zuul:user:814',
+				'user_uri': 'https://auth.blinkboxbooks.com/users/814',
+				'user_username': 'john.doe@example.org',
+				'user_first_name': 'John',
+				'user_last_name': 'Doe',
+				'user_allow_marketing_communications': true,
+				'user_previous_usernames': [{
+					'user_username': 'john.doe.old@example.org',
+					'user_username_changed_at': '2014-01-22T09:34:42Z'
 				},{
-					"user_username": "john.doe.older@example.org",
-					"user_username_changed_at": "2013-03-03T16:23:41Z"
+					'user_username': 'john.doe.older@example.org',
+					'user_username_changed_at': '2013-03-03T16:23:41Z'
 				}]
 			}
 		]
@@ -138,6 +138,45 @@ angular.module('mockedResponses', [])
 					return '/' + d.id;
 				},
 				'label': 'Dinamicly generated'
+			}
+		]
+	})
+	.value('PurchaseHistoryData', {
+		'type': 'urn:blinkboxbooks:schema:admin:purchase-history',
+		'id': '123',
+		'count': '2',
+		'total': '10',
+		'clubcardPoints': '42',
+		'purchases': [
+			{
+				'type': 'urn:blinkboxbooks:schema:admin:purchase',
+				'id': '123',
+				'isbn': '9780141974132',
+				'price': {
+					'amount': '4.00',
+					'currency': 'GBP'
+				},
+				'clubcardPointsAward': '42',
+				'date': '2013-08-05T12:00:00+01:00',
+				'payments': [
+					{
+						'type': 'urn:blinkboxbooks:schema:admin:payment',
+						'name': 'braintree',
+						'money': {
+							'amount': '1.00',
+							'currency': 'GBP'
+						},
+						'receipt': 'ab123'
+					},
+					{
+						'type': 'urn:blinkboxbooks:schema:admin:payment',
+						'name': 'credit-balance',
+						'money': {
+							'amount': '3.00',
+							'currency': 'GBP'
+						}
+					}
+				]
 			}
 		]
 	});
