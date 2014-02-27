@@ -63,13 +63,19 @@ angular.module('mockedResponses', [])
 	.value('AdminUsers', {
 		'items': [
 			{
-				'user_id': 'urn:blinkbox:zuul:user:1136',
-				'user_uri': '/users/1136',
-				'user_username': 'vilmosi@blinkbox.com',
-				'user_first_name': 'Vilmos',
-				'user_last_name': 'Ioo',
-				'user_allow_marketing_communications': true,
-				'user_previous_usernames': []
+				"user_id": "urn:blinkbox:zuul:user:814",
+				"user_uri": "https://auth.blinkboxbooks.com/users/814",
+				"user_username": "john.doe@example.org",
+				"user_first_name": "John",
+				"user_last_name": "Doe",
+				"user_allow_marketing_communications": true,
+				"user_previous_usernames": [{
+					"user_username": "john.doe.old@example.org",
+					"user_username_changed_at": "2014-01-22T09:34:42Z"
+				},{
+					"user_username": "john.doe.older@example.org",
+					"user_username_changed_at": "2013-03-03T16:23:41Z"
+				}]
 			}
 		]
 	})

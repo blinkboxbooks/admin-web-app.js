@@ -13,7 +13,7 @@ angular.module('adminPanelApp')
 					// Error response, must detect the response error type and handle it if necessary.
 					function (response) {
 
-						if (response.status === 401) {
+						if (response.status === 401 || response.status === 403) {
 							// No token present (not logged in) so redirect to signin with a link back to current page.
 							var current = $location.url();
 							// Avoid circular reference
