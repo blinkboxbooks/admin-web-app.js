@@ -10,11 +10,12 @@ describe('Directive: Dynamic Table', function () {
 		});
 	});
 
-	var element, scope;
+	var element, scope, DataTableUsers;
 
 	// Store references to the element and it's scope
 	// so they are available to all tests in this describe block
-	beforeEach(inject(function($compile, $rootScope, _DataTableConfig_){
+	beforeEach(inject(function($compile, $rootScope, $timeout, _DataTableConfig_, _DataTableUsers_){
+		DataTableUsers = $.extend({}, _DataTableUsers_);
 		// set up directive config
 		$rootScope.config = $.extend({}, _DataTableConfig_);
 
@@ -23,6 +24,7 @@ describe('Directive: Dynamic Table', function () {
 
 		// Compile
 		$rootScope.$apply();
+		$timeout.flush();
 
 		// Save a reference to scope
 		scope = element.isolateScope();
@@ -56,47 +58,33 @@ describe('Directive: Dynamic Table', function () {
 		});
 	});
 
-	/* todo move this to main controller test
 	it('Should inject users into the dynamic table.', function(){
-
-		scope.users = DataTableUsers.group;
+		scope.config.data = DataTableUsers.group;
 		scope.$apply();
 
-		expect(element.find('tbody tr').length).toBe(scope.users.length);
+		expect(element.find('tbody tr').length).toBe(scope.config.data.length);
+
+		var i, l;
 		element.find('tbody tr').each(function(index, tr){
-			var td = $(tr).find('td');
+			var td = $(tr).find('td'),
+				row = scope.config.data[index];
 
-			expect(td[0].innerHTML).toBe(scope.users[index].id);
-			expect(td[1].innerHTML).toBe(scope.users[index].first_name);
-			expect(td[2].innerHTML).toBe(scope.users[index].last_name);
-			expect(td[3].innerHTML).toBe(scope.users[index].username);
-
+			expect(td.length).toBe(scope.config.structure.length);
+			for(i = 0, l = scope.config.structure.length; i < l; i++){
+				expect(td[i].innerHTML).toBe(row[scope.config.structure[i].field]);
+			}
 		});
 
-		scope.users.push(DataTableUsers.single);
+		scope.config.data.push(DataTableUsers.single);
 		scope.$apply();
 
-		expect(element.find('tbody tr').length).toBe(scope.users.length);
-
+		expect(element.find('tbody tr').length).toBe(scope.config.data.length);
 		// Expect new user to be in the table
 		var td = element.find('tbody tr').last().find('td');
-		expect(td[0].innerHTML).toBe(DataTableUsers.single.id);
-		expect(td[1].innerHTML).toBe(DataTableUsers.single.first_name);
-		expect(td[2].innerHTML).toBe(DataTableUsers.single.last_name);
-		expect(td[3].innerHTML).toBe(DataTableUsers.single.username);
 
+		expect(td.length).toBe(scope.config.structure.length);
+		for(i = 0, l = scope.config.structure.length; i < l; i++){
+			expect(td[i].innerHTML).toBe(DataTableUsers.single[scope.config.structure[i].field]);
+		}
 	});
-
-	it('should update search input based on scope value', function(){
-		expect(scope.search).toBeDefined();
-
-		expect(scope.search.value).toBeFalsy();
-
-		var mockSearchValue = 'search';
-		scope.search.value = mockSearchValue;
-		scope.$apply();
-
-		expect(element.find('form input').val()).toBe(mockSearchValue);
-	});
-	*/
 });
