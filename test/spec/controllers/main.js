@@ -22,4 +22,10 @@ describe('Controller: MainCtrl', function () {
     });
   }));
 
+	it('should contain data to be displayed', function(){
+		expect(scope.config).toBeDefined();
+		expect(scope.config.data).toBeDefined();
+		expect(scope.config.structure).toBeDefined();
+	});
+
 });

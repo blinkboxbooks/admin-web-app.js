@@ -1,18 +1,21 @@
 'use strict';
 
 angular.module('adminPanelApp')
-	.directive('dynamicTable', function($rootScope, Admin, PATHS) {
+	.directive('dynamicTable', function($timeout) {
 		return {
 			restrict: 'E',
 			templateUrl: 'views/templates/dynamic_table.html',
-			scope: {},
+			scope: {
+				'config': '='
+			},
 			replace: true,
 			controller: function($scope){
+				/*
 				var emailRegEx = /[-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+\.[a-zA-Z]{2,4}/,
 					nameRegEx = /\w\s+\w/,
 					idRegEx = /\d+/;
 
-				$scope.users = [];
+
 				$scope.search = {
 					value: '',
 					types: {
@@ -35,37 +38,48 @@ angular.module('adminPanelApp')
 					type: '',
 					message: ''
 				};
+				*/
 			},
 			link: function(scope, element){
-				var table = element.find('table');
-				// Enable the datatable plugin on your directive.
-				table.dataTable({
-					// number of rows to display per page
-					'iDisplayLength': 30,
-					// the option to control the number of items per page
-					'aLengthMenu': [[30, 60, 100, -1], [30, 60, 100, 'All']],
-					// controlling the generated table html
-					'sDom': '<\'row-fluid\'<\'span6\'l<\'pagination\'p>>\r>t<\'row-fluid pagination\'<\'span6\'i>>',
-					'fnDrawCallback': function(){
-						// add paged class to table wrapper if we have more than one page
-						table.parent().toggleClass('paged', this.fnPagingInfo().iTotalPages > 1);
-					}
-				});
+				// Timeout required to allow the scope to update the html structure
+				$timeout(function(){
+					// Enable the datatable plugin on your directive.
+					element.dataTable({
+						// number of rows to display per page
+						'iDisplayLength': 30,
+						// the option to control the number of items per page
+						'aLengthMenu': [[30, 60, 100, -1], [30, 60, 100, 'All']],
+						// controlling the generated table html
+						'sDom': '<\'row-fluid\'<\'span6\'l<\'pagination\'p>>\r>t<\'row-fluid pagination\'<\'span6\'i>>',
+						'fnDrawCallback': function(){
+							// add paged class to table wrapper if we have more than one page
+							element.parent().toggleClass('paged', this.fnPagingInfo().iTotalPages > 1);
+						}
+					});
 
-				// sync table with scope collection
-				scope.$watchCollection('users', function(old, value){
-					table.fnClearTable();
+					// sync table with scope collection
+					var dataWatch = scope.$watchCollection('config.data', function(old, value){
+						element.fnClearTable();
 
-					var users = [];
-					for(var i = 0, l = value.length; i < l; i++){
-						var user = value[i];
-						users.push([user.id, user.first_name, user.last_name, user.username, '<a href="'+$rootScope.PATHS.USER+'/'+user.id+'">Edit</a>']);
-					}
+						var rows = [];
+						for(var i = 0, l = value.length; i < l; i++){
+							var item = value[i], row = [];
+							for(var j = 0, k = scope.config.structure.length; j < k; j++){
+								row.push(item[scope.config.structure[i].field]);
+							}
+							// todo add edit link
+							// <a href="'+$rootScope.PATHS.USER+'/'+user.id+'">Edit</a>
+							rows.push(row);
+						}
 
-					table.fnAddData(users);
+						element.fnAddData(rows);
+					});
+
+					scope.$on('$destroy', dataWatch);
 				});
 
 				// perform search for users on submit
+				/*
 				scope.submit = function(){
 					// reset alert message
 					scope.alert.type = '';
@@ -128,6 +142,7 @@ angular.module('adminPanelApp')
 						});
 					}
 				};
+				*/
 			}
 		};
 	});

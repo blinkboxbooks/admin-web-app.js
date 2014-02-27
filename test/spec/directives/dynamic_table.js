@@ -10,16 +10,16 @@ describe('Directive: Dynamic Table', function () {
 		});
 	});
 
-	var element, scope, DataTableUsers;
+	var element, scope;
 
 	// Store references to the element and it's scope
 	// so they are available to all tests in this describe block
-	beforeEach(inject(function($compile, $rootScope, _DataTableUsers_){
-		// Save refereces
-		DataTableUsers = $.extend({}, _DataTableUsers_);
+	beforeEach(inject(function($compile, $rootScope, _DataTableConfig_){
+		// set up directive config
+		$rootScope.config = $.extend({}, _DataTableConfig_);
 
 		// Compile a piece of HTML containing the directive
-		element = $compile('<dynamic-table></dynamic-table>')($rootScope);
+		element = $compile('<dynamic-table config="config"></dynamic-table>')($rootScope);
 
 		// Compile
 		$rootScope.$apply();
@@ -28,16 +28,35 @@ describe('Directive: Dynamic Table', function () {
 		scope = element.isolateScope();
 	}));
 
-	it('Replaces the element with the appropriate content', function() {
+	it('should replace the element with the appropriate content', function() {
 		// Check that the compiled element contains the templated content
-		expect(element.find('form')).toMatch('form');
-		expect(element.find('form input')).toMatch('input');
-		expect(element.find('table')).toMatch('table');
+		expect(element).toMatch('table');
 		expect(element.find('thead')).toMatch('thead');
 		expect(element.find('tbody')).toMatch('tbody');
 		expect(element.find('tfoot')).toMatch('tfoot');
+
+		// Check scope binding
+		expect(scope.config).toBeDefined();
 	});
 
+	it('should create labels', function() {
+		// Check that the compiled element contains the templated content
+		var thead = element.find('thead tr');
+
+		expect(thead.length).toBe(1);
+
+		thead = thead.find('th');
+
+		// The number of columns should match the number of elements specified in structure
+		expect(thead.length).toBe(scope.config.structure.length);
+
+		// The labels should represent the structure
+		thead.each(function(index, th){
+			expect(th.innerHTML).toBe(scope.config.structure[index].label);
+		});
+	});
+
+	/* todo move this to main controller test
 	it('Should inject users into the dynamic table.', function(){
 
 		scope.users = DataTableUsers.group;
@@ -79,4 +98,5 @@ describe('Directive: Dynamic Table', function () {
 
 		expect(element.find('form input').val()).toBe(mockSearchValue);
 	});
+	*/
 });

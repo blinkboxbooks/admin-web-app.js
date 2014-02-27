@@ -86,6 +86,12 @@ angular.module('mockedResponses', [])
 				'first_name': 'AAA',
 				'last_name': 'BBB',
 				'username': 'aaa@aaa.com'
+			},
+			{
+				'id': '2',
+				'first_name': 'AAA',
+				'last_name': 'BBB',
+				'username': 'aaa@aaa.com'
 			}
 		],
 		single: {
@@ -94,4 +100,38 @@ angular.module('mockedResponses', [])
 			'last_name': 'BBB1',
 			'username': 'aaa1@aaa.com'
 		}
+	})
+	.value('DataTableConfig', {
+		data: [
+			{
+				'id': '1',
+				'first_name': 'AAA',
+				'last_name': 'BBB',
+				'username': 'aaa@aaa.com'
+			},
+			{
+				'id': '2',
+				'first_name': 'AAA',
+				'last_name': 'BBB',
+				'username': 'aaa@aaa.com'
+			}
+		],
+		structure: [
+			{
+				'field': 'id',
+				'label': 'ID'
+			},
+			{
+				'field': 'first_name',
+				'label': 'First Name'
+			},
+			{
+				'field': 'last_name',
+				'label': 'Last Name'
+			},
+			{
+				'field': 'username',
+				'label': 'Username'
+			}
+		]
 	});

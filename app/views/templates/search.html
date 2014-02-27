@@ -1,0 +1,14 @@
+<form id="searchForm" ng-submit="submit()">
+	<div class="input-group">
+		<input class="form-control" placeholder="Search..." ng-model="search.value">
+			<span class="input-group-btn">
+				<button class="btn btn-primary" type="button">
+					<span class="fa fa-search"></span>
+					Search
+				</button>
+			</span>
+	</div>
+</form>
+<div class="alert" ng-show="alert.text" ng-class="'alert-' + alert.type">
+	{{alert.text}}
+</div>
