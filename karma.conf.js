@@ -31,7 +31,6 @@ module.exports = function(config) {
 			'app/views/templates/*.html',
 
 			// tests
-      'test/mock/**/*.js',
       'test/spec/**/*.js'
     ],
 
