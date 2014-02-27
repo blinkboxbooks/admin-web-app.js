@@ -144,7 +144,7 @@ angular.module('mockedResponses', [])
 	.value('PurchaseHistoryData', {
 		'type': 'urn:blinkboxbooks:schema:admin:purchase-history',
 		'id': '123',
-		'count': '2',
+		'count': '1',
 		'total': '10',
 		'clubcardPoints': '42',
 		'purchases': [

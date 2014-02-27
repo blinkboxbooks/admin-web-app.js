@@ -5,13 +5,13 @@ angular.module('adminPanelApp')
 
 		return {
 			get: function(id) {
-				return $http({
+				return !!id ? $http({
 					method: 'GET',
 					url: ROUTES.ADMIN_USERS + '/' + id + ROUTES.PURCHASE_HISTORY,
 					headers: {
 						'X-Requested-With': 'XMLHttpRequest'
 					}
-				});
+				}) : null;
 			}
 		};
 

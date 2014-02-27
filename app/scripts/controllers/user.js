@@ -5,7 +5,7 @@
  * It requires an ID parameter.
  * */
 angular.module('adminPanelApp')
-	.controller('UserCtrl', function ($routeParams, $scope, Admin) {
+	.controller('UserCtrl', function ($routeParams, $scope, Admin, Purchase) {
 
 		// View model for the current user
 		$scope.user = {
@@ -18,14 +18,7 @@ angular.module('adminPanelApp')
 		// Configuration of the dynamic table
 		$scope.config = {
 			transactions: {
-				data: [ // todo remove static data
-					{
-						date: '2014',
-						isbn: '123456789',
-						title: 'The Book Thief',
-						price: '£4.00'
-					}
-				],
+				data: [],
 				structure: [
 					{
 						'field': 'date',
@@ -68,9 +61,9 @@ angular.module('adminPanelApp')
 					}
 				]
 			}
-		}
+		};
 
-		// Get the user
+		// Get the user's personal details
 		Admin.get($routeParams.id).then(function(response){
 			var id = response.data.user_id.split(':');
 			$scope.user.first_name = response.data.user_first_name;
@@ -78,4 +71,27 @@ angular.module('adminPanelApp')
 			$scope.user.last_name = response.data.user_last_name;
 			$scope.user.username = response.data.user_username;
 		});
+
+		// takes an array of payments and returns a formated string
+		var _formatPrice = function(payments){
+			return payments.map(function(payment){
+				return '£' + payment.money.amount;
+			}).join(', ');
+		};
+
+		// Get the users purchase history
+		Purchase.get($routeParams.id).then(function(response){
+			// format data to be used in the table
+			$scope.config.transactions.data = [];
+			for(var i = 0, l = response.data.count; i < l; i++){
+				var purchase = response.data.purchases[i];
+				$scope.config.transactions.data.push({
+					date: purchase.date,
+					isbn: purchase.isbn,
+					title: '[Book title]',
+					price: _formatPrice(purchase.payments)
+				});
+			}
+		});
+
 	});
