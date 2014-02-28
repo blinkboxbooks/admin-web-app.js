@@ -45,4 +45,26 @@ describe('Service: Credit', function () {
 
 	});
 
+	it('Should add user credit', function(){
+		var userID = 1;
+
+		var credit;
+
+		$httpBackend.expectPOST(ROUTES.ADMIN_USERS + '/' + userID + ROUTES.CREDIT, 'currency=GBP&amount=1&reason=vip').respond(200, CreditData);
+
+		Credit.add(userID, {
+			amount: '1',
+			reason: 'vip'
+		}).then(function(data){
+			credit = data;
+		});
+
+		expect(credit).toBeUndefined();
+
+		$httpBackend.flush();
+
+		expect(credit).toEqual(Format.credit(CreditData));
+
+	});
+
 });

@@ -19,6 +19,23 @@ angular.module('adminPanelApp')
 						defer.resolve(Format.credit(response.data));
 					}, defer.reject);
 				return defer.promise;
+			},
+			add: function(id, data){
+				var defer = $q.defer();
+				$http({
+					method: 'POST',
+					url: ROUTES.ADMIN_USERS + '/' + id + ROUTES.CREDIT,
+					data: $.param($.extend({
+						currency: 'GBP'
+					}, data)),
+					headers: {
+						'Content-Type': 'application/x-www-form-urlencoded',
+						'X-Requested-With': 'XMLHttpRequest'
+					}
+				}).then(function(response){
+						defer.resolve(Format.credit(response.data));
+					}, defer.reject);
+				return defer.promise;
 			}
 		};
 
