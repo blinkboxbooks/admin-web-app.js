@@ -82,7 +82,7 @@ angular.module('adminPanelApp')
 			for(var i = 0, l = emails.length; i < l; i++){
 				var email = emails[i];
 				$scope.config.email.data.push({
-					date: email.user_username_changed_at,
+					date: (new Date(email.user_username_changed_at)).toDateString(),
 					original_email: email.user_username,
 					new_email: i > 0 ? emails[i - 1].user_username : $scope.user.username
 				});
