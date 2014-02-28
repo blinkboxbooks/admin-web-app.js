@@ -13,6 +13,18 @@ angular.module('adminPanelApp')
 						return '<li>£' + payment.money.amount + ' - ' + (payment.name === 'braintree' ? 'card' : 'credit') + '</li>';
 					}).join(', ') + '</ul>'
 				};
+			},
+			user: function(data){
+				if(!!data){
+					var id = data.user_id.split(':');
+					return {
+						first_name: data.user_first_name,
+						id: id[id.length - 1],
+						last_name: data.user_last_name,
+						username: data.user_username
+					};
+				}
+				return null;
 			}
 		};
 
