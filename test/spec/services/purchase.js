@@ -46,9 +46,9 @@ describe('Service: Purchase', function () {
 				date: PurchaseHistoryData.purchases[index].date,
 				isbn: PurchaseHistoryData.purchases[index].isbn,
 				title: BookData.single.items[0].title,
-				price: PurchaseHistoryData.purchases[index].payments.map(function(payment){
-					return '£' + payment.money.amount;
-				}).join(', ')
+				price: '<ul>' + PurchaseHistoryData.purchases[index].payments.map(function(payment){
+					return '<li>£' + payment.money.amount + ' - ' + (payment.name === 'braintree' ? 'card' : 'credit') + '</li>';
+				}).join(', ') + '</ul>'
 			});
 		});
 	});

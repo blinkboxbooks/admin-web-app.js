@@ -21,9 +21,9 @@ angular.module('adminPanelApp')
 											date: d.date,
 											isbn: d.isbn,
 											title: books[i].title,
-											price: d.payments.map(function(payment){
-												return '£' + payment.money.amount;
-											}).join(', ')
+											price: '<ul>' + d.payments.map(function(payment){
+												return '<li>£' + payment.money.amount + ' - ' + (payment.name === 'braintree' ? 'card' : 'credit') + '</li>';
+											}).join(', ') + '</ul>'
 										};
 									}));
 								}, defer.reject);
