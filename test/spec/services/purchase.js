@@ -13,12 +13,13 @@ describe('Service: Purchase', function () {
 		});
 	});
 
-	var Purchase, PurchaseHistoryData, BookData, ROUTES;
+	var Purchase, PurchaseHistoryData, BookData, Format, ROUTES;
 
 	// Load the service to test
-	beforeEach(inject(function(_Purchase_, _PurchaseHistoryData_, _BookData_){
+	beforeEach(inject(function(_Purchase_, _PurchaseHistoryData_, _BookData_, _Format_){
 		Purchase = _Purchase_;
-		BookData = _BookData_;
+		Format = _Format_;
+		BookData = $.extend({}, _BookData_);
 		PurchaseHistoryData = $.extend({}, _PurchaseHistoryData_);
 	}));
 
@@ -42,14 +43,7 @@ describe('Service: Purchase', function () {
 
 		expect(history).toBeArray();
 		$.each(history, function(index, purchase){
-			expect(purchase).toEqual({
-				date: PurchaseHistoryData.purchases[index].date,
-				isbn: PurchaseHistoryData.purchases[index].isbn,
-				title: BookData.single.items[0].title,
-				price: '<ul>' + PurchaseHistoryData.purchases[index].payments.map(function(payment){
-					return '<li>£' + payment.money.amount + ' - ' + (payment.name === 'braintree' ? 'card' : 'credit') + '</li>';
-				}).join(', ') + '</ul>'
-			});
+			expect(purchase).toEqual(Format.purchase(PurchaseHistoryData.purchases[index], BookData.single.items[index]));
 		});
 	});
 

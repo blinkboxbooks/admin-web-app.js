@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('adminPanelApp')
-	.factory('Purchase', function($http, $q, Book, ROUTES) {
+	.factory('Purchase', function($http, $q, Book, Format, ROUTES) {
 
 		return {
 			get: function(id) {
@@ -17,14 +17,7 @@ angular.module('adminPanelApp')
 							if(response.data.count > 0){
 								Book.get(response.data.purchases.map(function(d){ return d.isbn; })).then(function(books){
 									defer.resolve(response.data.purchases.map(function(d, i){
-										return {
-											date: d.date,
-											isbn: d.isbn,
-											title: books[i].title,
-											price: '<ul>' + d.payments.map(function(payment){
-												return '<li>£' + payment.money.amount + ' - ' + (payment.name === 'braintree' ? 'card' : 'credit') + '</li>';
-											}).join(', ') + '</ul>'
-										};
+										return Format.purchase(d, books[i]);
 									}));
 								}, defer.reject);
 							} else {

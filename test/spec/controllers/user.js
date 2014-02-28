@@ -5,17 +5,18 @@ describe('Controller: UserCtrl', function () {
 	// load module
 	beforeEach(function(){
 		module('adminPanelApp', 'templates', 'mockedResponses');
-		inject(function(_$httpBackend_, _ROUTES_, _AdminUsers_, _PurchaseHistoryData_, _BookData_){
+		inject(function(_$httpBackend_, _ROUTES_, _AdminUsers_, _PurchaseHistoryData_, _BookData_, _Format_){
 			$httpBackend = _$httpBackend_;
 			ROUTES = _ROUTES_;
 			AdminUsers = _AdminUsers_;
 			PurchaseHistoryData = _PurchaseHistoryData_;
 			BookData = _BookData_;
+			Format = _Format_;
 			$httpBackend.expectGET(ROUTES.USER).respond(401);
 		});
 	});
 
-	var $httpBackend, ROUTES, BookData, UserCtrl, scope, userID = 1, AdminUsers, PurchaseHistoryData;
+	var $httpBackend, ROUTES, BookData, UserCtrl, Format, scope, userID = 1, AdminUsers, PurchaseHistoryData;
 
 	// Initialize the controller and a mock scope
 	beforeEach(inject(function ($controller, $rootScope) {
@@ -45,14 +46,7 @@ describe('Controller: UserCtrl', function () {
 		// expect purchase history to be retrieved
 		expect(scope.config.transactions.data.length).toBe(PurchaseHistoryData.purchases.length);
 		$.each(scope.config.transactions.data, function(index, purchase){
-			expect(purchase).toEqual({
-				date: PurchaseHistoryData.purchases[index].date,
-				isbn: PurchaseHistoryData.purchases[index].isbn,
-				title: BookData.single.items[index].title,
-				price: '<ul>' + PurchaseHistoryData.purchases[index].payments.map(function(payment){
-					return '<li>£' + payment.money.amount + ' - ' + (payment.name === 'braintree' ? 'card' : 'credit') + '</li>';
-				}).join(', ') + '</ul>'
-			});
+			expect(purchase).toEqual(Format.purchase(PurchaseHistoryData.purchases[index], BookData.single.items[index]));
 		});
 
 		// expect previous email to be saved
