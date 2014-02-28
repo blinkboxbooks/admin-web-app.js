@@ -5,5 +5,6 @@
 	"SESSION": "/api/auth/session",
 	"ADMIN_USERS": "/api/auth/admin/users",
 	"PURCHASE_HISTORY": "/purchases",
-	"BOOK": "/api/service/catalogue/books"
+	"BOOK": "/api/service/catalogue/books",
+	"CREDIT": "/credit"
 }

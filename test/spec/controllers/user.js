@@ -5,18 +5,19 @@ describe('Controller: UserCtrl', function () {
 	// load module
 	beforeEach(function(){
 		module('adminPanelApp', 'templates', 'mockedResponses');
-		inject(function(_$httpBackend_, _ROUTES_, _AdminUsers_, _PurchaseHistoryData_, _BookData_, _Format_){
+		inject(function(_$httpBackend_, _ROUTES_, _AdminUsers_, _PurchaseHistoryData_, _BookData_, _Format_, _CreditData_){
 			$httpBackend = _$httpBackend_;
 			ROUTES = _ROUTES_;
 			AdminUsers = _AdminUsers_;
 			PurchaseHistoryData = _PurchaseHistoryData_;
 			BookData = _BookData_;
 			Format = _Format_;
+			CreditData = _CreditData_;
 			$httpBackend.expectGET(ROUTES.USER).respond(401);
 		});
 	});
 
-	var $httpBackend, ROUTES, BookData, UserCtrl, Format, scope, userID = 1, AdminUsers, PurchaseHistoryData;
+	var $httpBackend, ROUTES, BookData, UserCtrl, CreditData, Format, scope, userID = 1, AdminUsers, PurchaseHistoryData;
 
 	// Initialize the controller and a mock scope
 	beforeEach(inject(function ($controller, $rootScope) {
@@ -34,6 +35,7 @@ describe('Controller: UserCtrl', function () {
 
 		$httpBackend.expectGET(ROUTES.ADMIN_USERS + '/' + userID).respond(200, response);
 		$httpBackend.expectGET(ROUTES.ADMIN_USERS + '/' + userID + ROUTES.PURCHASE_HISTORY).respond(200, PurchaseHistoryData);
+		$httpBackend.expectGET(ROUTES.ADMIN_USERS + '/' + userID + ROUTES.CREDIT).respond(200, CreditData);
 		$httpBackend.expectGET(ROUTES.BOOK + '?id=' + PurchaseHistoryData.purchases.map(function(d){return d.isbn;}).join('&id=')).respond(200, BookData.single);
 
 		expect(scope.user.id).toBe(-1);

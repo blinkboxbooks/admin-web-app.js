@@ -13,12 +13,14 @@ describe('Service: Admin', function () {
 		});
 	});
 
-	var Admin, AdminUsers, ROUTES;
+	var Admin, AdminUsers, CreditData, Format, ROUTES;
 
 	// Load the service to test
-	beforeEach(inject(function(_Admin_, _AdminUsers_){
+	beforeEach(inject(function(_Admin_, _AdminUsers_, _Format_, _CreditData_){
 		Admin = _Admin_;
+		CreditData = _CreditData_;
 		AdminUsers = _AdminUsers_;
+		Format = _Format_;
 	}));
 
 	it('Service should be injected.', function () {
@@ -85,16 +87,17 @@ describe('Service: Admin', function () {
 		expect(users).toEqual(AdminUsers);
 	});
 
-	it('should get user information', function(){
+	it('Should get user information', function(){
 		var userID = 1,
 			response = AdminUsers.items[0];
 
 		$httpBackend.expectGET(ROUTES.ADMIN_USERS + '/' + userID).respond(200, response);
+		$httpBackend.expectGET(ROUTES.ADMIN_USERS + '/' + userID + ROUTES.CREDIT).respond(200, CreditData);
 
 		var user;
 
-		Admin.get(userID).then(function(response){
-			user = response.data;
+		Admin.get(userID).then(function(data){
+			user = data;
 		});
 
 		expect(user).toBeUndefined();
@@ -102,7 +105,7 @@ describe('Service: Admin', function () {
 		$httpBackend.flush();
 
 		expect(user).toBeDefined();
-		expect(user.user_username).toBe(response.user_username);
+		expect(user).toEqual(Format.user(response, CreditData));
 
 	});
 
