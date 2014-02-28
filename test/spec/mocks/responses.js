@@ -179,4 +179,160 @@ angular.module('mockedResponses', [])
 				]
 			}
 		]
+	})
+	.value('BookData', {
+		single: {
+			'type': 'urn:blinkboxbooks:schema:list',
+			'numberOfResults': 1,
+			'offset': 0,
+			'count': 50,
+			'items': [
+				{
+					'type': 'urn:blinkboxbooks:schema:book',
+					'guid': 'urn:blinkboxbooks:id:book:9780141945576',
+					'id': '9780141945576',
+					'title': 'S.',
+					'publicationDate': '2006-10-26',
+					'sampleEligible': true,
+					'images': [
+						{
+							'rel': 'urn:blinkboxbooks:image:cover',
+							'src': 'http://internal-media.mobcastdev.com/9780/141/945/576/f6ea4e92a90d69e85eed0115ab8908d2.png'
+						}
+					],
+					'links': [
+						{
+							'rel': 'urn:blinkboxbooks:schema:contributor',
+							'href': '/service/catalogue/contributors/b6e7ca446444636ec05ea96dc82c431327beae80',
+							'targetGuid': 'urn:blinkboxbooks:id:contributor:b6e7ca446444636ec05ea96dc82c431327beae80',
+							'title': 'John Updike'
+						},
+						{
+							'rel': 'urn:blinkboxbooks:schema:synopsis',
+							'href': '/service/catalogue/books/9780141945576/synopsis',
+							'targetGuid': 'urn:blinkboxbooks:id:synopsis:9780141945576',
+							'title': 'Synopsis'
+						},
+						{
+							'rel': 'urn:blinkboxbooks:schema:publisher',
+							'href': '/service/catalogue/publishers/1322',
+							'targetGuid': 'urn:blinkboxbooks:id:publisher:1322',
+							'title': 'Penguin Books Ltd'
+						},
+						{
+							'rel': 'urn:blinkboxbooks:schema:bookpricelist',
+							'href': '/service/catalogue/prices?isbn=9780141945576',
+							'title': 'Price'
+						},
+						{
+							'rel': 'urn:blinkboxbooks:schema:samplemedia',
+							'href': 'http://internal-media.mobcastdev.com/9780/141/945/576/15ccca30535152444a63774de7824744.sample.epub',
+							'title': 'Sample'
+						}
+					]
+				}
+			]
+		},
+		group: {
+			'type': 'urn:blinkboxbooks:schema:list',
+			'numberOfResults': 2,
+			'offset': 0,
+			'count': 50,
+			'items': [
+				{
+					'type': 'urn:blinkboxbooks:schema:book',
+					'guid': 'urn:blinkboxbooks:id:book:9780141945576',
+					'id': '9780141945576',
+					'title': 'S.',
+					'publicationDate': '2006-10-26',
+					'sampleEligible': true,
+					'images': [
+						{
+							'rel': 'urn:blinkboxbooks:image:cover',
+							'src': 'http://internal-media.mobcastdev.com/9780/141/945/576/f6ea4e92a90d69e85eed0115ab8908d2.png'
+						}
+					],
+					'links': [
+						{
+							'rel': 'urn:blinkboxbooks:schema:contributor',
+							'href': '/service/catalogue/contributors/b6e7ca446444636ec05ea96dc82c431327beae80',
+							'targetGuid': 'urn:blinkboxbooks:id:contributor:b6e7ca446444636ec05ea96dc82c431327beae80',
+							'title': 'John Updike'
+						},
+						{
+							'rel': 'urn:blinkboxbooks:schema:synopsis',
+							'href': '/service/catalogue/books/9780141945576/synopsis',
+							'targetGuid': 'urn:blinkboxbooks:id:synopsis:9780141945576',
+							'title': 'Synopsis'
+						},
+						{
+							'rel': 'urn:blinkboxbooks:schema:publisher',
+							'href': '/service/catalogue/publishers/1322',
+							'targetGuid': 'urn:blinkboxbooks:id:publisher:1322',
+							'title': 'Penguin Books Ltd'
+						},
+						{
+							'rel': 'urn:blinkboxbooks:schema:bookpricelist',
+							'href': '/service/catalogue/prices?isbn=9780141945576',
+							'title': 'Price'
+						},
+						{
+							'rel': 'urn:blinkboxbooks:schema:samplemedia',
+							'href': 'http://internal-media.mobcastdev.com/9780/141/945/576/15ccca30535152444a63774de7824744.sample.epub',
+							'title': 'Sample'
+						}
+					]
+				},
+				{
+					'type': 'urn:blinkboxbooks:schema:book',
+					'guid': 'urn:blinkboxbooks:id:book:9780141904016',
+					'id': '9780141904016',
+					'title': 'Junky',
+					'publicationDate': '2012-08-02',
+					'sampleEligible': true,
+					'images': [
+						{
+							'rel': 'urn:blinkboxbooks:image:cover',
+							'src': 'http://internal-media.mobcastdev.com/9780/141/904/016/229bf0c1fb7ef2d5478be9f38f071360.png'
+						}
+					],
+					'links': [
+						{
+							'rel': 'urn:blinkboxbooks:schema:contributor',
+							'href': '/service/catalogue/contributors/a8f5cbbd96af0c48775e8d7005471be7ed16343c',
+							'targetGuid': 'urn:blinkboxbooks:id:contributor:a8f5cbbd96af0c48775e8d7005471be7ed16343c',
+							'title': 'Oliver Harris'
+						},
+						{
+							'rel': 'urn:blinkboxbooks:schema:contributor',
+							'href': '/service/catalogue/contributors/00b7ba72a343e3a0ed4b2921f8bacc4005eacb2d',
+							'targetGuid': 'urn:blinkboxbooks:id:contributor:00b7ba72a343e3a0ed4b2921f8bacc4005eacb2d',
+							'title': 'William S S Burroughs'
+						},
+						{
+							'rel': 'urn:blinkboxbooks:schema:synopsis',
+							'href': '/service/catalogue/books/9780141904016/synopsis',
+							'targetGuid': 'urn:blinkboxbooks:id:synopsis:9780141904016',
+							'title': 'Synopsis'
+						},
+						{
+							'rel': 'urn:blinkboxbooks:schema:publisher',
+							'href': '/service/catalogue/publishers/1322',
+							'targetGuid': 'urn:blinkboxbooks:id:publisher:1322',
+							'title': 'Penguin Books Ltd'
+						},
+						{
+							'rel': 'urn:blinkboxbooks:schema:bookpricelist',
+							'href': '/service/catalogue/prices?isbn=9780141904016',
+							'title': 'Price'
+						},
+						{
+							'rel': 'urn:blinkboxbooks:schema:samplemedia',
+							'href': 'http://internal-media.mobcastdev.com/9780/141/904/016/d330731d81ff557ad3747015db17f51f.sample.epub',
+							'title': 'Sample'
+						}
+					]
+				}
+			]
+		}
 	});

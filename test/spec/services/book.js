@@ -26,39 +26,44 @@ describe('Service: Book', function () {
 	});
 
 	it('should return a single book\'s details', function(){
-		expect(Book.get()).toBeNull();
-
 		var book, isbn = 123456789;
 
-		$httpBackend.expectGET(ROUTES.BOOK + '?id=' + isbn).respond(200, BookData);
+		$httpBackend.expectGET(ROUTES.BOOK + '?id=' + isbn).respond(200, BookData.single);
 
-		Book.get(isbn).then(function(response){
-			book = response.data;
+		Book.get(isbn).then(function(data){
+			book = data;
 		});
 
-		expect(book).toBeNull();
+		expect(book).toBeUndefined();
 
 		$httpBackend.flush();
 
-		expect(book).toBeDefined();
-		expect(book).toEqual(BookData);
+		expect(book).toBeArray();
+		expect(book.length).toBe(1);
 
+		$.each(book, function(i, b){
+			expect(b).toEqual(BookData.single.items[i]);
+		});
 	});
 
-	it('should return an array of books info', function(){
+	it('should return an array of books', function(){
 		var books, isbn = [123456789, 123456789];
 
-		$httpBackend.expectGET(ROUTES.BOOK + '?id=' + isbn.join('&id=')).respond(200, BookData);
-		Book.get(isbn).then(function(response){
-			books = response.data;
+		$httpBackend.expectGET(ROUTES.BOOK + '?id=' + isbn.join('&id=')).respond(200, BookData.group);
+		Book.get(isbn).then(function(data){
+			books = data;
 		});
 
-		expect(books).toBeNull();
+		expect(books).toBeUndefined();
 
 		$httpBackend.flush();
 
 		expect(books).toBeArray();
-		expect(books).toEqual();
+		expect(books.length).toBe(isbn.length);
+
+		$.each(books, function(i, b){
+			expect(b).toEqual(BookData.group.items[i]);
+		});
 
 	});
 });

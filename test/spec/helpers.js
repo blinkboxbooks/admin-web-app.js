@@ -7,6 +7,9 @@ beforeEach(function() {
 		},
 		toMatch: function(input) {
 			return this.actual.is(input);
+		},
+		toBeArray: function(){
+			return $.isArray(this.actual);
 		}
 	});
 });
