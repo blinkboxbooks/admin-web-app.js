@@ -5,16 +5,17 @@ describe('Controller: UserCtrl', function () {
 	// load module
 	beforeEach(function(){
 		module('adminPanelApp', 'templates', 'mockedResponses');
-		inject(function(_$httpBackend_, _ROUTES_, _AdminUsers_, _PurchaseHistoryData_){
+		inject(function(_$httpBackend_, _ROUTES_, _AdminUsers_, _PurchaseHistoryData_, _BookData_){
 			$httpBackend = _$httpBackend_;
 			ROUTES = _ROUTES_;
 			AdminUsers = _AdminUsers_;
 			PurchaseHistoryData = _PurchaseHistoryData_;
+			BookData = _BookData_;
 			$httpBackend.expectGET(ROUTES.USER).respond(401);
 		});
 	});
 
-	var $httpBackend, ROUTES, UserCtrl, scope, userID = 1, AdminUsers, PurchaseHistoryData;
+	var $httpBackend, ROUTES, BookData, UserCtrl, scope, userID = 1, AdminUsers, PurchaseHistoryData;
 
 	// Initialize the controller and a mock scope
 	beforeEach(inject(function ($controller, $rootScope) {
@@ -32,6 +33,7 @@ describe('Controller: UserCtrl', function () {
 
 		$httpBackend.expectGET(ROUTES.ADMIN_USERS + '/' + userID).respond(200, response);
 		$httpBackend.expectGET(ROUTES.ADMIN_USERS + '/' + userID + ROUTES.PURCHASE_HISTORY).respond(200, PurchaseHistoryData);
+		$httpBackend.expectGET(ROUTES.BOOK + '?id=' + PurchaseHistoryData.purchases[0].isbn).respond(200, BookData.single);
 
 		expect(scope.user.id).toBe(-1);
 
@@ -46,7 +48,7 @@ describe('Controller: UserCtrl', function () {
 			expect(purchase).toEqual({
 				date: PurchaseHistoryData.purchases[index].date,
 				isbn: PurchaseHistoryData.purchases[index].isbn,
-				title: '[Book title]',
+				title: BookData.single.items[index].title,
 				price: PurchaseHistoryData.purchases[index].payments.map(function(payment){
 					return '£' + payment.money.amount;
 				}).join(', ')

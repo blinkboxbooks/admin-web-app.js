@@ -89,26 +89,10 @@ angular.module('adminPanelApp')
 			}
 		});
 
-		// takes an array of payments and returns a formated string
-		var _formatPrice = function(payments){
-			return payments.map(function(payment){
-				return '£' + payment.money.amount;
-			}).join(', ');
-		};
-
 		// Get the users purchase history
-		Purchase.get($routeParams.id).then(function(response){
+		Purchase.get($routeParams.id).then(function(purchases){
 			// format data to be used in the table
-			$scope.config.transactions.data = [];
-			for(var i = 0, l = response.data.count; i < l; i++){
-				var purchase = response.data.purchases[i];
-				$scope.config.transactions.data.push({
-					date: purchase.date,
-					isbn: purchase.isbn,
-					title: '[Book title]',
-					price: _formatPrice(purchase.payments)
-				});
-			}
+			$scope.config.transactions.data = purchases;
 		});
 
 	});

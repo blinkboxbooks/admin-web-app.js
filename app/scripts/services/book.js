@@ -20,7 +20,7 @@ angular.module('adminPanelApp')
 							if(response.data.numberOfResults > 0){
 								defer.resolve(response.data.items);
 							} else {
-								defer.resolve(null);
+								defer.resolve([]);
 							}
 						}, defer.reject);
 				} else {

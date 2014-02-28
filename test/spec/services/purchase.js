@@ -13,11 +13,12 @@ describe('Service: Purchase', function () {
 		});
 	});
 
-	var Purchase, PurchaseHistoryData, ROUTES;
+	var Purchase, PurchaseHistoryData, BookData, ROUTES;
 
 	// Load the service to test
-	beforeEach(inject(function(_Purchase_, _PurchaseHistoryData_){
+	beforeEach(inject(function(_Purchase_, _PurchaseHistoryData_, _BookData_){
 		Purchase = _Purchase_;
+		BookData = _BookData_;
 		PurchaseHistoryData = $.extend({}, _PurchaseHistoryData_);
 	}));
 
@@ -29,17 +30,27 @@ describe('Service: Purchase', function () {
 		var userID = 1, history;
 
 		$httpBackend.expectGET(ROUTES.ADMIN_USERS + '/' + userID + ROUTES.PURCHASE_HISTORY).respond(200, PurchaseHistoryData);
+		$httpBackend.expectGET(ROUTES.BOOK + '?id=' + PurchaseHistoryData.purchases[0].isbn).respond(200, BookData.single);
 
-		Purchase.get(userID).then(function(response){
-			history = response.data;
+		Purchase.get(userID).then(function(data){
+			history = data;
 		});
 
 		expect(history).toBeUndefined();
 
 		$httpBackend.flush();
 
-		expect(history).toBeDefined();
-		expect(history).toEqual(PurchaseHistoryData);
+		expect(history).toBeArray();
+		$.each(history, function(index, purchase){
+			expect(purchase).toEqual({
+				date: PurchaseHistoryData.purchases[index].date,
+				isbn: PurchaseHistoryData.purchases[index].isbn,
+				title: BookData.single.items[0].title,
+				price: PurchaseHistoryData.purchases[index].payments.map(function(payment){
+					return '£' + payment.money.amount;
+				}).join(', ')
+			});
+		});
 	});
 
 });
