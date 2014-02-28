@@ -30,7 +30,7 @@ describe('Service: Purchase', function () {
 		var userID = 1, history;
 
 		$httpBackend.expectGET(ROUTES.ADMIN_USERS + '/' + userID + ROUTES.PURCHASE_HISTORY).respond(200, PurchaseHistoryData);
-		$httpBackend.expectGET(ROUTES.BOOK + '?id=' + PurchaseHistoryData.purchases[0].isbn).respond(200, BookData.single);
+		$httpBackend.expectGET(ROUTES.BOOK + '?id=' + PurchaseHistoryData.purchases.map(function(d){return d.isbn;}).join('&id=')).respond(200, BookData.single);
 
 		Purchase.get(userID).then(function(data){
 			history = data;
