@@ -8,12 +8,12 @@ describe('Service: Book', function () {
 		module('adminPanelApp', 'templates', 'mockedResponses');
 		inject(function(_$httpBackend_, _ROUTES_){
 			$httpBackend = _$httpBackend_;
-
+			ROUTES = _ROUTES_;
 			$httpBackend.expectGET(_ROUTES_.USER).respond(401);
 		});
 	});
 
-	var Book, BookData;
+	var Book, ROUTES, BookData;
 
 	// Load the service to test
 	beforeEach(inject(function(_Book_, _BookData_){
@@ -28,9 +28,11 @@ describe('Service: Book', function () {
 	it('should return a single book\'s details', function(){
 		expect(Book.get()).toBeNull();
 
-		var book;
+		var book, isbn = 123456789;
 
-		Book.get(123456789).then(function(response){
+		$httpBackend.expectGET(ROUTES.BOOK + '?id=' + isbn).respond(200, BookData);
+
+		Book.get(isbn).then(function(response){
 			book = response.data;
 		});
 
@@ -39,13 +41,15 @@ describe('Service: Book', function () {
 		$httpBackend.flush();
 
 		expect(book).toBeDefined();
+		expect(book).toEqual(BookData);
 
 	});
 
 	it('should return an array of books info', function(){
-		var books;
+		var books, isbn = [123456789, 123456789];
 
-		Book.get([123456789, 123456789]).then(function(response){
+		$httpBackend.expectGET(ROUTES.BOOK + '?id=' + isbn.join('&id=')).respond(200, BookData);
+		Book.get(isbn).then(function(response){
 			books = response.data;
 		});
 
@@ -54,5 +58,7 @@ describe('Service: Book', function () {
 		$httpBackend.flush();
 
 		expect(books).toBeArray();
+		expect(books).toEqual();
+
 	});
 });

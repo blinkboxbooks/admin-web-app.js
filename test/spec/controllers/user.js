@@ -58,7 +58,7 @@ describe('Controller: UserCtrl', function () {
 		$.each(scope.config.email.data, function(index, email){
 			var expected = response.user_previous_usernames[index];
 			expect(email).toEqual({
-				date: expected.user_username_changed_at,
+				date: (new Date(expected.user_username_changed_at)).toDateString(),
 				original_email: expected.user_username,
 				new_email: index > 0 ? response.user_previous_usernames[index - 1].user_username : response.user_username
 			});
