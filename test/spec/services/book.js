@@ -25,6 +25,37 @@ describe('Service: Book', function () {
 		expect(Book).toBeDefined();
 	});
 
+	it('should handle errors', function(){
+		var err;
+
+		Book.get().then(null, function(data){
+			err = data;
+		});
+
+		expect(err).toBeUndefined();
+
+		$httpBackend.flush();
+
+		expect(err).toBe('Books service requires an isbn.');
+	});
+
+	it('should return an empty array', function(){
+		var book, isbn = 123456789;
+
+		$httpBackend.expectGET(ROUTES.BOOK + '?id=' + isbn).respond(200, BookData.empty);
+
+		Book.get(isbn).then(function(data){
+			book = data;
+		});
+
+		expect(book).toBeUndefined();
+
+		$httpBackend.flush();
+
+		expect(book).toBeArray();
+		expect(book.length).toBe(0);
+	});
+
 	it('should return a single book\'s details', function(){
 		var book, isbn = 123456789;
 

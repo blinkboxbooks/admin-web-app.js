@@ -63,6 +63,34 @@ describe('Service: Authentication', function () {
 
 		// we should not have user data since the user does not have a cr* role
 		expect(User.get()).toBeNull();
+
+		// prepare http response for login attempt.
+		$httpBackend.expectPOST(ROUTES.AUTHENTICATION, $.param(AuthValid.req)).respond(200, AuthValid.res);
+		$httpBackend.expectGET(ROUTES.SESSION).respond(200, Session.invalid2);
+		$httpBackend.expectGET(ROUTES.SIGNOUT).respond(200);
+
+		// perform login
+		Authentication.login(AuthValid.req);
+
+		// respond to login
+		$httpBackend.flush();
+
+		// we should not have user data since the user does not have a cr* role
+		expect(User.get()).toBeNull();
+
+		// prepare http response for login attempt.
+		$httpBackend.expectPOST(ROUTES.AUTHENTICATION, $.param(AuthValid.req)).respond(200, AuthValid.res);
+		$httpBackend.expectGET(ROUTES.SESSION).respond(500);
+		$httpBackend.expectGET(ROUTES.SIGNOUT).respond(200);
+
+		// perform login
+		Authentication.login(AuthValid.req);
+
+		// respond to login
+		$httpBackend.flush();
+
+		// we should not have user data since the user does not have a cr* role
+		expect(User.get()).toBeNull();
 	});
 
 	it('User attempts login with invalid credentials.', function () {

@@ -13,12 +13,14 @@ describe('Service: Purchase', function () {
 		});
 	});
 
-	var Purchase, PurchaseHistoryData, BookData, Format, ROUTES;
+	var Purchase, $rootScope, EmptyPurchaseHistoryData, PurchaseHistoryData, BookData, Format, ROUTES;
 
 	// Load the service to test
-	beforeEach(inject(function(_Purchase_, _PurchaseHistoryData_, _BookData_, _Format_){
+	beforeEach(inject(function(_$rootScope_, _Purchase_, _PurchaseHistoryData_, _EmptyPurchaseHistoryData_, _BookData_, _Format_){
 		Purchase = _Purchase_;
 		Format = _Format_;
+		EmptyPurchaseHistoryData = _EmptyPurchaseHistoryData_;
+		$rootScope = _$rootScope_;
 		BookData = $.extend({}, _BookData_);
 		PurchaseHistoryData = $.extend({}, _PurchaseHistoryData_);
 	}));
@@ -45,6 +47,30 @@ describe('Service: Purchase', function () {
 		$.each(history, function(index, purchase){
 			expect(purchase).toEqual(Format.purchase(PurchaseHistoryData.purchases[index], BookData.single.items[index]));
 		});
+
+		// Handling empty history
+		history = undefined;
+		$httpBackend.expectGET(ROUTES.ADMIN_USERS + '/' + userID + ROUTES.PURCHASE_HISTORY).respond(200, EmptyPurchaseHistoryData);
+
+		Purchase.get(userID).then(function(data){
+			history = data;
+		});
+
+		expect(history).toBeUndefined();
+
+		$httpBackend.flush();
+
+		expect(history).toBeArray();
+		expect(history.length).toBe(0);
+	});
+
+	it('Should handle errors', function(){
+		var err;
+		Purchase.get().then(null, function(data){
+			err = data;
+		});
+		$rootScope.$apply();
+		expect(err).toBeTruthy();
 	});
 
 });

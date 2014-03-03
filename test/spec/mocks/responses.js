@@ -58,6 +58,14 @@ angular.module('mockedResponses', [])
 			'token_status': 'VALID',
 			'token_elevation': 'CRITICAL',
 			'token_elevation_expires_in': 588
+		},
+		invalid2: {
+			'token_status': 'VALID',
+			'token_elevation': 'CRITICAL',
+			'token_elevation_expires_in': 588,
+			'user_roles': [
+				'other'
+			]
 		}
 	})
 	.value('AdminUsers', {
@@ -72,6 +80,12 @@ angular.module('mockedResponses', [])
 				'user_previous_usernames': [{
 					'user_username': 'john.doe.old@example.org',
 					'user_username_changed_at': '2014-01-22T09:34:42Z'
+				},{
+					'user_username': 'john.doe.old@example.org',
+					'user_username_changed_at': '2014-01-22T09:34:42Z'
+				},{
+					'user_username': 'john.doe.oldest@example.org',
+					'user_username_changed_at': '2012-01-22T09:34:42Z'
 				},{
 					'user_username': 'john.doe.older@example.org',
 					'user_username_changed_at': '2013-03-03T16:23:41Z'
@@ -180,7 +194,22 @@ angular.module('mockedResponses', [])
 			}
 		]
 	})
+	.value('EmptyPurchaseHistoryData', {
+		'type': 'urn:blinkboxbooks:schema:admin:purchase-history',
+		'id': '123',
+		'count': '0',
+		'total': '10',
+		'clubcardPoints': '42',
+		'purchases': []
+	})
 	.value('BookData', {
+		empty: {
+			'type': 'urn:blinkboxbooks:schema:list',
+			'numberOfResults': 0,
+			'offset': 0,
+			'count': 50,
+			'items': []
+		},
 		single: {
 			'type': 'urn:blinkboxbooks:schema:list',
 			'numberOfResults': 1,
