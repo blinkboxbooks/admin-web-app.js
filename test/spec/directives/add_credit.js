@@ -97,4 +97,24 @@ describe('Directive: Add credit', function () {
 		expect(scope.user.credit).toBe(Format.credit(CreditData));
 
 	});
+
+	it('Should handle errors.', function(){
+
+		$httpBackend.expectPOST(ROUTES.ADMIN_USERS + '/' + scope.user.id + ROUTES.CREDIT, $.param({
+			'currency': 'GBP',
+			'amount': '1',
+			'reason': 'vip'
+		})).respond(500);
+
+		// add credit
+		scope.credit.amount = 1;
+		scope.credit.reason = 'vip';
+		scope.$apply();
+		scope.addCredit();
+
+		$httpBackend.flush();
+
+		expect(scope.alert.type).toBe('danger');
+		expect(scope.alert.text).toBeTruthy();
+	});
 });

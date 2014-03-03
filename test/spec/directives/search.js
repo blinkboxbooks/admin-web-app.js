@@ -67,14 +67,12 @@ describe('Directive: Search', function () {
 
 		// Invalid response format
 		scope.search.value = 'test';
-		$httpBackend.expectGET(ROUTES.ADMIN_USERS + '?username=' + scope.search.value).respond(200, {});
+		$httpBackend.expectGET(ROUTES.ADMIN_USERS + '?username=' + scope.search.value).respond(500);
 		scope.submit();
 		$httpBackend.flush();
 		expect(scope.data.length).toBe(0);
 		expect(scope.alert.type).toBe('danger');
 		expect(scope.alert.text).toBeTruthy();
-
-
 	});
 
 	it('Should perform search.', function(){

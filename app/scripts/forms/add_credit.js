@@ -41,7 +41,7 @@ angular.module('adminPanelApp')
 						}, function(response){
 							$scope.addCreditForm.submitted = false;
 							$scope.alert.type = 'danger';
-							$scope.alert.text = response.data.error_description || 'Unknown error.';
+							$scope.alert.text = response.data && response.data.error_description ? response.data.error_description : 'Unknown error.';
 						});
 					}
 				};
