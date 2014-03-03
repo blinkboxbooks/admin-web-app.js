@@ -4,7 +4,8 @@ angular.module('adminPanelApp')
 	.factory('Admin', function($http, $q, Credit, Format, ROUTES) {
 		return {
 			search: function(data) {
-				return $http({
+				var defer = $q.defer();
+				$http({
 					method: 'GET',
 					url: ROUTES.ADMIN_USERS,
 					params: data,
@@ -12,7 +13,20 @@ angular.module('adminPanelApp')
 						'Content-Type': 'application/x-www-form-urlencoded',
 						'X-Requested-With': 'XMLHttpRequest'
 					}
-				});
+				}).then(function(response){
+					if($.isArray(response.data.items)){
+						defer.resolve(response.data.items.map(function(item){
+							return Format.user(item);
+						}));
+					} else {
+						defer.reject({
+							data: {
+								error_description: 'Unknown error occurred.'
+							}
+						});
+					}
+				}, defer.reject);
+				return defer.promise;
 			},
 			get: function(id){
 				var defer = $q.defer();

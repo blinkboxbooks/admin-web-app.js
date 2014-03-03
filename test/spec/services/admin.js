@@ -36,15 +36,15 @@ describe('Service: Admin', function () {
 
 		Admin.search({
 			username: mockUsername
-		}).then(function(response){
-				users = response.data;
+		}).then(function(data){
+				users = data;
 			});
 
 		expect(users).toBeNull();
 
 		$httpBackend.flush();
 
-		expect(users).toEqual(AdminUsers);
+		expect(users).toEqual(AdminUsers.items.map(function(d){ return Format.user(d);}));
 	});
 
 	it('Get users by first name', function(){
@@ -56,15 +56,15 @@ describe('Service: Admin', function () {
 
 		Admin.search({
 			first_name: mockFirstName
-		}).then(function(response){
-				users = response.data;
+		}).then(function(data){
+				users = data;
 			});
 
 		expect(users).toBeNull();
 
 		$httpBackend.flush();
 
-		expect(users).toEqual(AdminUsers);
+		expect(users).toEqual(AdminUsers.items.map(function(d){ return Format.user(d);}));
 	});
 
 	it('Get users by last name', function(){
@@ -76,15 +76,15 @@ describe('Service: Admin', function () {
 
 		Admin.search({
 			last_name: mockLastName
-		}).then(function(response){
-				users = response.data;
+		}).then(function(data){
+				users = data;
 			});
 
 		expect(users).toBeNull();
 
 		$httpBackend.flush();
 
-		expect(users).toEqual(AdminUsers);
+		expect(users).toEqual(AdminUsers.items.map(function(d){ return Format.user(d);}));
 	});
 
 	it('Should get user information', function(){
