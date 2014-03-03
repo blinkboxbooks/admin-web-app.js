@@ -14,69 +14,85 @@ describe('Directive: Dynamic Table', function () {
 
 	// Store references to the element and it's scope
 	// so they are available to all tests in this describe block
-	beforeEach(inject(function($compile, $rootScope, _DataTableUsers_){
-		// Save refereces
+	beforeEach(inject(function($compile, $rootScope, $timeout, _DataTableConfig_, _DataTableUsers_){
 		DataTableUsers = $.extend({}, _DataTableUsers_);
+		// set up directive config
+		$rootScope.config = $.extend({}, _DataTableConfig_);
 
 		// Compile a piece of HTML containing the directive
-		element = $compile('<dynamic-table></dynamic-table>')($rootScope);
+		element = $compile('<dynamic-table config="config"></dynamic-table>')($rootScope);
 
 		// Compile
 		$rootScope.$apply();
+		$timeout.flush();
 
 		// Save a reference to scope
 		scope = element.isolateScope();
 	}));
 
-	it('Replaces the element with the appropriate content', function() {
+	it('should replace the element with the appropriate content', function() {
 		// Check that the compiled element contains the templated content
-		expect(element.find('form')).toMatch('form');
-		expect(element.find('form input')).toMatch('input');
-		expect(element.find('table')).toMatch('table');
+		expect(element).toMatch('table');
 		expect(element.find('thead')).toMatch('thead');
 		expect(element.find('tbody')).toMatch('tbody');
 		expect(element.find('tfoot')).toMatch('tfoot');
+
+		// Check scope binding
+		expect(scope.config).toBeDefined();
+	});
+
+	it('should create labels', function() {
+		// Check that the compiled element contains the templated content
+		var thead = element.find('thead tr');
+
+		expect(thead.length).toBe(1);
+
+		thead = thead.find('th');
+
+		// The number of columns should match the number of elements specified in structure
+		expect(thead.length).toBe(scope.config.structure.length);
+
+		// The labels should represent the structure
+		thead.each(function(index, th){
+			expect(th.innerHTML).toBe(scope.config.structure[index].label);
+		});
 	});
 
 	it('Should inject users into the dynamic table.', function(){
-
-		scope.users = DataTableUsers.group;
+		scope.config.data = DataTableUsers.group;
 		scope.$apply();
 
-		expect(element.find('tbody tr').length).toBe(scope.users.length);
+		expect(element.find('tbody tr').length).toBe(scope.config.data.length);
+
+		var i, l;
 		element.find('tbody tr').each(function(index, tr){
-			var td = $(tr).find('td');
+			var td = $(tr).find('td'),
+				row = scope.config.data[index];
 
-			expect(td[0].innerHTML).toBe(scope.users[index].id);
-			expect(td[1].innerHTML).toBe(scope.users[index].first_name);
-			expect(td[2].innerHTML).toBe(scope.users[index].last_name);
-			expect(td[3].innerHTML).toBe(scope.users[index].username);
-
+			expect(td.length).toBe(scope.config.structure.length);
+			for(i = 0, l = td.length; i < l; i++){
+				expect(td[i].innerHTML).toBe(
+					$.isFunction(scope.config.structure[i].field) ?
+						scope.config.structure[i].field(row) :
+						row[scope.config.structure[i].field]
+				);
+			}
 		});
 
-		scope.users.push(DataTableUsers.single);
+		scope.config.data.push(DataTableUsers.single);
 		scope.$apply();
 
-		expect(element.find('tbody tr').length).toBe(scope.users.length);
-
+		expect(element.find('tbody tr').length).toBe(scope.config.data.length);
 		// Expect new user to be in the table
-		var td = element.find('tbody tr').last().find('td');
-		expect(td[0].innerHTML).toBe(DataTableUsers.single.id);
-		expect(td[1].innerHTML).toBe(DataTableUsers.single.first_name);
-		expect(td[2].innerHTML).toBe(DataTableUsers.single.last_name);
-		expect(td[3].innerHTML).toBe(DataTableUsers.single.username);
+		var td = element.find('tbody tr').last().find('td'), row, value;
 
-	});
-
-	it('should update search input based on scope value', function(){
-		expect(scope.search).toBeDefined();
-
-		expect(scope.search.value).toBeFalsy();
-
-		var mockSearchValue = 'search';
-		scope.search.value = mockSearchValue;
-		scope.$apply();
-
-		expect(element.find('form input').val()).toBe(mockSearchValue);
+		expect(td.length).toBe(scope.config.structure.length);
+		for(i = 0, l = scope.config.structure.length; i < l; i++){
+			row = scope.config.structure[i];
+			value = $.isFunction(row.field) ?
+				row.field(DataTableUsers.single) :
+				DataTableUsers.single[row.field];
+			expect(td[i].innerHTML).toBe(value);
+		}
 	});
 });

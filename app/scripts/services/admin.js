@@ -13,6 +13,15 @@ angular.module('adminPanelApp')
 						'X-Requested-With': 'XMLHttpRequest'
 					}
 				});
+			},
+			get: function(id){
+				return !!id ? $http({
+					method: 'GET',
+					url: ROUTES.ADMIN_USERS + '/' + id,
+					headers: {
+						'X-Requested-With': 'XMLHttpRequest'
+					}
+				}) : null;
 			}
 		};
 	}

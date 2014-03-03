@@ -1,34 +1,13 @@
-<div>
-	<form id="searchForm" ng-submit="submit()">
-		<div class="input-group">
-			<input class="form-control" placeholder="Search..." ng-model="search.value">
-			<span class="input-group-btn">
-				<button class="btn btn-primary" type="button">
-					<span class="fa fa-search"></span>
-					Search
-				</button>
-			</span>
-		</div>
-	</form>
-	<div class="alert" ng-show="alert.text" ng-class="'alert-' + alert.type">
-		{{alert.text}}
-	</div>
-	<table class="display table table-bordered table-striped">
+<table class="display table table-bordered table-striped">
 	<thead>
 		<tr>
-			<th>ID</th>
-			<th>First Name</th>
-			<th>Last Name</th>
-			<th>Username</th>
+			<th ng-repeat="item in config.structure" ng-bind="item.label"></th>
 		</tr>
 	</thead>
 
 	<tfoot>
 		<tr>
-			<th>ID</th>
-			<th>First Name</th>
-			<th>Last Name</th>
-			<th>Username</th>
+			<th ng-repeat="item in config.structure" ng-bind="item.label"></th>
 		</tr>
 	</tfoot>
 
@@ -36,4 +15,3 @@
 
 	</tbody>
 </table>
-</div>

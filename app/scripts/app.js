@@ -20,8 +20,12 @@ angular.module('adminPanelApp', [
 				templateUrl: 'views/login.html',
 				controller: 'LoginCtrl'
 			})
+			.when('/user/:id', {
+				templateUrl: 'views/user.html',
+				controller: 'UserCtrl'
+			})
 			.otherwise({
-        redirectTo: '/'
+        redirectTo: '/login'
       });
   })
 	.run(function($rootScope){
