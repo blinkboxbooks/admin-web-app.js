@@ -13,14 +13,15 @@ describe('Service: Admin', function () {
 		});
 	});
 
-	var Admin, AdminUsers, CreditData, Format, ROUTES;
+	var Admin, $rootScope, AdminUsers, CreditData, Format, ROUTES;
 
 	// Load the service to test
-	beforeEach(inject(function(_Admin_, _AdminUsers_, _Format_, _CreditData_){
+	beforeEach(inject(function(_$rootScope_, _Admin_, _AdminUsers_, _Format_, _CreditData_){
 		Admin = _Admin_;
 		CreditData = _CreditData_;
 		AdminUsers = _AdminUsers_;
 		Format = _Format_;
+		$rootScope = _$rootScope_;
 	}));
 
 	it('Service should be injected.', function () {
@@ -106,6 +107,37 @@ describe('Service: Admin', function () {
 
 		expect(user).toBeDefined();
 		expect(user).toEqual(Format.user(response, CreditData));
+
+	});
+
+	it('Should handle errors', function(){
+
+		// Attempt to search with undefined id
+		var err;
+		expect(err).toBeUndefined();
+		Admin.get().then(null, function(data){
+			err = data;
+		});
+		$rootScope.$apply();
+		expect(err).toEqual({
+			data: {
+				error_description: 'The admin service requires an id of the user to retrieve'
+			}
+		});
+
+		// Back end return malformed result
+		$httpBackend.expectGET(ROUTES.ADMIN_USERS + '?username=test').respond(200, {});
+		Admin.search({
+			username: 'test'
+		}).then(null, function(data){
+			err = data;
+		});
+		$httpBackend.flush();
+		expect(err).toEqual({
+			data: {
+				error_description: 'Unknown error occurred.'
+			}
+		});
 
 	});
 

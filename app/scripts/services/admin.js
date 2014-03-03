@@ -47,7 +47,11 @@ angular.module('adminPanelApp')
 							}, defer.reject);
 						}, defer.reject);
 				} else {
-					defer.reject('The admin service requires an id of the user to retrieve');
+					defer.reject({
+						data: {
+							error_description: 'The admin service requires an id of the user to retrieve'
+						}
+					});
 				}
 				return defer.promise;
 			}
