@@ -317,7 +317,8 @@ module.exports = function (grunt) {
 					constants: {
 						EVENTS: grunt.file.readJSON('app/scripts/config/events.json'),
 						ROUTES: grunt.file.readJSON('app/scripts/config/routes.json'),
-						PATHS: grunt.file.readJSON('app/scripts/config/paths.json')
+						PATHS: grunt.file.readJSON('app/scripts/config/paths.json'),
+						SETTINGS: grunt.file.readJSON('app/scripts/config/settings.json')
 					}
 				}
 			]

@@ -10,6 +10,9 @@ beforeEach(function() {
 		},
 		toBeArray: function(){
 			return $.isArray(this.actual);
+		},
+		toBeFunction: function(){
+			return $.isFunction(this.actual);
 		}
 	});
 });
