@@ -26,6 +26,14 @@ describe('Controller: MainCtrl', function () {
 		expect(scope.config).toBeDefined();
 		expect(scope.config.data).toBeDefined();
 		expect(scope.config.structure).toBeDefined();
+
+		// expect field function to transform a user id into a link to the user page
+		var structure = scope.config.structure[scope.config.structure.length - 1];
+		expect(structure.field).toBeFunction();
+		expect(structure.field({
+			id: 1
+		})).toEqual('<a href="'+scope.PATHS.USER+'/1">Edit</a>');
+
 	});
 
 });

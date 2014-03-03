@@ -13,12 +13,13 @@ describe('Service: User', function () {
 		});
 	});
 
-	var User, UserData;
+	var User, UserData, Format;
 
 	// Load the service to test
-	beforeEach(inject(function(_User_, _UserData_){
+	beforeEach(inject(function(_User_, _UserData_, _Format_){
 		User = _User_;
 		UserData = _UserData_;
+		Format = _Format_;
 	}));
 
 	it('Service should be injected.', function () {
@@ -32,12 +33,8 @@ describe('Service: User', function () {
 		$httpBackend.flush();
 
 		var user = User.get();
-		expect(user).not.toBeNull();
-		expect(user.first_name).toEqual(UserData.user_first_name);
-		expect(user.last_name).toEqual(UserData.user_last_name);
-		expect(user.id).toEqual(UserData.user_id);
-		expect(user.username).toEqual(UserData.user_username);
-		expect(user.first_name).toEqual(UserData.user_first_name);
+		expect(user).toBeDefined();
+		expect(user).toEqual(Format.user(UserData));
 	});
 
 	it('Set user', function(){
@@ -46,12 +43,8 @@ describe('Service: User', function () {
 		// set method to mock object
 		User.set(UserData);
 		var user = User.get();
-		expect(user).not.toBeNull();
-		expect(user.first_name).toEqual(UserData.user_first_name);
-		expect(user.last_name).toEqual(UserData.user_last_name);
-		expect(user.id).toEqual(UserData.user_id);
-		expect(user.username).toEqual(UserData.user_username);
-		expect(user.first_name).toEqual(UserData.user_first_name);
+		expect(user).toBeDefined();
+		expect(user).toEqual(Format.user(UserData));
 
 		// set to null
 		User.set();
