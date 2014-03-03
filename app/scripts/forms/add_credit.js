@@ -35,19 +35,16 @@ angular.module('adminPanelApp')
 							reason: $scope.credit.reason
 						}).then(function(data){
 							$scope.user.credit = data;
-								$scope.addCreditForm.submitted = false;
-								$scope.alert.type = 'success';
-								$scope.alert.text = 'Credit added successfully';
+							$scope.addCreditForm.submitted = false;
+							$scope.alert.type = 'success';
+							$scope.alert.text = 'Credit added successfully';
 						}, function(response){
-								$scope.addCreditForm.submitted = false;
-								$scope.alert.type = 'danger';
-								$scope.alert.text = response.data.error_description || 'Unknown error.';
-							});
+							$scope.addCreditForm.submitted = false;
+							$scope.alert.type = 'danger';
+							$scope.alert.text = response.data.error_description || 'Unknown error.';
+						});
 					}
 				};
-			},
-			link: function($scope){
-
 			}
 		};
 	});
