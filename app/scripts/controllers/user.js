@@ -58,57 +58,15 @@ angular.module('adminPanelApp')
 		};
 
 		// Get the user's personal details
-		Admin.get($routeParams.id).then(function(response){
-			var id = response.data.user_id.split(':');
-			$scope.user.first_name = response.data.user_first_name;
-			$scope.user.id = id[id.length - 1];
-			$scope.user.last_name = response.data.user_last_name;
-			$scope.user.username = response.data.user_username;
-
-			// sort previous emails from most recent to oldest
-			var emails = response.data.user_previous_usernames.sort(function(a, b){
-				var diff = new Date(b.user_username_changed_at) - new Date(a.user_username_changed_at);
-				if(diff > 0){
-					return 1;
-				}
-				if(diff < 0){
-					return -1;
-				}
-				return 0;
-			});
-
-			// format emails to be used in the table
-			$scope.config.email.data = [];
-			for(var i = 0, l = emails.length; i < l; i++){
-				var email = emails[i];
-				$scope.config.email.data.push({
-					date: email.user_username_changed_at,
-					original_email: email.user_username,
-					new_email: i > 0 ? emails[i - 1].user_username : $scope.user.username
-				});
-			}
+		Admin.get($routeParams.id).then(function(user){
+			$scope.user = user;
+			$scope.config.email.data = user.previous_emails;
 		});
 
-		// takes an array of payments and returns a formated string
-		var _formatPrice = function(payments){
-			return payments.map(function(payment){
-				return '£' + payment.money.amount;
-			}).join(', ');
-		};
-
 		// Get the users purchase history
-		Purchase.get($routeParams.id).then(function(response){
+		Purchase.get($routeParams.id).then(function(purchases){
 			// format data to be used in the table
-			$scope.config.transactions.data = [];
-			for(var i = 0, l = response.data.count; i < l; i++){
-				var purchase = response.data.purchases[i];
-				$scope.config.transactions.data.push({
-					date: purchase.date,
-					isbn: purchase.isbn,
-					title: '[Book title]',
-					price: _formatPrice(purchase.payments)
-				});
-			}
+			$scope.config.transactions.data = purchases;
 		});
 
 	});

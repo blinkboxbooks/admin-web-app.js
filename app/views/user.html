@@ -37,4 +37,15 @@
 		<dynamic-table config="config.email"></dynamic-table>
 	</div>
 </section>
-<!--TODO add credit form-->
+<section class="panel panel-info">
+	<div class="panel-heading">
+		<h3 class="panel-title">Account Credit</h3>
+	</div>
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-lg-2"><strong>Current credit</strong></div>
+			<div class="col-lg-2" ng-bind="user.credit"></div>
+		</div>
+		<add-credit-form user="user"></add-credit-form>
+	</div>
+</section>

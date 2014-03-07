@@ -12,12 +12,13 @@ describe('Directive: Search', function () {
 		});
 	});
 
-	var element, scope, outerScope, AdminUsers, $httpBackend, ROUTES;
+	var element, scope, outerScope, AdminUsers, Format, $httpBackend, ROUTES;
 
 	// Store references to the element and it's scope
 	// so they are available to all tests in this describe block
-	beforeEach(inject(function($compile, $rootScope, _DataTableUsers_, _AdminUsers_){
+	beforeEach(inject(function($compile, $rootScope, _DataTableUsers_, _Format_, _AdminUsers_){
 		AdminUsers = $.extend({}, _AdminUsers_);
+		Format = _Format_;
 
 		outerScope = $rootScope.$new();
 		outerScope.data = [];
@@ -54,27 +55,62 @@ describe('Directive: Search', function () {
 		expect(scope.search.type()).toBe(scope.search.types.ID);
 	});
 
-	it('Should save search results.', function(){
-
-		var mockUsername = 'username';
-
-		$httpBackend.expectGET(ROUTES.ADMIN_USERS + '?username=' + mockUsername).respond(200, AdminUsers);
-
-		scope.search.value = mockUsername;
+	it('Should handle errors', function(){
+		// No users found
+		scope.search.value = 'test';
+		$httpBackend.expectGET(ROUTES.ADMIN_USERS + '?username=' + scope.search.value).respond(200, {items:[]});
 		scope.submit();
-
-		expect(scope.data.length).toBe(0);
-
 		$httpBackend.flush();
+		expect(scope.data.length).toBe(0);
+		expect(scope.alert.type).toBe('info');
+		expect(scope.alert.text).toBeTruthy();
 
-		expect(scope.data.length).toEqual(AdminUsers.items.length);
-		expect(scope.data).toEqual(outerScope.data);
+		// Invalid response format
+		scope.search.value = 'test';
+		$httpBackend.expectGET(ROUTES.ADMIN_USERS + '?username=' + scope.search.value).respond(500);
+		scope.submit();
+		$httpBackend.flush();
+		expect(scope.data.length).toBe(0);
+		expect(scope.alert.type).toBe('danger');
+		expect(scope.alert.text).toBeTruthy();
+	});
 
-		$.each(scope.data, function(i, e){
-			expect(AdminUsers.items[i].user_id).toContain(e.id);
-			expect(AdminUsers.items[i].user_first_name).toContain(e.first_name);
-			expect(AdminUsers.items[i].user_last_name).toContain(e.last_name);
-			expect(AdminUsers.items[i].user_username).toContain(e.username);
-		});
+	it('Should perform search.', function(){
+
+		var mock = {
+			username: 'username',
+			ID: 234,
+			first_name: 'fn',
+			last_name: 'fn'
+		};
+
+		var _validate_results = function(){
+			$httpBackend.flush();
+
+			expect(scope.data.length).toEqual(AdminUsers.items.length);
+
+			$.each(scope.data, function(i, e){
+				expect(e).toEqual(Format.user(AdminUsers.items[i]));
+			});
+		};
+
+		// Checking search with email
+		scope.search.value = mock.username;
+		$httpBackend.expectGET(ROUTES.ADMIN_USERS + '?username=' + mock.username).respond(200, AdminUsers);
+		scope.submit();
+		_validate_results();
+
+		// Checking search with name
+		scope.search.value = mock.first_name + ' ' + mock.last_name;
+		$httpBackend.expectGET(ROUTES.ADMIN_USERS + '?first_name=' + mock.first_name + '&last_name=' + mock.last_name).respond(200, AdminUsers);
+		scope.submit();
+		_validate_results();
+
+		// Checking search with email
+		scope.search.value = mock.ID + '';
+		$httpBackend.expectGET(ROUTES.ADMIN_USERS + '?user_id=' + mock.ID).respond(200, AdminUsers);
+		scope.submit();
+		_validate_results();
+
 	});
 });

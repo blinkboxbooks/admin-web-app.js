@@ -56,49 +56,27 @@ angular.module('adminPanelApp')
 								break;
 							case $scope.search.types.Name:
 								var names = $scope.search.value.split(/\s+/, 2);
-								if(names.length === 2){
-									param.first_name = names[0];
-									param.last_name = names[1];
-								} else {
-									$scope.alert.type = 'danger';
-									$scope.alert.text = 'You must search for the first name and the last name of the user (both are required and must be separated by a space)';
-									return;
-								}
+								param.first_name = names[0];
+								param.last_name = names[1];
 								break;
 							default:
 								param.username = $scope.search.value;
 						}
 
 						// perform call
-						Admin.search(param).then(function(response){
-							if(response.data.items){
-								$scope.alert.type = 'success';
+						Admin.search(param).then(function(items){
+							$scope.alert.type = 'success';
 
-								// populate results
-								$scope.data = [];
-								for(var i = 0, l = response.data.items.length; i < l; i++){
-									var item = response.data.items[i],
-										id = item.user_id.split(':');
+							// populate results
+							$scope.data = items;
 
-									$scope.data.push({
-										id: id[id.length - 1],
-										first_name: item.user_first_name,
-										last_name: item.user_last_name,
-										username: item.user_username
-									});
-								}
-
-								if(!response.data.items.length){
-									$scope.alert.type = 'info';
-									$scope.alert.text = 'No users found for: ' + $scope.search.value;
-								}
-							} else {
-								$scope.alert.type = 'danger';
-								$scope.alert.text = 'Unknown error occurred. Please try again';
+							if(!items.length){
+								$scope.alert.type = 'info';
+								$scope.alert.text = 'No users found for: ' + $scope.search.value;
 							}
 						}, function(response){
 							$scope.alert.type = 'danger';
-							$scope.alert.text = response.data.error_description || 'Unknown error.';
+							$scope.alert.text = response.data && response.data.error_description ? response.data.error_description : 'Unknown error.';
 						});
 					}
 				};

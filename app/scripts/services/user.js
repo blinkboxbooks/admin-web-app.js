@@ -1,26 +1,16 @@
 'use strict';
 
 angular.module('adminPanelApp')
-	.factory('User', function($rootScope, $http, ROUTES, EVENTS) {
+	.factory('User', function($rootScope, $http, ROUTES, EVENTS, Format) {
 
 		var user = null;
-
-		// Format the user data to be used within the app.
-		var _format = function(data){
-			return data ? {
-				first_name: data.user_first_name,
-				id: data.user_id,
-				last_name: data.user_last_name,
-				username: data.user_username
-			} : null;
-		};
 
 		var User = {
 			get: function(){
 				return user;
 			},
 			set: function(data){
-				user = _format(data);
+				user = Format.user(data);
 				$rootScope.$broadcast(EVENTS.USER_UPDATED, user);
 			},
 			refresh: function() {

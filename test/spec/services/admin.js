@@ -13,12 +13,15 @@ describe('Service: Admin', function () {
 		});
 	});
 
-	var Admin, AdminUsers, ROUTES;
+	var Admin, $rootScope, AdminUsers, CreditData, Format, ROUTES;
 
 	// Load the service to test
-	beforeEach(inject(function(_Admin_, _AdminUsers_){
+	beforeEach(inject(function(_$rootScope_, _Admin_, _AdminUsers_, _Format_, _CreditData_){
 		Admin = _Admin_;
+		CreditData = _CreditData_;
 		AdminUsers = _AdminUsers_;
+		Format = _Format_;
+		$rootScope = _$rootScope_;
 	}));
 
 	it('Service should be injected.', function () {
@@ -34,15 +37,15 @@ describe('Service: Admin', function () {
 
 		Admin.search({
 			username: mockUsername
-		}).then(function(response){
-				users = response.data;
+		}).then(function(data){
+				users = data;
 			});
 
 		expect(users).toBeNull();
 
 		$httpBackend.flush();
 
-		expect(users).toEqual(AdminUsers);
+		expect(users).toEqual(AdminUsers.items.map(function(d){ return Format.user(d);}));
 	});
 
 	it('Get users by first name', function(){
@@ -54,15 +57,15 @@ describe('Service: Admin', function () {
 
 		Admin.search({
 			first_name: mockFirstName
-		}).then(function(response){
-				users = response.data;
+		}).then(function(data){
+				users = data;
 			});
 
 		expect(users).toBeNull();
 
 		$httpBackend.flush();
 
-		expect(users).toEqual(AdminUsers);
+		expect(users).toEqual(AdminUsers.items.map(function(d){ return Format.user(d);}));
 	});
 
 	it('Get users by last name', function(){
@@ -74,27 +77,28 @@ describe('Service: Admin', function () {
 
 		Admin.search({
 			last_name: mockLastName
-		}).then(function(response){
-				users = response.data;
+		}).then(function(data){
+				users = data;
 			});
 
 		expect(users).toBeNull();
 
 		$httpBackend.flush();
 
-		expect(users).toEqual(AdminUsers);
+		expect(users).toEqual(AdminUsers.items.map(function(d){ return Format.user(d);}));
 	});
 
-	it('should get user information', function(){
+	it('Should get user information', function(){
 		var userID = 1,
 			response = AdminUsers.items[0];
 
 		$httpBackend.expectGET(ROUTES.ADMIN_USERS + '/' + userID).respond(200, response);
+		$httpBackend.expectGET(ROUTES.ADMIN_SERVICES + '/' + userID + ROUTES.CREDIT).respond(200, CreditData);
 
 		var user;
 
-		Admin.get(userID).then(function(response){
-			user = response.data;
+		Admin.get(userID).then(function(data){
+			user = data;
 		});
 
 		expect(user).toBeUndefined();
@@ -102,7 +106,38 @@ describe('Service: Admin', function () {
 		$httpBackend.flush();
 
 		expect(user).toBeDefined();
-		expect(user.user_username).toBe(response.user_username);
+		expect(user).toEqual(Format.user(response, CreditData));
+
+	});
+
+	it('Should handle errors', function(){
+
+		// Attempt to search with undefined id
+		var err;
+		expect(err).toBeUndefined();
+		Admin.get().then(null, function(data){
+			err = data;
+		});
+		$rootScope.$apply();
+		expect(err).toEqual({
+			data: {
+				error_description: 'The admin service requires an id of the user to retrieve'
+			}
+		});
+
+		// Back end return malformed result
+		$httpBackend.expectGET(ROUTES.ADMIN_USERS + '?username=test').respond(200, {});
+		Admin.search({
+			username: 'test'
+		}).then(null, function(data){
+			err = data;
+		});
+		$httpBackend.flush();
+		expect(err).toEqual({
+			data: {
+				error_description: 'Unknown error occurred.'
+			}
+		});
 
 	});
 
