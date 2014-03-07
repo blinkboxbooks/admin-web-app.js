@@ -4,7 +4,7 @@
 	"USER": "/api/auth/users",
 	"SESSION": "/api/auth/session",
 	"ADMIN_USERS": "/api/auth/admin/users",
-	"ADMIN_SERVICES": "/api/service/admin/users",
+	"ADMIN_SERVICES": "/api/secure-service/admin/users",
 	"PURCHASE_HISTORY": "/purchases",
 	"BOOK": "/api/service/catalogue/books",
 	"CREDIT": "/credit"
