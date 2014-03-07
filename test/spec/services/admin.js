@@ -93,7 +93,7 @@ describe('Service: Admin', function () {
 			response = AdminUsers.items[0];
 
 		$httpBackend.expectGET(ROUTES.ADMIN_USERS + '/' + userID).respond(200, response);
-		$httpBackend.expectGET(ROUTES.ADMIN_USERS + '/' + userID + ROUTES.CREDIT).respond(200, CreditData);
+		$httpBackend.expectGET(ROUTES.ADMIN_SERVICES + '/' + userID + ROUTES.CREDIT).respond(200, CreditData);
 
 		var user;
 

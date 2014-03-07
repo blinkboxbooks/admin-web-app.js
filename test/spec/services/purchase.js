@@ -32,7 +32,7 @@ describe('Service: Purchase', function () {
 	it('Should return purchase history', function(){
 		var userID = 1, history;
 
-		$httpBackend.expectGET(ROUTES.ADMIN_USERS + '/' + userID + ROUTES.PURCHASE_HISTORY).respond(200, PurchaseHistoryData);
+		$httpBackend.expectGET(ROUTES.ADMIN_SERVICES + '/' + userID + ROUTES.PURCHASE_HISTORY).respond(200, PurchaseHistoryData);
 		$httpBackend.expectGET(ROUTES.BOOK + '?id=' + PurchaseHistoryData.purchases.map(function(d){return d.isbn;}).join('&id=')).respond(200, BookData.single);
 
 		Purchase.get(userID).then(function(data){
@@ -50,7 +50,7 @@ describe('Service: Purchase', function () {
 
 		// Handling empty history
 		history = undefined;
-		$httpBackend.expectGET(ROUTES.ADMIN_USERS + '/' + userID + ROUTES.PURCHASE_HISTORY).respond(200, EmptyPurchaseHistoryData);
+		$httpBackend.expectGET(ROUTES.ADMIN_SERVICES + '/' + userID + ROUTES.PURCHASE_HISTORY).respond(200, EmptyPurchaseHistoryData);
 
 		Purchase.get(userID).then(function(data){
 			history = data;

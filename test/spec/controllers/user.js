@@ -34,8 +34,8 @@ describe('Controller: UserCtrl', function () {
 		var response = $.extend({}, AdminUsers.items[0]);
 
 		$httpBackend.expectGET(ROUTES.ADMIN_USERS + '/' + userID).respond(200, response);
-		$httpBackend.expectGET(ROUTES.ADMIN_USERS + '/' + userID + ROUTES.PURCHASE_HISTORY).respond(200, PurchaseHistoryData);
-		$httpBackend.expectGET(ROUTES.ADMIN_USERS + '/' + userID + ROUTES.CREDIT).respond(200, CreditData);
+		$httpBackend.expectGET(ROUTES.ADMIN_SERVICES + '/' + userID + ROUTES.PURCHASE_HISTORY).respond(200, PurchaseHistoryData);
+		$httpBackend.expectGET(ROUTES.ADMIN_SERVICES + '/' + userID + ROUTES.CREDIT).respond(200, CreditData);
 		$httpBackend.expectGET(ROUTES.BOOK + '?id=' + PurchaseHistoryData.purchases.map(function(d){return d.isbn;}).join('&id=')).respond(200, BookData.single);
 
 		expect(scope.user.id).toBe(-1);

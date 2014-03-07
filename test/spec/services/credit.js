@@ -31,7 +31,7 @@ describe('Service: Credit', function () {
 
 		var credit;
 
-		$httpBackend.expectGET(ROUTES.ADMIN_USERS + '/' + userID + ROUTES.CREDIT).respond(200, CreditData);
+		$httpBackend.expectGET(ROUTES.ADMIN_SERVICES + '/' + userID + ROUTES.CREDIT).respond(200, CreditData);
 
 		Credit.get(userID).then(function(data){
 			credit = data;

@@ -8,7 +8,7 @@ angular.module('adminPanelApp')
 				var defer = $q.defer();
 				$http({
 					method: 'GET',
-					url: ROUTES.ADMIN_USERS + '/' + id + ROUTES.CREDIT,
+					url: ROUTES.ADMIN_SERVICES + '/' + id + ROUTES.CREDIT,
 					headers: {
 						'Cache-Control': 'no-cache, no-store, must-revalidate',
 						'Pragma': 'no-cache',

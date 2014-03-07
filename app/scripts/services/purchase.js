@@ -9,7 +9,7 @@ angular.module('adminPanelApp')
 				if(!!id){
 					$http({
 						method: 'GET',
-						url: ROUTES.ADMIN_USERS + '/' + id + ROUTES.PURCHASE_HISTORY,
+						url: ROUTES.ADMIN_SERVICES + '/' + id + ROUTES.PURCHASE_HISTORY,
 						headers: {
 							'X-Requested-With': 'XMLHttpRequest'
 						}
