@@ -366,7 +366,7 @@ angular.module('mockedResponses', [])
 		}
 	})
 	.value('CreditData', {
-		type: "urn:blinkboxbooks:schema:list",
+		type: 'urn:blinkboxbooks:schema:list',
 		items: [
 			{
 				type:'urn:blinkboxbooks:schema:admin:credit',

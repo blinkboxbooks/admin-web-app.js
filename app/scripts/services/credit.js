@@ -25,9 +25,11 @@ angular.module('adminPanelApp')
 				$http({
 					method: 'POST',
 					url: ROUTES.ADMIN_SERVICES + '/' + id + ROUTES.CREDIT,
-					data: $.param(data),
+					data: $.extend({
+						'currency': 'GBP'
+					}, data),
 					headers: {
-						'Content-Type': 'application/x-www-form-urlencoded',
+						'Accept': 'application/vnd.blinkboxbooks.data.v1+json',
 						'X-Requested-With': 'XMLHttpRequest'
 					}
 				}).then(function(response){
