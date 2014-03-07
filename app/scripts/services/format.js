@@ -60,7 +60,7 @@ angular.module('adminPanelApp')
 				return null;
 			},
 			credit: function(data){
-				return data ? '£' + data.amount : null;
+				return data && angular.isArray(data.items) && data.items.length ? '£' + data.items[0].amount : null;
 			}
 		};
 

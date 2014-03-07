@@ -50,7 +50,7 @@ describe('Service: Credit', function () {
 
 		var credit;
 
-		$httpBackend.expectPOST(ROUTES.ADMIN_USERS + '/' + userID + ROUTES.CREDIT, 'currency=GBP&amount=1&reason=vip').respond(200, CreditData);
+		$httpBackend.expectPOST(ROUTES.ADMIN_SERVICES + '/' + userID + ROUTES.CREDIT, 'amount=1&reason=vip').respond(200, CreditData);
 
 		Credit.add(userID, {
 			amount: '1',

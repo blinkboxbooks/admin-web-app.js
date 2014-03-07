@@ -80,8 +80,7 @@ describe('Directive: Add credit', function () {
 
 	it('Should add credit and update credit amount.', function(){
 
-		$httpBackend.expectPOST(ROUTES.ADMIN_USERS + '/' + scope.user.id + ROUTES.CREDIT, $.param({
-			'currency': 'GBP',
+		$httpBackend.expectPOST(ROUTES.ADMIN_SERVICES + '/' + scope.user.id + ROUTES.CREDIT, $.param({
 			'amount': '1',
 			'reason': 'vip'
 		})).respond(200, CreditData);
@@ -100,8 +99,7 @@ describe('Directive: Add credit', function () {
 
 	it('Should handle errors.', function(){
 
-		$httpBackend.expectPOST(ROUTES.ADMIN_USERS + '/' + scope.user.id + ROUTES.CREDIT, $.param({
-			'currency': 'GBP',
+		$httpBackend.expectPOST(ROUTES.ADMIN_SERVICES + '/' + scope.user.id + ROUTES.CREDIT, $.param({
 			'amount': '1',
 			'reason': 'vip'
 		})).respond(500);

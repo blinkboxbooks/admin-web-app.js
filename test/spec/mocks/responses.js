@@ -366,7 +366,12 @@ angular.module('mockedResponses', [])
 		}
 	})
 	.value('CreditData', {
-		'type': 'urn:blinkboxbooks:schema:admin:credit',
-		'amount': '4.56',
-		'currency': 'GBP'
+		type: "urn:blinkboxbooks:schema:list",
+		items: [
+			{
+				type:'urn:blinkboxbooks:schema:admin:credit',
+				amount:4.56,
+				currency:'GBP'
+			}
+		]
 	});

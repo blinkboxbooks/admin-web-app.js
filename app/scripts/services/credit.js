@@ -24,10 +24,8 @@ angular.module('adminPanelApp')
 				var defer = $q.defer();
 				$http({
 					method: 'POST',
-					url: ROUTES.ADMIN_USERS + '/' + id + ROUTES.CREDIT,
-					data: $.param($.extend({
-						currency: 'GBP'
-					}, data)),
+					url: ROUTES.ADMIN_SERVICES + '/' + id + ROUTES.CREDIT,
+					data: $.param(data),
 					headers: {
 						'Content-Type': 'application/x-www-form-urlencoded',
 						'X-Requested-With': 'XMLHttpRequest'
