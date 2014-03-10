@@ -15,6 +15,8 @@ module.exports = function (grunt) {
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
 
+	var pkg = grunt.file.readJSON('package.json');
+
   // Define the configuration for all the tasks
   grunt.initConfig({
 
@@ -180,7 +182,7 @@ module.exports = function (grunt) {
     // Performs rewrites based on rev and the useminPrepare configuration
     usemin: {
       html: ['<%= yeoman.dist %>/{,*/}*.html'],
-      css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
+      css: ['<%= yeoman.dist %>/{,*/}*.css'],
       options: {
         assetsDirs: ['<%= yeoman.dist %>']
       }
@@ -237,6 +239,12 @@ module.exports = function (grunt) {
       }
     },
 
+		uglify: {
+			options:{
+				banner: '/*! Admin Panel - <%= grunt.config.get("adminVersion") %> - <%= grunt.template.today("yyyy-mm-dd") %> */'
+			}
+		},
+
     // Copies remaining files to places other tasks can use
     copy: {
       dist: {
@@ -260,7 +268,12 @@ module.exports = function (grunt) {
           cwd: '.tmp/images',
           dest: '<%= yeoman.dist %>/images',
           src: ['generated/*']
-        }]
+        }, {
+					expand: true,
+					cwd: '<%= yeoman.app %>/lib/template/html/assets/data-tables',
+					dest: '<%= yeoman.dist %>',
+					src: ['images/*']
+				}]
       },
       styles: {
         expand: true,
@@ -374,6 +387,8 @@ module.exports = function (grunt) {
 	grunt.registerTask('ci-build', [
 		'build'
 	]);
+
+	grunt.config.set('adminVersion', pkg.version);
 
 	grunt.registerTask('ci-init', function() {
 		var pkg = grunt.file.readJSON('package.json');

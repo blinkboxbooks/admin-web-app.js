@@ -1,6 +1,6 @@
 {
 	"CREDIT_REASONS": {
-		"VIP": "VIP",
+		"VIP": "vip",
 		"CUSTOMER": "customer",
 		"EMPLOYEE": "employee"
 	}

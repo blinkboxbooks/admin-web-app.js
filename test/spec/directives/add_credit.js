@@ -80,11 +80,11 @@ describe('Directive: Add credit', function () {
 
 	it('Should add credit and update credit amount.', function(){
 
-		$httpBackend.expectPOST(ROUTES.ADMIN_USERS + '/' + scope.user.id + ROUTES.CREDIT, $.param({
-			'currency': 'GBP',
-			'amount': '1',
-			'reason': 'vip'
-		})).respond(200, CreditData);
+		$httpBackend.expectPOST(ROUTES.ADMIN_SERVICES + '/' + scope.user.id + ROUTES.CREDIT, {
+			'amount': 1,
+			'reason': 'vip',
+			currency: 'GBP'
+		}).respond(200, CreditData.items[0]);
 
 		// add credit
 		scope.credit.amount = 1;
@@ -100,11 +100,11 @@ describe('Directive: Add credit', function () {
 
 	it('Should handle errors.', function(){
 
-		$httpBackend.expectPOST(ROUTES.ADMIN_USERS + '/' + scope.user.id + ROUTES.CREDIT, $.param({
-			'currency': 'GBP',
-			'amount': '1',
-			'reason': 'vip'
-		})).respond(500);
+		$httpBackend.expectPOST(ROUTES.ADMIN_SERVICES + '/' + scope.user.id + ROUTES.CREDIT, {
+			'amount': 1,
+			'reason': 'vip',
+			currency: 'GBP'
+		}).respond(500);
 
 		// add credit
 		scope.credit.amount = 1;

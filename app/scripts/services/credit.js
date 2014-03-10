@@ -24,12 +24,12 @@ angular.module('adminPanelApp')
 				var defer = $q.defer();
 				$http({
 					method: 'POST',
-					url: ROUTES.ADMIN_USERS + '/' + id + ROUTES.CREDIT,
-					data: $.param($.extend({
-						currency: 'GBP'
-					}, data)),
+					url: ROUTES.ADMIN_SERVICES + '/' + id + ROUTES.CREDIT,
+					data: $.extend({
+						'currency': 'GBP'
+					}, data),
 					headers: {
-						'Content-Type': 'application/x-www-form-urlencoded',
+						'Accept': 'application/vnd.blinkboxbooks.data.v1+json',
 						'X-Requested-With': 'XMLHttpRequest'
 					}
 				}).then(function(response){
