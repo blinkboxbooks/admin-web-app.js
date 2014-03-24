@@ -6,3 +6,4 @@ app/bower_components
 app/scripts/config/constants.js
 coverage/
 .idea
+.vagrant
