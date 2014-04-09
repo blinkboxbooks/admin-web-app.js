@@ -18,8 +18,23 @@ angular.module('adminPanelApp')
 		// Expose authentication methods.
 		$rootScope.Authentication = Authentication;
 	})
-	.config(function ($locationProvider) {
+	.config(function ($locationProvider, $httpProvider) {
 		// Set routing mode
 		$locationProvider.html5Mode(false);
 		$locationProvider.hashPrefix('!');
+
+		// security measures
+		$httpProvider.interceptors.push(function () {
+			return {
+				request: function (config) {
+					if (config.url.slice(0, 5) === '/api/') {
+						// Add this header to all calls going through our NodeJS proxy,
+						// as a CSRF prevention measurement. For more information see
+						// https://tools.mobcastdev.com/jira/browse/CWA-1305
+						config.headers['X-Requested-By'] = 'blinkbox';
+					}
+					return config;
+				}
+			};
+		});
 	});
