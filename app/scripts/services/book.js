@@ -4,14 +4,15 @@ angular.module('adminPanelApp')
 	.factory('Book', function($http, $q, ROUTES) {
 
 		return {
-			get: function(isbn) {
+			get: function(isbn, count) {
 				var defer = $q.defer();
 				if(!!isbn){
 					$http({
 						method: 'GET',
 						url: ROUTES.BOOK,
 						params: {
-							id: isbn
+							id: isbn,
+              count: count
 						},
 						headers: {
 							'X-Requested-With': 'XMLHttpRequest'

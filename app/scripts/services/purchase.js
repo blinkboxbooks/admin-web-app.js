@@ -15,7 +15,7 @@ angular.module('adminPanelApp')
 						}
 					}).then(function(response){
 							if(response.data.count > 0){
-								Book.get(response.data.purchases.map(function(d){ return d.isbn; })).then(function(books){
+								Book.get(response.data.purchases.map(function(d){ return d.isbn; }), response.data.count).then(function(books){
 									defer.resolve(response.data.purchases.map(function(d, i){
 										return Format.purchase(d, books[i]);
 									}));
