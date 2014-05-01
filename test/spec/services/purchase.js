@@ -33,7 +33,7 @@ describe('Service: Purchase', function () {
 		var userID = 1, history;
 
 		$httpBackend.expectGET(ROUTES.ADMIN_SERVICES + '/' + userID + ROUTES.PURCHASE_HISTORY + '?count=999').respond(200, PurchaseHistoryData);
-		$httpBackend.expectGET(ROUTES.BOOK + '?id=' + PurchaseHistoryData.purchases.map(function(d){return d.isbn;}).join('&id=')).respond(200, BookData.single);
+		$httpBackend.expectGET(ROUTES.BOOK + '?count=' + PurchaseHistoryData.count + '&id=' + PurchaseHistoryData.purchases.map(function(d){return d.isbn;}).join('&id=')).respond(200, BookData.single);
 
 		Purchase.get(userID).then(function(data){
 			history = data;
