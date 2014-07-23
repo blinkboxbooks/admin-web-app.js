@@ -17,7 +17,7 @@ rpmdev-setuptree
 cd $AWA_HOME
 
 # gather AWA version and build number
-AWA_FULL_VERSION=$(grep -o -m1 '.\{0,0\}Admin Panel..\{0,12\}' dist/scripts/*.scripts.js | awk -F\" '{print $(NF-1)}')
+AWA_FULL_VERSION=$(grep -o '.\{0,0\}Admin Panel.\{0,12\}' dist/scripts/*.scripts.js | cut -d " " -f4)
 AWA_VERSION=$(echo $AWA_FULL_VERSION | cut -d'-' -f1)
 AWA_BUILD_NUMBER=$(echo $AWA_FULL_VERSION | cut -d'-' -f2)
 
