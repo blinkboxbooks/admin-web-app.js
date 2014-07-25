@@ -7,6 +7,7 @@
 # version and build number of the SWA this version of the AWA is compatible with e.g. 1.0.0-42
 # and also the d
 
+source /home/vagrant/.bash_profile;
 
 AWA_HOME=/vagrant/admin-web-app
 RPM_HOME=/home/vagrant/rpmbuild
@@ -36,7 +37,8 @@ tar czf admin-web-app-${AWA_VERSION}.tar.gz admin-web-app-${AWA_VERSION}/
 echo -e 'T3amcI7y@BbB\n' | setsid rpmbuild --sign -ba $RPM_HOME/SPECS/awa.spec \
 --define "_gpg_path /vagrant/gpg.books.teamcity.dev" \
 --define "_gpgbin /usr/bin/gpg" \
---define "_signature gpg" --define "_gpg_name TeamCity (Dirty Development Signing Key) <tm-books-itops@blinkbox.com>" \
+--define "_signature gpg" \
+--define "_gpg_name TeamCity (Dirty Development Signing Key) <tm-books-itops@blinkbox.com>" \
 --define "version $AWA_VERSION" --define "release $AWA_BUILD_NUMBER" \
 --define "frontend_common_nginx_required_version $FRONTEND_COMMON_NGINX_REQUIRED_VERSION" \
 --define "swa_required_version $SWA_REQUIRED_VERSION"
