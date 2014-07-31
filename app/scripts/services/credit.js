@@ -29,7 +29,7 @@ angular.module('adminPanelApp')
 						'currency': 'GBP'
 					}, data),
 					headers: {
-						'Accept': 'application/vnd.blinkboxbooks.data.v1+json',
+						'x-content-type': 'application/vnd.blinkboxbooks.data.v1+json',
 						'X-Requested-With': 'XMLHttpRequest'
 					}
 				}).then(function(response){
