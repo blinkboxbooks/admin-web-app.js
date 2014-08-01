@@ -47,4 +47,5 @@ rm -rf %{buildroot}
 %{_localstatedir}/www/admin/*
 %{_sysconfdir}/nginx/conf.d
 %{_sysconfdir}/nginx/inc
-
+%config(noreplace) %{_sysconfdir}/nginx/conf.d/frontend_admin.conf
+%config(noreplace) %{_sysconfdir}/nginx/inc/frontend_admin.inc
