@@ -5,7 +5,7 @@
  * It requires an ID parameter.
  * */
 angular.module('adminPanelApp')
-	.controller('UserCtrl', function ($routeParams, $scope, Admin, Purchase) {
+	.controller('UserCtrl', function ($routeParams, $scope, Admin, Purchase, Vouchers) {
 
 		// View model for the current user
 		$scope.user = {
@@ -21,20 +21,20 @@ angular.module('adminPanelApp')
 				data: [],
 				structure: [
 					{
-						'field': 'date',
-						'label': 'Date'
+						field: 'date',
+						label: 'Date'
 					},
 					{
-						'field': 'isbn',
-						'label': 'ISBN'
+						field: 'isbn',
+						label: 'ISBN'
 					},
 					{
-						'field': 'title',
-						'label': 'Book Title'
+						field: 'title',
+						label: 'Book Title'
 					},
 					{
-						'field': 'price',
-						'label': 'Price'
+						field: 'price',
+						label: 'Price'
 					}
 				]
 			},
@@ -42,16 +42,37 @@ angular.module('adminPanelApp')
 				data: [],
 				structure: [
 					{
-						'field': 'date',
-						'label': 'Date'
+						field: 'date',
+						label: 'Date'
 					},
 					{
-						'field': 'original_email',
-						'label': 'Original Email'
+						field: 'original_email',
+						label: 'Original Email'
 					},
 					{
-						'field': 'new_email',
-						'label': 'New Email'
+						field: 'new_email',
+						label: 'New Email'
+					}
+				]
+			},
+			vouchers: {
+				data: [],
+				structure: [
+					{
+						field: 'code',
+						label: 'Code'
+					},
+					{
+						field: 'campaignId',
+						label: 'Campaign ID'
+					},
+					{
+						field: 'state',
+						label: 'State'
+					},
+					{
+						field: 'redeemedAt',
+						label: 'Redeemed at'
 					}
 				]
 			}
@@ -67,6 +88,10 @@ angular.module('adminPanelApp')
 		Purchase.get($routeParams.id).then(function(purchases){
 			// format data to be used in the table
 			$scope.config.transactions.data = purchases;
+		});
+
+		Vouchers.get($routeParams.id).then(function(vouchers){
+			$scope.config.vouchers.data = vouchers.items;
 		});
 
 	});

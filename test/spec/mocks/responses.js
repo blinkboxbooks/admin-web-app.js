@@ -202,6 +202,31 @@ angular.module('mockedResponses', [])
 		'clubcardPoints': '42',
 		'purchases': []
 	})
+	.value('VouchersData', {
+		count: 2,
+		numberOfResults: 10,
+		offset: 0,
+		items: [
+			{
+				campaignId: 1,
+				code: '1111222233334444',
+				redeemedAt: '2014-09-24T02:32:23.652Z',
+				state: 'REDEEMED'
+			},
+			{
+				campaignId: 1,
+				code: '5555666677778888',
+				redeemedAt: '2014-10-16T16:54:01.432Z',
+				state: 'REDEEMED'
+			}
+		]
+	})
+	.value('EmptyVouchersData', {
+		count: 0,
+		numberOfResults: 0,
+		offset: 0,
+		items: []
+	})
 	.value('BookData', {
 		empty: {
 			'type': 'urn:blinkboxbooks:schema:list',
