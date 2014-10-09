@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Service: Purchase', function () {
+describe('Service: UserVoucher', function () {
 	var $httpBackend;
 
 	// load module
@@ -13,22 +13,22 @@ describe('Service: Purchase', function () {
 		});
 	});
 
-	var $rootScope, Vouchers, VouchersData, EmptyVouchersData, ROUTES;
+	var $rootScope, UserVoucher, VouchersData, EmptyVouchersData, ROUTES;
 
 	// Load the service to test
-	beforeEach(inject(function(_$rootScope_, _Vouchers_, _VouchersData_, _EmptyVouchersData_){
+	beforeEach(inject(function(_$rootScope_, _UserVoucher_, _VouchersData_, _EmptyVouchersData_){
 		$rootScope = _$rootScope_;
-		Vouchers = _Vouchers_;
+		UserVoucher = _UserVoucher_;
 		VouchersData = $.extend({}, _VouchersData_);
 		EmptyVouchersData = _EmptyVouchersData_;
 	}));
 
-	it('Should return vouchers history', function(){
+	it('Should return user vouchers history', function(){
 		var userID = 1, vouchers;
 
-		$httpBackend.expectGET(ROUTES.GIFTING_SERVICES + ROUTES.VOUCHERS + '?user=' + userID).respond(200, VouchersData);
+		$httpBackend.expectGET(ROUTES.GIFTING_SERVICES + ROUTES.VOUCHERS + '?userId=' + userID).respond(200, VouchersData);
 
-		Vouchers.get(userID).then(function(data){
+		UserVoucher.get(userID).then(function(data){
 			vouchers = data;
 		});
 
@@ -43,9 +43,9 @@ describe('Service: Purchase', function () {
 
 		// Handling empty history
 		vouchers = undefined;
-		$httpBackend.expectGET(ROUTES.GIFTING_SERVICES + ROUTES.VOUCHERS + '?user=' + userID).respond(200, EmptyVouchersData);
+		$httpBackend.expectGET(ROUTES.GIFTING_SERVICES + ROUTES.VOUCHERS + '?userId=' + userID).respond(200, EmptyVouchersData);
 
-		Vouchers.get(userID).then(function(data){
+		UserVoucher.get(userID).then(function(data){
 			vouchers = data;
 		});
 
@@ -59,7 +59,7 @@ describe('Service: Purchase', function () {
 
 	it('Should handle errors', function(){
 		var err;
-		Vouchers.get().then(null, function(data){
+		UserVoucher.get().then(null, function(data){
 			err = data;
 		});
 		$rootScope.$apply();

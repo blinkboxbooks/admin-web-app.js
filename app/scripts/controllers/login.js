@@ -1,4 +1,6 @@
 'use strict';
 
 angular.module('adminPanelApp')
-	.controller('LoginCtrl', function () { });
+	.controller('LoginCtrl', function (User) {
+		User.set(null);
+	});

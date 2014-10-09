@@ -15,6 +15,11 @@ angular.module('adminPanelApp')
 			$rootScope.User = user;
 		});
 
+		// Expose the current path on the $rootScope:
+		$rootScope.$on('$routeChangeSuccess', function () {
+			$rootScope.currentPath = '#!' + $location.path();
+		});
+
 		// Expose authentication methods.
 		$rootScope.Authentication = Authentication;
 	})

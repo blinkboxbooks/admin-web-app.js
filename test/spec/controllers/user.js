@@ -36,7 +36,7 @@ describe('Controller: UserCtrl', function () {
 
 		$httpBackend.expectGET(ROUTES.ADMIN_USERS + '/' + userID).respond(200, response);
 		$httpBackend.expectGET(ROUTES.ADMIN_SERVICES + '/' + userID + ROUTES.PURCHASE_HISTORY + '?count=999').respond(200, PurchaseHistoryData);
-		$httpBackend.expectGET(ROUTES.GIFTING_SERVICES + ROUTES.VOUCHERS + '?user=' + userID).respond(200, VouchersData);
+		$httpBackend.expectGET(ROUTES.GIFTING_SERVICES + ROUTES.VOUCHERS + '?userId=' + userID).respond(200, VouchersData);
 
 		$httpBackend.expectGET(ROUTES.ADMIN_SERVICES + '/' + userID + ROUTES.CREDIT).respond(200, CreditData);
 		$httpBackend.expectGET(ROUTES.BOOK + '?count=' + PurchaseHistoryData.count + '&id=' + PurchaseHistoryData.purchases.map(function(d){return d.isbn;}).join('&id=')).respond(200, BookData.single);

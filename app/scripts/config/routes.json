@@ -9,5 +9,6 @@
 	"PURCHASE_HISTORY": "/purchases",
 	"BOOK": "/api/service/catalogue/books",
 	"CREDIT": "/credit",
-	"VOUCHERS": "/vouchers"
+	"VOUCHERS": "/vouchers",
+	"CAMPAIGNS": "/vouchercampaigns"
 }

@@ -5,7 +5,7 @@
  * It requires an ID parameter.
  * */
 angular.module('adminPanelApp')
-	.controller('UserCtrl', function ($routeParams, $scope, Admin, Purchase, Vouchers) {
+	.controller('UserCtrl', function ($routeParams, $scope, $filter, Admin, Purchase, UserVoucher) {
 
 		// View model for the current user
 		$scope.user = {
@@ -59,7 +59,9 @@ angular.module('adminPanelApp')
 				data: [],
 				structure: [
 					{
-						field: 'code',
+						field: function(item) {
+							return '<a href="' + $scope.PATHS.VOUCHER + '/' + encodeURIComponent(item.code) + '">' + item.code + '</a>';
+						},
 						label: 'Code'
 					},
 					{
@@ -74,7 +76,7 @@ angular.module('adminPanelApp')
 					},
 					{
 						field: function (item) {
-							return String(new Date(item.redeemedAt));
+							return $filter('date')(item.redeemedAt, 'short');
 						},
 						label: 'Redemption date'
 					}
@@ -94,7 +96,7 @@ angular.module('adminPanelApp')
 			$scope.config.transactions.data = purchases;
 		});
 
-		Vouchers.get($routeParams.id).then(function(vouchers){
+		UserVoucher.get($routeParams.id).then(function(vouchers){
 			$scope.config.vouchers.data = vouchers.items;
 		});
 

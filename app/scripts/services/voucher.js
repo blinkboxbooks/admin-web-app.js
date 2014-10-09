@@ -1,18 +1,15 @@
 'use strict';
 
 angular.module('adminPanelApp')
-	.factory('Vouchers', function($http, $q, Book, Format, ROUTES) {
+	.factory('Voucher', function($http, $q, ROUTES) {
 
 		return {
-			get: function(id) {
+			get: function(code) {
 				var defer = $q.defer();
-				if (!!id) {
+				if (!!code) {
 					$http({
 						method: 'GET',
-						url: ROUTES.GIFTING_SERVICES + ROUTES.VOUCHERS,
-						params: {
-							user: id
-						},
+						url: ROUTES.GIFTING_SERVICES + ROUTES.VOUCHERS + '/' + code,
 						headers: {
 							'X-Requested-With': 'XMLHttpRequest'
 						}
@@ -20,7 +17,7 @@ angular.module('adminPanelApp')
 						defer.resolve(response.data);
 					}, defer.reject);
 				} else {
-					defer.reject('The vouchers service requires the user id as an argument.');
+					defer.reject('The voucher service requires the voucher code as an argument.');
 				}
 				return defer.promise;
 			}

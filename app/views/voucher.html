@@ -1,0 +1,44 @@
+<div>
+  <form id="searchForm" ng-submit="submit()">
+    <div class="input-group">
+      <input class="form-control" placeholder="Voucher code" ng-model="code" ng-pattern="/\w{4}\s?\w{4}\s?\w{4}\s?\w{4}/" required autofocus>
+				<span class="input-group-btn">
+					<button class="btn btn-primary">
+            <span class="fa fa-search"></span>
+            Query
+          </button>
+				</span>
+    </div>
+  </form>
+  <div class="alert" ng-show="alert.text" ng-class="'alert-' + alert.type">
+    {{alert.text}}
+  </div>
+  <table class="display table table-bordered table-striped" ng-if="!!voucher">
+    <tbody>
+      <tr>
+        <td>Voucher code</td>
+        <td>{{voucher.code}}</td>
+      </tr>
+      <tr>
+        <td>Voucher state</td>
+        <td><span class="label" ng-class="{Unused: 'label-default', Active: 'label-primary', Reserved: 'label-info', Redeemed: 'label-success', Expired: 'label-warning'}[voucher.state]">{{voucher.state}}</span></td>
+      </tr>
+      <tr>
+        <td>Campaign name</td>
+        <td>{{campaign.name}}</td>
+      </tr>
+      <tr>
+        <td>Campaign description</td>
+        <td>{{campaign.description}}</td>
+      </tr>
+      <tr>
+        <td>Campaign start</td>
+        <td>{{campaign.startDate | date:short}}</td>
+      </tr>
+      <tr>
+        <td>Campaign enabled</td>
+        <td><span class="label" ng-class="campaign.enabled ? 'label-success' : 'label-danger'">{{campaign.enabled}}</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
