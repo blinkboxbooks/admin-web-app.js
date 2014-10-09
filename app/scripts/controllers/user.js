@@ -67,12 +67,16 @@ angular.module('adminPanelApp')
 						label: 'Campaign ID'
 					},
 					{
-						field: 'state',
-						label: 'State'
+						field: function(item) {
+							return item.state === 'REDEEMED' ? 'Yes' : 'No';
+						},
+						label: 'Redeemed?'
 					},
 					{
-						field: 'redeemedAt',
-						label: 'Redeemed at'
+						field: function (item) {
+							return String(new Date(item.redeemedAt));
+						},
+						label: 'Redemption date'
 					}
 				]
 			}
