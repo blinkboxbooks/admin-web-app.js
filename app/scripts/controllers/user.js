@@ -70,9 +70,9 @@ angular.module('adminPanelApp')
 					},
 					{
 						field: function(item) {
-							return item.state === 'Redeemed' ? 'Yes' : 'No';
+							return '<span class="label ' + $filter('voucherLabel')(item) + '">' + item.state +  '</span>';
 						},
-						label: 'Redeemed?'
+						label: 'State'
 					},
 					{
 						field: function (item) {

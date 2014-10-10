@@ -21,7 +21,7 @@
       </tr>
       <tr>
         <td>Voucher state</td>
-        <td><span class="label" ng-class="{Unused: 'label-default', Active: 'label-primary', Reserved: 'label-info', Redeemed: 'label-success', Expired: 'label-warning'}[voucher.state]">{{voucher.state}}</span></td>
+        <td><span class="label" ng-class="voucher | voucherLabel">{{voucher.state}}</span></td>
       </tr>
       <tr>
         <td>Campaign name</td>
