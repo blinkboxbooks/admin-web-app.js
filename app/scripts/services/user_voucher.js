@@ -5,9 +5,8 @@ angular.module('adminPanelApp')
 
 		return {
 			get: function(id) {
-				var defer = $q.defer();
 				if (!!id) {
-					$http({
+					return $http({
 						method: 'GET',
 						url: ROUTES.GIFTING_SERVICES + ROUTES.VOUCHERS,
 						params: {
@@ -17,12 +16,11 @@ angular.module('adminPanelApp')
 							'X-Requested-With': 'XMLHttpRequest'
 						}
 					}).then(function(response){
-						defer.resolve(response.data);
-					}, defer.reject);
+						return response.data;
+					});
 				} else {
-					defer.reject('The UserVoucher service requires the user id as an argument.');
+					return $q.reject('The UserVoucher service requires the user id as an argument.');
 				}
-				return defer.promise;
 			}
 		};
 

@@ -5,21 +5,19 @@ angular.module('adminPanelApp')
 
 		return {
 			get: function(code) {
-				var defer = $q.defer();
 				if (!!code) {
-					$http({
+					return $http({
 						method: 'GET',
 						url: ROUTES.GIFTING_SERVICES + ROUTES.VOUCHERS + '/' + code,
 						headers: {
 							'X-Requested-With': 'XMLHttpRequest'
 						}
 					}).then(function(response){
-						defer.resolve(response.data);
-					}, defer.reject);
+						return response.data;
+					});
 				} else {
-					defer.reject('The voucher service requires the voucher code as an argument.');
+					return $q.reject('The voucher service requires the voucher code as an argument.');
 				}
-				return defer.promise;
 			}
 		};
 
