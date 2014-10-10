@@ -18,6 +18,11 @@ angular.module('adminPanelApp')
 				Campaign.get(voucher.campaignId).then(function (campaign) {
 					$scope.campaign = campaign;
 				});
+			}, function () {
+				$scope.alert = {
+					type: 'danger',
+					text: 'Unknown or invalid voucher code.'
+				};
 			});
 		}
 	});
