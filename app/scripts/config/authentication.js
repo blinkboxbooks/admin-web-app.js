@@ -3,7 +3,7 @@
 angular.module('adminPanelApp')
 	.config(function ($httpProvider, PATHS) {
 		// Listen to all angular $http requests and handle un-authorized requests.
-		$httpProvider.responseInterceptors.push(['$rootScope', '$location', '$q', function ($rootScope, $location, $q) {
+		$httpProvider.responseInterceptors.push(['$rootScope', '$location', '$q', '$injector', function ($rootScope, $location, $q, $injector) {
 			// The promise contains a response from a request
 			return function (promise) {
 				return promise.then(
@@ -14,6 +14,8 @@ angular.module('adminPanelApp')
 					function (response) {
 
 						if (response.status === 401 || response.status === 403) {
+							// Reset user data (retrieve the User service without circular dependency):
+							$injector.get('User').set(null);
 							// No token present (not logged in) so redirect to signin with a link back to current page.
 							var current = $location.url();
 							// Avoid circular reference
