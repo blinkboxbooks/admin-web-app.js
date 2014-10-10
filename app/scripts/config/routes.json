@@ -5,7 +5,10 @@
 	"SESSION": "/api/auth/session",
 	"ADMIN_USERS": "/api/auth/admin/users",
 	"ADMIN_SERVICES": "/api/secure-service/admin/users",
+	"GIFTING_SERVICES": "/api/secure-service/admin/gifting",
 	"PURCHASE_HISTORY": "/purchases",
 	"BOOK": "/api/service/catalogue/books",
-	"CREDIT": "/credit"
+	"CREDIT": "/credit",
+	"VOUCHERS": "/vouchers",
+	"CAMPAIGNS": "/vouchercampaigns"
 }

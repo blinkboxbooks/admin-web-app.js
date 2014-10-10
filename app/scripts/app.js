@@ -24,6 +24,14 @@ angular.module('adminPanelApp', [
 				templateUrl: 'views/user.html',
 				controller: 'UserCtrl'
 			})
+	    .when('/voucher', {
+		    templateUrl: 'views/voucher.html',
+		    controller: 'VoucherCtrl'
+	    })
+	    .when('/voucher/:code', {
+		    templateUrl: 'views/voucher.html',
+		    controller: 'VoucherCtrl'
+	    })
 			.otherwise({
         redirectTo: '/login'
       });

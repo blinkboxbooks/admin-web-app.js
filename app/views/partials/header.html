@@ -7,4 +7,8 @@
 		</span>
 		<a ng-href="{{PATHS.LOGIN}}" ng-hide="User">Login</a>
 	</div>
+	<ul class="nav nav-pills">
+		<li ng-class="currentPath === PATHS.HOME && 'active'"><a ng-href="{{PATHS.HOME}}">User search</a></li>
+		<li ng-class="currentPath.indexOf(PATHS.VOUCHER) === 0 && 'active'"><a ng-href="{{PATHS.VOUCHER}}">Voucher query</a></li>
+	</ul>
 </div>
