@@ -70,7 +70,7 @@ angular.module('adminPanelApp')
 					},
 					{
 						field: function(item) {
-							return item.state === 'REDEEMED' ? 'Yes' : 'No';
+							return item.state === 'Redeemed' ? 'Yes' : 'No';
 						},
 						label: 'Redeemed?'
 					},
