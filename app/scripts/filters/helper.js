@@ -3,13 +3,14 @@
 angular.module('adminPanelApp')
 
 	.filter('voucherLabel', function () {
+		var labels = {
+			Unused: 'label-default',
+			Active: 'label-primary',
+			Reserved: 'label-info',
+			Redeemed: 'label-success',
+			Expired: 'label-warning'
+		};
 		return function (voucher) {
-			return {
-				Unused: 'label-default',
-				Active: 'label-primary',
-				Reserved: 'label-info',
-				Redeemed: 'label-success',
-				Expired: 'label-warning'
-			}[voucher.state];
+			return labels[voucher.state];
 		};
 	});
