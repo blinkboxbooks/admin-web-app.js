@@ -227,6 +227,31 @@ angular.module('mockedResponses', [])
 		offset: 0,
 		items: []
 	})
+	.value('CampaignsData', {
+		count: 2,
+		numberOfResults: 10,
+		offset: 0,
+		items: [
+			{
+				id: 1,
+				name: 'Bananas',
+				startDate: '2014-04-01T00:00:00.000Z',
+				redemptionActionTemplateId: 1,
+				enabled: true,
+				createdAt: '2014-03-29T00:00:00.000Z',
+				createdBy: 234
+			},
+			{
+				id: 2,
+				name: 'Bananas',
+				startDate: '2014-05-01T00:00:00.000Z',
+				redemptionActionTemplateId: 1,
+				enabled: true,
+				createdAt: '2014-04-29T00:00:00.000Z',
+				createdBy: 234
+			}
+		]
+	})
 	.value('BookData', {
 		empty: {
 			'type': 'urn:blinkboxbooks:schema:list',
