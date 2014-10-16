@@ -26,11 +26,13 @@ describe('Controller: VoucherCtrl', function () {
 		expect($location.path()).toBe(PATHS.VOUCHER + '/' + code);
 	}));
 
-	it('should retrieve voucher and campaign data', inject(function ($controller, $rootScope, $httpBackend, ROUTES, VouchersData, CampaignsData) {
+	it('should retrieve voucher, user and campaign data', inject(function ($controller, $rootScope, $httpBackend, ROUTES, VouchersData, AdminUsers, CampaignsData, Format) {
 		var code = 'testtesttesttest';
 		var voucherResponse = $.extend({}, VouchersData.items[0]);
+		var userResponse = $.extend({}, AdminUsers.items[0]);
 		var campaignResponse = $.extend({}, CampaignsData.items[0]);
 		$httpBackend.expectGET(ROUTES.GIFTING_SERVICES + ROUTES.VOUCHERS + '/' + code).respond(200, voucherResponse);
+		$httpBackend.expectGET(ROUTES.ADMIN_USERS + '/' + voucherResponse.redeemedByUser).respond(200, userResponse);
 		$httpBackend.expectGET(ROUTES.GIFTING_SERVICES + ROUTES.CAMPAIGNS + '/' + voucherResponse.campaignId).respond(200, campaignResponse);
 		$controller('VoucherCtrl', {
 			$scope: scope,
@@ -40,9 +42,11 @@ describe('Controller: VoucherCtrl', function () {
 		});
 		expect(scope.code).toBe(code);
 		expect(scope.voucher).toBeUndefined();
+		expect(scope.user).toBeUndefined();
 		expect(scope.campaign).toBeUndefined();
 		$httpBackend.flush();
 		expect(scope.voucher).toEqual(voucherResponse);
+		expect(scope.user).toEqual(Format.user(userResponse));
 		expect(scope.campaign).toEqual(campaignResponse);
 	}));
 

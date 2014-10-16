@@ -211,12 +211,14 @@ angular.module('mockedResponses', [])
 				campaignId: 1,
 				code: '1111222233334444',
 				redeemedAt: '2014-09-24T02:32:23.652Z',
+				redeemedByUser: 814,
 				state: 'Redeemed'
 			},
 			{
 				campaignId: 1,
 				code: '5555666677778888',
 				redeemedAt: '2014-10-16T16:54:01.432Z',
+				redeemedByUser: 814,
 				state: 'Redeemed'
 			}
 		]
