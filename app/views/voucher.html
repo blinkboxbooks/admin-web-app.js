@@ -31,7 +31,7 @@
         </tr>
         <tr ng-if="!!user">
           <td>Redeemed by</td>
-          <td><a ng-href="{{PATHS.USER + '/' + encodeURIComponent(voucher.redeemedByUser)}}">{{user.first_name}} {{user.last_name}}</a></td>
+          <td><a ng-href="{{PATHS.USER + '/' + voucher.redeemedByUser}}">{{user.first_name}} {{user.last_name}}</a></td>
         </tr>
       </tbody>
     </table>
