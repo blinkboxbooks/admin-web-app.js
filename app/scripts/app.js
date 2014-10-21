@@ -38,4 +38,8 @@ angular.module('adminPanelApp', [
   })
 	.run(function($rootScope){
 		$rootScope.version = '@@adminVersion';
+		$rootScope.templates = {
+			header: 'views/partials/header.html',
+			footer: 'views/partials/footer.html'
+		};
 	});

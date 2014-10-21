@@ -15,7 +15,7 @@ module.exports = function (grunt) {
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
 
-	var pkg = grunt.file.readJSON('package.json');
+  var pkg = grunt.file.readJSON('package.json');
 
   // Define the configuration for all the tasks
   grunt.initConfig({
@@ -29,10 +29,10 @@ module.exports = function (grunt) {
 
     // Watches files for changes and runs tasks based on the changed files
     watch: {
-	    constants: {
-		    files: ['<%= yeoman.app %>/scripts/config/*.json'],
-		    tasks: ['ngconstant']
-	    },
+      constants: {
+        files: ['<%= yeoman.app %>/scripts/config/*.json'],
+        tasks: ['ngconstant']
+      },
       js: {
         files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
         tasks: ['newer:jshint:all'],
@@ -159,20 +159,6 @@ module.exports = function (grunt) {
       }
     },
 
-    // Renames files for browser caching purposes
-    rev: {
-      dist: {
-        files: {
-          src: [
-            '<%= yeoman.dist %>/scripts/{,*/}*.js',
-            '<%= yeoman.dist %>/styles/{,*/}*.css',
-            '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
-            '<%= yeoman.dist %>/styles/fonts/*'
-          ]
-        }
-      }
-    },
-
     // Reads HTML for usemin blocks to enable smart builds that automatically
     // concat, minify and revision files. Creates configurations in memory so
     // additional tasks can operate on them
@@ -185,10 +171,54 @@ module.exports = function (grunt) {
 
     // Performs rewrites based on rev and the useminPrepare configuration
     usemin: {
-      html: ['<%= yeoman.dist %>/{,*/}*.html'],
-      css: ['<%= yeoman.dist %>/{,*/}*.css'],
+      html: ['<%= yeoman.dist %>/**/*.html'],
+      css: ['<%= yeoman.dist %>/**/*.css'],
+      js: ['<%= yeoman.dist %>/**/*.js'],
       options: {
-        assetsDirs: ['<%= yeoman.dist %>']
+        assetsDirs: ['<%= yeoman.dist %>'],
+        patterns: {
+          js: [
+            [/(((\/?(\w|\-|\.)+)?\/)*(\w|\-|\.)*\.(png|json|js|html))/g, 'Replacing file references in JavaScript files.']
+          ]
+        }
+      }
+    },
+
+    rev: {
+      images: {
+        files: {
+          src: [
+            '<%= yeoman.dist %>/images/**/*.{png,jpg,jpeg,gif,webp,svg}'
+          ]
+        }
+      },
+      styles: {
+        files: {
+          src: [
+            '<%= yeoman.dist %>/**/*.css'
+          ]
+        }
+      },
+      lib: {
+        files: {
+          src: [
+            '<%= yeoman.dist %>/scripts/vendor.js'
+          ]
+        }
+      },
+      scripts: {
+        files: {
+          src: [
+            '<%= yeoman.dist %>/scripts/scripts.js'
+          ]
+        }
+      },
+      views: {
+        files: {
+          src: [
+            '<%= yeoman.dist %>/views/**/*.html'
+          ]
+        }
       }
     },
 
@@ -213,8 +243,9 @@ module.exports = function (grunt) {
         }]
       }
     },
+
     htmlmin: {
-      dist: {
+      views: {
         options: {
           collapseWhitespace: true,
           collapseBooleanAttributes: true,
@@ -224,7 +255,21 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%= yeoman.dist %>',
-          src: ['*.html', 'views/{,*/}*.html'],
+          src: ['views/**/*.html'],
+          dest: '<%= yeoman.dist %>'
+        }]
+      },
+      index: {
+        options: {
+          collapseWhitespace: true,
+          collapseBooleanAttributes: true,
+          removeCommentsFromCDATA: true,
+          removeOptionalTags: true
+        },
+        files: [{
+          expand: true,
+          cwd: '<%= yeoman.dist %>',
+          src: ['index.html', '404/index.html'],
           dest: '<%= yeoman.dist %>'
         }]
       }
@@ -243,11 +288,11 @@ module.exports = function (grunt) {
       }
     },
 
-		uglify: {
-			options:{
-				banner: '/*! Admin Panel - <%= grunt.config.get("adminVersion") %> - <%= grunt.template.today("yyyy-mm-dd") %> */'
-			}
-		},
+    uglify: {
+      options:{
+        banner: '/*! Admin Panel - <%= grunt.config.get("adminVersion") %> - <%= grunt.template.today("yyyy-mm-dd") %> */'
+      }
+    },
 
     // Copies remaining files to places other tasks can use
     copy: {
@@ -262,10 +307,10 @@ module.exports = function (grunt) {
             '.htaccess',
             '*.html',
             'views/{,*/}*.html',
-						'images/{,*/}*.{webp}',
-						'fonts/*',
-						'!bower_components/**/*',
-						'!lib/**/*'
+            'images/{,*/}*.{webp}',
+            'fonts/*',
+            '!bower_components/**/*',
+            '!lib/**/*'
           ]
         }, {
           expand: true,
@@ -273,11 +318,11 @@ module.exports = function (grunt) {
           dest: '<%= yeoman.dist %>/images',
           src: ['generated/*']
         }, {
-					expand: true,
-					cwd: '<%= yeoman.app %>/lib/template/html/assets/data-tables',
-					dest: '<%= yeoman.dist %>',
-					src: ['images/*']
-				}]
+          expand: true,
+          cwd: '<%= yeoman.app %>/lib/template/html/assets/data-tables',
+          dest: '<%= yeoman.dist %>',
+          src: ['images/*']
+        }]
       },
       styles: {
         expand: true,
@@ -301,24 +346,24 @@ module.exports = function (grunt) {
         'svgmin'
       ]
     },
-		replace: {
-			dist: {
-				options: {
-					variables: {
-						'adminVersion': '<%= grunt.config.get("adminVersion") %>'
-					}
-				},
-				prefix: '@@',
-				files: [
-					{
-						expand: true,
-						flatten: true,
-						src: ['<%= yeoman.dist %>/scripts/**/*.js'],
-						dest: '<%= yeoman.dist %>/scripts'
-					}
-				]
-			}
-		},
+    replace: {
+      dist: {
+        options: {
+          variables: {
+            'adminVersion': '<%= grunt.config.get("adminVersion") %>'
+          }
+        },
+        prefix: '@@',
+        files: [
+          {
+            expand: true,
+            flatten: true,
+            src: ['<%= yeoman.dist %>/scripts/**/*.js'],
+            dest: '<%= yeoman.dist %>/scripts'
+          }
+        ]
+      }
+    },
     // Test settings
     karma: {
       unit: {
@@ -326,20 +371,20 @@ module.exports = function (grunt) {
         singleRun: true
       }
     },
-		ngconstant: {
-			build: [
-				{
-					dest: '<%= yeoman.app %>/scripts/config/constants.js',
-					name: 'Constants',
-					constants: {
-						EVENTS: grunt.file.readJSON('app/scripts/config/events.json'),
-						ROUTES: grunt.file.readJSON('app/scripts/config/routes.json'),
-						PATHS: grunt.file.readJSON('app/scripts/config/paths.json'),
-						SETTINGS: grunt.file.readJSON('app/scripts/config/settings.json')
-					}
-				}
-			]
-		}
+    ngconstant: {
+      build: [
+        {
+          dest: '<%= yeoman.app %>/scripts/config/constants.js',
+          name: 'Constants',
+          constants: {
+            EVENTS: grunt.file.readJSON('app/scripts/config/events.json'),
+            ROUTES: grunt.file.readJSON('app/scripts/config/routes.json'),
+            PATHS: grunt.file.readJSON('app/scripts/config/paths.json'),
+            SETTINGS: grunt.file.readJSON('app/scripts/config/settings.json')
+          }
+        }
+      ]
+    }
   });
 
 
@@ -350,7 +395,7 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
-			'ngconstant',
+      'ngconstant',
       'concurrent:server',
       'connect:livereload',
       'watch'
@@ -364,46 +409,54 @@ module.exports = function (grunt) {
 
   grunt.registerTask('test', [
     'clean:server',
-		'ngconstant',
-		'concurrent:test',
+    'ngconstant',
+    'concurrent:test',
     'connect:test',
     'karma'
   ]);
 
   grunt.registerTask('build', [
-		'jshint',
-		'test',
-		'clean:dist',
-		'ngconstant',
+    'jshint',
+    'test',
+    'clean:dist',
+    'ngconstant',
     'useminPrepare',
     'concurrent:dist',
     'concat',
     'ngmin',
     'copy:dist',
     'cssmin',
+    'replace',
     'uglify',
-    'rev',
+    'rev:images',
+    'rev:lib',
+    'usemin:css',
+    'rev:styles',
+    'usemin:html',
+    'htmlmin:views',
+    'rev:views',
+    'usemin:js',
+    'rev:scripts',
     'usemin',
-    'htmlmin',
-		'replace'
+    'htmlmin:index'
   ]);
 
-	grunt.registerTask('ci-build', [
-		'build'
-	]);
+  grunt.registerTask('ci-build', [
+    'build'
+  ]);
 
-	grunt.config.set('adminVersion', pkg.version);
+  grunt.config.set('adminVersion', pkg.version);
 
-	grunt.registerTask('ci-init', function() {
-		var pkg = grunt.file.readJSON('package.json');
-		var fullVersion = pkg.version+'-'+process.env.BUILD_NUMBER; // append Jenkins build number
-		var buildNumber = parseInt(process.env.BUILD_NUMBER, 10);   // use build number to avoid conflicting test ports when multiple jobs are running
+  grunt.registerTask('ci-init', function() {
+    var pkg = grunt.file.readJSON('package.json');
+    var fullVersion = pkg.version+'-'+process.env.BUILD_NUMBER; // append Jenkins build number
+    var buildNumber = parseInt(process.env.BUILD_NUMBER, 10);   // use build number to avoid conflicting test ports when multiple jobs are running
 
-		grunt.config.set('adminVersion', fullVersion);
-		grunt.config.set('testPort', 7000+buildNumber);         // port used by Karma test framework
-		grunt.config.set('testRunnerPort', 8000+buildNumber);   // port used by Karma test runner which launches PhantomJS
-		grunt.config.set('testConnectPort', 9000+buildNumber);  // port used by the nodejs test server
-	});
+    grunt.config.set('adminVersion', fullVersion);
+    grunt.config.set('testPort', 7000+buildNumber);         // port used by Karma test framework
+    grunt.config.set('testRunnerPort', 8000+buildNumber);   // port used by Karma test runner which launches PhantomJS
+    grunt.config.set('testConnectPort', 9000+buildNumber);  // port used by the nodejs test server
+  });
 
   grunt.registerTask('default', 'build');
 };
