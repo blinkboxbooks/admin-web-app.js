@@ -26,7 +26,7 @@ describe('Service: UserVoucher', function () {
 	it('Should return user vouchers history', function(){
 		var userID = 1, vouchers;
 
-		$httpBackend.expectGET(ROUTES.GIFTING_SERVICES + ROUTES.VOUCHERS + '?userId=' + userID).respond(200, VouchersData);
+		$httpBackend.expectGET(ROUTES.GIFTING_SERVICES + ROUTES.VOUCHERS + '?count=999&userId=' + userID).respond(200, VouchersData);
 
 		UserVoucher.get(userID).then(function(data){
 			vouchers = data;
@@ -43,7 +43,7 @@ describe('Service: UserVoucher', function () {
 
 		// Handling empty history
 		vouchers = undefined;
-		$httpBackend.expectGET(ROUTES.GIFTING_SERVICES + ROUTES.VOUCHERS + '?userId=' + userID).respond(200, EmptyVouchersData);
+		$httpBackend.expectGET(ROUTES.GIFTING_SERVICES + ROUTES.VOUCHERS + '?count=999&userId=' + userID).respond(200, EmptyVouchersData);
 
 		UserVoucher.get(userID).then(function(data){
 			vouchers = data;

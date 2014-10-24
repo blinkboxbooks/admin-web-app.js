@@ -56,7 +56,7 @@ describe('Service: Campaign', function () {
 	it('Should return campaigns data', function(){
 		var campaigns;
 
-		$httpBackend.expectGET(ROUTES.GIFTING_SERVICES + ROUTES.CAMPAIGNS).respond(200, CampaignsData);
+		$httpBackend.expectGET(ROUTES.GIFTING_SERVICES + ROUTES.CAMPAIGNS + '?count=999').respond(200, CampaignsData);
 
 		Campaign.get().then(function(data){
 			campaigns = data;

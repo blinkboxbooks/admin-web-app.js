@@ -10,7 +10,8 @@ angular.module('adminPanelApp')
 						method: 'GET',
 						url: ROUTES.GIFTING_SERVICES + ROUTES.VOUCHERS,
 						params: {
-							userId: id
+							userId: id,
+							count: 999
 						},
 						headers: {
 							'X-Requested-With': 'XMLHttpRequest'
