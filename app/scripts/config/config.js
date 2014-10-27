@@ -2,6 +2,8 @@
 
 angular.module('adminPanelApp')
 	.run(function ($rootScope, $location, PATHS, EVENTS, User, Authentication) {
+		$rootScope.version = '@@adminVersion';
+
 		// Allow views to access paths directly.
 		$rootScope.PATHS = {};
 		for(var path in PATHS){
@@ -22,8 +24,39 @@ angular.module('adminPanelApp')
 
 		// Expose authentication methods.
 		$rootScope.Authentication = Authentication;
+
+		$rootScope.templates = {
+			header: 'views/partials/header.html',
+			footer: 'views/partials/footer.html'
+		};
 	})
-	.config(function ($locationProvider, $httpProvider) {
+	.config(function ($routeProvider, $locationProvider, $httpProvider) {
+		// Define all the routes of the website.
+		$routeProvider
+			.when('/', {
+				templateUrl: 'views/main.html',
+				controller: 'MainCtrl'
+			})
+			.when('/login', {
+				templateUrl: 'views/login.html',
+				controller: 'LoginCtrl'
+			})
+			.when('/user/:id', {
+				templateUrl: 'views/user.html',
+				controller: 'UserCtrl'
+			})
+			.when('/voucher', {
+				templateUrl: 'views/voucher.html',
+				controller: 'VoucherCtrl'
+			})
+			.when('/voucher/:code', {
+				templateUrl: 'views/voucher.html',
+				controller: 'VoucherCtrl'
+			})
+			.otherwise({
+				redirectTo: '/login'
+			});
+
 		// Set routing mode
 		$locationProvider.html5Mode(false);
 		$locationProvider.hashPrefix('!');
