@@ -358,7 +358,7 @@ module.exports = function (grunt) {
           {
             expand: true,
             flatten: true,
-            src: ['<%= yeoman.dist %>/scripts/**/*.js'],
+            src: ['<%= yeoman.dist %>/scripts/scripts.js'],
             dest: '<%= yeoman.dist %>/scripts'
           }
         ]
@@ -426,8 +426,8 @@ module.exports = function (grunt) {
     'ngmin',
     'copy:dist',
     'cssmin',
-    'replace',
     'uglify',
+    'replace',
     'rev:images',
     'rev:lib',
     'usemin:css',
