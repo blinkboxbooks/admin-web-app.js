@@ -9,8 +9,8 @@ License: Various
 Vendor: blinkbox books
 BuildArch: noarch
 BuildRoot: %{_tmppath}/%{name}-buildroot
-Requires: server-web-app = %{swa_required_version}
-Requires: frontend-common-nginx = %{frontend_common_nginx_required_version}
+Requires: server-web-app >= %{swa_required_version}
+Requires: frontend-common-nginx >= %{frontend_common_nginx_required_version}
 
 %description
 Admin Web App based on AngularJS
@@ -34,8 +34,7 @@ ls -l
 
 # client web app
 %{__install} -d %{buildroot}%{_localstatedir}/www/admin
-%{__install} {index.html,favicon.ico,robots.txt,404.html,main.css} %{buildroot}%{_localstatedir}/www/admin
-%{__cp} -r {images,scripts,views}                                  %{buildroot}%{_localstatedir}/www/admin
+%{__cp} -r * %{buildroot}%{_localstatedir}/www/admin
 
 %clean
 rm -rf %{buildroot}

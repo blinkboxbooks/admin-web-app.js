@@ -110,6 +110,26 @@ describe('Service: Admin', function () {
 
 	});
 
+	it('Should get basic user information only', function(){
+		var userID = 1,
+			response = AdminUsers.items[0];
+
+		$httpBackend.expectGET(ROUTES.ADMIN_USERS + '/' + userID).respond(200, response);
+
+		var user;
+
+		Admin.get(userID, true).then(function(data){
+			user = data;
+		});
+
+		expect(user).toBeUndefined();
+
+		$httpBackend.flush();
+
+		expect(user).toBeDefined();
+		expect(user).toEqual(Format.user(response));
+	});
+
 	it('Should handle errors', function(){
 
 		// Attempt to search with undefined id

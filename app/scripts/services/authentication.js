@@ -26,7 +26,7 @@ angular.module('adminPanelApp')
 							var valid = false;
 							for(var i= 0, l = session.data.user_roles.length; i< l; i++){
 								var role = session.data.user_roles[i];
-								if(role === 'csr' || role === 'csm'){
+								if(role === 'csr' || role === 'csm' || role === 'ops'){
 									valid = true;
 									break;
 								}

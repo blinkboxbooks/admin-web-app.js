@@ -28,7 +28,7 @@ angular.module('adminPanelApp')
 				}, defer.reject);
 				return defer.promise;
 			},
-			get: function(id){
+			get: function(id, basicDataOnly){
 				var defer = $q.defer();
 				if(!!id){
 					$http({
@@ -38,13 +38,17 @@ angular.module('adminPanelApp')
 							'X-Requested-With': 'XMLHttpRequest'
 						}
 					}).then(function(response){
-							Credit.get(id).then(function(credit){
-								var user = Format.user(response.data);
-								if(!!credit){
-									user.credit = credit;
-								}
+							var user = Format.user(response.data);
+							if (basicDataOnly) {
 								defer.resolve(user);
-							}, defer.reject);
+							} else {
+								Credit.get(id).then(function(credit){
+									if(!!credit){
+										user.credit = credit;
+									}
+									defer.resolve(user);
+								}, defer.reject);
+							}
 						}, defer.reject);
 				} else {
 					defer.reject({
