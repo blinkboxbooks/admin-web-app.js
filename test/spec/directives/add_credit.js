@@ -35,7 +35,7 @@ describe('Directive: Add credit', function () {
 
 		// Save a reference to scope
 		scope = element.isolateScope();
-	}));
+  }));
 
 	it('Should replace the element with the appropriate content', function() {
 		var reasons = [
@@ -53,18 +53,14 @@ describe('Directive: Add credit', function () {
 		// Check scope binding
 		expect(scope.credit).toEqual({
 			amount: '',
-			reason: '',
 			reasons: reasons
 		});
+    expect(scope.credit.reason).not.toBeDefined();
 		expect(scope.addCredit).toBeFunction();
 		expect(scope.user).toBeDefined();
 	});
 
 	it('Should validate input', function() {
-		// add invalid amount (NaN), should not validate
-		scope.credit.amount = 'a';
-		scope.$apply();
-		expect(scope.addCreditForm.$valid).toBe(false);
 
 		// no reason specified, should not validate
 		scope.credit.amount = 23;

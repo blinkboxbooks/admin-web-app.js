@@ -80,7 +80,8 @@ describe('Directive: Dynamic Table', function () {
 		});
 
 		scope.config.data.push(DataTableUsers.single);
-		scope.$apply();
+
+    scope.$apply();
 
 		expect(element.find('tbody tr').length).toBe(scope.config.data.length);
 		// Expect new user to be in the table
