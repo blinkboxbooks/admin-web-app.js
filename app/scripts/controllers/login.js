@@ -1,4 +1,4 @@
 'use strict';
 
 angular.module('adminPanelApp')
-	.controller('LoginCtrl', function () { });
+	.controller('LoginCtrl', angular.noop);

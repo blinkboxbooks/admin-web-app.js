@@ -1,5 +1,6 @@
 {
 	"HOME": "/",
 	"LOGIN": "/login",
-	"USER": "/user"
+	"USER": "/user",
+	"VOUCHER": "/voucher"
 }

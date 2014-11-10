@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
+    <title>Admin Panel</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -28,13 +28,13 @@
     <![endif]-->
 
     <!-- Header -->
-    <div ng-include="'views/partials/header.html'"></div>
+    <div ng-include="templates.header"></div>
 
     <!-- Add your site or application content here -->
     <div id="main" class="container" ng-view=""></div>
 
     <!-- Footer -->
-    <div ng-include="'views/partials/footer.html'"></div>
+    <div ng-include="templates.footer"></div>
 
     <!--[if lt IE 9]>
     <script src="bower_components/es5-shim/es5-shim.js"></script>
@@ -45,6 +45,7 @@
     <!-- bower:js -->
     <script src="bower_components/jquery/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-i18n/angular-locale_en-gb.js"></script>
     <script src="bower_components/sass-bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
@@ -64,6 +65,7 @@
     <script src="scripts/controllers/main.js"></script>
     <script src="scripts/controllers/login.js"></script>
     <script src="scripts/controllers/user.js"></script>
+    <script src="scripts/controllers/voucher.js"></script>
     <script src="scripts/directives/dynamic_table.js"></script>
     <script src="scripts/directives/search.js"></script>
     <script src="scripts/forms/add_credit.js"></script>
@@ -75,6 +77,10 @@
     <script src="scripts/services/format.js"></script>
     <script src="scripts/services/credit.js"></script>
     <script src="scripts/services/user.js"></script>
+    <script src="scripts/services/user_voucher.js"></script>
+    <script src="scripts/services/voucher.js"></script>
+    <script src="scripts/services/campaign.js"></script>
+    <script src="scripts/filters/helper.js"></script>
     <!-- endbuild -->
 </body>
 </html>

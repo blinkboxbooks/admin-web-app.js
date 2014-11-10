@@ -1,0 +1,72 @@
+<div>
+  <form id="searchForm" ng-submit="submit()">
+    <div class="input-group">
+      <input class="form-control" placeholder="Voucher code" ng-model="code" ng-pattern="/\w{4}\s?\w{4}\s?\w{4}\s?\w{4}/" required autofocus>
+				<span class="input-group-btn">
+					<button class="btn btn-primary">
+            <span class="fa fa-search"></span>
+            Query
+          </button>
+				</span>
+    </div>
+  </form>
+  <div class="alert" ng-show="alert.text" ng-class="'alert-' + alert.type">
+    {{alert.text}}
+  </div>
+  <div ng-if="!!voucher">
+    <h3>Voucher</h3>
+    <table class="display table table-bordered table-striped">
+      <tbody>
+        <tr>
+          <td>Code</td>
+          <td>{{voucher.code}}</td>
+        </tr>
+        <tr>
+          <td>State</td>
+          <td><span class="label" ng-class="voucher | voucherLabel">{{voucher.state}}</span></td>
+        </tr>
+        <tr ng-if="!!voucher.redeemedAt">
+          <td>Redemption date</td>
+          <td>{{voucher.redeemedAt | date:short}}</td>
+        </tr>
+        <tr ng-if="!!user">
+          <td>Redeemed by</td>
+          <td><a ng-href="{{PATHS.USER + '/' + voucher.redeemedByUser}}">{{user.first_name}} {{user.last_name}}</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>Campaign</h3>
+    <table class="display table table-bordered table-striped">
+      <tbody>
+        <tr>
+          <td>Name</td>
+          <td>{{campaign.name}}</td>
+        </tr>
+        <tr>
+          <td>Description</td>
+          <td>{{campaign.description}}</td>
+        </tr>
+        <tr>
+          <td>Start date</td>
+          <td>{{campaign.startDate | date:short}}</td>
+        </tr>
+        <tr>
+          <td>End date</td>
+          <td>{{campaign.endDate | date:short}}</td>
+        </tr>
+        <tr>
+          <td>Enabled</td>
+          <td><span class="label" ng-class="campaign.enabled ? 'label-success' : 'label-danger'">{{campaign.enabled}}</span></td>
+        </tr>
+        <tr>
+          <td>Redeemed vouchers count</td>
+          <td><span class="badge">{{campaign.totalRedeemedVoucherCount}}</span></td>
+        </tr>
+        <tr>
+          <td>Total vouchers count</td>
+          <td><span class="badge">{{campaign.totalVoucherCount}}</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

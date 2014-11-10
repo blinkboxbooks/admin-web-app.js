@@ -1,14 +1,13 @@
 'use strict';
 
 angular.module('adminPanelApp')
-	.config(function ($httpProvider) {
-		// Listen to all angular $http requests and handle un-authorized requests.
-		$httpProvider.interceptors.push('authenticationInterceptor');
-	})
-  .factory('authenticationInterceptor', function($q, $rootScope, $location, PATHS){
+  .factory('authenticationInterceptor', function ($q, $injector, $location, PATHS) {
+    // Listen to all angular $http requests and handle un-authorized requests.
     return {
-      'responseError': function(rejection){
-        if (rejection.status === 401 || rejection.status === 403) {
+      'responseError' : function(response){
+        if (response.status === 401 || response.status === 403) {
+          // Reset user data (retrieve the User service without circular dependency):
+          $injector.get('User').set(null);
           // No token present (not logged in) so redirect to signin with a link back to current page.
           var current = $location.url();
           // Avoid circular reference
@@ -17,13 +16,14 @@ angular.module('adminPanelApp')
             $location.search({redirectTo: encodeURIComponent(current)}).path(PATHS.LOGIN).replace();
           }
         }
-
-        // $q.reject creates a promise that is resolved as rejected with the specified reason. In this case the error callback will be executed.
-        return $q.reject(rejection);
+        return $q.reject(response);
       }
     };
   })
-	.run(function ($rootScope, $location, User) {
-		// try and get the current user
-		User.refresh();
-	});
+  .config(function($httpProvider){
+    $httpProvider.interceptors.push('authenticationInterceptor');
+  })
+  .run(function ($rootScope, $location, User) {
+    // try and get the current user
+    User.refresh();
+  });

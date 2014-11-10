@@ -1,6 +1,6 @@
 {
   "name": "adminpanel",
-  "version": "0.0.0",
+  "version": "1.0.2",
   "dependencies": {},
   "devDependencies": {
     "grunt": "0.4.1",
@@ -14,7 +14,7 @@
     "grunt-contrib-copy": "0.4.1",
     "grunt-contrib-cssmin": "0.7.0",
     "grunt-contrib-htmlmin": "0.1.3",
-    "grunt-contrib-imagemin": "0.1.2",
+    "grunt-contrib-imagemin": "0.8.1",
     "grunt-contrib-jshint": "0.7.1",
     "grunt-contrib-uglify": "0.2.0",
     "grunt-contrib-watch": "0.5.2",
