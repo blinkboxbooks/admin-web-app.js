@@ -31,16 +31,31 @@ describe('Service: Format', function () {
 
 	it('Should format purchase history data', function(){
 
-		$.each(PurchaseHistoryData.purchases, function(index, purchase){
-			expect(Format.purchase(purchase, BookData.single.items[index])).toEqual({
-				date: (new Date(purchase.date)).toDateString(),
-				isbn: purchase.isbn,
-				title: BookData.single.items[index].title,
-				price: '<ul>' + purchase.payments.map(function(payment){
-					return '<li>£' + payment.money.amount + ' - ' + (payment.name === 'braintree' ? 'card' : 'credit') + '</li>';
-				}).join(', ') + '</ul>'
-			});
-		});
+    $.each(PurchaseHistoryData.purchases, function (index, purchase) {
+      var expectedPrice = 0;
+      var expectedPayment = [];
+      for(var i = 0; i < purchase.payments.length; i++){
+        expectedPrice += +purchase.payments[i].money.amount;
+
+        var methodText = '';
+        if(purchase.payments[i].name === 'credit_balance'){
+          methodText = ' account credit';
+        } else {
+          methodText = ' card (<code>'+purchase.payments[i].receipt+'</code>)';
+        }
+        expectedPayment.push('£' + (+purchase.payments[i].money.amount) + methodText);
+      }
+      expectedPrice = '£' + expectedPrice;
+      expectedPayment = expectedPayment.join(' + ');
+
+      expect(Format.purchase(purchase, BookData.single.items[index])).toEqual({
+        date: (new Date(purchase.date)).toDateString(),
+        isbn: purchase.isbn,
+        title: BookData.single.items[index].title,
+        price: expectedPrice,
+        payment: expectedPayment
+      });
+    });
 	});
 
 	it('Should format user data', function(){

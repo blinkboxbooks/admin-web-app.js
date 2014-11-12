@@ -184,7 +184,7 @@ angular.module('mockedResponses', [])
 					},
 					{
 						'type': 'urn:blinkboxbooks:schema:admin:payment',
-						'name': 'credit-balance',
+						'name': 'credit_balance',
 						'money': {
 							'amount': '3.00',
 							'currency': 'GBP'
