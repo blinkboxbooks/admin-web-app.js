@@ -27,7 +27,7 @@ angular.module('adminPanelApp')
 					});
 
 					// sync table with scope collection
-					var dataWatch = scope.$watchCollection('config.data', function(old, value){
+					var dataWatch = scope.$watchCollection('config.data', function(value){
 						element.fnClearTable();
 						var rows = [];
 						for(var i = 0, l = value.length; i < l; i++){
