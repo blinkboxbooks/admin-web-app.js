@@ -1,19 +1,45 @@
 'use strict';
 
 angular.module('adminPanelApp')
-	.factory('Format', function() {
+	.factory('Format', function(SETTINGS) {
 
 		return {
-			purchase: function(purchase, book) {
-				return {
-					date: (new Date(purchase.date)).toDateString(),
-					isbn: purchase.isbn,
-					title: book.title,
-					price: '<ul>' + purchase.payments.map(function(payment){
-						return '<li>£' + payment.money.amount + ' - ' + (payment.name === 'braintree' ? 'card' : 'credit') + '</li>';
-					}).join(', ') + '</ul>'
-				};
-			},
+			purchase: function (purchase, book) {
+        var date = (new Date(purchase.date)).toDateString();
+
+        var formatPaymentType = function(payment){
+          var name = payment.name;
+          if(name === SETTINGS.PAYMENT_METHODS.CREDIT_BALANCE) {
+            return 'account credit';
+          } else if (name === SETTINGS.PAYMENT_METHODS.BRAINTREE){
+            return 'card (<code>' + payment.receipt + '</code>)';
+          } else {
+            return '';
+          }
+        };
+
+        var total = 0;
+        var paymentType = [];
+        for(var i = 0; i < purchase.payments.length; i++){
+          var amount = + purchase.payments[i].money.amount;
+          total += amount;
+          if(amount > 0){
+            paymentType.push('£' + amount + ' ' + formatPaymentType(purchase.payments[i]));
+          }
+        }
+
+        paymentType = paymentType.join(' + ');
+        paymentType = paymentType || 'N/A';
+
+
+        return {
+          date: date,
+          isbn: purchase.isbn,
+          title: book.title,
+          price: '£' + total,
+          payment: paymentType
+        };
+      },
 			user: function(data, credit){
 				if(!!data){
 					var id = data.user_id.split(':'),

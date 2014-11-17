@@ -34,8 +34,12 @@ angular.module('adminPanelApp')
 					},
 					{
 						field: 'price',
-						label: 'Price'
-					}
+						label: 'Total Price'
+					},
+          {
+            field: 'payment',
+            label: 'Payment Method(s)'
+          }
 				]
 			},
 			email: {
