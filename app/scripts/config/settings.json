@@ -3,5 +3,10 @@
 		"VIP": "vip",
 		"CUSTOMER": "customer",
 		"EMPLOYEE": "employee"
-	}
+	},
+
+  "PAYMENT_METHODS": {
+    "BRAINTREE": "braintree",
+    "CREDIT_BALANCE": "credit_balance"
+  }
 }

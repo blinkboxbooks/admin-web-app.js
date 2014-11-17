@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('adminPanelApp')
-	.factory('Format', function() {
+	.factory('Format', function(SETTINGS) {
 
 		return {
 			purchase: function (purchase, book) {
@@ -9,9 +9,9 @@ angular.module('adminPanelApp')
 
         var formatPaymentType = function(payment){
           var name = payment.name;
-          if(name === 'credit_balance') {
+          if(name === SETTINGS.PAYMENT_METHODS.CREDIT_BALANCE) {
             return 'account credit';
-          } else if (name === 'braintree'){
+          } else if (name === SETTINGS.PAYMENT_METHODS.BRAINTREE){
             return 'card (<code>' + payment.receipt + '</code>)';
           } else {
             return '';
