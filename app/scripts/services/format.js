@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('adminPanelApp')
-	.factory('Format', function(SETTINGS) {
+	.factory('Format', function(SETTINGS, ROUTES) {
 
 		return {
 			purchase: function (purchase, book) {
@@ -12,7 +12,7 @@ angular.module('adminPanelApp')
           if(name === SETTINGS.PAYMENT_METHODS.CREDIT_BALANCE) {
             return 'account credit';
           } else if (name === SETTINGS.PAYMENT_METHODS.BRAINTREE){
-            return 'card (<code>' + payment.receipt + '</code>)';
+            return 'card (<code> <a href="' + ROUTES.BRAINTREE_MERCHANT + '/transactions/' + payment.receipt + '">' +  payment.receipt + '</a></code>)';
           } else {
             return '';
           }
