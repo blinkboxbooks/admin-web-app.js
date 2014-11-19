@@ -1,6 +1,6 @@
 {
   "name": "adminpanel",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "repository": "https://git.mobcastdev.com/Website/admin-web-app.git",
   "dependencies": {},
   "devDependencies": {
