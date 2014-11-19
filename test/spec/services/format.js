@@ -41,7 +41,7 @@ describe('Service: Format', function () {
         if(purchase.payments[i].name === 'credit_balance'){
           methodText = ' account credit';
         } else {
-          methodText = ' card (<code>'+purchase.payments[i].receipt+'</code>)';
+          methodText = ' card (<code> <a href="https://www.braintreegateway.com/merchants/xvcjgt5hdpv4863s/transactions/' + purchase.payments[i].receipt + '">' +  purchase.payments[i].receipt + '</a></code>)';
         }
         expectedPayment.push('£' + (+purchase.payments[i].money.amount) + methodText);
       }

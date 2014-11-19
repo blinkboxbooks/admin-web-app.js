@@ -10,5 +10,6 @@
 	"BOOK": "/api/service/catalogue/books",
 	"CREDIT": "/credit",
 	"VOUCHERS": "/vouchers",
-	"CAMPAIGNS": "/vouchercampaigns"
+	"CAMPAIGNS": "/vouchercampaigns",
+  "BRAINTREE_MERCHANT": "https://www.braintreegateway.com/merchants/xvcjgt5hdpv4863s"
 }
