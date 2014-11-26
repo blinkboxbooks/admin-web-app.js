@@ -2,13 +2,10 @@
 	<h1><a href="{{PATHS.HOME}}">Admin Panel</a></h1>
 	<div class="user">
 		<span ng-show="User">
-			Hi {{User.first_name}}
+			Hi {{User.first_name}} ({{user_session.user_roles.join(', ') | uppercase }})
 			<button class="btn btn-primary btn-xs" ng-click="Authentication.logout()">Logout</button>
 		</span>
 		<a ng-href="{{PATHS.LOGIN}}" ng-hide="User">Login</a>
 	</div>
-	<ul class="nav nav-pills">
-		<li ng-class="currentPath === PATHS.HOME && 'active'"><a ng-href="{{PATHS.HOME}}">User search</a></li>
-		<li ng-class="currentPath.indexOf(PATHS.VOUCHER) === 0 && 'active'"><a ng-href="{{PATHS.VOUCHER}}">Voucher query</a></li>
-	</ul>
+  <navmenu></navmenu>
 </div>

@@ -1,7 +1,7 @@
 'use strict';
 
 // aclIf is based on ng-if.
-angular.module('adminPanelApp').directive('navmenu', function (PATHS, $location) {
+angular.module('adminPanelApp').directive('navmenu', function (PATHS, $location, EVENTS, ACL) {
   return {
     restrict: 'E',
     template: '<ul class="nav nav-pills">' +
@@ -9,7 +9,10 @@ angular.module('adminPanelApp').directive('navmenu', function (PATHS, $location)
     '</ul>',
     scope: {},
     controller: function($scope){
-      $scope.items = [
+
+      $scope.items = [];
+
+      var allItems = [
         {
           label: 'User Search',
           href: PATHS.HOME
@@ -17,8 +20,28 @@ angular.module('adminPanelApp').directive('navmenu', function (PATHS, $location)
         {
           label: 'Voucher Query',
           href: PATHS.VOUCHER
+        },
+        {
+          label: 'Campaigns',
+          href: PATHS.CAMPAIGNS,
+          roles: ['csm']
         }
       ];
+
+      function updateItems(){
+        // update items. choose what to display.
+        var path = $location.path();
+        $scope.items = [];
+        for(var i = 0; i < allItems.length; i++){
+          if(angular.isUndefined(allItems[i].roles) || ACL.isOneOf(allItems[i].roles)){
+            $scope.items.push(allItems[i]);
+          }
+
+          if(allItems[i].href === path){
+            $scope.active = allItems[i];
+          }
+        }
+      }
 
       // scope active is a reference to current item, undefined by default
       $scope.active = undefined;
@@ -30,6 +53,13 @@ angular.module('adminPanelApp').directive('navmenu', function (PATHS, $location)
           return item.href === path;
         })[0];
       });
+
+      $scope.$on(EVENTS.SESSION_UPDATED, function(){
+        updateItems();
+      });
+
+      updateItems();
+
     }
-  }
+  };
 });
