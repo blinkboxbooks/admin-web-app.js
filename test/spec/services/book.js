@@ -10,6 +10,7 @@ describe('Service: Book', function () {
 			$httpBackend = _$httpBackend_;
 			ROUTES = _ROUTES_;
 			$httpBackend.expectGET(_ROUTES_.USER).respond(401);
+			$httpBackend.whenGET(_ROUTES_.SESSION).respond(200);
 		});
 	});
 

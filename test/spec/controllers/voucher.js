@@ -12,6 +12,7 @@ describe('Controller: VoucherCtrl', function () {
   beforeEach(inject(function ($rootScope, $httpBackend, ROUTES) {
 		scope = $rootScope.$new();
 	  $httpBackend.expectGET(ROUTES.USER).respond(401);
+	  $httpBackend.whenGET(ROUTES.SESSION).respond(200);
   }));
 
 	it('should provide a voucher code submit method', inject(function ($controller, $location, PATHS) {

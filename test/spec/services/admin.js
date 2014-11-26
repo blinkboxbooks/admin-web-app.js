@@ -10,6 +10,7 @@ describe('Service: Admin', function () {
 			$httpBackend = _$httpBackend_;
 			ROUTES = _ROUTES_;
 			$httpBackend.expectGET(_ROUTES_.USER).respond(200, _UserData_);
+			$httpBackend.whenGET(_ROUTES_.SESSION).respond(200);
 		});
 	});
 

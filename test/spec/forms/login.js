@@ -11,22 +11,23 @@ describe('Form: Login', function () {
 
 			// user is not initially logged in
 			_$httpBackend_.expectGET(_ROUTES_.USER).respond(401);
+			_$httpBackend_.whenGET(_ROUTES_.SESSION).respond(200);
 			_$httpBackend_.flush();
 		});
 	});
 
 	var element, scope, $httpBackend, ROUTES,
-		LoginData, AuthInvalid, AuthValid, Session;
+		LoginData, AuthInvalid, AuthValid, SessionMock;
 
 	// Store references to the element and it's scope
 	// so they are available to all tests in this describe block
-	beforeEach(inject(function($compile, $rootScope, _ROUTES_, _LoginData_, _AuthInvalid_, _AuthValid_, _Session_){
+	beforeEach(inject(function($compile, $rootScope, _ROUTES_, _LoginData_, _AuthInvalid_, _AuthValid_, _SessionMock_){
 		// Save a references
 		ROUTES = _ROUTES_;
 		LoginData = _LoginData_;
 		AuthInvalid = _AuthInvalid_;
 		AuthValid = _AuthValid_;
-		Session = _Session_;
+		SessionMock = _SessionMock_;
 
 		// Compile a piece of HTML containing the directive
 		element = $compile('<login-form></login-form>')($rootScope);
@@ -117,7 +118,7 @@ describe('Form: Login', function () {
 			'password': scope.login.password,
 			'remember_me': scope.login.remember
 		})).respond(200, AuthValid.res);
-		$httpBackend.expectGET(ROUTES.SESSION).respond(200, Session.valid);
+		$httpBackend.expectGET(ROUTES.SESSION).respond(200, SessionMock.valid);
 
 		// mock submit form
 		scope.handlers.submit();

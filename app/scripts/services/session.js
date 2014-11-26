@@ -46,6 +46,7 @@ angular.module('adminPanelApp').factory('Session', function ($q, $http, ROUTES, 
         return deferred.promise;
       }).then(function(session){
         $rootScope.$broadcast(EVENTS.SESSION_UPDATED, session);
+        return session;
       });
     }
   };

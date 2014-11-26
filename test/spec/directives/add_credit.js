@@ -9,6 +9,7 @@ describe('Directive: Add credit', function () {
 			$httpBackend = _$httpBackend_;
 			ROUTES = _ROUTES_;
 			_$httpBackend_.expectGET(_ROUTES_.USER).respond(401);
+			_$httpBackend_.whenGET(_ROUTES_.SESSION).respond(200);
 		});
 	});
 
