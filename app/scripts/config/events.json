@@ -1,3 +1,4 @@
 {
-	"USER_UPDATED": "user_updated"
+	"USER_UPDATED": "user_updated",
+  "SESSION_UPDATED": "session_updated"
 }

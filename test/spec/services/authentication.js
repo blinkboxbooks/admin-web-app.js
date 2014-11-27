@@ -9,20 +9,21 @@ describe('Service: Authentication', function () {
 			ROUTES = _ROUTES_;
 
 			$httpBackend.expectGET(_ROUTES_.USER).respond(401);
+			$httpBackend.whenGET(_ROUTES_.SESSION).respond(200);
 			$httpBackend.flush();
 		});
 	});
 
 	var Authentication, User, $httpBackend, ROUTES,
-		AuthValid, AuthInvalid, Session, Format;
+		AuthValid, AuthInvalid, SessionMock, Format;
 
 	// Load the service to test
-	beforeEach(inject(function(_Authentication_, _User_, _AuthValid_, _AuthInvalid_, _Session_, _Format_){
+	beforeEach(inject(function(_Authentication_, _User_, _AuthValid_, _AuthInvalid_, _SessionMock_, _Format_){
 		Authentication = _Authentication_;
 		User = _User_;
 		AuthValid = _AuthValid_;
 		AuthInvalid = _AuthInvalid_;
-		Session = _Session_;
+		SessionMock = _SessionMock_;
 		Format = _Format_;
 	}));
 
@@ -33,7 +34,7 @@ describe('Service: Authentication', function () {
 	it('User attempts login with valid credentials and valid roles.', function () {
 		// prepare http response for login attempt.
 		$httpBackend.expectPOST(ROUTES.AUTHENTICATION, $.param(AuthValid.req)).respond(200, AuthValid.res);
-		$httpBackend.expectGET(ROUTES.SESSION).respond(200, Session.valid);
+		$httpBackend.expectGET(ROUTES.SESSION).respond(200, SessionMock.valid);
 
 		// perform login
 		Authentication.login(AuthValid.req);
@@ -51,7 +52,7 @@ describe('Service: Authentication', function () {
 	it('User attempts login with valid credentials but no cr* roles.', function () {
 		// prepare http response for login attempt.
 		$httpBackend.expectPOST(ROUTES.AUTHENTICATION, $.param(AuthValid.req)).respond(200, AuthValid.res);
-		$httpBackend.expectGET(ROUTES.SESSION).respond(200, Session.invalid);
+		$httpBackend.expectGET(ROUTES.SESSION).respond(200, SessionMock.invalid);
 		$httpBackend.expectGET(ROUTES.SIGNOUT).respond(200);
 
 		// perform login
@@ -66,7 +67,7 @@ describe('Service: Authentication', function () {
 
 		// prepare http response for login attempt.
 		$httpBackend.expectPOST(ROUTES.AUTHENTICATION, $.param(AuthValid.req)).respond(200, AuthValid.res);
-		$httpBackend.expectGET(ROUTES.SESSION).respond(200, Session.invalid2);
+		$httpBackend.expectGET(ROUTES.SESSION).respond(200, SessionMock.invalid2);
 		$httpBackend.expectGET(ROUTES.SIGNOUT).respond(200);
 
 		// perform login

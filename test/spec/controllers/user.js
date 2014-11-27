@@ -15,6 +15,7 @@ describe('Controller: UserCtrl', function () {
 			Format = _Format_;
 			CreditData = _CreditData_;
 			$httpBackend.expectGET(ROUTES.USER).respond(401);
+      $httpBackend.whenGET(ROUTES.SESSION).respond(200);
 		});
 	});
 

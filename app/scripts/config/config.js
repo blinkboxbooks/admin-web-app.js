@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('adminPanelApp')
-	.run(function ($rootScope, $location, PATHS, EVENTS, User, Authentication) {
+	.run(function ($rootScope, $location, PATHS, EVENTS, User, Authentication, Session) {
 		$rootScope.version = '@@adminVersion';
 
 		// Allow views to access paths directly.
@@ -17,6 +17,10 @@ angular.module('adminPanelApp')
 			$rootScope.User = user;
 		});
 
+    $rootScope.$on(EVENTS.SESSION_UPDATED, function(event, session){
+      $rootScope.user_session = session;
+    });
+
 		// Expose the current path on the $rootScope:
 		$rootScope.$on('$routeChangeSuccess', function () {
 			$rootScope.currentPath = '#!' + $location.path();
@@ -29,6 +33,9 @@ angular.module('adminPanelApp')
 			header: 'views/partials/header.html',
 			footer: 'views/partials/footer.html'
 		};
+
+    // request user's session
+    Session.get();
 	})
 	.config(function ($routeProvider, $locationProvider, $httpProvider) {
 		// Define all the routes of the website.

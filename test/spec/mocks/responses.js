@@ -45,7 +45,7 @@ angular.module('mockedResponses', [])
 		password: '123123',
 		remember: true
 	})
-	.value('Session', {
+	.value('SessionMock', {
 		valid: {
 			'token_status': 'VALID',
 			'token_elevation': 'CRITICAL',

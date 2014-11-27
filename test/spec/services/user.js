@@ -8,9 +8,9 @@ describe('Service: User', function () {
 		module('adminPanelApp', 'templates', 'mockedResponses');
 		inject(function(_$httpBackend_, _UserData_, _ROUTES_){
 			$httpBackend = _$httpBackend_;
-
 			$httpBackend.expectGET(_ROUTES_.USER).respond(200, _UserData_);
-		});
+      $httpBackend.whenGET(_ROUTES_.SESSION).respond(200);
+    });
 	});
 
 	var User, UserData, Format;
