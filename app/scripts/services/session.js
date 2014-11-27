@@ -2,6 +2,9 @@
 
 angular.module('adminPanelApp').factory('Session', function ($q, $http, ROUTES, $rootScope, EVENTS) {
   return {
+    clear: function(){
+      $rootScope.$broadcast(EVENTS.SESSION_UPDATED, {user_roles: []});
+    },
     get: function () {
 
       return $http({

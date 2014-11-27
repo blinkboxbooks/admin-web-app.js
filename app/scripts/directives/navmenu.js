@@ -29,16 +29,10 @@ angular.module('adminPanelApp').directive('navmenu', function (PATHS, $location,
       ];
 
       function updateItems(){
-        // update items. choose what to display.
-        var path = $location.path();
         $scope.items = [];
         for(var i = 0; i < allItems.length; i++){
           if(angular.isUndefined(allItems[i].roles) || ACL.isOneOf(allItems[i].roles)){
             $scope.items.push(allItems[i]);
-          }
-
-          if(allItems[i].href === path){
-            $scope.active = allItems[i];
           }
         }
       }
@@ -49,14 +43,13 @@ angular.module('adminPanelApp').directive('navmenu', function (PATHS, $location,
       // on route change
       $scope.$on('$routeChangeSuccess', function(){
         var path = $location.path();
-        $scope.active = $scope.items.filter(function(item){
+        $scope.active = allItems.filter(function(item){
           return item.href === path;
         })[0];
       });
 
-      $scope.$on(EVENTS.SESSION_UPDATED, function(){
-        updateItems();
-      });
+      $scope.$on(EVENTS.SESSION_UPDATED, updateItems);
+
 
       updateItems();
 
