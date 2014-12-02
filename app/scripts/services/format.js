@@ -12,7 +12,7 @@ angular.module('adminPanelApp')
           if(name === SETTINGS.PAYMENT_METHODS.CREDIT_BALANCE) {
             return 'account credit';
           } else if (name === SETTINGS.PAYMENT_METHODS.BRAINTREE){
-            return 'card (<code> <a href="' + ROUTES.BRAINTREE_MERCHANT + '/transactions/' + payment.receipt + '">' +  payment.receipt + '</a></code>)';
+            return 'card (<code><a target="_blank" href="' + ROUTES.BRAINTREE_MERCHANT + '/transactions/' + payment.receipt + '">' +  payment.receipt + '</a></code>)';
           } else {
             return '';
           }

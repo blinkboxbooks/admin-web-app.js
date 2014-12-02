@@ -20,6 +20,10 @@ angular.module('adminPanelApp').directive('navmenu', function (PATHS, $location,
         {
           label: 'Voucher Query',
           href: PATHS.VOUCHER
+        }, {
+          label: 'Campaigns',
+          href: PATHS.CAMPAIGNS,
+          roles: ['csm', 'csr', 'mer', 'mkt']
         }
       ];
 
