@@ -31,7 +31,8 @@ angular.module('adminPanelApp')
 
 		$rootScope.templates = {
 			header: 'views/partials/header.html',
-			footer: 'views/partials/footer.html'
+			footer: 'views/partials/footer.html',
+      spinner: 'views/partials/spinner.html'
 		};
 
     // request user's session
@@ -60,6 +61,10 @@ angular.module('adminPanelApp')
 				templateUrl: 'views/voucher.html',
 				controller: 'VoucherCtrl'
 			})
+      .when('/campaigns', {
+        templateUrl: 'views/campaigns.html',
+        controller: 'CampaignsCtrl'
+      })
 			.otherwise({
 				redirectTo: '/login'
 			});
