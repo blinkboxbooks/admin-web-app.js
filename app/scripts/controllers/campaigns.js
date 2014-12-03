@@ -3,7 +3,7 @@
 /**
  * The Campaigns controller shows all running campaigns
  **/
-angular.module('adminPanelApp').controller('CampaignsCtrl', function ($scope, Campaign, $location, PATHS, $timeout) {
+angular.module('adminPanelApp').controller('CampaignsCtrl', function ($scope, Campaign, $location, PATHS) {
   $scope.activeFilter = 'all';
 
   var tableData = [];

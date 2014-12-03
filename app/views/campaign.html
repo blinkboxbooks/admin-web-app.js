@@ -1,2 +1,6 @@
-<h2>Welcome to campaign number {{campaignId}}</h2>
-{{campaignDetails | json}}
+<h2>Campaign: {{campaignDetails.name || campaignId}}</h2>
+<div ng-if="campaignLoading" ng-include="templates.spinner"></div>
+
+<div ng-show="!campaignLoading">
+<p>{{campaignDetails.description}}</p>
+</div>
