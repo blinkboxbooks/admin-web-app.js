@@ -10,3 +10,10 @@
     }
   }
 }
+
+#campaigns-table {
+  tbody tr:hover td {
+    background-color: #D7EDFD;
+    cursor: pointer;
+  }
+}
