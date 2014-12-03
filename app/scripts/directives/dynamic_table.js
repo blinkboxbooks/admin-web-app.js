@@ -27,6 +27,14 @@ angular.module('adminPanelApp')
 						}
 					});
 
+          if(angular.isFunction(scope.config.rowClickCallback)){
+            $(element).on('click', 'tbody tr', function(e){
+              $timeout(function(){
+                scope.config.rowClickCallback(e.currentTarget, element.fnGetData(e.currentTarget));
+              });
+            });
+          }
+
 					// sync table with scope collection
 					var dataWatch = scope.$watchCollection('config.data', function(value){
 						element.fnClearTable();

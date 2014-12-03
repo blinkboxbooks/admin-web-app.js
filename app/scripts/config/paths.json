@@ -3,5 +3,6 @@
 	"LOGIN": "/login",
 	"USER": "/user",
 	"VOUCHER": "/voucher",
-  "CAMPAIGNS": "/campaigns"
+  "CAMPAIGNS": "/campaigns",
+  "CAMPAIGN": "/campaign"
 }
