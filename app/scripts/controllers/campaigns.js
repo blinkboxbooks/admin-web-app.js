@@ -102,7 +102,7 @@ angular.module('adminPanelApp').controller('CampaignsCtrl', function ($scope, Ca
 
 
   $scope.campaignsLoading = true;
-  $scope.spinnerText = 'Getting Campaigns...';
+  $scope.spinnerText = 'Getting Campaigns';
   Campaign.get().then(function(campaignData){
     allCampaigns = campaignData.items;
     filterCampaigns($scope.activeFilter);
