@@ -4,19 +4,19 @@
 
 <div ng-show="!campaignsLoading">
   <div class="btn-group" id="campaigns-filters">
-    <label class="btn btn-default" ng-class="{'btn-info': activeFilter=='all'}">
+    <label class="btn btn-default" ng-class="{'btn-primary': activeFilter=='all'}">
       <input type="radio" value="all" ng-model="activeFilter"/> All
     </label>
-    <label class="btn btn-default" ng-class="{'btn-info': activeFilter=='active'}">
+    <label class="btn btn-default" ng-class="{'btn-primary': activeFilter=='active'}">
       <input type="radio" name="active-filter" value="active" ng-model="activeFilter" /> Active
     </label>
-    <label class="btn btn-default" ng-class="{'btn-info': activeFilter=='pending'}">
+    <label class="btn btn-default" ng-class="{'btn-primary': activeFilter=='pending'}">
       <input type="radio" name="active-filter" value="pending" ng-model="activeFilter" /> Pending
     </label>
-    <label class="btn btn-default" ng-class="{'btn-info': activeFilter=='expired'}">
+    <label class="btn btn-default" ng-class="{'btn-primary': activeFilter=='expired'}">
       <input type="radio" name="active-filter" value="expired" ng-model="activeFilter" /> Expired
     </label>
-    <label class="btn btn-default" ng-class="{'btn-info': activeFilter=='disabled'}">
+    <label class="btn btn-default" ng-class="{'btn-primary': activeFilter=='disabled'}">
       <input type="radio" name="active-filter" value="disabled" ng-model="activeFilter"  /> Disabled
     </label>
   </div>

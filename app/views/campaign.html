@@ -2,6 +2,21 @@
 
 <div ng-show="!campaignLoading">
   <h2>Campaign: {{campaignDetails.name || campaignId}}</h2>
+  <p>{{campaignDetails.description}}</p>
+
+  <h4>Redemption Progress</h4>
+  <p>{{campaignDetails.totalRedeemedVoucherCount}} of {{campaignDetails.totalVoucherCount}} redeemed.
+    <span ng-if="campaignDetails.daysRemaining > 1 || campaignDetails.daysRemaining == 0">{{campaignDetails.daysRemaining}} days remaining.</span>
+    <span ng-if="campaignDetails.daysRemaining == 1">{{campaignDetails.daysRemaining}} day remaining.</span>
+    <span ng-if="campaignDetails.daysRemaining < 0">Campaign finished {{-campaignDetails.daysRemaining}} day(s) ago</span>
+  </p>
+  <div class="progress">
+    <div class="progress-bar progressbar-info" role="progressbar"  style="width: {{campaignDetails.redemptionPercentage}}%; min-width: 25px;">
+      {{campaignDetails.redemptionPercentage}}%
+    </div>
+  </div>
+
+  <h3>Campaign details</h3>
   <dl class="dl-horizontal">
     <dt>Campaign ID</dt>
     <dd>{{campaignDetails.id}}</dd>
@@ -45,5 +60,5 @@
     <dd>{{campaignDetails.createdBy}}</dd>
   </dl>
 
-  <p><a href="#" class="btn btn-info">Edit</a> <a href="#" class="btn btn-info">{{campaignDetails.enabled ? 'Disable' : 'Enable'}}</a> <a href="#" class="btn btn-info">Get Vouchers</a></p>
+  <p><a href="#" class="btn btn-primary">Edit</a> <a href="#" class="btn btn-primary">{{campaignDetails.enabled ? 'Disable' : 'Enable'}}</a> <a href="#" class="btn btn-primary">Get Vouchers</a></p>
 </div>
