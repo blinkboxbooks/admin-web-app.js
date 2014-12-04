@@ -7,7 +7,7 @@ angular.module('adminPanelApp').controller('CampaignCtrl', function ($routeParam
   $scope.campaignId = +$routeParams.id;
   if($scope.campaignId >= 0){
     $scope.campaignLoading = true;
-    $scope.spinnerText = 'Getting details...';
+    $scope.spinnerText = 'Getting Campaign';
 
     Campaign.get($scope.campaignId).then(function(campaignDetails){
       $scope.campaignLoading = false;

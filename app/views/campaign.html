@@ -1,6 +1,49 @@
-<h2>Campaign: {{campaignDetails.name || campaignId}}</h2>
 <div ng-if="campaignLoading" ng-include="templates.spinner"></div>
 
 <div ng-show="!campaignLoading">
-<p>{{campaignDetails.description}}</p>
+  <h2>Campaign: {{campaignDetails.name || campaignId}}</h2>
+  <dl class="dl-horizontal">
+    <dt>Campaign ID</dt>
+    <dd>{{campaignDetails.id}}</dd>
+
+    <dt>Name</dt>
+    <dd>{{campaignDetails.name}}</dd>
+
+    <dt>Description</dt>
+    <dd>{{campaignDetails.description}}</dd>
+
+    <dt># Vouchers</dt>
+    <dd>{{campaignDetails.totalVoucherCount}}</dd>
+
+    <dt># Redeemed</dt>
+    <dd>{{campaignDetails.totalRedeemedVoucherCount}}</dd>
+
+    <dt>Redemption Limit</dt>
+    <dd>{{campaignDetails.redemptionLimit}}</dd>
+
+
+    <dt>Action</dt>
+    <dd>{{campaignDetails.action}}</dd>
+
+    <dt>Credit Amount</dt>
+    <dd>{{campaignDetails.creditAmount}}</dd>
+
+    <dt>Enabled</dt>
+    <dd>{{campaignDetails.enabled ? 'Yes' : 'No'}}</dd>
+
+    <dt>Start Date</dt>
+    <dd>{{campaignDetails.startDate}}</dd>
+
+    <dt>End Date</dt>
+    <dd>{{campaignDetails.endDate}}</dd>
+
+    <dt>Creation Date</dt>
+    <dd>{{campaignDetails.createdAt}}</dd>
+
+
+    <dt>Created by user id</dt>
+    <dd>{{campaignDetails.createdBy}}</dd>
+  </dl>
+
+  <p><a href="#" class="btn btn-info">Edit</a> <a href="#" class="btn btn-info">{{campaignDetails.enabled ? 'Disable' : 'Enable'}}</a> <a href="#" class="btn btn-info">Get Vouchers</a></p>
 </div>
