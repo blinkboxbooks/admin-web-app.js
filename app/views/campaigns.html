@@ -5,7 +5,7 @@
 <div ng-show="!flags.campaignsLoading">
   <div class="btn-group" id="campaigns-filters">
     <label class="btn btn-default" ng-class="{'btn-primary': flags.activeFilter=='all'}">
-      <input type="radio" value="all" ng-model="activeFilter"/> All
+      <input type="radio" value="all" ng-model="flags.activeFilter"/> All
     </label>
     <label class="btn btn-default" ng-class="{'btn-primary': flags.activeFilter=='active'}">
       <input type="radio" name="active-filter" value="active" ng-model="flags.activeFilter" /> Active

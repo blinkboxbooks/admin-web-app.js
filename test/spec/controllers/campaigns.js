@@ -11,7 +11,7 @@ describe('Controller: CampaignsCtrl', function () {
       $q = _$q_;
       $httpBackend = _$httpBackend_;
       ROUTES = _ROUTES_;
-      $httpBackend.expectGET(ROUTES.USER).respond(401);
+      $httpBackend.expectGET(ROUTES.USER).respond(200);
       $httpBackend.whenGET(ROUTES.SESSION).respond(200);
     });
   });
@@ -130,31 +130,31 @@ describe('Controller: CampaignsCtrl', function () {
   describe('Campaigns filtering', function(){
 
     it('should filter campaigns by active', function () {
-      scope.activeFilter = 'active';
+      scope.flags.activeFilter = 'active';
       scope.$apply();
       expect(scope.campaignsTable.data).toEqual(activeCampaigns);
     });
 
     it('should filter campaigns by pending', function () {
-      scope.activeFilter = 'pending';
+      scope.flags.activeFilter = 'pending';
       scope.$apply();
       expect(scope.campaignsTable.data).toEqual(pendingCampaigns);
     });
 
     it('should filter campaigns by expired', function () {
-      scope.activeFilter = 'expired';
+      scope.flags.activeFilter = 'expired';
       scope.$apply();
       expect(scope.campaignsTable.data).toEqual(expiredCampaigns);
     });
 
     it('should filter campaigns by disabled', function () {
-      scope.activeFilter = 'disabled';
+      scope.flags.activeFilter = 'disabled';
       scope.$apply();
       expect(scope.campaignsTable.data).toEqual(disabledCampaigns);
     });
 
     it('should allow showing all campaigns', function () {
-      scope.activeFilter = 'all';
+      scope.flags.activeFilter = 'all';
       scope.$apply();
       expect(scope.campaignsTable.data).toEqual(allCampaigns);
     });

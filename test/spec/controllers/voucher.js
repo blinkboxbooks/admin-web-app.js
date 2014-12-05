@@ -11,7 +11,7 @@ describe('Controller: VoucherCtrl', function () {
 
   beforeEach(inject(function ($rootScope, $httpBackend, ROUTES) {
 		scope = $rootScope.$new();
-	  $httpBackend.expectGET(ROUTES.USER).respond(401);
+	  $httpBackend.expectGET(ROUTES.USER).respond(200);
 	  $httpBackend.whenGET(ROUTES.SESSION).respond(200);
   }));
 

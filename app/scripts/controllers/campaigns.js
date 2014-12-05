@@ -106,7 +106,7 @@ angular.module('adminPanelApp').controller('CampaignsCtrl', function ($scope, Ca
   $scope.spinnerText = 'Getting Campaigns';
   Campaign.get().then(function(campaignData){
     allCampaigns = campaignData.items || [];
-    filterCampaigns($scope.activeFilter);
+    filterCampaigns($scope.flags.activeFilter);
     $scope.flags.campaignsLoading = false;
   });
 
