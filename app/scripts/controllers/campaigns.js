@@ -82,15 +82,21 @@ angular.module('adminPanelApp').controller('CampaignsCtrl', function ($scope, Ca
         'label': 'Description'
       },
       {
-        'field': 'startDate',
+        'field': function(item){
+          return item.startDate ? (new Date(item.startDate)).toDateString() : ''
+        },
         'label': 'Start Date'
       },
       {
-        'field': 'endDate',
+        'field': function(item){
+          return item.endDate ? (new Date(item.endDate)).toDateString() : ''
+        },
         'label': 'End Date'
       },
       {
-        'field': 'createdAt',
+        'field': function(item){
+          return item.createdAt ? (new Date(item.createdAt)).toDateString() : ''
+        },
         'label': 'Creation Date'
       },
       {

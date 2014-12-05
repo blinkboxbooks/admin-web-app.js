@@ -47,13 +47,13 @@
     <dd>{{campaignDetails.enabled ? 'Yes' : 'No'}}</dd>
 
     <dt>Start Date</dt>
-    <dd>{{campaignDetails.startDate}}</dd>
+    <dd>{{campaignDetails.startDate | date:'medium'}}</dd>
 
     <dt>End Date</dt>
-    <dd>{{campaignDetails.endDate}}</dd>
+    <dd>{{campaignDetails.endDate | date:'medium'}}</dd>
 
     <dt>Creation Date</dt>
-    <dd>{{campaignDetails.createdAt}}</dd>
+    <dd>{{campaignDetails.createdAt | date:'medium'}}</dd>
 
 
     <dt>Created by user id</dt>
