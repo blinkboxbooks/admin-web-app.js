@@ -3,7 +3,7 @@
 /**
  * The Campaigns controller shows all running campaigns
  **/
-angular.module('adminPanelApp').controller('CampaignsCtrl', function ($scope, Campaign) {
+angular.module('adminPanelApp').controller('CampaignsCtrl', function ($scope, Campaign, $location, PATHS) {
   $scope.activeFilter = 'all';
 
   var tableData = [];
@@ -16,6 +16,9 @@ angular.module('adminPanelApp').controller('CampaignsCtrl', function ($scope, Ca
     }
   });
 
+  $scope.goToNewCampaign = function goToNewCampaign(){
+    $location.path(PATHS.NEW_CAMPAIGN);
+  };
 
   var filterCampaigns = function filterCampaigns(filterType){
     tableData.length = 0; // empty the array, keep refs because of watch
