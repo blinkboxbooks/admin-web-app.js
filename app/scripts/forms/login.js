@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('adminPanelApp')
-	.directive('loginForm', function($rootScope, Authentication) {
+	.directive('loginForm', function($rootScope, Authentication, User) {
 		return {
 			restrict: 'E',
 			templateUrl: 'views/templates/login_form.html',
@@ -9,7 +9,7 @@ angular.module('adminPanelApp')
 			replace: true,
 			controller: function($scope){
 				$scope.login = {
-					email: '',
+					email: User.getCache() ? User.getCache().username : '',
 					password: '',
 					remember: false
 				};

@@ -4,13 +4,16 @@
  * The Campaigns controller shows all running campaigns
  **/
 angular.module('adminPanelApp').controller('CampaignsCtrl', function ($scope, Campaign, $location, PATHS) {
-  $scope.activeFilter = 'all';
+  $scope.flags = {
+    activeFilter: 'all',
+    campaignsLoading: true
+  };
 
   var tableData = [];
 
   var allCampaigns = [];
 
-  $scope.$watch('activeFilter', function(newVal, oldVal){
+  $scope.$watch('flags.activeFilter', function(newVal, oldVal){
     if(oldVal !== newVal){
       filterCampaigns(newVal);
     }
@@ -100,13 +103,11 @@ angular.module('adminPanelApp').controller('CampaignsCtrl', function ($scope, Ca
     data: tableData
   };
 
-
-  $scope.campaignsLoading = true;
   $scope.spinnerText = 'Getting Campaigns';
   Campaign.get().then(function(campaignData){
     allCampaigns = campaignData.items || [];
     filterCampaigns($scope.activeFilter);
-    $scope.campaignsLoading = false;
+    $scope.flags.campaignsLoading = false;
   });
 
 });
