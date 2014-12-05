@@ -4,20 +4,13 @@ angular.module('adminPanelApp')
 	.factory('User', function($rootScope, $http, ROUTES, EVENTS, Format) {
 
 		var user = null;
-    var userCache = null;
 
 		var User = {
 			get: function(){
 				return user;
 			},
-      getCache: function(){
-        return userCache;
-      },
 			set: function(data){
 				user = Format.user(data);
-        if(user){
-          userCache = user;
-        }
 				$rootScope.$broadcast(EVENTS.USER_UPDATED, user);
 			},
 			refresh: function() {
