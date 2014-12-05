@@ -7,7 +7,7 @@ describe('Controller: MainCtrl', function () {
 		module('adminPanelApp');
 		module('templates');
 		inject(function(_$httpBackend_, _ROUTES_){
-			_$httpBackend_.expectGET(_ROUTES_.USER).respond(401);
+			_$httpBackend_.expectGET(_ROUTES_.USER).respond(200);
 		});
 	});
 

@@ -23,7 +23,7 @@ angular.module('adminPanelApp').directive('navmenu', function (PATHS, $location,
         }, {
           label: 'Campaigns',
           href: PATHS.CAMPAIGNS,
-          roles: ['csm', 'csr', 'mer', 'mkt']
+          roles: ['csm', 'csr', 'mer', 'mkt', 'ops']
         }
       ];
 

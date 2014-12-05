@@ -6,7 +6,7 @@ describe('Directive: Dynamic Table', function () {
 	beforeEach(function(){
 		module('adminPanelApp', 'templates', 'mockedResponses');
 		inject(function(_$httpBackend_, _ROUTES_){
-			_$httpBackend_.expectGET(_ROUTES_.USER).respond(401);
+			_$httpBackend_.expectGET(_ROUTES_.USER).respond(200);
 			_$httpBackend_.whenGET(_ROUTES_.SESSION).respond(200);
 		});
 	});

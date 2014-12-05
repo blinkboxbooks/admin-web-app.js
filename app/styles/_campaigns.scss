@@ -1,6 +1,5 @@
 #campaigns-filters {
   label {
-    color: #5E5E5E;
     input {
       visibility: hidden;
       width: 0;
@@ -8,5 +7,12 @@
       padding: 0;
       margin: 0;
     }
+  }
+}
+
+#campaigns-table {
+  tbody tr:hover td {
+    background-color: #D7EDFD !important;
+    cursor: pointer;
   }
 }

@@ -9,7 +9,7 @@ describe('Service: Format', function () {
 		inject(function(_$httpBackend_, _ROUTES_){
 			$httpBackend = _$httpBackend_;
 			ROUTES = _ROUTES_;
-			$httpBackend.expectGET(_ROUTES_.USER).respond(401);
+			$httpBackend.expectGET(_ROUTES_.USER).respond(200);
 		});
 	});
 

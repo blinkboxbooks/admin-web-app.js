@@ -10,7 +10,7 @@ describe('Form: Login', function () {
 			$httpBackend = _$httpBackend_;
 
 			// user is not initially logged in
-			_$httpBackend_.expectGET(_ROUTES_.USER).respond(401);
+			_$httpBackend_.expectGET(_ROUTES_.USER).respond(200);
 			_$httpBackend_.whenGET(_ROUTES_.SESSION).respond(200);
 			_$httpBackend_.flush();
 		});
