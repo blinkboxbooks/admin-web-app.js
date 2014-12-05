@@ -83,19 +83,19 @@ angular.module('adminPanelApp').controller('CampaignsCtrl', function ($scope, Ca
       },
       {
         'field': function(item){
-          return item.startDate ? (new Date(item.startDate)).toDateString() : ''
+          return item.startDate ? (new Date(item.startDate)).toDateString() : '';
         },
         'label': 'Start Date'
       },
       {
         'field': function(item){
-          return item.endDate ? (new Date(item.endDate)).toDateString() : ''
+          return item.endDate ? (new Date(item.endDate)).toDateString() : '';
         },
         'label': 'End Date'
       },
       {
         'field': function(item){
-          return item.createdAt ? (new Date(item.createdAt)).toDateString() : ''
+          return item.createdAt ? (new Date(item.createdAt)).toDateString() : '';
         },
         'label': 'Creation Date'
       },
