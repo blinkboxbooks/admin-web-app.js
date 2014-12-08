@@ -69,6 +69,10 @@ angular.module('adminPanelApp')
         templateUrl: 'views/new_campaign.html',
         controller: 'NewCampaignCtrl'
       })
+      .when('/campaign/:id', {
+        templateUrl: 'views/campaign.html',
+        controller: 'CampaignCtrl'
+      })
 			.otherwise({
 				redirectTo: '/login'
 			});

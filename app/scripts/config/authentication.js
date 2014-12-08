@@ -8,6 +8,7 @@ angular.module('adminPanelApp')
         if (response.status === 401 || response.status === 403) {
           // Reset user data (retrieve the User service without circular dependency):
           $injector.get('User').set(null);
+          $injector.get('Authentication').logout();
           // No token present (not logged in) so redirect to signin with a link back to current page.
           var current = $location.url();
           // Avoid circular reference

@@ -1,26 +1,25 @@
 <h3>Campaigns</h3>
 
-<div ng-if="campaignsLoading" ng-include="templates.spinner"></div>
+<div ng-if="flags.campaignsLoading" ng-include="templates.spinner"></div>
 
-<div ng-show="!campaignsLoading">
+<div ng-show="!flags.campaignsLoading">
   <div class="btn-group" id="campaigns-filters">
-    <label class="btn btn-default" ng-class="{'btn-info': activeFilter=='all'}">
-      <input type="radio" value="all" ng-model="activeFilter"/> All
+    <label class="btn btn-default" ng-class="{'btn-primary': flags.activeFilter=='all'}">
+      <input type="radio" value="all" ng-model="flags.activeFilter"/> All
     </label>
-    <label class="btn btn-default" ng-class="{'btn-info': activeFilter=='active'}">
-      <input type="radio" name="active-filter" value="active" ng-model="activeFilter" /> Active
+    <label class="btn btn-default" ng-class="{'btn-primary': flags.activeFilter=='active'}">
+      <input type="radio" name="active-filter" value="active" ng-model="flags.activeFilter" /> Active
     </label>
-    <label class="btn btn-default" ng-class="{'btn-info': activeFilter=='pending'}">
-      <input type="radio" name="active-filter" value="pending" ng-model="activeFilter" /> Pending
+    <label class="btn btn-default" ng-class="{'btn-primary': flags.activeFilter=='pending'}">
+      <input type="radio" name="active-filter" value="pending" ng-model="flags.activeFilter" /> Pending
     </label>
-    <label class="btn btn-default" ng-class="{'btn-info': activeFilter=='expired'}">
-      <input type="radio" name="active-filter" value="expired" ng-model="activeFilter" /> Expired
+    <label class="btn btn-default" ng-class="{'btn-primary': flags.activeFilter=='expired'}">
+      <input type="radio" name="active-filter" value="expired" ng-model="flags.activeFilter" /> Expired
     </label>
-    <label class="btn btn-default" ng-class="{'btn-info': activeFilter=='disabled'}">
-      <input type="radio" name="active-filter" value="disabled" ng-model="activeFilter"  /> Disabled
+    <label class="btn btn-default" ng-class="{'btn-primary': flags.activeFilter=='disabled'}">
+      <input type="radio" name="active-filter" value="disabled" ng-model="flags.activeFilter"  /> Disabled
     </label>
   </div>
   <a ng-click="goToNewCampaign()" class="btn btn-success">+ New Campaign</a>
-
-  <dynamic-table config="campaignsTable"></dynamic-table>
+  <dynamic-table config="campaignsTable" id="campaigns-table"></dynamic-table>
 </div>

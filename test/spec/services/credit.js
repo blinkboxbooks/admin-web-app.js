@@ -9,7 +9,7 @@ describe('Service: Credit', function () {
 		inject(function(_$httpBackend_, _ROUTES_){
 			$httpBackend = _$httpBackend_;
 			ROUTES = _ROUTES_;
-			$httpBackend.expectGET(_ROUTES_.USER).respond(401);
+			$httpBackend.expectGET(_ROUTES_.USER).respond(200);
 			$httpBackend.whenGET(_ROUTES_.SESSION).respond(200);
 		});
 	});

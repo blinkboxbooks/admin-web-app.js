@@ -4,13 +4,16 @@
  * The Campaigns controller shows all running campaigns
  **/
 angular.module('adminPanelApp').controller('CampaignsCtrl', function ($scope, Campaign, $location, PATHS) {
-  $scope.activeFilter = 'all';
+  $scope.flags = {
+    activeFilter: 'all',
+    campaignsLoading: true
+  };
 
   var tableData = [];
 
   var allCampaigns = [];
 
-  $scope.$watch('activeFilter', function(newVal, oldVal){
+  $scope.$watch('flags.activeFilter', function(newVal, oldVal){
     if(oldVal !== newVal){
       filterCampaigns(newVal);
     }
@@ -59,9 +62,15 @@ angular.module('adminPanelApp').controller('CampaignsCtrl', function ($scope, Ca
     Array.prototype.push.apply(tableData, filterItems);
   };
 
+  var rowClickCallback = function rowClickCallback(row, data){
+    var indexOfId = 0;
+    $location.path(PATHS.CAMPAIGN + '/' + data[indexOfId]);
+  };
+
   // set up the data table
   $scope.campaignsTable = {
     sDom: '<"H"lfr>t<"F"ip>',
+    rowClickCallback: rowClickCallback,
     structure: [
       {
         'field': 'id',
@@ -76,15 +85,21 @@ angular.module('adminPanelApp').controller('CampaignsCtrl', function ($scope, Ca
         'label': 'Description'
       },
       {
-        'field': 'startDate',
+        'field': function(item){
+          return item.startDate ? (new Date(item.startDate)).toDateString() : '';
+        },
         'label': 'Start Date'
       },
       {
-        'field': 'endDate',
+        'field': function(item){
+          return item.endDate ? (new Date(item.endDate)).toDateString() : '';
+        },
         'label': 'End Date'
       },
       {
-        'field': 'createdAt',
+        'field': function(item){
+          return item.createdAt ? (new Date(item.createdAt)).toDateString() : '';
+        },
         'label': 'Creation Date'
       },
       {
@@ -97,13 +112,11 @@ angular.module('adminPanelApp').controller('CampaignsCtrl', function ($scope, Ca
     data: tableData
   };
 
-
-  $scope.campaignsLoading = true;
-  $scope.spinnerText = 'Getting Campaigns...';
+  $scope.spinnerText = 'Getting Campaigns';
   Campaign.get().then(function(campaignData){
-    allCampaigns = campaignData.items;
-    filterCampaigns($scope.activeFilter);
-    $scope.campaignsLoading = false;
+    allCampaigns = campaignData.items || [];
+    filterCampaigns($scope.flags.activeFilter);
+    $scope.flags.campaignsLoading = false;
   });
 
 });
