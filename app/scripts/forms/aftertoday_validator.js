@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('adminPanelApp').directive('aftertoday', function() {
   return {
     require: 'ngModel',
@@ -12,7 +14,7 @@ angular.module('adminPanelApp').directive('aftertoday', function() {
         today.setHours(0, 0, 0, 0); // today at 00:00:00.00
 
         return startDate >= today;
-      }
+      };
     }
   };
 });

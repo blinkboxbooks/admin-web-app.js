@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('adminPanelApp')
-  .directive('newCampaignForm', function() {
+  .directive('newCampaignForm', function(Campaign, PATHS, ROUTES, $location) {
     return {
       restrict: 'E',
       templateUrl: 'views/templates/new_campaign_form.html',
@@ -24,10 +24,23 @@ angular.module('adminPanelApp')
 
         $scope.createCampaign = function createCampaign(campaign){
           if($scope.campaignForm.$invalid){
-            console.error('form invalid');
             return false;
           }
-          console.log('Creating campaign!');
+          Campaign.post({
+            name: campaign.name,
+            description: campaign.description,
+            enabled: campaign.enabled,
+            startDate: (new Date(campaign.startDate)).toISOString(),
+            endDate: (!campaign.ongoing && campaign.endDate) ? (new Date(campaign.endDate)).toISOString() : undefined,
+            creditAmount: {
+              currency: 'GBP',
+              amount: +campaign.credit
+            },
+            redemptionLimit: (!campaign.unlimitedRedemption && campaign.redemptionLimit) ? +campaign.redemptionLimit : undefined
+          }).then(function(location){
+            var newCampaignId = location.split(ROUTES.GIFTING_SERVICES + ROUTES.CAMPAIGNS + '/')[1];
+            $location.path(PATHS.CAMPAIGN + '/' + newCampaignId);
+          });
         };
       }
     };

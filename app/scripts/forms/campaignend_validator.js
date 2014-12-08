@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('adminPanelApp').directive('campaignend', function() {
   return {
     require: 'ngModel',
@@ -11,7 +13,7 @@ angular.module('adminPanelApp').directive('campaignend', function() {
         var endDate = new Date(viewValue);
 
         return scope.campaign.ongoing || endDate > startDate;
-      }
+      };
     }
   };
 });

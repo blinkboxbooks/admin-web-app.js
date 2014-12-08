@@ -17,7 +17,25 @@ angular.module('adminPanelApp')
 				}).then(function(response){
 					return response.data;
 				});
-			}
+			},
+      post: function(campaign){
+        var deferred = $q.defer();
+        $http({
+          method: 'POST',
+          url: ROUTES.GIFTING_SERVICES + ROUTES.CAMPAIGNS,
+          headers: {
+            'X-Requested-With': 'XMLHttpRequest',
+            'x-content-type': 'application/vnd.blinkbox.books.v2+json'
+          },
+          data: campaign
+        }).then(function(response){
+          deferred.resolve(response.headers().location);
+        }, function(error){
+          deferred.reject(error);
+        });
+
+        return deferred.promise;
+      }
 		};
 	}
 );
