@@ -1,0 +1,68 @@
+<form role="form">
+  <div class="form-group">
+    <label for="name">Campaign Name</label>
+    <input name="name" type="text" class="form-control" ng-model="campaign.name"/>
+  </div>
+
+  <div class="form-group">
+    <label for="description">Campaign Description</label>
+    <input name="description" type="text" class="form-control" ng-model="campaign.description"/>
+  </div>
+
+  <div class="form-group">
+    <label for="start">Campaign Start Date</label>
+    <p class="help-block">Vouchers will become redeemable after this date, if the campaign is enabled.</p>
+    <div class="input-group">
+      <input name="start" type="date" class="form-control" ng-model="campaign.startDate"/>
+      <label class="input-group-addon">
+        <input type="checkbox" checked="checked" ng-model="campaign.ongoing"> Ongoing campaign
+      </label>
+    </div>
+  </div>
+
+  <div class="form-group" ng-if="!campaign.ongoing">
+    <label for="end">Campaign End Date</label>
+    <p class="help-block">Vouchers will no longer be redeemable after this date.</p>
+    <input name="end" type="date" class="form-control" ng-model="campaign.endDate"/>
+  </div>
+
+  <div class="form-group">
+    <label for="credit">Credit amount</label>
+
+    <p class="help-block">The amount of credit to be added to a user's account when a voucher from this campaign is
+      redeemed.</p>
+
+    <div class="input-group">
+      <span class="input-group-addon">£</span>
+      <input name="credit" type="text" class="form-control" ng-model="campaign.credit"/>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="redemptionLimit">Redemption limit</label>
+
+    <p class="help-block">The maximum number of vouchers redeemable in this campaign.</p>
+
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" checked="checked" ng-model="campaign.unlimitedRedemption"> Unlimited
+      </label>
+    </div>
+    <div class="input-group-btn" ng-if="!campaign.unlimitedRedemption">
+      <input type="text" name="redemptionLimit" class="form-control" ng-model="campaign.redemptionLimit"/>
+    </div>
+
+  </div>
+
+  <div class="form-group">
+    <label for="create">Campaign status</label>
+    <p class="help-block">Vouchers are only redeemable if the campaign is enabled.</p>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" checked="checked" ng-model="campaign.enabled"> Initially enable this campaign.
+      </label>
+    </div>
+    <button type="submit" class="btn btn-success" ng-click="createCampaign(campaign)">Create Campaign</button>
+  </div>
+
+</form>
