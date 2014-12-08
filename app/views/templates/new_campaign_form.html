@@ -13,7 +13,7 @@
     <label for="start">Campaign Start Date</label>
     <p class="help-block">Vouchers will become redeemable after this date, if the campaign is enabled.</p>
     <div class="input-group">
-      <input name="start" type="date" class="form-control" ng-model="campaign.startDate" required/>
+      <input name="start" type="date" class="form-control" ng-model="campaign.startDate" required aftertoday/>
       <label class="input-group-addon">
         <input type="checkbox" checked="checked" ng-model="campaign.ongoing"> Ongoing campaign
       </label>

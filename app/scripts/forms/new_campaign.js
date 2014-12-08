@@ -13,10 +13,10 @@ angular.module('adminPanelApp')
         $scope.campaign = {
           name: '',
           description: '',
-          startDate: '',
+          startDate: new Date(),
           endDate: '',
           ongoing: true,
-          credit: 0,
+          credit: '',
           redemptionLimit: null,
           unlimitedRedemption: true,
           enabled: true
