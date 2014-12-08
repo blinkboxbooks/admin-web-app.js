@@ -1,4 +1,4 @@
-<form role="form">
+<form role="form" ng-submit="createCampaign(campaign)" name="campaignForm">
   <div class="form-group">
     <label for="name">Campaign Name</label>
     <input name="name" type="text" class="form-control" ng-model="campaign.name" required/>
@@ -23,7 +23,8 @@
   <div class="form-group" ng-if="!campaign.ongoing">
     <label for="end">Campaign End Date</label>
     <p class="help-block">Vouchers will no longer be redeemable after this date.</p>
-    <input name="end" type="date" class="form-control" ng-model="campaign.endDate"/>
+    <span ng-show="(campaignForm.$submitted || campaignForm.end.$touched) && campaignForm.end.$error.campaignend" class="label label-danger">Campaign end date must be after campaign start date.</span>
+    <input name="end" type="date" class="form-control" ng-model="campaign.endDate" campaignend/>
   </div>
 
   <div class="form-group">
@@ -49,7 +50,7 @@
       </label>
     </div>
     <div class="input-group-btn" ng-if="!campaign.unlimitedRedemption">
-      <input type="number" name="redemptionLimit" class="form-control" ng-model="campaign.redemptionLimit"/>
+      <input type="number" name="redemptionLimit" class="form-control" ng-model="campaign.redemptionLimit" min="1" required/>
     </div>
 
   </div>
@@ -59,10 +60,10 @@
     <p class="help-block">Vouchers are only redeemable if the campaign is enabled.</p>
     <div class="checkbox">
       <label>
-        <input type="checkbox" checked="checked" ng-model="campaign.enabled" required> Initially enable this campaign.
+        <input type="checkbox" checked="checked" ng-model="campaign.enabled"> Initially enable this campaign.
       </label>
     </div>
-    <button type="submit" class="btn btn-success" ng-click="createCampaign(campaign)">Create Campaign</button>
+    <button type="submit" class="btn btn-success">Create Campaign</button>
   </div>
 
 </form>

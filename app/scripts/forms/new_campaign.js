@@ -17,12 +17,17 @@ angular.module('adminPanelApp')
           endDate: '',
           ongoing: true,
           credit: 0,
-          redemptionLimit: 0,
+          redemptionLimit: null,
           unlimitedRedemption: true,
           enabled: true
         };
 
         $scope.createCampaign = function createCampaign(campaign){
+          if($scope.campaignForm.$invalid){
+            console.error('form invalid');
+            return false;
+          }
+          console.log('Creating campaign!');
         };
       }
     };
