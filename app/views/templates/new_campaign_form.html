@@ -1,19 +1,19 @@
 <form role="form">
   <div class="form-group">
     <label for="name">Campaign Name</label>
-    <input name="name" type="text" class="form-control" ng-model="campaign.name"/>
+    <input name="name" type="text" class="form-control" ng-model="campaign.name" required/>
   </div>
 
   <div class="form-group">
     <label for="description">Campaign Description</label>
-    <input name="description" type="text" class="form-control" ng-model="campaign.description"/>
+    <input name="description" type="text" class="form-control" ng-model="campaign.description" required/>
   </div>
 
   <div class="form-group">
     <label for="start">Campaign Start Date</label>
     <p class="help-block">Vouchers will become redeemable after this date, if the campaign is enabled.</p>
     <div class="input-group">
-      <input name="start" type="date" class="form-control" ng-model="campaign.startDate"/>
+      <input name="start" type="date" class="form-control" ng-model="campaign.startDate" required/>
       <label class="input-group-addon">
         <input type="checkbox" checked="checked" ng-model="campaign.ongoing"> Ongoing campaign
       </label>
@@ -34,7 +34,7 @@
 
     <div class="input-group">
       <span class="input-group-addon">£</span>
-      <input name="credit" type="text" class="form-control" ng-model="campaign.credit"/>
+      <input name="credit" type="number" class="form-control" ng-model="campaign.credit" min="0" required />
     </div>
   </div>
 
@@ -49,7 +49,7 @@
       </label>
     </div>
     <div class="input-group-btn" ng-if="!campaign.unlimitedRedemption">
-      <input type="text" name="redemptionLimit" class="form-control" ng-model="campaign.redemptionLimit"/>
+      <input type="number" name="redemptionLimit" class="form-control" ng-model="campaign.redemptionLimit"/>
     </div>
 
   </div>
@@ -59,7 +59,7 @@
     <p class="help-block">Vouchers are only redeemable if the campaign is enabled.</p>
     <div class="checkbox">
       <label>
-        <input type="checkbox" checked="checked" ng-model="campaign.enabled"> Initially enable this campaign.
+        <input type="checkbox" checked="checked" ng-model="campaign.enabled" required> Initially enable this campaign.
       </label>
     </div>
     <button type="submit" class="btn btn-success" ng-click="createCampaign(campaign)">Create Campaign</button>
