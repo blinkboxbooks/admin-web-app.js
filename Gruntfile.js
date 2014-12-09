@@ -372,18 +372,18 @@ module.exports = function (grunt) {
       }
     },
     ngconstant: {
-      build: [
-        {
+      build: {
+        options: {
           dest: '<%= yeoman.app %>/scripts/config/constants.js',
-          name: 'Constants',
-          constants: {
-            EVENTS: grunt.file.readJSON('app/scripts/config/events.json'),
-            ROUTES: grunt.file.readJSON('app/scripts/config/routes.json'),
-            PATHS: grunt.file.readJSON('app/scripts/config/paths.json'),
-            SETTINGS: grunt.file.readJSON('app/scripts/config/settings.json')
-          }
+          name: 'Constants'
+        },
+        constants: {
+          EVENTS: grunt.file.readJSON('app/scripts/config/events.json'),
+          ROUTES: grunt.file.readJSON('app/scripts/config/routes.json'),
+          PATHS: grunt.file.readJSON('app/scripts/config/paths.json'),
+          SETTINGS: grunt.file.readJSON('app/scripts/config/settings.json')
         }
-      ]
+      }
     }
   });
 
