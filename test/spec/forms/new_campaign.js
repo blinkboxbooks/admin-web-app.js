@@ -1,6 +1,6 @@
 'use strict';
 
-ddescribe('Form: New Campaign Form', function () {
+describe('Form: New Campaign Form', function () {
 
   // load module
   beforeEach(function(){
