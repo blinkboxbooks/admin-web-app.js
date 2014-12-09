@@ -41,6 +41,8 @@ angular.module('adminPanelApp')
             var newCampaignId = location.split(ROUTES.CAMPAIGNS + '/')[1];
             $location.path(PATHS.CAMPAIGN + '/' + newCampaignId);
           });
+
+          return true;
         };
       }
     };
