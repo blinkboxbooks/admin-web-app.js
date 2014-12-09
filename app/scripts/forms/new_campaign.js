@@ -38,7 +38,7 @@ angular.module('adminPanelApp')
             },
             redemptionLimit: (!campaign.unlimitedRedemption && campaign.redemptionLimit) ? +campaign.redemptionLimit : undefined
           }).then(function(location){
-            var newCampaignId = location.split(ROUTES.GIFTING_SERVICES + ROUTES.CAMPAIGNS + '/')[1];
+            var newCampaignId = location.split(ROUTES.CAMPAIGNS + '/')[1];
             $location.path(PATHS.CAMPAIGN + '/' + newCampaignId);
           });
         };
