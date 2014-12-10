@@ -69,7 +69,7 @@ angular.module('adminPanelApp').controller('CampaignsCtrl', function ($scope, Ca
 
   // set up the data table
   $scope.campaignsTable = {
-    sDom: '<"H"lfr>t<"F"ip>',
+    sDom: '<"H"<"#campaigns-table-select"l>fr>t<"F"ip>',
     rowClickCallback: rowClickCallback,
     structure: [
       {
