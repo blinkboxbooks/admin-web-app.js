@@ -66,8 +66,7 @@ angular.module('adminPanelApp')
         controller: 'CampaignsCtrl'
       })
       .when('/campaign/new', {
-        templateUrl: 'views/new_campaign.html',
-        controller: 'NewCampaignCtrl'
+        templateUrl: 'views/new_campaign.html'
       })
       .when('/campaign/:id', {
         templateUrl: 'views/campaign.html',
