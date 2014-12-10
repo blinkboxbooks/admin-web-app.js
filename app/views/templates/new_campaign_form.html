@@ -1,0 +1,89 @@
+<form role="form" ng-submit="createCampaign(campaign)" name="campaignForm">
+  <div class="form-group">
+    <label for="campaign-name">Campaign Name</label>
+    <input name="campaign-name" id="campaign-name" type="text" class="form-control" ng-model="campaign.name" required placeholder="Enter name here"/>
+  </div>
+
+  <div class="form-group">
+    <label for="campaign-description">Campaign Description</label>
+    <input name="campaign-description" id="campaign-description" type="text" class="form-control" ng-model="campaign.description" required placeholder="Enter description here"/>
+  </div>
+
+  <div class="form-group">
+    <label for="campaign-start">Campaign Start Date</label>
+    <p class="help-block">Vouchers will become redeemable after this date, if the campaign is enabled.</p>
+    <div class="input-group">
+      <div class="dropdown">
+        <a class="dropdown-toggle my-toggle-select" id="dLabel1" role="button" data-toggle="dropdown" data-target="#" href="">
+          <div class="input-append">
+            <input id="campaign-start" name="campaign-start" type="text" class="form-control" data-ng-model="campaign.startDate" required aftertoday placeholder="Click to select date and time">
+          </div>
+        </a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel1">
+          <datetimepicker data-ng-model="campaign.startDate"
+                          data-datetimepicker-config="{ dropdownSelector: '.my-toggle-select' }"></datetimepicker>
+        </ul>
+      </div>
+      <label class="input-group-addon">
+        <input type="checkbox" checked="checked" ng-model="campaign.ongoing"> Ongoing campaign
+      </label>
+    </div>
+  </div>
+
+  <div class="form-group" ng-if="!campaign.ongoing">
+    <label for="campaign-end">Campaign End Date</label>
+    <p class="help-block">Vouchers will no longer be redeemable after this date.</p>
+    <span ng-show="(campaignForm.$submitted || campaignForm['campaign-end'].$touched) && campaignForm['campaign-end'].$error.campaignend" class="label label-danger">Campaign end date must be after campaign start date.</span>
+    <div class="dropdown">
+      <a class="dropdown-toggle my-toggle-select" id="dLabel2" role="button" data-toggle="dropdown" data-target="#" href="">
+        <div class="input-append">
+          <input id="campaign-end" name="campaign-end" type="text" class="form-control" data-ng-model="campaign.endDate" campaignend placeholder="Click to select date and time">
+        </div>
+      </a>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel2">
+        <datetimepicker data-ng-model="campaign.endDate"
+                        data-datetimepicker-config="{ dropdownSelector: '.my-toggle-select' }"></datetimepicker>
+      </ul>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="campaign-credit">Credit amount</label>
+
+    <p class="help-block">The amount of credit to be added to a user's account when a voucher from this campaign is
+      redeemed.</p>
+
+    <div class="input-group">
+      <span class="input-group-addon">£</span>
+      <input id="campaign-credit" name="campaign-credit" type="number" class="form-control" ng-model="campaign.credit" min="0" required placeholder="Enter credit amount" />
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="campaign-redemption-limit">Redemption limit</label>
+
+    <p class="help-block">The maximum number of vouchers redeemable in this campaign.</p>
+
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" checked="checked" ng-model="campaign.unlimitedRedemption"> Unlimited
+      </label>
+    </div>
+    <div class="input-group-btn" ng-if="!campaign.unlimitedRedemption">
+      <input type="number" name="campaign-redemption-limit" id="campaign-redemption-limit" class="form-control" ng-model="campaign.redemptionLimit" min="1" required placeholder="Enter redemption limit"/>
+    </div>
+
+  </div>
+
+  <div class="form-group">
+    <label for="campaign-enabled">Campaign status</label>
+    <p class="help-block">Vouchers are only redeemable if the campaign is enabled.</p>
+    <div class="checkbox">
+      <label>
+        <input name="campaign-enabled" id="campaign-enabled" type="checkbox" checked="checked" ng-model="campaign.enabled"> Initially enable this campaign.
+      </label>
+    </div>
+    <button type="submit" class="btn btn-success">Create Campaign</button>
+  </div>
+
+</form>

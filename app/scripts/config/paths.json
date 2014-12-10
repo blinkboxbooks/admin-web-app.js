@@ -4,5 +4,6 @@
 	"USER": "/user",
 	"VOUCHER": "/voucher",
   "CAMPAIGNS": "/campaigns",
+  "NEW_CAMPAIGN": "/campaign/new",
   "CAMPAIGN": "/campaign"
 }

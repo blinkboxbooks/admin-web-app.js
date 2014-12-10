@@ -20,5 +20,6 @@
       <input type="radio" name="active-filter" value="disabled" ng-model="flags.activeFilter"  /> Disabled
     </label>
   </div>
+  <a ng-click="goToNewCampaign()" class="btn btn-success" id="new-campaign-button" data-test="new-campaign-button">+ New Campaign</a>
   <dynamic-table data-test="campaigns-table" config="campaignsTable" id="campaigns-table"></dynamic-table>
 </div>

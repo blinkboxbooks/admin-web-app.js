@@ -18,6 +18,7 @@
 	  <link rel="stylesheet" href="lib/template/html/css/table-responsive.css">
 	  <link rel="stylesheet" href="lib/template/html/css/default-theme.css">
 	  <link rel="stylesheet" href="lib/template/html/assets/data-tables/DT_bootstrap.css">
+    <link rel="stylesheet" href="bower_components/angular-bootstrap-datetimepicker/src/css/datetimepicker.css"/>
 	  <!-- endbuild -->
     <!--font awesome-->
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
@@ -55,6 +56,9 @@
     <!-- endbower -->
     <script src="lib/template/html/assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
     <script src="lib/template/html/assets/data-tables/DT_bootstrap.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/angular-bootstrap-datetimepicker/src/js/datetimepicker.js"></script>
+
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
@@ -73,6 +77,7 @@
     <script src="scripts/directives/navmenu.js"></script>
     <script src="scripts/forms/add_credit.js"></script>
     <script src="scripts/forms/login.js"></script>
+    <script src="scripts/forms/new_campaign.js"></script>
     <script src="scripts/services/admin.js"></script>
     <script src="scripts/services/authentication.js"></script>
     <script src="scripts/services/purchase.js"></script>
@@ -86,6 +91,8 @@
     <script src="scripts/services/session.js"></script>
     <script src="scripts/services/acl.js"></script>
     <script src="scripts/filters/helper.js"></script>
+    <script src="scripts/forms/campaignend_validator.js"></script>
+    <script src="scripts/forms/aftertoday_validator.js"></script>
     <!-- endbuild -->
 </body>
 </html>
