@@ -13,7 +13,17 @@
     <label for="start">Campaign Start Date</label>
     <p class="help-block">Vouchers will become redeemable after this date, if the campaign is enabled.</p>
     <div class="input-group">
-      <input name="start" type="date" class="form-control" ng-model="campaign.startDate" required aftertoday/>
+      <div class="dropdown">
+        <a class="dropdown-toggle my-toggle-select" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="">
+          <div class="input-append">
+            <input name="start" type="text" class="form-control" data-ng-model="campaign.startDate" required aftertoday>
+          </div>
+        </a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+          <datetimepicker data-ng-model="campaign.startDate"
+                          data-datetimepicker-config="{ dropdownSelector: '.my-toggle-select' }"></datetimepicker>
+        </ul>
+      </div>
       <label class="input-group-addon">
         <input type="checkbox" checked="checked" ng-model="campaign.ongoing"> Ongoing campaign
       </label>
@@ -24,7 +34,17 @@
     <label for="end">Campaign End Date</label>
     <p class="help-block">Vouchers will no longer be redeemable after this date.</p>
     <span ng-show="(campaignForm.$submitted || campaignForm.end.$touched) && campaignForm.end.$error.campaignend" class="label label-danger">Campaign end date must be after campaign start date.</span>
-    <input name="end" type="date" class="form-control" ng-model="campaign.endDate" campaignend/>
+    <div class="dropdown">
+      <a class="dropdown-toggle my-toggle-select" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="">
+        <div class="input-append">
+          <input name="end" type="text" class="form-control" data-ng-model="campaign.endDate" campaignend>
+        </div>
+      </a>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+        <datetimepicker data-ng-model="campaign.endDate"
+                        data-datetimepicker-config="{ dropdownSelector: '.my-toggle-select' }"></datetimepicker>
+      </ul>
+    </div>
   </div>
 
   <div class="form-group">
