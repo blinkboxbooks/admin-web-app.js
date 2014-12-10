@@ -19,8 +19,7 @@ angular.module('adminPanelApp')
 				});
 			},
       post: function(campaign){
-        var deferred = $q.defer();
-        $http({
+        return $http({
           method: 'POST',
           url: ROUTES.GIFTING_SERVICES + ROUTES.CAMPAIGNS,
           headers: {
@@ -29,12 +28,8 @@ angular.module('adminPanelApp')
           },
           data: campaign
         }).then(function(response){
-          deferred.resolve(response.headers().location);
-        }, function(error){
-          deferred.reject(error);
+          return response.headers().location;
         });
-
-        return deferred.promise;
       }
 		};
 	}
