@@ -16,12 +16,12 @@
       <div class="dropdown">
         <a class="dropdown-toggle my-toggle-select" id="dLabel1" role="button" data-toggle="dropdown" data-target="#" href="">
           <div class="input-append">
-            <input id="campaign-start" name="campaign-start" type="text" class="form-control" data-ng-model="campaign.startDate" required aftertoday placeholder="Click to select date and time">
+            <input id="campaign-start" name="campaign-start" type="text" class="form-control" ng-model="campaign.startDate"
+                   aftertoday placeholder="Click to select date and time" ng-disabled="editing">
           </div>
         </a>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel1">
-          <datetimepicker data-ng-model="campaign.startDate"
-                          data-datetimepicker-config="{ dropdownSelector: '.my-toggle-select' }"></datetimepicker>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel1" ng-if="!editing">
+          <datetimepicker ng-model="campaign.startDate" datetimepicker-config="{ dropdownSelector: '.my-toggle-select' }"></datetimepicker>
         </ul>
       </div>
       <label class="input-group-addon">
@@ -41,8 +41,7 @@
         </div>
       </a>
       <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel2">
-        <datetimepicker data-ng-model="campaign.endDate"
-                        data-datetimepicker-config="{ dropdownSelector: '.my-toggle-select' }"></datetimepicker>
+        <datetimepicker ng-model="campaign.endDate" datetimepicker-config="{ dropdownSelector: '.my-toggle-select' }"></datetimepicker>
       </ul>
     </div>
   </div>
@@ -55,7 +54,7 @@
 
     <div class="input-group">
       <span class="input-group-addon">£</span>
-      <input id="campaign-credit" name="campaign-credit" type="number" class="form-control" ng-model="campaign.credit" min="0" required placeholder="Enter credit amount" />
+      <input id="campaign-credit" name="campaign-credit" type="number" class="form-control" ng-model="campaign.credit" min="0" required placeholder="Enter credit amount" ng-disabled="editing" />
     </div>
   </div>
 
@@ -66,11 +65,11 @@
 
     <div class="checkbox">
       <label>
-        <input type="checkbox" checked="checked" ng-model="campaign.unlimitedRedemption"> Unlimited
+        <input type="checkbox" checked="checked" ng-model="campaign.unlimitedRedemption" ng-disabled="editing"> Unlimited
       </label>
     </div>
     <div class="input-group-btn" ng-if="!campaign.unlimitedRedemption">
-      <input type="number" name="campaign-redemption-limit" id="campaign-redemption-limit" class="form-control" ng-model="campaign.redemptionLimit" min="1" required placeholder="Enter redemption limit"/>
+      <input type="number" name="campaign-redemption-limit" id="campaign-redemption-limit" class="form-control" ng-model="campaign.redemptionLimit" min="1" required placeholder="Enter redemption limit" ng-disabled="editing"/>
     </div>
 
   </div>
@@ -80,10 +79,10 @@
     <p class="help-block">Vouchers are only redeemable if the campaign is enabled.</p>
     <div class="checkbox">
       <label>
-        <input name="campaign-enabled" id="campaign-enabled" type="checkbox" checked="checked" ng-model="campaign.enabled"> Initially enable this campaign.
+        <input name="campaign-enabled" id="campaign-enabled" type="checkbox" checked="checked" ng-model="campaign.enabled"> <span ng-if="!editing">Initially</span> enable this campaign.
       </label>
     </div>
-    <button type="submit" class="btn btn-success">Create Campaign</button>
+    <button type="submit" class="btn btn-success"><span ng-if="editing">Save Changes</span><span ng-if="!editing">Create Campaign</span></button>
   </div>
 
 </form>

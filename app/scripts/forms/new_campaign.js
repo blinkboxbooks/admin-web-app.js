@@ -6,11 +6,12 @@ angular.module('adminPanelApp')
       restrict: 'E',
       templateUrl: 'views/templates/new_campaign_form.html',
       scope: {
-        'user': '='
+        'edit': '='
       },
       replace: true,
       controller: function($scope){
-        $scope.campaign = {
+        $scope.editing = !!$scope.edit;
+        $scope.campaign = $scope.editing ? $scope.edit : {
           name: '',
           description: '',
           startDate: new Date(),
@@ -43,6 +44,10 @@ angular.module('adminPanelApp')
           });
 
           return true;
+        };
+
+        $scope.editCampaign = function editCampaign(campaign){
+
         };
       }
     };
