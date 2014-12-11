@@ -63,7 +63,7 @@ describe('Form: New Campaign Form', function () {
     it('should call the campaign service if the form is valid', function () {
       scope.campaign = angular.copy(validCampaign);
       $rootScope.$apply();
-      expect(scope.createCampaign(scope.campaign)).toBe(true);
+      expect(scope.createCampaign(scope.campaign)).toBeTruthy();
       expect(Campaign.post).toHaveBeenCalled();
     });
 
@@ -101,7 +101,7 @@ describe('Form: New Campaign Form', function () {
       scope.campaign.ongoing = true;
       scope.campaign.endDate = '';
       $rootScope.$apply();
-      expect(scope.createCampaign(scope.campaign)).toBe(true);
+      expect(scope.createCampaign(scope.campaign)).toBeTruthy();
     });
 
     it('should not be valid if the ongoing box is unchecked and the end date is before the start date', function () {
@@ -125,7 +125,7 @@ describe('Form: New Campaign Form', function () {
       scope.campaign.unlimitedRedemption = true;
       scope.campaign.redemptionLimit = '';
       $rootScope.$apply();
-      expect(scope.createCampaign(scope.campaign)).toBe(true);
+      expect(scope.createCampaign(scope.campaign)).toBeTruthy();
     });
 
   });
@@ -143,7 +143,7 @@ describe('Form: New Campaign Form', function () {
     it('should redirect to the campaign id once created', function () {
       scope.campaign = angular.copy(validCampaign);
       $rootScope.$apply();
-      expect(scope.createCampaign(scope.campaign)).toBe(true);
+      expect(scope.createCampaign(scope.campaign)).toBeTruthy();
       expect(Campaign.post).toHaveBeenCalled();
 
       $rootScope.$apply(); // resolve promises
