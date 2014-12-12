@@ -1,17 +1,20 @@
-<form role="form" ng-submit="createCampaign(campaign)" name="campaignForm">
+<form role="form" ng-submit="submitCampaign(campaign)" name="campaignForm" id="campaign-form" novalidate>
   <div class="form-group">
     <label for="campaign-name">Campaign Name</label>
+    <p ng-show="isInvalid('campaign-name', 'required')" class="error-bubble">Campaign name is required.</p>
     <input name="campaign-name" id="campaign-name" type="text" class="form-control" ng-model="campaign.name" required placeholder="Enter name here"/>
   </div>
 
   <div class="form-group">
     <label for="campaign-description">Campaign Description</label>
+    <p ng-show="isInvalid('campaign-description', 'required')" class="error-bubble">Campaign description is required.</p>
     <input name="campaign-description" id="campaign-description" type="text" class="form-control" ng-model="campaign.description" required placeholder="Enter description here"/>
   </div>
 
   <div class="form-group">
     <label for="campaign-start">Campaign Start Date</label>
     <p class="help-block">Vouchers will become redeemable after this date, if the campaign is enabled.</p>
+    <p ng-show="isInvalid('campaign-start', 'aftertoday')" class="error-bubble">Start date is required and must be after today's date.</p>
     <div class="input-group">
       <div class="dropdown">
         <a class="dropdown-toggle drop-startdate" id="start-date" role="button" data-toggle="dropdown" data-target="#" href="">
@@ -33,7 +36,7 @@
   <div class="form-group" ng-if="!campaign.ongoing">
     <label for="campaign-end">Campaign End Date</label>
     <p class="help-block">Vouchers will no longer be redeemable after this date.</p>
-    <span ng-show="(campaignForm.$submitted || campaignForm['campaign-end'].$touched) && campaignForm['campaign-end'].$error.campaignend" class="label label-danger">Campaign end date must be after campaign start date.</span>
+    <p ng-show="isInvalid('campaign-end', 'campaignend')" class="error-bubble">Campaign end date must be after campaign start date.</p>
     <div class="dropdown">
       <a class="dropdown-toggle drop-enddate" id="end-date" role="button" data-toggle="dropdown" data-target="#" href="">
         <div class="input-append">
@@ -51,7 +54,9 @@
 
     <p class="help-block">The amount of credit to be added to a user's account when a voucher from this campaign is
       redeemed.</p>
-
+    <p ng-show="isInvalid('campaign-credit', 'required')" class="error-bubble">Credit amount is required.</p>
+    <p ng-show="isInvalid('campaign-credit', 'min')" class="error-bubble">Credit amount must be greater than 0.</p>
+    <p ng-show="isInvalid('campaign-credit', 'number')" class="error-bubble">Credit amount must be a number.</p>
     <div class="input-group">
       <span class="input-group-addon">£</span>
       <input id="campaign-credit" name="campaign-credit" type="number" class="form-control" ng-model="campaign.credit" min="0" required placeholder="Enter credit amount" ng-disabled="editing" />
@@ -69,6 +74,9 @@
       </label>
     </div>
     <div class="input-group-btn" ng-if="!campaign.unlimitedRedemption">
+      <p ng-show="isInvalid('campaign-redemption-limit', 'required')" class="error-bubble">Redemption limit must be filled, or tick Unlimited.</p>
+      <p ng-show="isInvalid('campaign-redemption-limit', 'min')" class="error-bubble">Redemption limit must be more than 1 voucher.</p>
+      <p ng-show="isInvalid('campaign-redemption-limit', 'number')" class="error-bubble">Redemption limit must be a number.</p>
       <input type="number" name="campaign-redemption-limit" id="campaign-redemption-limit" class="form-control" ng-model="campaign.redemptionLimit" min="1" required placeholder="Enter redemption limit" ng-disabled="editing"/>
     </div>
 

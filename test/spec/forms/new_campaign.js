@@ -56,14 +56,14 @@ describe('Form: New Campaign Form', function () {
   describe('Validation', function () {
     it('should not call the Campaign service if the form is not valid', function () {
       // default form is invalid
-      expect(scope.createCampaign(scope.campaign)).toBe(false);
+      expect(scope.submitCampaign(scope.campaign)).toBe(false);
       expect(Campaign.post).not.toHaveBeenCalled();
     });
 
     it('should call the campaign service if the form is valid', function () {
       scope.campaign = angular.copy(validCampaign);
       $rootScope.$apply();
-      expect(scope.createCampaign(scope.campaign)).toBe(true);
+      expect(scope.submitCampaign(scope.campaign)).toBeTruthy();
       expect(Campaign.post).toHaveBeenCalled();
     });
 
@@ -71,21 +71,21 @@ describe('Form: New Campaign Form', function () {
       scope.campaign = angular.copy(validCampaign);
       scope.campaign.name = '';
       $rootScope.$apply();
-      expect(scope.createCampaign(scope.campaign)).toBe(false);
+      expect(scope.submitCampaign(scope.campaign)).toBe(false);
     });
 
     it('should not be valid if the description is not filled in', function () {
       scope.campaign = angular.copy(validCampaign);
       scope.campaign.description = '';
       $rootScope.$apply();
-      expect(scope.createCampaign(scope.campaign)).toBe(false);
+      expect(scope.submitCampaign(scope.campaign)).toBe(false);
     });
 
     it('should not be valid if the start date is not filled in', function () {
       scope.campaign = angular.copy(validCampaign);
       scope.campaign.startDate = '';
       $rootScope.$apply();
-      expect(scope.createCampaign(scope.campaign)).toBe(false);
+      expect(scope.submitCampaign(scope.campaign)).toBe(false);
     });
 
     it('should not be valid if the ongoing box is unchecked and the end date is not filled in', function () {
@@ -93,7 +93,7 @@ describe('Form: New Campaign Form', function () {
       scope.campaign.ongoing = false;
       scope.campaign.endDate = '';
       $rootScope.$apply();
-      expect(scope.createCampaign(scope.campaign)).toBe(false);
+      expect(scope.submitCampaign(scope.campaign)).toBe(false);
     });
 
     it('should be valid if the ongoing box is checked and the end date is not filled in', function () {
@@ -101,7 +101,7 @@ describe('Form: New Campaign Form', function () {
       scope.campaign.ongoing = true;
       scope.campaign.endDate = '';
       $rootScope.$apply();
-      expect(scope.createCampaign(scope.campaign)).toBe(true);
+      expect(scope.submitCampaign(scope.campaign)).toBeTruthy();
     });
 
     it('should not be valid if the ongoing box is unchecked and the end date is before the start date', function () {
@@ -109,7 +109,7 @@ describe('Form: New Campaign Form', function () {
       scope.campaign.ongoing = false;
       scope.campaign.endDate = new Date(scope.campaign.startDate - 1000);
       $rootScope.$apply();
-      expect(scope.createCampaign(scope.campaign)).toBe(false);
+      expect(scope.submitCampaign(scope.campaign)).toBe(false);
     });
 
     it('should not be valid if the unlimited box is unchecked and the redemption limit is not filled in', function () {
@@ -117,7 +117,7 @@ describe('Form: New Campaign Form', function () {
       scope.campaign.unlimitedRedemption = false;
       scope.campaign.redemptionLimit = '';
       $rootScope.$apply();
-      expect(scope.createCampaign(scope.campaign)).toBe(false);
+      expect(scope.submitCampaign(scope.campaign)).toBe(false);
     });
 
     it('should be valid if the unlimited box is checked and the redemption limit is not filled in', function () {
@@ -125,7 +125,7 @@ describe('Form: New Campaign Form', function () {
       scope.campaign.unlimitedRedemption = true;
       scope.campaign.redemptionLimit = '';
       $rootScope.$apply();
-      expect(scope.createCampaign(scope.campaign)).toBe(true);
+      expect(scope.submitCampaign(scope.campaign)).toBeTruthy();
     });
 
   });
@@ -143,7 +143,7 @@ describe('Form: New Campaign Form', function () {
     it('should redirect to the campaign id once created', function () {
       scope.campaign = angular.copy(validCampaign);
       $rootScope.$apply();
-      expect(scope.createCampaign(scope.campaign)).toBe(true);
+      expect(scope.submitCampaign(scope.campaign)).toBeTruthy();
       expect(Campaign.post).toHaveBeenCalled();
 
       $rootScope.$apply(); // resolve promises

@@ -23,31 +23,45 @@ angular.module('adminPanelApp')
           enabled: true
         };
 
-        $scope.createCampaign = function createCampaign(campaign){
+        $scope.isInvalid = function isInvalid(fieldName, validatorName){
+          var form = $scope.campaignForm;
+          return (form.$submitted || form[fieldName].$touched) && form[fieldName].$error[validatorName];
+        };
+
+        $scope.submitCampaign = function submitCampaign(campaignInput){
           if($scope.campaignForm.$invalid){
             return false;
           }
-          Campaign.post({
-            name: campaign.name,
-            description: campaign.description,
-            enabled: campaign.enabled,
-            startDate: (new Date(campaign.startDate)).toISOString(),
-            endDate: (!campaign.ongoing && campaign.endDate) ? (new Date(campaign.endDate)).toISOString() : undefined,
+
+          var campaignData = {
+            name: campaignInput.name,
+            description: campaignInput.description,
+            enabled: campaignInput.enabled,
+            endDate: (!campaignInput.ongoing && campaignInput.endDate) ? (new Date(campaignInput.endDate)).toISOString() : undefined,
             creditAmount: {
               currency: 'GBP',
-              amount: +campaign.credit
-            },
-            redemptionLimit: (!campaign.unlimitedRedemption && campaign.redemptionLimit) ? +campaign.redemptionLimit : undefined
-          }).then(function(location){
+              amount: +campaignInput.credit
+            }
+          };
+
+          if($scope.editing){
+            return editCampaign(campaignData);
+          } else {
+            campaignData.startDate = (new Date(campaignInput.startDate)).toISOString();
+            campaignData.redemptionLimit = (!campaignInput.unlimitedRedemption && campaignInput.redemptionLimit) ? +campaignInput.redemptionLimit : undefined;
+            return createCampaign(campaignData);
+          }
+        };
+
+        var createCampaign = function createCampaign(campaignData){
+          return Campaign.post(campaignData).then(function(location){
             var newCampaignId = location.split(ROUTES.CAMPAIGNS + '/')[1];
             $location.path(PATHS.CAMPAIGN + '/' + newCampaignId);
           });
-
-          return true;
         };
 
-        $scope.editCampaign = function editCampaign(campaign){
-
+        var editCampaign = function editCampaign(campaignData){
+          return Campaign.put(campaignData);
         };
       },
       link: function(scope, element){
