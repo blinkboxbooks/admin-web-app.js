@@ -57,6 +57,8 @@ angular.module('adminPanelApp')
           return Campaign.post(campaignData).then(function(location){
             var newCampaignId = location.split(ROUTES.CAMPAIGNS + '/')[1];
             $location.path(PATHS.CAMPAIGN + '/' + newCampaignId);
+          }, function(error){
+            $scope.serverError = error;
           });
         };
 

@@ -87,8 +87,11 @@
     <p class="help-block">Vouchers are only redeemable if the campaign is enabled.</p>
     <div class="checkbox">
       <label>
-        <input name="campaign-enabled" id="campaign-enabled" type="checkbox" checked="checked" ng-model="campaign.enabled"> <span ng-if="!editing">Initially</span> enable this campaign.
+        <input name="campaign-enabled" id="campaign-enabled" type="checkbox" checked="checked" ng-model="campaign.enabled"> Enable this campaign.
       </label>
+    </div>
+    <div ng-if="serverError" class="alert alert-danger" role="alert">
+      <strong>Server Error: </strong> There was a problem creating this campaign. {{serverError.status}} ({{serverError.statusText}}) - {{serverError.data.description || 'Unknown error'}}.
     </div>
     <button type="submit" class="btn btn-success"><span ng-if="editing">Save Changes</span><span ng-if="!editing">Create Campaign</span></button>
   </div>
