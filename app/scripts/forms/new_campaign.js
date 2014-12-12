@@ -26,7 +26,8 @@ angular.module('adminPanelApp')
           if($scope.campaignForm.$invalid){
             return false;
           }
-          Campaign.post({
+
+          return Campaign.post({
             name: campaign.name,
             description: campaign.description,
             enabled: campaign.enabled,
@@ -40,9 +41,9 @@ angular.module('adminPanelApp')
           }).then(function(location){
             var newCampaignId = location.split(ROUTES.CAMPAIGNS + '/')[1];
             $location.path(PATHS.CAMPAIGN + '/' + newCampaignId);
+          }, function(error){
+            $scope.serverError = error;
           });
-
-          return true;
         };
       }
     };

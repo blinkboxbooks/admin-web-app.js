@@ -83,6 +83,9 @@
         <input name="campaign-enabled" id="campaign-enabled" type="checkbox" checked="checked" ng-model="campaign.enabled"> Initially enable this campaign.
       </label>
     </div>
+    <div ng-if="serverError" class="alert alert-danger" role="alert">
+      <strong>Server Error: </strong> There was a problem creating this campaign. {{serverError.status}} ({{serverError.statusText}}) - {{serverError.data.description || 'Unknown error'}}.
+    </div>
     <button type="submit" class="btn btn-success">Create Campaign</button>
   </div>
 
