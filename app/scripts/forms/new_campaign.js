@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('adminPanelApp')
-  .directive('newCampaignForm', function(Campaign, PATHS, ROUTES, $location) {
+  .directive('newCampaignForm', function(Campaign, PATHS, ROUTES, $location, $animate) {
     return {
       restrict: 'E',
       templateUrl: 'views/templates/new_campaign_form.html',
@@ -49,6 +49,9 @@ angular.module('adminPanelApp')
         $scope.editCampaign = function editCampaign(campaign){
 
         };
+      },
+      link: function(scope, element){
+        $animate.enabled(false, element);
       }
     };
   });
