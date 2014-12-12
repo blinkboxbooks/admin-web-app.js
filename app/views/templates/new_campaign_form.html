@@ -14,14 +14,14 @@
     <p class="help-block">Vouchers will become redeemable after this date, if the campaign is enabled.</p>
     <div class="input-group">
       <div class="dropdown">
-        <a class="dropdown-toggle my-toggle-select" id="dLabel1" role="button" data-toggle="dropdown" data-target="#" href="">
+        <a class="dropdown-toggle drop-startdate" id="start-date" role="button" data-toggle="dropdown" data-target="#" href="">
           <div class="input-append">
             <input id="campaign-start" name="campaign-start" type="text" class="form-control" ng-model="campaign.startDate"
                    aftertoday placeholder="Click to select date and time" ng-disabled="editing">
           </div>
         </a>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel1" ng-if="!editing">
-          <datetimepicker ng-model="campaign.startDate" datetimepicker-config="{ dropdownSelector: '.my-toggle-select' }"></datetimepicker>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="start-date" ng-if="!editing">
+          <datetimepicker ng-model="campaign.startDate" datetimepicker-config="{ dropdownSelector: '.drop-startdate' }"></datetimepicker>
         </ul>
       </div>
       <label class="input-group-addon">
@@ -35,13 +35,13 @@
     <p class="help-block">Vouchers will no longer be redeemable after this date.</p>
     <span ng-show="(campaignForm.$submitted || campaignForm['campaign-end'].$touched) && campaignForm['campaign-end'].$error.campaignend" class="label label-danger">Campaign end date must be after campaign start date.</span>
     <div class="dropdown">
-      <a class="dropdown-toggle my-toggle-select" id="dLabel2" role="button" data-toggle="dropdown" data-target="#" href="">
+      <a class="dropdown-toggle drop-enddate" id="end-date" role="button" data-toggle="dropdown" data-target="#" href="">
         <div class="input-append">
           <input id="campaign-end" name="campaign-end" type="text" class="form-control" data-ng-model="campaign.endDate" campaignend placeholder="Click to select date and time">
         </div>
       </a>
-      <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel2">
-        <datetimepicker ng-model="campaign.endDate" datetimepicker-config="{ dropdownSelector: '.my-toggle-select' }"></datetimepicker>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="end-date">
+        <datetimepicker ng-model="campaign.endDate" datetimepicker-config="{ dropdownSelector: '.drop-enddate' }"></datetimepicker>
       </ul>
     </div>
   </div>
