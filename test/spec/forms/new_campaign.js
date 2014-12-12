@@ -43,7 +43,7 @@ describe('Form: New Campaign Form', function () {
     });
 
     // Compile a piece of HTML containing the directive
-    element = $compile('<new-campaign-form></new-campaign-form>')($rootScope);
+    element = $compile('<campaign-form></campaign-form>')($rootScope);
 
     // Compile
     $rootScope.$apply();

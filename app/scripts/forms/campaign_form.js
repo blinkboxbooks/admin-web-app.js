@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('adminPanelApp')
-  .directive('newCampaignForm', function(Campaign, PATHS, ROUTES, $location, $animate) {
+  .directive('campaignForm', function(Campaign, PATHS, ROUTES, $location, $animate) {
     return {
       restrict: 'E',
-      templateUrl: 'views/templates/new_campaign_form.html',
+      templateUrl: 'views/templates/campaign_form.html',
       scope: {
         'edit': '='
       },

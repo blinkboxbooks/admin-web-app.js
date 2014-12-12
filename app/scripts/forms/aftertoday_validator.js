@@ -12,7 +12,7 @@ angular.module('adminPanelApp').directive('aftertoday', function() {
         var today = new Date();
         today.setHours(0, 0, 0, 0); // today at 00:00:00.00
 
-        return !scope.editing && startDate >= today;
+        return scope.editing || startDate >= today;
       };
     }
   };
