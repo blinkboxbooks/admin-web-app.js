@@ -37,18 +37,18 @@ angular.module('adminPanelApp')
             name: campaignInput.name,
             description: campaignInput.description,
             enabled: campaignInput.enabled,
-            endDate: (!campaignInput.ongoing && campaignInput.endDate) ? (new Date(campaignInput.endDate)).toISOString() : undefined,
-            creditAmount: {
-              currency: 'GBP',
-              amount: +campaignInput.credit
-            }
+            endDate: (!campaignInput.ongoing && campaignInput.endDate) ? (new Date(campaignInput.endDate)).toISOString() : undefined
           };
 
           if($scope.editing){
-            return editCampaign(campaignData);
+            return editCampaign(campaignInput.id, campaignData);
           } else {
             campaignData.startDate = (new Date(campaignInput.startDate)).toISOString();
             campaignData.redemptionLimit = (!campaignInput.unlimitedRedemption && campaignInput.redemptionLimit) ? +campaignInput.redemptionLimit : undefined;
+            campaignData.creditAmount = {
+              currency: 'GBP',
+              amount: +campaignInput.credit
+            };
             return createCampaign(campaignData);
           }
         };
@@ -62,8 +62,13 @@ angular.module('adminPanelApp')
           });
         };
 
-        var editCampaign = function editCampaign(campaignData){
-          return Campaign.put(campaignData);
+        var editCampaign = function editCampaign(id, campaignData){
+          return Campaign.put(id, campaignData).then(function(){
+            // todo should put a message saying it was edited.
+            $location.path(PATHS.CAMPAIGN + '/' + id);
+          }, function(error){
+            $scope.serverError = error;
+          });
         };
       },
       link: function(scope, element){

@@ -15,6 +15,7 @@ angular.module('adminPanelApp').controller('EditCampaignCtrl', function ($routeP
 
       // set up the campaign we will pass to the directive
       $scope.campaign = {
+        id: $scope.campaignId,
         name: campaign.name,
         description: campaign.description,
         startDate: new Date(campaign.startDate),
