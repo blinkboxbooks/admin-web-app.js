@@ -1,0 +1,36 @@
+<p>Are you sure you want to <span ng-if="editing">edit</span><span ng-if="!editing">create</span> this campaign?</p>
+
+<dl class="dl-horizontal">
+  <dt ng-if="editing">Campaign ID</dt>
+  <dd ng-if="editing">{{campaign.id}}</dd>
+
+  <dt>Name</dt>
+  <dd data-test="campaign-name">{{campaign.name}}</dd>
+
+  <dt>Description</dt>
+  <dd data-test="campaign-description">{{campaign.description}}</dd>
+
+  <dt ng-if="!editing">Type</dt>
+  <dd ng-if="!editing" data-test="campaign-type">Credit Campaign</dd>
+
+  <dt ng-if="!editing">Credit Amount</dt>
+  <dd ng-if="!editing" data-test="campaign-credit">{{campaign.credit}}</dd>
+
+  <dt ng-if="!editing">Redemption Limit</dt>
+  <dd ng-if="!editing" data-test="campaign-redemption-limit">{{campaign.redemptionLimit || 'Unlimited'}}</dd>
+
+  <dt>Enabled</dt>
+  <dd data-test="campaign-enabled">{{campaign.enabled ? 'Yes' : 'No'}}</dd>
+
+  <dt ng-if="!editing">Start Date</dt>
+  <dd ng-if="!editing" data-test="campaign-start-date">{{campaign.startDate | date:'medium'}}</dd>
+
+  <dt>End Date</dt>
+  <dd data-test="campaign-end-date">{{campaign.ongoing? 'Ongoing' : campaign.endDate | date:'medium'}}</dd>
+
+</dl>
+
+<div class="ngdialog-buttons">
+  <button type="button" class="ngdialog-button ngdialog-button-secondary" ng-click="closeThisDialog(false)">No</button>
+  <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="confirm(true)">Yes</button>
+</div>
