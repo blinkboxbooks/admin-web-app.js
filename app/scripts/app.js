@@ -8,5 +8,6 @@ angular.module('adminPanelApp', [
   'ngRoute',
 	'ngAnimate',
 	'Constants',
-  'ui.bootstrap.datetimepicker'
+  'ui.bootstrap.datetimepicker',
+  'ngDialog'
 ]);
