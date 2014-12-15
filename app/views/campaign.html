@@ -27,6 +27,12 @@
     <dt>Description</dt>
     <dd>{{campaignDetails.description}}</dd>
 
+    <dt>Type</dt>
+    <dd>{{campaignDetails.typeFormatted}}</dd>
+
+    <dt>Credit Amount</dt>
+    <dd>{{campaignDetails.creditAmount.amount}} {{campaignDetails.creditAmount.currency}}</dd>
+
     <dt># Vouchers</dt>
     <dd>{{campaignDetails.totalVoucherCount}}</dd>
 
@@ -35,13 +41,6 @@
 
     <dt>Redemption Limit</dt>
     <dd>{{campaignDetails.redemptionLimit}}</dd>
-
-
-    <dt>Action</dt>
-    <dd>{{campaignDetails.action}}</dd>
-
-    <dt>Credit Amount</dt>
-    <dd>{{campaignDetails.creditAmount.amount}} {{campaignDetails.creditAmount.currency}}</dd>
 
     <dt>Enabled</dt>
     <dd>{{campaignDetails.enabled ? 'Yes' : 'No'}}</dd>
