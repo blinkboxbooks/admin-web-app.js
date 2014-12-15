@@ -1,8 +1,8 @@
 <div ng-if="campaignLoading" ng-include="templates.spinner"></div>
 
 <div ng-show="!campaignLoading">
-  <h2>Campaign: {{campaignDetails.name || campaignId}}</h2>
-  <p>{{campaignDetails.description}}</p>
+  <h2>Campaign: <span data-test="campaign-name-header">{{campaignDetails.name || campaignId}}</span></h2>
+  <p data-test="campaign-description-header">{{campaignDetails.description}}</p>
 
   <h4>Redemption Progress</h4>
   <p>{{campaignDetails.totalRedeemedVoucherCount}} of {{campaignDetails.totalVoucherCount}} redeemed.
@@ -11,7 +11,7 @@
     <span ng-if="campaignDetails.daysRemaining < 0">Campaign finished {{-campaignDetails.daysRemaining}} day(s) ago</span>
   </p>
   <div class="progress">
-    <div class="progress-bar progressbar-info" role="progressbar"  style="width: {{campaignDetails.redemptionPercentage}}%; min-width: 25px;">
+    <div class="progress-bar progressbar-info" role="progressbar"  style="width: {{campaignDetails.redemptionPercentage}}%; min-width: 25px;" data-test="campaign-redemption-percentage">
       {{campaignDetails.redemptionPercentage}}%
     </div>
   </div>
@@ -19,46 +19,49 @@
   <h3>Campaign details</h3>
   <dl class="dl-horizontal">
     <dt>Campaign ID</dt>
-    <dd>{{campaignDetails.id}}</dd>
+    <dd data-test="campaign-id">{{campaignDetails.id}}</dd>
 
     <dt>Name</dt>
-    <dd>{{campaignDetails.name}}</dd>
+    <dd data-test="campaign-name">{{campaignDetails.name}}</dd>
 
     <dt>Description</dt>
-    <dd>{{campaignDetails.description}}</dd>
+    <dd data-test="campaign-description">{{campaignDetails.description}}</dd>
 
-    <dt># Vouchers</dt>
-    <dd>{{campaignDetails.totalVoucherCount}}</dd>
-
-    <dt># Redeemed</dt>
-    <dd>{{campaignDetails.totalRedeemedVoucherCount}}</dd>
-
-    <dt>Redemption Limit</dt>
-    <dd>{{campaignDetails.redemptionLimit}}</dd>
-
-
-    <dt>Action</dt>
-    <dd>{{campaignDetails.action}}</dd>
+    <dt>Type</dt>
+    <dd data-test="campaign-type">{{campaignDetails.typeFormatted}}</dd>
 
     <dt>Credit Amount</dt>
-    <dd>{{campaignDetails.creditAmount.amount}} {{campaignDetails.creditAmount.currency}}</dd>
+    <dd data-test="campaign-credit">{{campaignDetails.creditAmount.amount}} {{campaignDetails.creditAmount.currency}}</dd>
+
+    <dt># Vouchers</dt>
+    <dd data-test="campaign-num-vouchers">{{campaignDetails.totalVoucherCount}}</dd>
+
+    <dt># Redeemed</dt>
+    <dd data-test="campaign-num-redeemed">{{campaignDetails.totalRedeemedVoucherCount}}</dd>
+
+    <dt>Redemption Limit</dt>
+    <dd data-test="campaign-redemption-limit">{{campaignDetails.redemptionLimit}}</dd>
 
     <dt>Enabled</dt>
-    <dd>{{campaignDetails.enabled ? 'Yes' : 'No'}}</dd>
+    <dd data-test="campaign-enabled">{{campaignDetails.enabled ? 'Yes' : 'No'}}</dd>
 
     <dt>Start Date</dt>
-    <dd>{{campaignDetails.startDate | date:'medium'}}</dd>
+    <dd data-test="campaign-start-date">{{campaignDetails.startDate | date:'medium'}}</dd>
 
     <dt>End Date</dt>
-    <dd>{{campaignDetails.endDate | date:'medium'}}</dd>
+    <dd data-test="campaign-end-date">{{campaignDetails.endDate | date:'medium'}}</dd>
 
     <dt>Creation Date</dt>
-    <dd>{{campaignDetails.createdAt | date:'medium'}}</dd>
+    <dd data-test="campaign-creation-date">{{campaignDetails.createdAt | date:'medium'}}</dd>
 
 
     <dt>Created by user id</dt>
-    <dd>{{campaignDetails.createdBy}}</dd>
+    <dd data-test="campaign-created-by">{{campaignDetails.createdBy}}</dd>
   </dl>
 
-  <p><a ng-click="editCampaign()" class="btn btn-primary">Edit</a> <a href="#" class="btn btn-primary">{{campaignDetails.enabled ? 'Disable' : 'Enable'}}</a> <a href="#" class="btn btn-primary">Get Vouchers</a></p>
+  <p>
+    <a ng-click="editCampaign()" class="btn btn-primary" data-test="campaign-edit-button">Edit</a>
+    <a href="#" class="btn btn-primary" data-test="campaign-enabled-toggle-button">{{campaignDetails.enabled ? 'Disable' : 'Enable'}}</a>
+    <a href="#" class="btn btn-primary" data-test="campaign-get-vouchers-button">Get Vouchers</a>
+  </p>
 </div>
