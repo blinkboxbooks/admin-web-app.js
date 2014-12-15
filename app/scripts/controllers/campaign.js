@@ -3,7 +3,7 @@
 /**
  * The Campaign controller shows information about a particular campaign
  **/
-angular.module('adminPanelApp').controller('CampaignCtrl', function ($routeParams, $scope, Campaign) {
+angular.module('adminPanelApp').controller('CampaignCtrl', function ($routeParams, $scope, Campaign, $location, PATHS) {
   $scope.campaignId = +$routeParams.id;
   if($scope.campaignId >= 0){
     $scope.campaignLoading = true;
@@ -31,5 +31,9 @@ angular.module('adminPanelApp').controller('CampaignCtrl', function ($routeParam
 
       $scope.campaignDetails = campaignDetails;
     });
+
+    $scope.editCampaign = function(){
+      $location.path(PATHS.CAMPAIGN + '/' + $scope.campaignId + '/edit');
+    };
   }
 });

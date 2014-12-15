@@ -30,6 +30,16 @@ angular.module('adminPanelApp')
         }).then(function(response){
           return response.headers().location;
         });
+      },
+      put: function(id, campaign){
+        return $http({
+          method: 'PUT',
+          url: ROUTES.GIFTING_SERVICES + ROUTES.CAMPAIGNS + '/' + id,
+          headers: {
+            'x-content-type': 'application/vnd.blinkbox.books.v2+json'
+          },
+          data: campaign
+        });
       }
 		};
 	}
