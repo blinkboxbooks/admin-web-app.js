@@ -1,0 +1,17 @@
+#campaign-form {
+  .error-bubble {
+    position:relative;
+    padding:2px;
+    margin: 0 0 -3px;
+    color: #fff;
+    background: #FF6C60;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+
+  ::-webkit-input-placeholder { color:#EDEBEB; }
+  ::-moz-placeholder { color:#EDEBEB; } /* firefox 19+ */
+  :-ms-input-placeholder { color:#EDEBEB; } /* ie */
+  input:-moz-placeholder { color:#EDEBEB; }
+
+}
