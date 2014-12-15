@@ -22,6 +22,7 @@ module.exports = function(config) {
 			'app/bower_components/angular-route/angular-route.js',
 			'app/bower_components/moment/moment.js',
 			'app/bower_components/angular-bootstrap-datetimepicker/src/js/datetimepicker.js',
+			'app/bower_components/ngDialog/js/ngDialog.js',
 			'app/lib/template/html/assets/data-tables/jquery.dataTables.js',
 			'app/lib/template/html/assets/data-tables/DT_bootstrap.js',
 

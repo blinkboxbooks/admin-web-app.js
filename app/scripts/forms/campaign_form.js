@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('adminPanelApp')
-  .directive('campaignForm', function(Campaign, PATHS, ROUTES, $location, $animate) {
+  .directive('campaignForm', function(Campaign, PATHS, ROUTES, $location, $animate, ngDialog, $rootScope) {
     return {
       restrict: 'E',
       templateUrl: 'views/templates/campaign_form.html',
@@ -33,24 +33,29 @@ angular.module('adminPanelApp')
             return false;
           }
 
-          var campaignData = {
-            name: campaignInput.name,
-            description: campaignInput.description,
-            enabled: campaignInput.enabled,
-            endDate: (!campaignInput.ongoing && campaignInput.endDate) ? (new Date(campaignInput.endDate)).toISOString() : undefined
-          };
-
-          if($scope.editing){
-            return editCampaign(campaignInput.id, campaignData);
-          } else {
-            campaignData.startDate = (new Date(campaignInput.startDate)).toISOString();
-            campaignData.redemptionLimit = (!campaignInput.unlimitedRedemption && campaignInput.redemptionLimit) ? +campaignInput.redemptionLimit : undefined;
-            campaignData.creditAmount = {
-              currency: 'GBP',
-              amount: +campaignInput.credit
+          return ngDialog.openConfirm({
+            template: $rootScope.templates.confirmPopup,
+            scope: $scope
+          }).then(function(){
+            var campaignData = {
+              name: campaignInput.name,
+              description: campaignInput.description,
+              enabled: campaignInput.enabled,
+              endDate: (!campaignInput.ongoing && campaignInput.endDate) ? (new Date(campaignInput.endDate)).toISOString() : undefined
             };
-            return createCampaign(campaignData);
-          }
+
+            if($scope.editing){
+              return editCampaign(campaignInput.id, campaignData);
+            } else {
+              campaignData.startDate = (new Date(campaignInput.startDate)).toISOString();
+              campaignData.redemptionLimit = (!campaignInput.unlimitedRedemption && campaignInput.redemptionLimit) ? +campaignInput.redemptionLimit : undefined;
+              campaignData.creditAmount = {
+                currency: 'GBP',
+                amount: +campaignInput.credit
+              };
+              return createCampaign(campaignData);
+            }
+          });
         };
 
         var createCampaign = function createCampaign(campaignData){

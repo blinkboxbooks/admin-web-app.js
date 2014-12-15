@@ -32,7 +32,8 @@ angular.module('adminPanelApp')
 		$rootScope.templates = {
 			header: 'views/partials/header.html',
 			footer: 'views/partials/footer.html',
-      spinner: 'views/partials/spinner.html'
+      spinner: 'views/partials/spinner.html',
+      confirmPopup: 'views/partials/confirm_campaign_popup.html'
 		};
 
     // request user's session

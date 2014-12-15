@@ -17,7 +17,7 @@ describe('Form: New Campaign Form', function () {
     });
   });
 
-  var element, scope, $httpBackend, Campaign, $rootScope, newCampaignLocation, newCampaignID;
+  var element, scope, $httpBackend, Campaign, $rootScope, newCampaignLocation, newCampaignID, ngDialog, $q;
 
   var validCampaign = {
     name: 'Test campaign',
@@ -31,11 +31,14 @@ describe('Form: New Campaign Form', function () {
     enabled: true
   };
 
-  beforeEach(inject(function($compile, _$rootScope_, _Campaign_, $q){
+  beforeEach(inject(function($compile, _$rootScope_, _Campaign_, _$q_, _ngDialog_){
     Campaign = _Campaign_;
     $rootScope = _$rootScope_;
     newCampaignLocation = '/admin/gifting/vouchercampaigns/44';
     newCampaignID = '44';
+    ngDialog = _ngDialog_;
+    $q = _$q_;
+
     spyOn(Campaign, 'post').andCallFake(function(){
       var deferred = $q.defer();
       deferred.resolve(newCampaignLocation);
@@ -54,6 +57,14 @@ describe('Form: New Campaign Form', function () {
 
 
   describe('Validation', function () {
+    beforeEach(function(){
+      spyOn(ngDialog, 'openConfirm').andCallFake(function(){
+        var deferred = $q.defer();
+        deferred.resolve(true);
+        return deferred.promise;
+      });
+    });
+
     it('should not call the Campaign service if the form is not valid', function () {
       // default form is invalid
       expect(scope.submitCampaign(scope.campaign)).toBe(false);
@@ -64,6 +75,7 @@ describe('Form: New Campaign Form', function () {
       scope.campaign = angular.copy(validCampaign);
       $rootScope.$apply();
       expect(scope.submitCampaign(scope.campaign)).toBeTruthy();
+      $rootScope.$apply(); // resolve confirmation promise
       expect(Campaign.post).toHaveBeenCalled();
     });
 
@@ -130,6 +142,45 @@ describe('Form: New Campaign Form', function () {
 
   });
 
+  describe('Declined confirmation popup', function(){
+    beforeEach(function(){
+      spyOn(ngDialog, 'openConfirm').andCallFake(function(){
+        var deferred = $q.defer();
+        deferred.reject(false);
+        return deferred.promise;
+      });
+
+      scope.campaign = angular.copy(validCampaign);
+      $rootScope.$apply();
+      expect(scope.submitCampaign(scope.campaign)).toBeTruthy();
+
+    });
+
+    it('should not do POST when user declines confirmation', function () {
+      $rootScope.$apply();
+      expect(Campaign.post).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('Accepted confirmation popup', function(){
+    beforeEach(function(){
+      spyOn(ngDialog, 'openConfirm').andCallFake(function(){
+        var deferred = $q.defer();
+        deferred.resolve(true);
+        return deferred.promise;
+      });
+
+      scope.campaign = angular.copy(validCampaign);
+      $rootScope.$apply();
+      expect(scope.submitCampaign(scope.campaign)).toBeTruthy();
+    });
+
+    it('should do a POST when user agrees confirmation', function () {
+      $rootScope.$apply();
+      expect(Campaign.post).toHaveBeenCalled();
+    });
+  });
+
   describe('Redirection on success', function () {
     var $location, PATHS;
     beforeEach(inject(function(_$location_, _PATHS_){
@@ -138,12 +189,20 @@ describe('Form: New Campaign Form', function () {
 
       spyOn($location, 'path');
 
+      spyOn(ngDialog, 'openConfirm').andCallFake(function(){
+        var deferred = $q.defer();
+        deferred.resolve(true);
+        return deferred.promise;
+      });
+
     }));
 
     it('should redirect to the campaign id once created', function () {
       scope.campaign = angular.copy(validCampaign);
       $rootScope.$apply();
       expect(scope.submitCampaign(scope.campaign)).toBeTruthy();
+      $rootScope.$apply(); // resolve confirmation promise
+
       expect(Campaign.post).toHaveBeenCalled();
 
       $rootScope.$apply(); // resolve promises
