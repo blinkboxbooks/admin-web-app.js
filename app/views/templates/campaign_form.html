@@ -1,20 +1,20 @@
 <form role="form" ng-submit="submitCampaign(campaign)" name="campaignForm" id="campaign-form" novalidate>
   <div class="form-group">
     <label for="campaign-name">Campaign Name</label>
-    <p ng-show="isInvalid('campaign-name', 'required')" class="error-bubble">Campaign name is required.</p>
+    <p data-test="error-campaign-name-required" ng-show="isInvalid('campaign-name', 'required')" class="error-bubble">Campaign name is required.</p>
     <input name="campaign-name" id="campaign-name" type="text" class="form-control" ng-model="campaign.name" required placeholder="Enter name here"/>
   </div>
 
   <div class="form-group">
     <label for="campaign-description">Campaign Description</label>
-    <p ng-show="isInvalid('campaign-description', 'required')" class="error-bubble">Campaign description is required.</p>
+    <p data-test="error-description-required" ng-show="isInvalid('campaign-description', 'required')" class="error-bubble">Campaign description is required.</p>
     <input name="campaign-description" id="campaign-description" type="text" class="form-control" ng-model="campaign.description" required placeholder="Enter description here"/>
   </div>
 
   <div class="form-group">
     <label for="campaign-start">Campaign Start Date</label>
     <p class="help-block">Vouchers will become redeemable after this date, if the campaign is enabled.</p>
-    <p ng-show="isInvalid('campaign-start', 'aftertoday')" class="error-bubble">Start date is required and must be after today's date.</p>
+    <p data-test="error-start-aftertoday" ng-show="isInvalid('campaign-start', 'aftertoday')" class="error-bubble">Start date is required and must be after today's date.</p>
     <div class="input-group">
       <div class="dropdown">
         <a class="dropdown-toggle drop-startdate" id="start-date" role="button" data-toggle="dropdown" data-target="#" href="">
@@ -24,11 +24,11 @@
           </div>
         </a>
         <ul class="dropdown-menu" role="menu" aria-labelledby="start-date" ng-if="!editing">
-          <datetimepicker ng-model="campaign.startDate" datetimepicker-config="{ dropdownSelector: '.drop-startdate' }"></datetimepicker>
+          <datetimepicker id="campaign-start-timepicker" ng-model="campaign.startDate" datetimepicker-config="{ dropdownSelector: '.drop-startdate' }"></datetimepicker>
         </ul>
       </div>
       <label class="input-group-addon">
-        <input type="checkbox" checked="checked" ng-model="campaign.ongoing"> Ongoing campaign
+        <input id="campaign-ongoing" type="checkbox" checked="checked" ng-model="campaign.ongoing"> Ongoing campaign
       </label>
     </div>
   </div>
@@ -36,7 +36,7 @@
   <div class="form-group" ng-if="!campaign.ongoing">
     <label for="campaign-end">Campaign End Date</label>
     <p class="help-block">Vouchers will no longer be redeemable after this date.</p>
-    <p ng-show="isInvalid('campaign-end', 'campaignend')" class="error-bubble">Campaign end date must be after campaign start date.</p>
+    <p data-test="error-end-campaignend" ng-show="isInvalid('campaign-end', 'campaignend')" class="error-bubble">Campaign end date must be after campaign start date.</p>
     <div class="dropdown">
       <a class="dropdown-toggle drop-enddate" id="end-date" role="button" data-toggle="dropdown" data-target="#" href="">
         <div class="input-append">
@@ -44,7 +44,7 @@
         </div>
       </a>
       <ul class="dropdown-menu" role="menu" aria-labelledby="end-date">
-        <datetimepicker ng-model="campaign.endDate" datetimepicker-config="{ dropdownSelector: '.drop-enddate' }"></datetimepicker>
+        <datetimepicker id="campaign-end-timepicker" ng-model="campaign.endDate" datetimepicker-config="{ dropdownSelector: '.drop-enddate' }"></datetimepicker>
       </ul>
     </div>
   </div>
@@ -54,9 +54,9 @@
 
     <p class="help-block">The amount of credit to be added to a user's account when a voucher from this campaign is
       redeemed.</p>
-    <p ng-show="isInvalid('campaign-credit', 'required')" class="error-bubble">Credit amount is required.</p>
-    <p ng-show="isInvalid('campaign-credit', 'min')" class="error-bubble">Credit amount must be greater than 0.</p>
-    <p ng-show="isInvalid('campaign-credit', 'number')" class="error-bubble">Credit amount must be a number.</p>
+    <p data-test="error-credit-required" ng-show="isInvalid('campaign-credit', 'required')" class="error-bubble">Credit amount is required.</p>
+    <p data-test="error-credit-min" ng-show="isInvalid('campaign-credit', 'min')" class="error-bubble">Credit amount must be greater than 0.</p>
+    <p data-test="error-credit-number" ng-show="isInvalid('campaign-credit', 'number')" class="error-bubble">Credit amount must be a number.</p>
     <div class="input-group">
       <span class="input-group-addon">£</span>
       <input id="campaign-credit" name="campaign-credit" type="number" class="form-control" ng-model="campaign.credit" min="0" required placeholder="Enter credit amount" ng-disabled="editing" />
@@ -70,13 +70,13 @@
 
     <div class="checkbox">
       <label>
-        <input type="checkbox" checked="checked" ng-model="campaign.unlimitedRedemption" ng-disabled="editing"> Unlimited
+        <input id="campaign-unlimited-redemption" type="checkbox" checked="checked" ng-model="campaign.unlimitedRedemption" ng-disabled="editing"> Unlimited
       </label>
     </div>
     <div class="input-group-btn" ng-if="!campaign.unlimitedRedemption">
-      <p ng-show="isInvalid('campaign-redemption-limit', 'required')" class="error-bubble">Redemption limit must be filled, or tick Unlimited.</p>
-      <p ng-show="isInvalid('campaign-redemption-limit', 'min')" class="error-bubble">Redemption limit must be more than 1 voucher.</p>
-      <p ng-show="isInvalid('campaign-redemption-limit', 'number')" class="error-bubble">Redemption limit must be a number.</p>
+      <p data-test="error-limit-required" ng-show="isInvalid('campaign-redemption-limit', 'required')" class="error-bubble">Redemption limit must be filled, or tick Unlimited.</p>
+      <p data-test="error-limit-min" ng-show="isInvalid('campaign-redemption-limit', 'min')" class="error-bubble">Redemption limit must be more than 1 voucher.</p>
+      <p data-test="error-limit-number" ng-show="isInvalid('campaign-redemption-limit', 'number')" class="error-bubble">Redemption limit must be a number.</p>
       <input type="number" name="campaign-redemption-limit" id="campaign-redemption-limit" class="form-control" ng-model="campaign.redemptionLimit" min="1" required placeholder="Enter redemption limit" ng-disabled="editing"/>
     </div>
 
@@ -90,10 +90,10 @@
         <input name="campaign-enabled" id="campaign-enabled" type="checkbox" checked="checked" ng-model="campaign.enabled"> Enable this campaign.
       </label>
     </div>
-    <div ng-if="serverError" class="alert alert-danger" role="alert">
+    <div data-test="server-error" ng-if="serverError" class="alert alert-danger" role="alert">
       <strong>Server Error: </strong> There was a problem creating this campaign. {{serverError.status}} ({{serverError.statusText}}) - {{serverError.data.description || 'Unknown error'}}.
     </div>
-    <button type="submit" class="btn btn-success"><span ng-if="editing">Save Changes</span><span ng-if="!editing">Create Campaign</span></button>
+    <button id="campaign-submit" type="submit" class="btn btn-success"><span ng-if="editing">Save Changes</span><span ng-if="!editing">Create Campaign</span></button>
   </div>
 
 </form>
