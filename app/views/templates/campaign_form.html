@@ -1,17 +1,17 @@
 <form role="form" ng-submit="submitCampaign(campaign)" name="campaignForm" id="campaign-form" novalidate>
-  <div class="form-group">
+  <div class="form-group" data-test="campaign-name-group">
     <label for="campaign-name">Campaign Name</label>
     <p data-test="error-campaign-name-required" ng-show="isInvalid('campaign-name', 'required')" class="error-bubble">Campaign name is required.</p>
     <input name="campaign-name" id="campaign-name" type="text" class="form-control" ng-model="campaign.name" required placeholder="Enter name here"/>
   </div>
 
-  <div class="form-group">
+  <div class="form-group" data-test="campaign-description-group">
     <label for="campaign-description">Campaign Description</label>
     <p data-test="error-description-required" ng-show="isInvalid('campaign-description', 'required')" class="error-bubble">Campaign description is required.</p>
     <input name="campaign-description" id="campaign-description" type="text" class="form-control" ng-model="campaign.description" required placeholder="Enter description here"/>
   </div>
 
-  <div class="form-group">
+  <div class="form-group" data-test="campaign-start-group">
     <label for="campaign-start">Campaign Start Date</label>
     <p class="help-block">Vouchers will become redeemable after this date, if the campaign is enabled.</p>
     <p data-test="error-start-aftertoday" ng-show="isInvalid('campaign-start', 'aftertoday')" class="error-bubble">Start date is required and must be after today's date.</p>
@@ -33,7 +33,7 @@
     </div>
   </div>
 
-  <div class="form-group" ng-if="!campaign.ongoing">
+  <div class="form-group" ng-if="!campaign.ongoing" data-test="campaign-end-group">
     <label for="campaign-end">Campaign End Date</label>
     <p class="help-block">Vouchers will no longer be redeemable after this date.</p>
     <p data-test="error-end-campaignend" ng-show="isInvalid('campaign-end', 'campaignend')" class="error-bubble">Campaign end date must be after campaign start date.</p>
@@ -49,7 +49,7 @@
     </div>
   </div>
 
-  <div class="form-group">
+  <div class="form-group" data-test="campaign-credit-group">
     <label for="campaign-credit">Credit amount</label>
 
     <p class="help-block">The amount of credit to be added to a user's account when a voucher from this campaign is
@@ -63,7 +63,7 @@
     </div>
   </div>
 
-  <div class="form-group">
+  <div class="form-group" data-test="campaign-redemption-group">
     <label for="campaign-redemption-limit">Redemption limit</label>
 
     <p class="help-block">The maximum number of vouchers redeemable in this campaign.</p>
@@ -82,7 +82,7 @@
 
   </div>
 
-  <div class="form-group">
+  <div class="form-group" data-test="campaign-enabled-group">
     <label for="campaign-enabled">Campaign status</label>
     <p class="help-block">Vouchers are only redeemable if the campaign is enabled.</p>
     <div class="checkbox">
