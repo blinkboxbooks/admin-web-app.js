@@ -1,0 +1,7 @@
+<p>Are you sure you want to <span>{{campaignDetails.enabled ? 'disable' : 'enable'}}</span> this campaign?</p>
+<p>Campaign vouchers will only be redeemable if the campaign is enabled.</p>
+
+<div class="ngdialog-buttons">
+  <button type="button" class="ngdialog-button ngdialog-button-secondary" ng-click="closeThisDialog(false)">No</button>
+  <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="confirm(true)">Yes</button>
+</div>

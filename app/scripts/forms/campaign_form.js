@@ -34,7 +34,7 @@ angular.module('adminPanelApp')
           }
 
           return ngDialog.openConfirm({
-            template: $rootScope.templates.confirmPopup,
+            template: $rootScope.templates.confirmCampaignPopup,
             scope: $scope
           }).then(function(){
             var campaignData = {

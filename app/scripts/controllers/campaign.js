@@ -3,7 +3,7 @@
 /**
  * The Campaign controller shows information about a particular campaign
  **/
-angular.module('adminPanelApp').controller('CampaignCtrl', function ($routeParams, $scope, Campaign, $location, PATHS) {
+angular.module('adminPanelApp').controller('CampaignCtrl', function ($routeParams, $scope, Campaign, $location, PATHS, ngDialog, $rootScope) {
   $scope.campaignId = +$routeParams.id;
   if($scope.campaignId >= 0){
     $scope.campaignLoading = true;
@@ -34,6 +34,28 @@ angular.module('adminPanelApp').controller('CampaignCtrl', function ($routeParam
 
     $scope.editCampaign = function(){
       $location.path(PATHS.CAMPAIGN + '/' + $scope.campaignId + '/edit');
+    };
+
+    $scope.enableCampaign = function(){
+      return ngDialog.openConfirm({
+        template: $rootScope.templates.confirmCampaignEnabledPopup,
+        scope: $scope
+      }).then(function(){
+        Campaign.setEnabled($scope.campaignId, true).then(function(){
+          $scope.campaignDetails.enabled = true;
+        });
+      });
+    };
+
+    $scope.disableCampaign = function(){
+      return ngDialog.openConfirm({
+        template: $rootScope.templates.confirmCampaignEnabledPopup,
+        scope: $scope
+      }).then(function(){
+        Campaign.setEnabled($scope.campaignId, false).then(function(){
+          $scope.campaignDetails.enabled = false;
+        });
+      });
     };
   }
 });
