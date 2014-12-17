@@ -2,7 +2,9 @@
 
 <div ng-show="!campaignLoading">
   <h2>Campaign: <span data-test="campaign-name-header">{{campaignDetails.name || campaignId}}</span></h2>
-  <p data-test="campaign-description-header">{{campaignDetails.description}}</p>
+  <p data-test="campaign-status-header">
+    Status: <span class="label label-success" ng-if="campaignDetails.enabled">Enabled</span> <span class="label label-default" ng-if="!campaignDetails.enabled">Disabled</span>
+  </p>
 
   <h4>Redemption Progress</h4>
   <p>{{campaignDetails.totalRedeemedVoucherCount}} of {{campaignDetails.totalVoucherCount}} redeemed.
