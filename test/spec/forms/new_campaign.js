@@ -17,7 +17,7 @@ describe('Form: New Campaign Form', function () {
     });
   });
 
-  var element, scope, $httpBackend, Campaign, $rootScope, newCampaignLocation, newCampaignID, ngDialog, $q;
+  var element, scope, $httpBackend, Campaign, $rootScope, newCampaignLocation, newCampaignID, Popup, $q;
 
   var validCampaign = {
     name: 'Test campaign',
@@ -31,12 +31,12 @@ describe('Form: New Campaign Form', function () {
     enabled: true
   };
 
-  beforeEach(inject(function($compile, _$rootScope_, _Campaign_, _$q_, _ngDialog_){
+  beforeEach(inject(function($compile, _$rootScope_, _Campaign_, _$q_, _Popup_){
     Campaign = _Campaign_;
     $rootScope = _$rootScope_;
     newCampaignLocation = '/admin/gifting/vouchercampaigns/44';
     newCampaignID = '44';
-    ngDialog = _ngDialog_;
+    Popup = _Popup_;
     $q = _$q_;
 
     spyOn(Campaign, 'post').andCallFake(function(){
@@ -58,7 +58,7 @@ describe('Form: New Campaign Form', function () {
 
   describe('Validation', function () {
     beforeEach(function(){
-      spyOn(ngDialog, 'openConfirm').andCallFake(function(){
+      spyOn(Popup, 'confirm').andCallFake(function(){
         var deferred = $q.defer();
         deferred.resolve(true);
         return deferred.promise;
@@ -144,7 +144,7 @@ describe('Form: New Campaign Form', function () {
 
   describe('Declined confirmation popup', function(){
     beforeEach(function(){
-      spyOn(ngDialog, 'openConfirm').andCallFake(function(){
+      spyOn(Popup, 'confirm').andCallFake(function(){
         var deferred = $q.defer();
         deferred.reject(false);
         return deferred.promise;
@@ -164,7 +164,7 @@ describe('Form: New Campaign Form', function () {
 
   describe('Accepted confirmation popup', function(){
     beforeEach(function(){
-      spyOn(ngDialog, 'openConfirm').andCallFake(function(){
+      spyOn(Popup, 'confirm').andCallFake(function(){
         var deferred = $q.defer();
         deferred.resolve(true);
         return deferred.promise;
@@ -189,7 +189,7 @@ describe('Form: New Campaign Form', function () {
 
       spyOn($location, 'path');
 
-      spyOn(ngDialog, 'openConfirm').andCallFake(function(){
+      spyOn(Popup, 'confirm').andCallFake(function(){
         var deferred = $q.defer();
         deferred.resolve(true);
         return deferred.promise;
