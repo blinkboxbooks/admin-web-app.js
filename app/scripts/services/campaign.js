@@ -40,6 +40,14 @@ angular.module('adminPanelApp')
           },
           data: campaign
         });
+      },
+      setEnabled: function setEnabled(id, enabled){
+        if(!id || angular.isUndefined(enabled)){
+          throw 'Campaign.setEnabled requires a campaign id and an enabled value';
+        }
+        return this.put(id, {
+          enabled: enabled
+        });
       }
 		};
 	}

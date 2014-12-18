@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('adminPanelApp')
-  .directive('campaignForm', function(Campaign, PATHS, ROUTES, $location, $animate, ngDialog, $rootScope) {
+  .directive('campaignForm', function(Campaign, PATHS, ROUTES, $location, $animate, Popup, $rootScope) {
     return {
       restrict: 'E',
       templateUrl: 'views/templates/campaign_form.html',
@@ -33,8 +33,10 @@ angular.module('adminPanelApp')
             return false;
           }
 
-          return ngDialog.openConfirm({
-            template: $rootScope.templates.confirmPopup,
+          return Popup.confirm({
+            message: false,
+            description: false,
+            template: $rootScope.templates.confirmCampaignPopup,
             scope: $scope
           }).then(function(){
             var campaignData = {
