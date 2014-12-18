@@ -1,0 +1,8 @@
+<p ng-if="message !== false">{{message}}</p>
+<p ng-if="description">{{description}}</p>
+
+<div ng-if="template" ng-include="template"></div>
+
+<div class="ngdialog-buttons">
+  <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="closeThisDialog(true)">{{okText || 'OK'}}</button>
+</div>

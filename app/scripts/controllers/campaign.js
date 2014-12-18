@@ -3,7 +3,7 @@
 /**
  * The Campaign controller shows information about a particular campaign
  **/
-angular.module('adminPanelApp').controller('CampaignCtrl', function ($routeParams, $scope, Campaign, $location, PATHS, ngDialog, $rootScope) {
+angular.module('adminPanelApp').controller('CampaignCtrl', function ($routeParams, $scope, Campaign, $location, PATHS, ngDialog, $rootScope, Popup) {
   $scope.campaignId = +$routeParams.id;
   if($scope.campaignId >= 0){
     $scope.campaignLoading = true;
@@ -37,23 +37,21 @@ angular.module('adminPanelApp').controller('CampaignCtrl', function ($routeParam
     };
 
     $scope.enableCampaign = function(){
-      return ngDialog.openConfirm({
-        template: $rootScope.templates.confirmCampaignEnabledPopup,
-        scope: $scope
-      }).then(function(){
+      return Popup.confirm('Are you sure you want to enable this campaign?').then(function(){
         Campaign.setEnabled($scope.campaignId, true).then(function(){
           $scope.campaignDetails.enabled = true;
+        }, function(){
+          // todo - what happens when there's an error
         });
       });
     };
 
     $scope.disableCampaign = function(){
-      return ngDialog.openConfirm({
-        template: $rootScope.templates.confirmCampaignEnabledPopup,
-        scope: $scope
-      }).then(function(){
+      return Popup.confirm('Are you sure you want to disable this campaign?').then(function(){
         Campaign.setEnabled($scope.campaignId, false).then(function(){
           $scope.campaignDetails.enabled = false;
+        }, function(){
+          // todo what happens when there's an error
         });
       });
     };

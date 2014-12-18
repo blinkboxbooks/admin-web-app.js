@@ -1,0 +1,9 @@
+<p ng-if="message !== false">{{message || 'Are you sure you want to perform this action?'}}</p>
+<p ng-if="description">{{description}}</p>
+
+<div ng-if="template" ng-include="template"></div>
+
+<div class="ngdialog-buttons">
+  <button type="button" class="ngdialog-button ngdialog-button-secondary" ng-click="closeThisDialog(false)">{{noText || 'No'}}</button>
+  <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="confirm(true)">{{yesText || 'Yes'}}</button>
+</div>

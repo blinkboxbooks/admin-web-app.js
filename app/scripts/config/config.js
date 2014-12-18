@@ -33,8 +33,9 @@ angular.module('adminPanelApp')
 			header: 'views/partials/header.html',
 			footer: 'views/partials/footer.html',
       spinner: 'views/partials/spinner.html',
-      confirmCampaignPopup: 'views/partials/confirm_campaign_popup.html',
-      confirmCampaignEnabledPopup: 'views/partials/confirm_campaign_enabled_popup.html'
+      alertDefaultPopup: 'views/partials/alert_default_popup.html',
+      confirmDefaultPopup: 'views/partials/confirm_default_popup.html',
+      confirmCampaignPopup: 'views/partials/confirm_campaign_popup.html'
 		};
 
     // request user's session
