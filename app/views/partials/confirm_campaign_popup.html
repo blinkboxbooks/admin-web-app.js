@@ -30,6 +30,11 @@
 
 </dl>
 
+<div class="alert alert-danger" role="alert">
+  <strong>You set a redemption limit</strong> - This will not be possible to change after the campaign is created.
+  A maximum budget of £{{campaign.redemptionLimit * campaign.credit}} will be set.
+</div>
+
 <div class="ngdialog-buttons">
   <button type="button" class="ngdialog-button ngdialog-button-secondary" ng-click="closeThisDialog(false)">No</button>
   <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="confirm(true)">Yes</button>
