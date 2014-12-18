@@ -40,8 +40,9 @@ angular.module('adminPanelApp').controller('CampaignCtrl', function ($routeParam
       return Popup.confirm('Are you sure you want to enable this campaign?').then(function(){
         Campaign.setEnabled($scope.campaignId, true).then(function(){
           $scope.campaignDetails.enabled = true;
-        }, function(){
-          // todo - what happens when there's an error
+        }, function(error){
+          Popup.alert('There was a problem on the server while enabling the campaign. Please try again.');
+          console.error(error);
         });
       });
     };
@@ -50,8 +51,9 @@ angular.module('adminPanelApp').controller('CampaignCtrl', function ($routeParam
       return Popup.confirm('Are you sure you want to disable this campaign?').then(function(){
         Campaign.setEnabled($scope.campaignId, false).then(function(){
           $scope.campaignDetails.enabled = false;
-        }, function(){
-          // todo what happens when there's an error
+        }, function(error){
+          Popup.alert('There was a problem on the server while disabling the campaign. Please try again.');
+          console.error(error);
         });
       });
     };
