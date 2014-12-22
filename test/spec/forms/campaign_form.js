@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Form: New Campaign Form', function () {
+describe('Form: Campaign Form', function () {
 
   // load module
   beforeEach(function(){
@@ -11,7 +11,6 @@ describe('Form: New Campaign Form', function () {
 
       // user is not initially logged in
       _$httpBackend_.expectGET(_ROUTES_.USER).respond(200);
-      _$httpBackend_.whenGET(_ROUTES_.SESSION).respond(200);
       _$httpBackend_.whenGET(_ROUTES_.SESSION).respond(200);
       _$httpBackend_.flush();
     });
@@ -39,11 +38,6 @@ describe('Form: New Campaign Form', function () {
     Popup = _Popup_;
     $q = _$q_;
 
-    spyOn(Campaign, 'post').andCallFake(function(){
-      var deferred = $q.defer();
-      deferred.resolve(newCampaignLocation);
-      return deferred.promise;
-    });
 
     // Compile a piece of HTML containing the directive
     element = $compile('<campaign-form></campaign-form>')($rootScope);
@@ -61,6 +55,18 @@ describe('Form: New Campaign Form', function () {
       spyOn(Popup, 'confirm').andCallFake(function(){
         var deferred = $q.defer();
         deferred.resolve(true);
+        return deferred.promise;
+      });
+
+      spyOn(Campaign, 'post').andCallFake(function(){
+        var deferred = $q.defer();
+        deferred.resolve(newCampaignLocation);
+        return deferred.promise;
+      });
+
+      spyOn(Campaign, 'put').andCallFake(function(){
+        var deferred = $q.defer();
+        deferred.resolve();
         return deferred.promise;
       });
     });
@@ -140,6 +146,26 @@ describe('Form: New Campaign Form', function () {
       expect(scope.submitCampaign(scope.campaign)).toBeTruthy();
     });
 
+    it('should be valid if the credit amount is a number greater than 0', function () {
+      scope.campaign = angular.copy(validCampaign);
+      $rootScope.$apply();
+      expect(scope.submitCampaign(scope.campaign)).toBeTruthy();
+    });
+
+    it('should not be valid if the credit amount is equal to 0', function () {
+      scope.campaign = angular.copy(validCampaign);
+      scope.campaign.credit = 0;
+      $rootScope.$apply();
+      expect(scope.submitCampaign(scope.campaign)).toBe(false);
+    });
+
+    it('should not be valid if the credit amount is less than 0', function () {
+      scope.campaign = angular.copy(validCampaign);
+      scope.campaign.credit = -10;
+      $rootScope.$apply();
+      expect(scope.submitCampaign(scope.campaign)).toBe(false);
+    });
+
   });
 
   describe('Declined confirmation popup', function(){
@@ -147,6 +173,18 @@ describe('Form: New Campaign Form', function () {
       spyOn(Popup, 'confirm').andCallFake(function(){
         var deferred = $q.defer();
         deferred.reject(false);
+        return deferred.promise;
+      });
+
+      spyOn(Campaign, 'post').andCallFake(function(){
+        var deferred = $q.defer();
+        deferred.resolve(newCampaignLocation);
+        return deferred.promise;
+      });
+
+      spyOn(Campaign, 'put').andCallFake(function(){
+        var deferred = $q.defer();
+        deferred.resolve();
         return deferred.promise;
       });
 
@@ -167,6 +205,18 @@ describe('Form: New Campaign Form', function () {
       spyOn(Popup, 'confirm').andCallFake(function(){
         var deferred = $q.defer();
         deferred.resolve(true);
+        return deferred.promise;
+      });
+
+      spyOn(Campaign, 'post').andCallFake(function(){
+        var deferred = $q.defer();
+        deferred.resolve(newCampaignLocation);
+        return deferred.promise;
+      });
+
+      spyOn(Campaign, 'put').andCallFake(function(){
+        var deferred = $q.defer();
+        deferred.resolve();
         return deferred.promise;
       });
 
@@ -195,6 +245,18 @@ describe('Form: New Campaign Form', function () {
         return deferred.promise;
       });
 
+      spyOn(Campaign, 'post').andCallFake(function(){
+        var deferred = $q.defer();
+        deferred.resolve(newCampaignLocation);
+        return deferred.promise;
+      });
+
+      spyOn(Campaign, 'put').andCallFake(function(){
+        var deferred = $q.defer();
+        deferred.resolve();
+        return deferred.promise;
+      });
+
     }));
 
     it('should redirect to the campaign id once created', function () {
@@ -208,6 +270,104 @@ describe('Form: New Campaign Form', function () {
       $rootScope.$apply(); // resolve promises
 
       expect($location.path).toHaveBeenCalledWith(PATHS.CAMPAIGN + '/' + newCampaignID);
+    });
+  });
+
+  describe('Editing a campaign', function(){
+    it('should edit a campaign if one is given as an attribute', inject(function($compile){
+      spyOn(Popup, 'confirm').andCallFake(function(){
+        var deferred = $q.defer();
+        deferred.resolve(true);
+        return deferred.promise;
+      });
+
+      spyOn(Campaign, 'post').andCallFake(function(){
+        var deferred = $q.defer();
+        deferred.resolve(newCampaignLocation);
+        return deferred.promise;
+      });
+
+      spyOn(Campaign, 'put').andCallFake(function(){
+        var deferred = $q.defer();
+        deferred.resolve();
+        return deferred.promise;
+      });
+
+
+      var scope = $rootScope.$new({});
+      scope.campaign = angular.copy(validCampaign);
+
+      var editElement = $compile('<campaign-form edit="campaign"></campaign-form>')(scope);
+      $rootScope.$apply();
+
+      var formScope = editElement.isolateScope();
+
+      expect(formScope.editing).toBe(true);
+      expect(formScope.submitCampaign(formScope.campaign)).toBeTruthy();
+      formScope.$apply();
+      expect(Campaign.post).not.toHaveBeenCalled();
+      expect(Campaign.put).toHaveBeenCalled();
+
+    }));
+
+  });
+
+  describe('Displaying server errors', function(){
+    var errorObject = {
+      status: 500,
+      data: {
+        description: 'There was a problem with this request.'
+      }
+    };
+
+    var editElement, createElement, editScope, createScope;
+
+    beforeEach(inject(function($compile){
+      spyOn(Popup, 'confirm').andCallFake(function(){
+        var deferred = $q.defer();
+        deferred.resolve(true);
+        return deferred.promise;
+      });
+
+      spyOn(Campaign, 'post').andCallFake(function(){
+        var deferred = $q.defer();
+        deferred.reject(errorObject);
+        return deferred.promise;
+      });
+
+      spyOn(Campaign, 'put').andCallFake(function(){
+        var deferred = $q.defer();
+        deferred.reject(errorObject);
+        return deferred.promise;
+      });
+
+      var campaignScope = $rootScope.$new({});
+      campaignScope.campaign = angular.copy(validCampaign);
+
+      editElement = $compile('<campaign-form edit="campaign"></campaign-form>')(campaignScope);
+      createElement = $compile('<campaign-form></campaign-form>')(campaignScope);
+      $rootScope.$apply();
+      editScope = editElement.isolateScope();
+      createScope = createElement.isolateScope();
+
+    }));
+
+    it('should display a server error if one occurs when creating the campaign', function () {
+      createScope.campaign = angular.copy(validCampaign);
+      createScope.$apply();
+      createScope.submitCampaign(createScope.campaign);
+
+      $rootScope.$apply();
+      expect(Campaign.post).toHaveBeenCalled();
+      expect(createScope.serverError).toEqual(errorObject);
+    });
+
+    it('should display a server error if one occurs when editing the campaign', function () {
+      editScope.submitCampaign(editScope.campaign);
+
+      $rootScope.$apply();
+      expect(Campaign.put).toHaveBeenCalled();
+      expect(editScope.serverError).toEqual(errorObject);
     });
   });
 

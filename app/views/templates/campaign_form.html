@@ -59,7 +59,7 @@
     <p data-test="error-credit-number" ng-show="isInvalid('campaign-credit', 'number')" class="error-bubble">Credit amount must be a number.</p>
     <div class="input-group">
       <span class="input-group-addon">£</span>
-      <input id="campaign-credit" name="campaign-credit" type="number" class="form-control" ng-model="campaign.credit" min="0" required placeholder="Enter credit amount" ng-disabled="editing" />
+      <input id="campaign-credit" name="campaign-credit" type="number" class="form-control" ng-model="campaign.credit" min="0.01" required placeholder="Enter credit amount" ng-disabled="editing" />
     </div>
   </div>
 

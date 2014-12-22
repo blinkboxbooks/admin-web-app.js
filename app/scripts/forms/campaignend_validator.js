@@ -5,7 +5,7 @@ angular.module('adminPanelApp').directive('campaignend', function() {
     require: 'ngModel',
     link: function(scope, elm, attrs, ctrl) {
       ctrl.$validators.campaignend = function(modelValue, viewValue){
-        if(!scope.campaign.startDate){
+        if(!scope.campaign.endDate){
           return scope.campaign.ongoing;
         }
 
