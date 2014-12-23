@@ -108,5 +108,12 @@ describe('Service: Format', function () {
 
 		expect(Format.credit(CreditData)).toEqual('£4.56');
 
+    var credit = {};
+    expect(Format.credit(credit)).toEqual('£0');
+
+    credit = null;
+    expect(Format.credit(credit)).toEqual('£0');
+
+
 	});
 });

@@ -62,7 +62,7 @@ angular.module('adminPanelApp').controller('CampaignsCtrl', function ($scope, Ca
     Array.prototype.push.apply(tableData, filterItems);
   };
 
-  var rowClickCallback = function rowClickCallback(row, data){
+  $scope.rowClickCallback = function rowClickCallback(row, data){
     var indexOfId = 0;
     $location.path(PATHS.CAMPAIGN + '/' + data[indexOfId]);
   };
@@ -70,7 +70,7 @@ angular.module('adminPanelApp').controller('CampaignsCtrl', function ($scope, Ca
   // set up the data table
   $scope.campaignsTable = {
     sDom: '<"H"<"#campaigns-table-select"l>fr>t<"F"ip>',
-    rowClickCallback: rowClickCallback,
+    rowClickCallback: $scope.rowClickCallback,
     structure: [
       {
         'field': 'id',

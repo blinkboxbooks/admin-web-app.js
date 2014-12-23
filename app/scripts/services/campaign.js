@@ -42,8 +42,11 @@ angular.module('adminPanelApp')
         });
       },
       setEnabled: function setEnabled(id, enabled){
+        var deferred = $q.defer();
+
         if(!id || angular.isUndefined(enabled)){
-          throw 'Campaign.setEnabled requires a campaign id and an enabled value';
+          deferred.reject('Campaign id and enabled value must be set.');
+          return deferred.promise;
         }
         return this.put(id, {
           enabled: enabled

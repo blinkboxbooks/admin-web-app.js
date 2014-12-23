@@ -74,7 +74,9 @@ angular.module('adminPanelApp')
 
       closeAll: ngDialog.closeAll,
 
-      setForceBodyReload: ngDialog.setForceBodyReload
+      setForceBodyReload: ngDialog.setForceBodyReload,
+
+      getDefaults: ngDialog.getDefaults
     };
 
   }
