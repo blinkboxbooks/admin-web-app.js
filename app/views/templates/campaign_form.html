@@ -66,11 +66,12 @@
   <div class="form-group" data-test="campaign-redemption-group">
     <label for="campaign-redemption-limit">Redemption limit</label>
 
-    <p class="help-block">The maximum number of vouchers redeemable in this campaign.</p>
+    <p class="help-block">The maximum number of vouchers redeemable in this campaign. After this number of vouchers are redeemed, vouchers will no longer be redeemable.
+    This is a safety net to ensure a maximum budget for a campaign (redemption limit × credit amount).</p>
 
     <div class="checkbox">
       <label>
-        <input id="campaign-unlimited-redemption" type="checkbox" checked="checked" ng-model="campaign.unlimitedRedemption" ng-disabled="editing"> Unlimited
+        <input id="campaign-unlimited-redemption" type="checkbox" checked="checked" ng-model="campaign.unlimitedRedemption" ng-disabled="editing"> No Limit
       </label>
     </div>
     <div class="input-group-btn" ng-if="!campaign.unlimitedRedemption">
@@ -82,13 +83,15 @@
 
   </div>
 
-  <div class="form-group" data-test="campaign-enabled-group">
-    <label for="campaign-enabled">Campaign status</label>
-    <p class="help-block">Vouchers are only redeemable if the campaign is enabled.</p>
-    <div class="checkbox">
-      <label>
-        <input name="campaign-enabled" id="campaign-enabled" type="checkbox" checked="checked" ng-model="campaign.enabled"> Enable this campaign.
-      </label>
+  <div class="form-group" data-test="campaign-submit-group">
+    <div ng-if="editing" data-test="campaign-enabled-group">
+      <label for="campaign-enabled">Campaign status</label>
+      <p class="help-block">Vouchers are only redeemable if the campaign is enabled.</p>
+      <div class="checkbox">
+        <label>
+          <input name="campaign-enabled" id="campaign-enabled" type="checkbox" checked="checked" ng-model="campaign.enabled"> Enable this campaign.
+        </label>
+      </div>
     </div>
     <div data-test="server-error" ng-if="serverError" class="alert alert-danger" role="alert">
       <strong>Server Error: </strong> There was a problem creating this campaign. {{serverError.status}} ({{serverError.statusText}}) - {{serverError.data.description || 'Unknown error'}}.
