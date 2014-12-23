@@ -9,13 +9,15 @@ angular.module('adminPanelApp')
 
         var formatPaymentType = function(payment){
           var name = payment.name;
+          var formatted = '';
           if(name === SETTINGS.PAYMENT_METHODS.CREDIT_BALANCE) {
-            return 'account credit';
+            formatted =  'account credit';
           } else if (name === SETTINGS.PAYMENT_METHODS.BRAINTREE){
-            return 'card (<code><a target="_blank" href="' + ROUTES.BRAINTREE_MERCHANT + '/transactions/' + payment.receipt + '">' +  payment.receipt + '</a></code>)';
-          } else {
-            return '';
+            formatted = 'card (<code><a target="_blank" href="' + ROUTES.BRAINTREE_MERCHANT + '/transactions/' + payment.receipt + '">' +  payment.receipt + '</a></code>)';
           }
+
+          return formatted;
+
         };
 
         var total = 0;

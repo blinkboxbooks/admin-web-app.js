@@ -40,6 +40,17 @@ angular.module('adminPanelApp')
           },
           data: campaign
         });
+      },
+      setEnabled: function setEnabled(id, enabled){
+        var deferred = $q.defer();
+
+        if(!id || angular.isUndefined(enabled)){
+          deferred.reject('Campaign id and enabled value must be set.');
+          return deferred.promise;
+        }
+        return this.put(id, {
+          enabled: enabled
+        });
       }
 		};
 	}

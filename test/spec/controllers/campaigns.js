@@ -161,4 +161,51 @@ describe('Controller: CampaignsCtrl', function () {
 
   });
 
+  describe('going to a new campaign page', function(){
+    var $location, PATHS;
+    beforeEach(inject(function(_$location_, _PATHS_){
+      $location = _$location_;
+      PATHS = _PATHS_;
+      spyOn($location, 'path');
+    }));
+
+    it('should go to the new campaign page', function () {
+      scope.goToNewCampaign();
+      expect($location.path).toHaveBeenCalledWith(PATHS.NEW_CAMPAIGN);
+    });
+  });
+
+  describe('Clicking on a row', function(){
+    var $location, PATHS;
+    beforeEach(inject(function(_$location_, _PATHS_){
+      $location = _$location_;
+      PATHS = _PATHS_;
+      spyOn($location, 'path');
+    }));
+
+    it('should go to the campaign', function () {
+      var id = 1;
+      scope.rowClickCallback(0, [id]);
+      expect($location.path).toHaveBeenCalledWith(PATHS.CAMPAIGN + '/' + id);
+    });
+  });
+
+  describe('Table data structure', function(){
+    it('should have the correct columns', function () {
+      var structure = scope.campaignsTable.structure;
+      expect(structure[0].field).toBe('id');
+      expect(structure[1].field).toBe('name');
+      expect(structure[2].field).toBe('description');
+
+      // remaining columns are formatted dates.
+      spyOn(Date.prototype, 'toString').andReturn('fakeDateString');
+
+      expect(structure[3].field({startDate: new Date()})).toEqual('fakeDateString');
+      expect(structure[4].field({endDate: new Date()})).toEqual('fakeDateString');
+      expect(structure[5].field({createdAt: new Date()})).toEqual('fakeDateString');
+      expect(structure[6].field({enabled: true})).toEqual('Enabled');
+      expect(structure[6].field({enabled: false})).toEqual('Disabled');
+    });
+  });
+
 });
