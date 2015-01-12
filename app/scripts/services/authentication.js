@@ -35,7 +35,6 @@ angular.module('adminPanelApp')
       }).then(function () {
         // Set user to undefined, erasing all data. Then go to the login page.
         User.set();
-        $location.url(PATHS.LOGIN);
 
         // reset session
         Session.clear();

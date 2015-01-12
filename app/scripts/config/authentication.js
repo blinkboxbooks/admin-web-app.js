@@ -7,15 +7,15 @@ angular.module('adminPanelApp')
       'responseError' : function(response){
         if (response.status === 401 || response.status === 403) {
           // Reset user data (retrieve the User service without circular dependency):
-          $injector.get('User').set(null);
-          $injector.get('Authentication').logout();
-          // No token present (not logged in) so redirect to signin with a link back to current page.
-          var current = $location.url();
-          // Avoid circular reference
-          if (current.indexOf(PATHS.LOGIN) !== 0) {
-            // We replace the current URL to allow the back button in the browser to come back to the previous page and not to the intercepted one.
-            $location.search({redirectTo: encodeURIComponent(current)}).path(PATHS.LOGIN).replace();
-          }
+          $injector.get('Authentication').logout().then(function(){
+            // No token present (not logged in) so redirect to signin with a link back to current page.
+            var current = $location.url();
+            // Avoid circular reference
+            if (current.indexOf(PATHS.LOGIN) !== 0) {
+              // We replace the current URL to allow the back button in the browser to come back to the previous page and not to the intercepted one.
+              $location.search({redirectTo: encodeURIComponent(current)}).path(PATHS.LOGIN).replace();
+            }
+          });
         }
         return $q.reject(response);
       }
