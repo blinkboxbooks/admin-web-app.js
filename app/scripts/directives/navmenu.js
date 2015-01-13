@@ -4,10 +4,12 @@
 angular.module('adminPanelApp').directive('navmenu', function (PATHS, $location, EVENTS, ACL) {
   return {
     restrict: 'E',
-    template: '<ul class="nav nav-pills">' +
+    template: '<ul class="nav nav-pills" ng-if="user">' +
     '<li ng-repeat="item in items" ng-class="item === active && \'active\'"><a ng-href="#!{{item.href}}">{{item.label}}</a></li>' +
     '</ul>',
-    scope: {},
+    scope: {
+      user: '='
+    },
     controller: function($scope){
 
       $scope.items = [];
