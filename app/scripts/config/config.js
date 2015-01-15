@@ -28,6 +28,12 @@ angular.module('adminPanelApp')
 
 		// Expose authentication methods.
 		$rootScope.Authentication = Authentication;
+    $rootScope.logout = function logout(){
+      Authentication.logout().then(function(){
+        $location.path('/login');
+      });
+
+    };
 
 		$rootScope.templates = {
 			header: 'views/partials/header.html',

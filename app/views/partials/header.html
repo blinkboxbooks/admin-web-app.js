@@ -3,7 +3,7 @@
 	<div class="user">
 		<span ng-if="User && user_session.user_roles">
 			Hi {{User.first_name}} ({{user_session.user_roles.join(', ') | uppercase }})
-			<button class="btn btn-primary btn-xs" ng-click="Authentication.logout()" data-test="logout-button">Logout</button>
+			<button class="btn btn-primary btn-xs" ng-click="logout()" data-test="logout-button">Logout</button>
 		</span>
 		<a ng-href="{{PATHS.LOGIN}}" ng-hide="User" data-test="login-link">Login</a>
 	</div>
