@@ -2,5 +2,8 @@
 	"HOME": "/",
 	"LOGIN": "/login",
 	"USER": "/user",
-	"VOUCHER": "/voucher"
+	"VOUCHER": "/voucher",
+  "CAMPAIGNS": "/campaigns",
+  "NEW_CAMPAIGN": "/campaign/new",
+  "CAMPAIGN": "/campaign"
 }

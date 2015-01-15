@@ -9,7 +9,7 @@ describe('Service: Format', function () {
 		inject(function(_$httpBackend_, _ROUTES_){
 			$httpBackend = _$httpBackend_;
 			ROUTES = _ROUTES_;
-			$httpBackend.expectGET(_ROUTES_.USER).respond(401);
+			$httpBackend.expectGET(_ROUTES_.USER).respond(200);
 		});
 	});
 
@@ -41,7 +41,7 @@ describe('Service: Format', function () {
         if(purchase.payments[i].name === 'credit_balance'){
           methodText = ' account credit';
         } else {
-          methodText = ' card (<code> <a href="https://www.braintreegateway.com/merchants/xvcjgt5hdpv4863s/transactions/' + purchase.payments[i].receipt + '">' +  purchase.payments[i].receipt + '</a></code>)';
+          methodText = ' card (<code><a target="_blank" href="https://www.braintreegateway.com/merchants/xvcjgt5hdpv4863s/transactions/' + purchase.payments[i].receipt + '">' +  purchase.payments[i].receipt + '</a></code>)';
         }
         expectedPayment.push('£' + (+purchase.payments[i].money.amount) + methodText);
       }
@@ -49,7 +49,7 @@ describe('Service: Format', function () {
       expectedPayment = expectedPayment.join(' + ');
 
       expect(Format.purchase(purchase, BookData.single.items[index])).toEqual({
-        date: (new Date(purchase.date)).toDateString(),
+        date: (new Date(purchase.date)).toString(),
         isbn: purchase.isbn,
         title: BookData.single.items[index].title,
         price: expectedPrice,
@@ -79,7 +79,7 @@ describe('Service: Format', function () {
 		for(var i = 0, l = emails.length; i < l; i++){
 			var email = emails[i];
 			temp.push({
-				date: (new Date(email.user_username_changed_at)).toDateString(),
+				date: (new Date(email.user_username_changed_at)).toString(),
 				original_email: email.user_username,
 				new_email: i > 0 ? emails[i - 1].user_username : user.user_username
 			});
@@ -107,6 +107,13 @@ describe('Service: Format', function () {
 	it('Should format credit data', function(){
 
 		expect(Format.credit(CreditData)).toEqual('£4.56');
+
+    var credit = {};
+    expect(Format.credit(credit)).toEqual('£0');
+
+    credit = null;
+    expect(Format.credit(credit)).toEqual('£0');
+
 
 	});
 });

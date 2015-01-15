@@ -31,7 +31,11 @@ angular.module('adminPanelApp')
 
 		$rootScope.templates = {
 			header: 'views/partials/header.html',
-			footer: 'views/partials/footer.html'
+			footer: 'views/partials/footer.html',
+      spinner: 'views/partials/spinner.html',
+      alertDefaultPopup: 'views/partials/alert_default_popup.html',
+      confirmDefaultPopup: 'views/partials/confirm_default_popup.html',
+      confirmCampaignPopup: 'views/partials/confirm_campaign_popup.html'
 		};
 
     // request user's session
@@ -60,6 +64,21 @@ angular.module('adminPanelApp')
 				templateUrl: 'views/voucher.html',
 				controller: 'VoucherCtrl'
 			})
+      .when('/campaigns', {
+        templateUrl: 'views/campaigns.html',
+        controller: 'CampaignsCtrl'
+      })
+      .when('/campaign/new', {
+        templateUrl: 'views/new_campaign.html'
+      })
+      .when('/campaign/:id', {
+        templateUrl: 'views/campaign.html',
+        controller: 'CampaignCtrl'
+      })
+      .when('/campaign/:id/edit', {
+        templateUrl: 'views/edit_campaign.html',
+        controller: 'EditCampaignCtrl'
+      })
 			.otherwise({
 				redirectTo: '/login'
 			});

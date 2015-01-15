@@ -1,0 +1,27 @@
+#campaigns-filters {
+  label {
+    input {
+      visibility: hidden;
+      width: 0;
+      height: 0;
+      padding: 0;
+      margin: 0;
+    }
+  }
+}
+
+#campaigns-table {
+  tbody tr:hover td {
+    background-color: #D7EDFD !important;
+    cursor: pointer;
+  }
+}
+
+#new-campaign-button {
+  margin-left: 10px;
+}
+
+#campaigns-table-select select {
+  height: 34px;
+  margin-right: 5px;
+}

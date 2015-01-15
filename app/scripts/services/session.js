@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('adminPanelApp').factory('Session', function ($q, $http, ROUTES, $rootScope, EVENTS) {
+angular.module('adminPanelApp').factory('Session', function ($q, $http, ROUTES, $rootScope, EVENTS, ACL) {
   return {
     clear: function(){
       $rootScope.$broadcast(EVENTS.SESSION_UPDATED, {user_roles: []});
@@ -18,20 +18,12 @@ angular.module('adminPanelApp').factory('Session', function ($q, $http, ROUTES, 
         var deferred = $q.defer();
 
         if (session.data && angular.isArray(session.data.user_roles)) {
-          var valid = false;
-          for (var i = 0, l = session.data.user_roles.length; i < l; i++) {
-            var role = session.data.user_roles[i];
-            if (role === 'csr' || role === 'csm' || role === 'ops') {
-              valid = true;
-              break;
-            }
-          }
+          ACL.setRoles(session.data.user_roles);
 
-
-          // TODO later we'll refactor what it means to be 'valid'.
-          if (valid) {
+          if (ACL.isOneOf(['ops', 'csm', 'mer', 'csr', 'ctm', 'mkt'])) {
             deferred.resolve(session.data);
           } else {
+            ACL.setRoles([]);
             deferred.reject({
               data: {
                 error_description: 'You must have CSM/CSR account in order to access the admin panel.'

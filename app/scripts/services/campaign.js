@@ -17,7 +17,41 @@ angular.module('adminPanelApp')
 				}).then(function(response){
 					return response.data;
 				});
-			}
+			},
+      post: function(campaign){
+        return $http({
+          method: 'POST',
+          url: ROUTES.GIFTING_SERVICES + ROUTES.CAMPAIGNS,
+          headers: {
+            'X-Requested-With': 'XMLHttpRequest',
+            'x-content-type': 'application/vnd.blinkbox.books.v2+json'
+          },
+          data: campaign
+        }).then(function(response){
+          return response.headers().location;
+        });
+      },
+      put: function(id, campaign){
+        return $http({
+          method: 'PUT',
+          url: ROUTES.GIFTING_SERVICES + ROUTES.CAMPAIGNS + '/' + id,
+          headers: {
+            'x-content-type': 'application/vnd.blinkbox.books.v2+json'
+          },
+          data: campaign
+        });
+      },
+      setEnabled: function setEnabled(id, enabled){
+        var deferred = $q.defer();
+
+        if(!id || angular.isUndefined(enabled)){
+          deferred.reject('Campaign id and enabled value must be set.');
+          return deferred.promise;
+        }
+        return this.put(id, {
+          enabled: enabled
+        });
+      }
 		};
 	}
 );

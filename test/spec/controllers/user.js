@@ -14,7 +14,7 @@ describe('Controller: UserCtrl', function () {
 			BookData = _BookData_;
 			Format = _Format_;
 			CreditData = _CreditData_;
-			$httpBackend.expectGET(ROUTES.USER).respond(401);
+			$httpBackend.expectGET(ROUTES.USER).respond(200);
       $httpBackend.whenGET(ROUTES.SESSION).respond(200);
 		});
 	});

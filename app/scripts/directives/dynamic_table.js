@@ -10,6 +10,7 @@ angular.module('adminPanelApp')
 			},
 			replace: true,
 			link: function(scope, element){
+        var sDom = angular.isDefined(scope.config.sDom) ? scope.config.sDom : '<\'row-fluid\'<\'span6\'l<\'pagination\'p>>\r>t<\'row-fluid pagination\'<\'span6\'i>>';
 				// Timeout required to allow the scope to update the html structure
 				$timeout(function(){
 					// Enable the datatable plugin on your directive.
@@ -19,25 +20,31 @@ angular.module('adminPanelApp')
 						// the option to control the number of items per page
 						'aLengthMenu': [[30, 60, 100, -1], [30, 60, 100, 'All']],
 						// controlling the generated table html
-						'sDom': '<\'row-fluid\'<\'span6\'l<\'pagination\'p>>\r>t<\'row-fluid pagination\'<\'span6\'i>>',
+						'sDom': sDom,
 						'fnDrawCallback': function(){
 							// add paged class to table wrapper if we have more than one page
 							element.parent().toggleClass('paged', this.fnPagingInfo().iTotalPages > 1);
 						}
 					});
 
+          if(angular.isFunction(scope.config.rowClickCallback)){
+            $(element).on('click', 'tbody tr', function(e){
+              $timeout(function(){
+                scope.config.rowClickCallback(e.currentTarget, element.fnGetData(e.currentTarget));
+              });
+            });
+          }
+
 					// sync table with scope collection
 					var dataWatch = scope.$watchCollection('config.data', function(value){
 						element.fnClearTable();
 						var rows = [];
 						for(var i = 0, l = value.length; i < l; i++){
-							var item = value[i], row = [];
-							for(var j = 0, k = scope.config.structure.length; j < k; j++){
-								row.push(
-									$.isFunction(scope.config.structure[j].field) ?
-										scope.config.structure[j].field(item) :
-										item[scope.config.structure[j].field]
-								);
+							var item = value[i], row = [], structure = scope.config.structure;
+              for(var j = 0, k = structure.length; j < k; j++){
+                var rowData = $.isFunction(structure[j].field) ? structure[j].field(item) : item[structure[j].field];
+                rowData = angular.isUndefined(rowData) ? '' : rowData;
+								row.push(rowData);
 							}
 							rows.push(row);
 						}

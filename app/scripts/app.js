@@ -7,5 +7,7 @@ angular.module('adminPanelApp', [
   'ngSanitize',
   'ngRoute',
 	'ngAnimate',
-	'Constants'
+	'Constants',
+  'ui.bootstrap.datetimepicker',
+  'ngDialog'
 ]);
