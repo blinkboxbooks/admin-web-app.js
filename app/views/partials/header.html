@@ -1,7 +1,7 @@
 <div id="header" class="container page-header">
 	<h1><a href="{{PATHS.HOME}}">Admin Panel</a></h1>
 	<div class="user">
-		<span ng-show="User">
+		<span ng-if="User && user_session.user_roles">
 			Hi {{User.first_name}} ({{user_session.user_roles.join(', ') | uppercase }})
 			<button class="btn btn-primary btn-xs" ng-click="Authentication.logout()" data-test="logout-button">Logout</button>
 		</span>
